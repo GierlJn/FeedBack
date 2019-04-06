@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  SecondViewController.swift
 //  FeedBack
 //
 //  Created by Julian on 06.04.19.
@@ -8,9 +8,8 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class ThirdViewController: UIViewController {
 
-    @IBOutlet weak var activeDonationsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
