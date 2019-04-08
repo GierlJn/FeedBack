@@ -1,9 +1,15 @@
-
+//
+//  GameViewController.swift
+//  FeedBack
+//
+//  Created by Julian on 08.04.19.
+//  Copyright © 2019 gierljn. All rights reserved.
+//
 
 import UIKit
 
-class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     
     @IBOutlet weak var tableViewTest: UITableView!
     
@@ -26,5 +32,4 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         return cell
     }
 
-    
 }
