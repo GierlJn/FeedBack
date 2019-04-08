@@ -16,7 +16,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             "name" : "Jon Snow",
         ],
         [
-            "picture": #imageLiteral(resourceName: "lifesaver"),
+            "picture": #imageLiteral(resourceName: "wolf"),
             "name" : "Daenerys Targaryen",
         ]
     ]
@@ -25,7 +25,10 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableViewTest.register(UITableViewCell.self, forCellReuseIdentifier: "testCell")
+        
+        let cellNib = UINib(nibName: "ActiveDonationViewCell", bundle: nil)
+        self.tableViewTest.register(cellNib, forCellReuseIdentifier: "charityCell")
+        
         tableViewTest.delegate = self
         tableViewTest.dataSource = self
     }
@@ -36,11 +39,23 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "testCell")!
+        
+        let cell = tableViewTest.dequeueReusableCell(withIdentifier: "charityCell", for: indexPath) as! ActiveDonationViewCell
+        
+        //let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "testCell")!
         // Set text from the data model
         let character = sampleData[indexPath.row]
-        cell.textLabel?.text = character["name"] as? String
+        
+        cell.charityNameLabel.text = character["name"] as? String
+        //cell.textLabel?.text = character["name"] as? String
+        
+        
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 106.5
+    }
+
 
 }
