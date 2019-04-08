@@ -101,14 +101,14 @@
 		B99EA0A82258CB3700256A89 /* FeedBack */ = {
 			isa = PBXGroup;
 			children = (
-				B99EA0A92258CB3700256A89 /* AppDelegate.swift */,
+				B943B669225B621400F8C560 /* GameViewController.swift */,
 				B99EA0AD2258CB3700256A89 /* SecondViewController.swift */,
 				B99EA0D92258CCF300256A89 /* ThirdViewController.swift */,
 				B99EA0AF2258CB3700256A89 /* Main.storyboard */,
-				B943B669225B621400F8C560 /* GameViewController.swift */,
 				B99EA0B22258CB3800256A89 /* Assets.xcassets */,
 				B99EA0B42258CB3800256A89 /* LaunchScreen.storyboard */,
 				B99EA0B72258CB3800256A89 /* Info.plist */,
+				B99EA0A92258CB3700256A89 /* AppDelegate.swift */,
 			);
 			path = FeedBack;
 			sourceTree = "<group>";
