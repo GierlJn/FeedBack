@@ -10,17 +10,29 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Donations-->
+        <!--Explore-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qi8-K1-8cW">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qi8-K1-8cW" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="GR1-l0-ULa"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="qi8-K1-8cW" secondAttribute="bottom" id="QX9-Ob-JCu"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="qi8-K1-8cW" secondAttribute="trailing" id="skn-im-5Od"/>
+                            <constraint firstItem="qi8-K1-8cW" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="xzZ-fQ-Cgx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Donations" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Explore" image="first" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -78,7 +90,7 @@
             </objects>
             <point key="canvasLocation" x="957" y="1092"/>
         </scene>
-        <!--Donater-->
+        <!--Donations-->
         <scene sceneID="XfO-Jx-mGD">
             <objects>
                 <viewController id="km0-8x-AZG" customClass="GameViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
@@ -89,14 +101,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7k-9u-mzI">
                                 <rect key="frame" x="0.0" y="44" width="414" height="128"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XoN-bh-vfl">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arya_stark" translatesAutoresizingMaskIntoConstraints="NO" id="XoN-bh-vfl">
                                         <rect key="frame" x="8" y="0.0" width="100" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="fZc-yf-83B"/>
                                             <constraint firstAttribute="width" constant="100" id="lU0-MK-qFy"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfq-WW-lMV">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfq-WW-lMV">
                                         <rect key="frame" x="8" y="98" width="100" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="SAz-GF-SiA"/>
@@ -110,7 +122,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YBu-Ld-RUv">
                                         <rect key="frame" x="116" y="0.0" width="290" height="128"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donations:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggu-zf-ecF">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggu-zf-ecF">
                                                 <rect key="frame" x="8" y="8" width="120" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="NiP-Eu-v0S"/>
@@ -120,7 +132,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XX,XXXX$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAr-Py-1Sa">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAr-Py-1Sa">
                                                 <rect key="frame" x="136" y="8" width="120" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="2VL-JF-bRp"/>
@@ -128,6 +140,9 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="UYP-US-G9b"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="33" id="YXw-Qi-oDf"/>
                                                 </constraints>
+                                                <string key="text" base64-UTF8="YES">
+F1hYLFhYWFgg4oKsAxc
+</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -194,6 +209,26 @@
                                                     <constraint firstAttribute="width" constant="128" id="nl5-G5-dzB"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BV6-jl-Vxo">
+                                                <rect key="frame" x="144" y="49" width="126" height="47"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="126" id="9Bf-xd-hdq"/>
+                                                    <constraint firstAttribute="height" constant="47" id="M4t-fe-He3"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Punkte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gT-Ss-5cf">
+                                                <rect key="frame" x="180" y="99" width="54" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="54" id="9x4-MW-6Zg"/>
+                                                    <constraint firstAttribute="height" constant="21" id="gtc-HX-EeL"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -202,7 +237,11 @@
                                             <constraint firstItem="YiX-cX-33U" firstAttribute="top" secondItem="Ggu-zf-ecF" secondAttribute="bottom" constant="8" id="9xr-9m-cUj"/>
                                             <constraint firstItem="Ggu-zf-ecF" firstAttribute="top" secondItem="YBu-Ld-RUv" secondAttribute="top" constant="8" id="DGT-eb-2F3"/>
                                             <constraint firstItem="QCC-Hr-bJc" firstAttribute="leading" secondItem="YBu-Ld-RUv" secondAttribute="leading" constant="8" id="UOQ-GD-yju"/>
+                                            <constraint firstItem="8gT-Ss-5cf" firstAttribute="leading" secondItem="QCC-Hr-bJc" secondAttribute="trailing" constant="44" id="bG4-Zs-60f"/>
+                                            <constraint firstItem="8gT-Ss-5cf" firstAttribute="top" secondItem="BV6-jl-Vxo" secondAttribute="bottom" constant="3" id="fWd-Ez-oGe"/>
                                             <constraint firstItem="YiX-cX-33U" firstAttribute="leading" secondItem="YBu-Ld-RUv" secondAttribute="leading" constant="8" id="gH8-tQ-2Gi"/>
+                                            <constraint firstItem="BV6-jl-Vxo" firstAttribute="top" secondItem="VAr-Py-1Sa" secondAttribute="bottom" constant="8" id="ghO-zN-fge"/>
+                                            <constraint firstItem="BV6-jl-Vxo" firstAttribute="leading" secondItem="YiX-cX-33U" secondAttribute="trailing" constant="8" id="lgp-PO-kZg"/>
                                             <constraint firstItem="VAr-Py-1Sa" firstAttribute="top" secondItem="YBu-Ld-RUv" secondAttribute="top" constant="8" id="qXG-99-dAU"/>
                                             <constraint firstItem="Ggu-zf-ecF" firstAttribute="leading" secondItem="YBu-Ld-RUv" secondAttribute="leading" constant="8" id="z6X-bT-356"/>
                                         </constraints>
@@ -248,8 +287,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Knj-km-eti"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Donater" image="first" id="cny-0Q-jg9"/>
+                    <tabBarItem key="tabBarItem" title="Donations" image="first" id="cny-0Q-jg9"/>
                     <connections>
+                        <outlet property="avatarPicture" destination="XoN-bh-vfl" id="aVM-wz-5WB"/>
                         <outlet property="tableViewTest" destination="Ya9-cD-Ddd" id="rJX-6f-uT3"/>
                     </connections>
                 </viewController>
@@ -259,6 +299,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arya_stark" width="566" height="851"/>
         <image name="co2_icon" width="256" height="256"/>
         <image name="first" width="30" height="30"/>
         <image name="lifesaver" width="128" height="128"/>

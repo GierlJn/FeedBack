@@ -10,14 +10,27 @@ import UIKit
 
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
+    @IBOutlet weak var avatarPicture: UIImageView!
+    
     var sampleData:[Dictionary<String, Any>] = [
         [
             "picture": #imageLiteral(resourceName: "wolf"),
-            "name" : "Jon Snow",
+            "name" : "NightSaver",
+            "progress" : Float(0.33),
+            "points" : "12",
         ],
         [
-            "picture": #imageLiteral(resourceName: "wolf"),
-            "name" : "Daenerys Targaryen",
+            "picture": #imageLiteral(resourceName: "lion"),
+            "name" : "Lannister Foundation",
+            "progress" : Float(0.7),
+            "points" :  "44",
+        ],
+        [
+            "picture": #imageLiteral(resourceName: "dragon"),
+            "name" : "Feeding Dragons",
+            "progress" : Float(0.2),
+            "points" :  "88",
         ]
     ]
     
@@ -47,14 +60,16 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let character = sampleData[indexPath.row]
         
         cell.charityNameLabel.text = character["name"] as? String
-        //cell.textLabel?.text = character["name"] as? String
+        cell.charityAvatar.image = character["picture"] as? UIImage
+        cell.monthlyProgress.progress = (character["progress"] as? Float)!
+        cell.levelLabel.text = character["points"] as? String
         
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 106.5
+        return 129.5
     }
 
 
