@@ -9,18 +9,22 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         [
             "name": "Most Effective",
             "information" : "Because Aids is bad",
+            "categoryId" : "1",
         ],
         [
             "name": "Animals",
             "information" : "Because Aids is bad",
+            "categoryId" : "2",
         ],
         [
             "name": "Health",
             "information" : "Because Aids is bad",
+            "categoryId" : "3",
         ],
         [
             "name": "Environmental",
             "information" : "Because Aids is bad",
+            "categoryId" : "4",
         ]
     ]
     
@@ -37,6 +41,22 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         contentTableView.dataSource = self
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        contentTableView.deselectRow(at: indexPath, animated: true)
+        let section = indexPath.section
+        
+        let controller : CharitySelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "CharitySelectionViewController") as! CharitySelectionViewController
+        let charityCategory = sampleData[section]
+        controller.charityCategoryId = charityCategory["categoryId"] as! String
+        
+        // execute in main thread
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(controller, animated: false)
+        }
+        
+        print("clicked section : \(section)")
+        // print(TableData[row])
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sampleData.count
