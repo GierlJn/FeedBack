@@ -39,8 +39,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let cellNib = UINib(nibName: "ActiveDonationViewCell", bundle: nil)
-        self.tableViewTest.register(cellNib, forCellReuseIdentifier: "charityCell")
+        //let cellNib = UINib(nibName: "ActiveDonationViewCell", bundle: nil)
+        //self.tableViewTest.register(cellNib, forCellReuseIdentifier: "charityCell")
         
         tableViewTest.delegate = self
         tableViewTest.dataSource = self
@@ -53,8 +53,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableViewTest.dequeueReusableCell(withIdentifier: "charityCell", for: indexPath) as! ActiveDonationViewCell
-        
+        //let cell = tableViewTest.dequeueReusableCell(withIdentifier: "charityCell", for: indexPath) as! ActiveDonationViewCell
+        let cell = Bundle.main.loadNibNamed("ActiveDonationViewCell", owner: self, options: nil)?.first as! ActiveDonationViewCell
         //let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "testCell")!
         // Set text from the data model
         let character = sampleData[indexPath.row]

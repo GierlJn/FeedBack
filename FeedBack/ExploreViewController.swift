@@ -1,22 +1,69 @@
-//
-//  ExploreViewController.swift
-//  FeedBack
-//
-//  Created by Julian on 13.04.19.
-//  Copyright © 2019 gierljn. All rights reserved.
-//
 
 import UIKit
 
-class ExploreViewController: UIViewController {
+class ExploreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+    
+    @IBOutlet weak var contentTableView: UITableView!
+    
+    var sampleData:[Dictionary<String, Any>] = [
+        [
+            "name": "Most Effective",
+            "information" : "Because Aids is bad",
+        ],
+        [
+            "name": "Animals",
+            "information" : "Because Aids is bad",
+        ],
+        [
+            "name": "Health",
+            "information" : "Because Aids is bad",
+        ],
+        [
+            "name": "Environmental",
+            "information" : "Because Aids is bad",
+        ]
+    ]
+    
+    var selectionMode = SelectionMode.category
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        //let cellNib = UINib(nibName: "CharityCategoryTableViewCell", bundle: nil)
+        //self.contentTableView.register(cellNib, forHeaderFooterViewReuseIdentifier: "hurensohnZelle123")
+        
+        contentTableView.delegate = self
+        contentTableView.dataSource = self
     }
     
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sampleData.count
+//        switch selectionMode{
+//            case .category:
+//                return sampleData.count
+//            case .single:
+//                return sampleData.count
+//        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //let cell = contentTableView.dequeueReusableCell(withIdentifier: "hurensohnZelle123", for: indexPath) as! CharityCategoryTableViewCell
+        let cell = Bundle.main.loadNibNamed("CharityCategoryTableViewCell", owner: self, options: nil)?.first as! CharityCategoryTableViewCell
+        
+        
+        let charityCategory = sampleData[indexPath.row]
+        cell.charityTitleLabel.text = charityCategory["name"] as? String
+        
+        return cell
+    }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 158.5
+    }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -27,4 +74,9 @@ class ExploreViewController: UIViewController {
     }
     */
 
+}
+
+
+enum SelectionMode{
+    case category, single
 }
