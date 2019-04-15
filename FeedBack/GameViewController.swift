@@ -10,37 +10,11 @@ import UIKit
 
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
     @IBOutlet weak var avatarPicture: UIImageView!
-    
-    var sampleData:[Dictionary<String, Any>] = [
-        [
-            "picture": #imageLiteral(resourceName: "wolf"),
-            "name" : "NightSaver",
-            "progress" : Float(0.33),
-            "points" : "12",
-        ],
-        [
-            "picture": #imageLiteral(resourceName: "lion"),
-            "name" : "Lannister Foundation",
-            "progress" : Float(0.7),
-            "points" :  "44",
-        ],
-        [
-            "picture": #imageLiteral(resourceName: "dragon"),
-            "name" : "Feeding Dragons",
-            "progress" : Float(0.2),
-            "points" :  "88",
-        ]
-    ]
-    
     @IBOutlet weak var tableViewTest: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //let cellNib = UINib(nibName: "ActiveDonationViewCell", bundle: nil)
-        //self.tableViewTest.register(cellNib, forCellReuseIdentifier: "charityCell")
         
         tableViewTest.delegate = self
         tableViewTest.dataSource = self
@@ -48,16 +22,12 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sampleData.count
+        return CharityData.sampleData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //let cell = tableViewTest.dequeueReusableCell(withIdentifier: "charityCell", for: indexPath) as! ActiveDonationViewCell
         let cell = Bundle.main.loadNibNamed("ActiveDonationViewCell", owner: self, options: nil)?.first as! ActiveDonationViewCell
-        //let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "testCell")!
-        // Set text from the data model
-        let character = sampleData[indexPath.row]
+        let character = CharityData.sampleData[indexPath.row]
         
         cell.charityNameLabel.text = character["name"] as? String
         cell.charityAvatar.image = character["picture"] as? UIImage

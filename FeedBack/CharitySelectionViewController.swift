@@ -5,30 +5,6 @@ class CharitySelectionViewController: UIViewController, UITableViewDataSource, U
 
     @IBOutlet weak var contentTableView: UITableView!
     
-    var sampleData:[Dictionary<String, Any>] = [
-        [
-            "picture": #imageLiteral(resourceName: "wolf"),
-            "name" : "NightSaver",
-            "progress" : Float(0.33),
-            "points" : "12",
-            "information" : "NightSaver NightSaverNightSaverNightSaver NightSaverNightSaver",
-        ],
-        [
-            "picture": #imageLiteral(resourceName: "lion"),
-            "name" : "Lannister Foundation",
-            "progress" : Float(0.7),
-            "points" :  "44",
-            "information" : "Lannister FoundationLannister FoundationLannister FoundationLannister Foundation",
-        ],
-        [
-            "picture": #imageLiteral(resourceName: "dragon"),
-            "name" : "Feeding Dragons",
-            "progress" : Float(0.2),
-            "points" :  "88",
-            "information" : "Feeding DragonsFeeding DragonsFeeding DragonsFeeding DragonsFeeding DragonsFeeding Dragons",
-        ]
-    ]
-    
     var charityCategoryId = "mockupId"
     
     override func viewDidLoad() {
@@ -42,7 +18,7 @@ class CharitySelectionViewController: UIViewController, UITableViewDataSource, U
         let section = indexPath.section
         
         let controller : CharityInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: "CharityInfoViewController") as! CharityInfoViewController
-        let charityCategory = sampleData[section]
+        let charityCategory = CharityData.sampleData[section]
         controller.charityName = charityCategory["name"] as! String
         
         // execute in main thread
@@ -55,12 +31,12 @@ class CharitySelectionViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sampleData.count
+        return CharityData.sampleData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("CharityTableViewCell", owner: self, options: nil)?.first as! CharityTableViewCell
-        let charity = sampleData[indexPath.row]
+        let charity = CharityData.sampleData[indexPath.row]
         
         cell.charityName.text = charity["name"] as? String
         cell.informationLabel.text = charity["information"] as? String
