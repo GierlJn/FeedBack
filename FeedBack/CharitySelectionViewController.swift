@@ -18,7 +18,7 @@ class CharitySelectionViewController: UIViewController, UITableViewDataSource, U
         let section = indexPath.section
         
         let controller : CharityInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: "CharityInfoViewController") as! CharityInfoViewController
-        let charityCategory = CharityData.sampleData[section]
+        let charityCategory = CharityDataModel.sampleData[section]
         controller.charityName = charityCategory["name"] as! String
         
         // execute in main thread
@@ -31,12 +31,12 @@ class CharitySelectionViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CharityData.sampleData.count
+        return CharityDataModel.sampleData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("CharityTableViewCell", owner: self, options: nil)?.first as! CharityTableViewCell
-        let charity = CharityData.sampleData[indexPath.row]
+        let charity = CharityDataModel.sampleData[indexPath.row]
         
         cell.charityName.text = charity["name"] as? String
         cell.informationLabel.text = charity["information"] as? String

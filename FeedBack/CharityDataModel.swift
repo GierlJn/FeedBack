@@ -3,7 +3,7 @@
 import Foundation
 import UIKit
 
-class CharityData{
+class CharityDataModel{
     
     
     static let sampleData:[Dictionary<String, Any>] = [

@@ -22,12 +22,12 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CharityData.sampleData.count
+        return CharityDataModel.sampleData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("ActiveDonationViewCell", owner: self, options: nil)?.first as! ActiveDonationViewCell
-        let character = CharityData.sampleData[indexPath.row]
+        let character = CharityDataModel.sampleData[indexPath.row]
         
         cell.charityNameLabel.text = character["name"] as? String
         cell.charityAvatar.image = character["picture"] as? UIImage

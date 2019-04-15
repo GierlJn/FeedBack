@@ -45,7 +45,7 @@
         <!--Profile-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="ProfileViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,7 +87,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yF6-gg-2Le" userLabel="Achievement">
-                                                <rect key="frame" x="16" y="120" width="382" height="288"/>
+                                                <rect key="frame" x="16" y="120" width="382" height="230"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Achievements" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVB-3l-WHe">
                                                         <rect key="frame" x="16" y="16" width="205" height="50"/>
@@ -100,13 +100,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bdd-UR-LnW">
-                                                        <rect key="frame" x="16" y="82" width="350" height="180"/>
+                                                        <rect key="frame" x="16" y="82" width="350" height="120"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="180" id="aJG-oL-w8J"/>
+                                                            <constraint firstAttribute="height" constant="120" id="aJG-oL-w8J"/>
                                                         </constraints>
-                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BrP-70-vML">
-                                                            <size key="itemSize" width="50" height="50"/>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="3" id="BrP-70-vML">
+                                                            <size key="itemSize" width="90" height="90"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -116,7 +116,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="288" id="E3c-v2-7lD"/>
+                                                    <constraint firstAttribute="height" constant="230" id="E3c-v2-7lD"/>
                                                     <constraint firstItem="YVB-3l-WHe" firstAttribute="top" secondItem="yF6-gg-2Le" secondAttribute="top" constant="16" id="IZK-Yg-pMi"/>
                                                     <constraint firstItem="bdd-UR-LnW" firstAttribute="top" secondItem="YVB-3l-WHe" secondAttribute="bottom" constant="16" id="VLd-R2-QFe"/>
                                                     <constraint firstItem="bdd-UR-LnW" firstAttribute="centerX" secondItem="yF6-gg-2Le" secondAttribute="centerX" id="ex6-d1-eyg"/>
@@ -124,11 +124,6 @@
                                                     <constraint firstAttribute="trailing" secondItem="bdd-UR-LnW" secondAttribute="trailing" constant="16" id="gia-jG-Srw"/>
                                                     <constraint firstItem="YVB-3l-WHe" firstAttribute="leading" secondItem="yF6-gg-2Le" secondAttribute="leading" constant="16" id="tw6-Am-2Jv"/>
                                                 </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="38S-q1-L1C">
-                                                <rect key="frame" x="8" y="437" width="319" height="217"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -165,6 +160,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="second" id="cPa-gy-q4n"/>
                     <size key="freeformSize" width="414" height="1200"/>
+                    <connections>
+                        <outlet property="achievementCollectionView" destination="bdd-UR-LnW" id="F0N-KO-AMu"/>
+                        <outlet property="userAvatar" destination="wzU-ip-U6S" id="4dQ-8u-rHq"/>
+                        <outlet property="userNameLabel" destination="FiA-kU-ynE" id="lFa-v2-64k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
