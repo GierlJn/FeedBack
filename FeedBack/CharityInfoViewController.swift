@@ -16,6 +16,8 @@ class CharityInfoViewController: UIViewController {
     
     @IBOutlet weak var charityInfoBox: UILabel!
     
+    var charityName = "0"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         charityInfoBox.numberOfLines = 0

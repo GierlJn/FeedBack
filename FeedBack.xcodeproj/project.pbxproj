@@ -96,32 +96,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B964F0C32261D95900D55C58 /* Model */ = {
+		B95F9272226481AA007F7755 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B99EA0B22258CB3800256A89 /* Assets.xcassets */,
 			);
 			name = Model;
 			sourceTree = "<group>";
 		};
-		B964F0C42261D96200D55C58 /* View */ = {
+		B95F9273226481B9007F7755 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B99EA0AF2258CB3700256A89 /* Main.storyboard */,
+				B99EA0B42258CB3800256A89 /* LaunchScreen.storyboard */,
+				B943B66B225B7F3300F8C560 /* ActiveDonationViewCell.swift */,
+				B943B66C225B7F3300F8C560 /* ActiveDonationViewCell.xib */,
+				B964F0C92261F23F00D55C58 /* CharityTableViewCell.swift */,
+				B964F0CA2261F23F00D55C58 /* CharityTableViewCell.xib */,
+				B964F0BF2261D94E00D55C58 /* CharityCategoryTableViewCell.swift */,
+				B964F0C02261D94E00D55C58 /* CharityCategoryTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		B964F0C52261D96800D55C58 /* Controller */ = {
+		B95F9274226481C1007F7755 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B964F0BD2261D85500D55C58 /* ExploreViewController.swift */,
+				B964F0C72261F16300D55C58 /* CharitySelectionViewController.swift */,
+				B95F927022646DC4007F7755 /* CharityInfoViewController.swift */,
+				B99EA0AD2258CB3700256A89 /* SecondViewController.swift */,
+				B99EA0D92258CCF300256A89 /* ThirdViewController.swift */,
+				B943B669225B621400F8C560 /* GameViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		B964F0C62261D98B00D55C58 /* Standard Files */ = {
+		B95F927522648221007F7755 /* Support */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "Standard Files";
+			path = Support;
 			sourceTree = "<group>";
 		};
 		B99EA09D2258CB3700256A89 = {
@@ -147,27 +162,12 @@
 		B99EA0A82258CB3700256A89 /* FeedBack */ = {
 			isa = PBXGroup;
 			children = (
-				B964F0BD2261D85500D55C58 /* ExploreViewController.swift */,
-				B964F0C72261F16300D55C58 /* CharitySelectionViewController.swift */,
-				B964F0C92261F23F00D55C58 /* CharityTableViewCell.swift */,
-				B95F927022646DC4007F7755 /* CharityInfoViewController.swift */,
-				B964F0CA2261F23F00D55C58 /* CharityTableViewCell.xib */,
-				B99EA0AD2258CB3700256A89 /* SecondViewController.swift */,
-				B99EA0D92258CCF300256A89 /* ThirdViewController.swift */,
-				B943B669225B621400F8C560 /* GameViewController.swift */,
-				B964F0BF2261D94E00D55C58 /* CharityCategoryTableViewCell.swift */,
-				B964F0C02261D94E00D55C58 /* CharityCategoryTableViewCell.xib */,
-				B943B66B225B7F3300F8C560 /* ActiveDonationViewCell.swift */,
-				B943B66C225B7F3300F8C560 /* ActiveDonationViewCell.xib */,
-				B99EA0AF2258CB3700256A89 /* Main.storyboard */,
-				B99EA0B22258CB3800256A89 /* Assets.xcassets */,
-				B99EA0B42258CB3800256A89 /* LaunchScreen.storyboard */,
 				B99EA0A92258CB3700256A89 /* AppDelegate.swift */,
 				B99EA0B72258CB3800256A89 /* Info.plist */,
-				B964F0C32261D95900D55C58 /* Model */,
-				B964F0C42261D96200D55C58 /* View */,
-				B964F0C52261D96800D55C58 /* Controller */,
-				B964F0C62261D98B00D55C58 /* Standard Files */,
+				B95F9272226481AA007F7755 /* Model */,
+				B95F9274226481C1007F7755 /* Controller */,
+				B95F9273226481B9007F7755 /* View */,
+				B95F927522648221007F7755 /* Support */,
 			);
 			path = FeedBack;
 			sourceTree = "<group>";

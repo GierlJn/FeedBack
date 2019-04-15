@@ -37,6 +37,22 @@ class CharitySelectionViewController: UIViewController, UITableViewDataSource, U
         contentTableView.dataSource = self
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        contentTableView.deselectRow(at: indexPath, animated: true)
+        let section = indexPath.section
+        
+        let controller : CharityInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: "CharityInfoViewController") as! CharityInfoViewController
+        let charityCategory = sampleData[section]
+        controller.charityName = charityCategory["name"] as! String
+        
+        // execute in main thread
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(controller, animated: false)
+        }
+        
+        print("clicked section : \(section)")
+        // print(TableData[row])
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sampleData.count
