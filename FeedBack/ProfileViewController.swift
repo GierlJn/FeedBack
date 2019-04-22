@@ -15,9 +15,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         achievementCollectionView.delegate = self
         achievementCollectionView.register(UINib.init(nibName: "AchievementCell", bundle: nil), forCellWithReuseIdentifier: "achievementCell")
         
-        let user = UserDataModel.sampleData
-        userAvatar.image = user["picture"] as? UIImage
-        userNameLabel.text = user["name"] as? String
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -27,9 +24,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        //let cell = Bundle.main.loadNibNamed("AchievementCell", owner: self, options: nil)?.first as! AchievementCell
-        
         let cell = achievementCollectionView.dequeueReusableCell(withReuseIdentifier: "achievementCell", for: indexPath) as! AchievementCell
         let user = UserDataModel.sampleData
         let achievements = user["achievements"] as! [AchievementModel]

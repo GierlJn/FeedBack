@@ -15,7 +15,7 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="charityCell" rowHeight="130" id="KGk-i7-Jjw" customClass="ActiveDonationViewCell" customModule="FeedBack" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="129.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -27,24 +27,24 @@
                         </constraints>
                     </imageView>
                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DLw-IP-sFc">
-                        <rect key="frame" x="137" y="103" width="228" height="5"/>
+                        <rect key="frame" x="137" y="103" width="250" height="5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="5" id="FnG-DW-GLN"/>
-                            <constraint firstAttribute="width" constant="228" id="pcO-iO-U3C"/>
+                            <constraint firstAttribute="width" constant="250" id="pcO-iO-U3C"/>
                         </constraints>
                     </progressView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rh-Xz-jQn">
-                        <rect key="frame" x="137" y="16" width="45" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3rh-Xz-jQn">
+                        <rect key="frame" x="137" y="16" width="48" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="Yc0-tm-BKr"/>
                             <constraint firstAttribute="height" constant="21" id="aBt-9u-gSe"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved Monthly: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csR-AO-AHd">
-                        <rect key="frame" x="137" y="45" width="132" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4€ may fund 1 Child treated " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="csR-AO-AHd">
+                        <rect key="frame" x="137" y="45" width="217" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="PvR-JJ-XWw"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="132" id="xCc-1n-xXp"/>
@@ -54,16 +54,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXC-iX-6Bz">
-                        <rect key="frame" x="40" y="99.5" width="40" height="18"/>
+                        <rect key="frame" x="40" y="99.5" width="42.5" height="18"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="Mw6-52-RW6"/>
                             <constraint firstAttribute="height" constant="18" id="iCK-vD-ak8"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Saved:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDX-cT-QJq">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treated Children:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xDX-cT-QJq">
                         <rect key="frame" x="137" y="74" width="132" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="132" id="eL4-rZ-DKk"/>
@@ -73,51 +73,33 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfZ-TT-KVr">
-                        <rect key="frame" x="360" y="4" width="50" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="rvD-qg-psv"/>
-                            <constraint firstAttribute="width" constant="50" id="t5l-Ho-0rG"/>
-                        </constraints>
-                        <state key="normal" title="Donate"/>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hcs-it-2oQ">
-                        <rect key="frame" x="273" y="45" width="45" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="45" id="GOx-kF-5ph"/>
-                            <constraint firstAttribute="height" constant="21" id="tpw-We-wus"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcm-Uv-qay">
-                        <rect key="frame" x="274" y="74" width="45" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXXX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mcm-Uv-qay">
+                        <rect key="frame" x="274" y="74" width="63" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="6Uv-RA-x98"/>
-                            <constraint firstAttribute="width" constant="45" id="Y73-Xl-mCd"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="Y73-Xl-mCd"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="mcm-Uv-qay" firstAttribute="leading" secondItem="xDX-cT-QJq" secondAttribute="trailing" constant="5" id="1sY-Tg-0t1"/>
-                    <constraint firstItem="jfZ-TT-KVr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="H85-vN-CeM"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="csR-AO-AHd" secondAttribute="trailing" constant="30" id="6R1-sj-riX"/>
+                    <constraint firstItem="mcm-Uv-qay" firstAttribute="top" secondItem="csR-AO-AHd" secondAttribute="bottom" constant="8" id="DQ9-ae-Epv"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3rh-Xz-jQn" secondAttribute="trailing" constant="30" id="HRk-Pr-i5C"/>
                     <constraint firstItem="zsA-03-czV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="NIw-Cf-pp5"/>
                     <constraint firstItem="DLw-IP-sFc" firstAttribute="top" secondItem="xDX-cT-QJq" secondAttribute="bottom" constant="8" id="ObF-3J-aqr"/>
-                    <constraint firstAttribute="trailing" secondItem="jfZ-TT-KVr" secondAttribute="trailing" constant="4" id="R81-Me-u97"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mcm-Uv-qay" secondAttribute="trailing" constant="30" id="T1R-Ab-G6h"/>
                     <constraint firstItem="3rh-Xz-jQn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="VXQ-Sd-xvM"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DLw-IP-sFc" secondAttribute="trailing" constant="30" id="VYC-eY-RdG"/>
                     <constraint firstItem="xDX-cT-QJq" firstAttribute="top" secondItem="csR-AO-AHd" secondAttribute="bottom" constant="8" id="ZT0-HS-Kdy"/>
                     <constraint firstItem="zsA-03-czV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="dwb-6D-elI"/>
                     <constraint firstItem="DLw-IP-sFc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="137" id="frR-dK-kT2"/>
                     <constraint firstItem="csR-AO-AHd" firstAttribute="leading" secondItem="zsA-03-czV" secondAttribute="trailing" constant="32" id="gga-wY-0zP"/>
-                    <constraint firstItem="Hcs-it-2oQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="45" id="lB8-b2-Uhi"/>
-                    <constraint firstItem="Hcs-it-2oQ" firstAttribute="leading" secondItem="csR-AO-AHd" secondAttribute="trailing" constant="4" id="lUx-pA-LdK"/>
                     <constraint firstItem="vXC-iX-6Bz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="llV-Mn-g7J"/>
                     <constraint firstItem="3rh-Xz-jQn" firstAttribute="leading" secondItem="zsA-03-czV" secondAttribute="trailing" constant="32" id="qrQ-6a-Sfp"/>
-                    <constraint firstItem="mcm-Uv-qay" firstAttribute="top" secondItem="Hcs-it-2oQ" secondAttribute="bottom" constant="8" id="rgG-tb-4OU"/>
                     <constraint firstItem="csR-AO-AHd" firstAttribute="top" secondItem="3rh-Xz-jQn" secondAttribute="bottom" constant="8" id="wHC-D1-hyl"/>
                     <constraint firstItem="xDX-cT-QJq" firstAttribute="leading" secondItem="zsA-03-czV" secondAttribute="trailing" constant="32" id="wUu-uS-E3j"/>
                     <constraint firstItem="vXC-iX-6Bz" firstAttribute="top" secondItem="zsA-03-czV" secondAttribute="bottom" constant="5" id="yBd-pu-Wjq"/>
@@ -127,9 +109,11 @@
             <connections>
                 <outlet property="charityAvatar" destination="zsA-03-czV" id="Dg9-u8-xbM"/>
                 <outlet property="charityNameLabel" destination="3rh-Xz-jQn" id="fgg-bZ-u3u"/>
-                <outlet property="donateButton" destination="jfZ-TT-KVr" id="OwO-b1-ZqB"/>
                 <outlet property="levelLabel" destination="vXC-iX-6Bz" id="oPj-O3-jAA"/>
                 <outlet property="monthlyProgress" destination="DLw-IP-sFc" id="3zl-Mv-YGc"/>
+                <outlet property="statsInfoLabel" destination="csR-AO-AHd" id="l3Z-9p-AmY"/>
+                <outlet property="statsSumInNumbers" destination="mcm-Uv-qay" id="vMa-VF-EVo"/>
+                <outlet property="statsSumLabel" destination="xDX-cT-QJq" id="8Yq-3v-Gh8"/>
             </connections>
             <point key="canvasLocation" x="200.00000000000003" y="120.53571428571428"/>
         </tableViewCell>

@@ -13,9 +13,10 @@ class ActiveDonationViewCell: UITableViewCell {
     @IBOutlet weak var monthlyProgress: UIProgressView!
     @IBOutlet weak var charityAvatar: UIImageView!
     @IBOutlet weak var charityNameLabel: UILabel!
-    
-    @IBOutlet weak var donateButton: UIButton!
     @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var statsInfoLabel: UILabel!
+    @IBOutlet weak var statsSumLabel: UILabel!
+    @IBOutlet weak var statsSumInNumbers: UILabel!
     
     
     override func awakeFromNib() {
