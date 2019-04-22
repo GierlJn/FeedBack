@@ -1,10 +1,3 @@
-//
-//  GameViewController.swift
-//  FeedBack
-//
-//  Created by Julian on 08.04.19.
-//  Copyright © 2019 gierljn. All rights reserved.
-//
 
 import UIKit
 
@@ -31,12 +24,25 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Charity.sampleData.count
+        return Charity.sampleData.count+1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
         let cell = Bundle.main.loadNibNamed("ActiveDonationViewCell", owner: self, options: nil)?.first as! ActiveDonationViewCell
+        let lastCell = Bundle.main.loadNibNamed("LastActiveDonationTableViewCell", owner: self, options: nil)?.first as! LastActiveDonationTableViewCell
+        
+        let totalRow =
+            tableView.numberOfRows(inSection: indexPath.section)
+        if(indexPath.row == totalRow - 1)
+        {
+            return lastCell
+        }
+        
         let character = Charity.sampleData[indexPath.row]
+        
+        
         
         cell.charityNameLabel.text = character["name"] as? String
         cell.charityAvatar.image = character["picture"] as? UIImage
