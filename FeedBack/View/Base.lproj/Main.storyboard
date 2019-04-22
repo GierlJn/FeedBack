@@ -238,25 +238,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MaC-v3-Mhw">
-                                <rect key="frame" x="20" y="44" width="374" height="178"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="140"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMQ-D7-wDi">
-                                        <rect key="frame" x="65.5" y="28" width="243" height="122"/>
+                                        <rect key="frame" x="85.5" y="9" width="243" height="122"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="243" id="Ow9-Dg-Lg1"/>
                                             <constraint firstAttribute="height" constant="122" id="bTU-Pf-iTf"/>
                                         </constraints>
                                     </pickerView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.86551520689999994" green="0.731408155" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="NMQ-D7-wDi" firstAttribute="centerY" secondItem="MaC-v3-Mhw" secondAttribute="centerY" id="1Q1-y5-otl"/>
                                     <constraint firstItem="NMQ-D7-wDi" firstAttribute="centerX" secondItem="MaC-v3-Mhw" secondAttribute="centerX" id="TRx-b9-hno"/>
-                                    <constraint firstAttribute="height" constant="178" id="VjY-td-mfY"/>
+                                    <constraint firstAttribute="height" constant="140" id="VjY-td-mfY"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zVJ-VO-Sgj">
-                                <rect key="frame" x="20" y="230" width="374" height="583"/>
+                                <rect key="frame" x="20" y="192" width="374" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="583" id="bjh-w4-zNd"/>
@@ -269,8 +268,8 @@
                             <constraint firstItem="zVJ-VO-Sgj" firstAttribute="top" secondItem="MaC-v3-Mhw" secondAttribute="bottom" constant="8" id="2o0-Mx-7d8"/>
                             <constraint firstItem="MaC-v3-Mhw" firstAttribute="centerX" secondItem="BTJ-yb-KYz" secondAttribute="centerX" id="2wm-yq-0L4"/>
                             <constraint firstItem="zVJ-VO-Sgj" firstAttribute="centerX" secondItem="BTJ-yb-KYz" secondAttribute="centerX" id="5Nm-Jv-hAB"/>
-                            <constraint firstItem="eEo-Dt-4iT" firstAttribute="trailing" secondItem="MaC-v3-Mhw" secondAttribute="trailing" constant="20" id="MXV-Jd-OgV"/>
-                            <constraint firstItem="MaC-v3-Mhw" firstAttribute="leading" secondItem="eEo-Dt-4iT" secondAttribute="leading" constant="20" id="Uwf-5H-e2h"/>
+                            <constraint firstItem="eEo-Dt-4iT" firstAttribute="trailing" secondItem="MaC-v3-Mhw" secondAttribute="trailing" id="MXV-Jd-OgV"/>
+                            <constraint firstItem="MaC-v3-Mhw" firstAttribute="leading" secondItem="eEo-Dt-4iT" secondAttribute="leading" id="Uwf-5H-e2h"/>
                             <constraint firstItem="MaC-v3-Mhw" firstAttribute="top" secondItem="eEo-Dt-4iT" secondAttribute="top" id="sYm-J1-Hcp"/>
                             <constraint firstItem="eEo-Dt-4iT" firstAttribute="trailing" secondItem="zVJ-VO-Sgj" secondAttribute="trailing" constant="20" id="tTI-9q-Xi8"/>
                         </constraints>
@@ -279,6 +278,7 @@
                     <tabBarItem key="tabBarItem" title="Community" image="second" id="k98-bi-VJV"/>
                     <connections>
                         <outlet property="leaderBoardTableView" destination="zVJ-VO-Sgj" id="gx1-2y-8Hc"/>
+                        <outlet property="selectionUIView" destination="MaC-v3-Mhw" id="kvj-1J-xMD"/>
                         <outlet property="typeOfLeaderBoardPickerView" destination="NMQ-D7-wDi" id="UeJ-Ey-lXf"/>
                     </connections>
                 </viewController>
@@ -428,14 +428,14 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ya9-cD-Ddd">
-                                <rect key="frame" x="0.0" y="180" width="414" height="633"/>
+                                <rect key="frame" x="0.0" y="172" width="414" height="641"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Knj-km-eti" firstAttribute="trailing" secondItem="Ya9-cD-Ddd" secondAttribute="trailing" id="7Eh-7f-AaO"/>
-                            <constraint firstItem="Ya9-cD-Ddd" firstAttribute="top" secondItem="v7k-9u-mzI" secondAttribute="bottom" constant="8" id="BM6-cK-goQ"/>
+                            <constraint firstItem="Ya9-cD-Ddd" firstAttribute="top" secondItem="v7k-9u-mzI" secondAttribute="bottom" id="BM6-cK-goQ"/>
                             <constraint firstItem="Ya9-cD-Ddd" firstAttribute="leading" secondItem="Knj-km-eti" secondAttribute="leading" id="XqW-Qr-VQh"/>
                             <constraint firstItem="Knj-km-eti" firstAttribute="bottom" secondItem="Ya9-cD-Ddd" secondAttribute="bottom" id="Y06-Qf-Tr1"/>
                             <constraint firstItem="v7k-9u-mzI" firstAttribute="leading" secondItem="Knj-km-eti" secondAttribute="leading" id="gn1-9s-yfw"/>

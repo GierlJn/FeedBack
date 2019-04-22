@@ -17,9 +17,12 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableViewTest.delegate = self
         tableViewTest.dataSource = self
+    
         
-        userView.layer.borderWidth = 1
-        userView.layer.borderColor = UIColor.black.cgColor
+        let topBorder: CALayer = CALayer()
+        topBorder.frame = CGRect(x: 0, y: 0, width: tableViewTest.frame.size.width, height: 1)
+        topBorder.backgroundColor = UIColor.purple.cgColor
+        tableViewTest.layer.addSublayer(topBorder)
     }
     
     
