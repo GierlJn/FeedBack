@@ -34,10 +34,10 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     private func setViewBorders(){
-        let topBorder: CALayer = CALayer()
-        topBorder.frame = CGRect(x: 0, y: 0, width: leaderBoardTableView.frame.size.width, height: 1)
-        topBorder.backgroundColor = UIColor.purple.cgColor
-        leaderBoardTableView.layer.addSublayer(topBorder)
+        let bottomBorder: CALayer = CALayer()
+        bottomBorder.frame = CGRect(x: 0, y: selectionUIView.frame.size.height+1, width: selectionUIView.frame.size.width, height: 1)
+        bottomBorder.backgroundColor = UIColor.purple.cgColor
+        selectionUIView.layer.addSublayer(bottomBorder)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
