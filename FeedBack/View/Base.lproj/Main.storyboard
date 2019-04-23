@@ -125,7 +125,6 @@
                                                         <cells/>
                                                     </collectionView>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.86551520689999994" green="0.731408155" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="bdd-UR-LnW" firstAttribute="leading" secondItem="yF6-gg-2Le" secondAttribute="leading" constant="16" id="2FQ-hd-CPp"/>
                                                     <constraint firstItem="YVB-3l-WHe" firstAttribute="leading" secondItem="yF6-gg-2Le" secondAttribute="leading" constant="16" id="8OQ-5A-PGY"/>
@@ -137,7 +136,7 @@
                                                     <constraint firstItem="YVB-3l-WHe" firstAttribute="top" secondItem="yF6-gg-2Le" secondAttribute="top" constant="16" id="zzX-5P-moa"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B7B-04-cLQ" userLabel="Achievement">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B7B-04-cLQ" userLabel="ImpactView">
                                                 <rect key="frame" x="0.0" y="152" width="414" height="276"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By donating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Brq-Ya-Dhf">
@@ -178,7 +177,6 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.86551520689999994" green="0.731408155" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="4ka-dL-Ipa" secondAttribute="bottom" constant="16" id="3k6-Oo-84X"/>
                                                     <constraint firstItem="1ce-u9-iwY" firstAttribute="top" secondItem="B7B-04-cLQ" secondAttribute="top" constant="16" id="9mo-vV-wEw"/>
@@ -199,7 +197,7 @@
                                                     <constraint firstItem="4tN-EG-8DK" firstAttribute="top" secondItem="s8K-o2-I9G" secondAttribute="bottom" constant="8" id="qfE-gp-1Ck"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMp-q2-5vr">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMp-q2-5vr" userLabel="FriendView">
                                                 <rect key="frame" x="0.0" y="666" width="414" height="348"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UVs-I3-OD2">
@@ -219,7 +217,6 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.8655152069147235" green="0.73140815502598655" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="UVs-I3-OD2" secondAttribute="trailing" constant="16" id="0xy-VA-nfx"/>
                                                     <constraint firstItem="UVs-I3-OD2" firstAttribute="top" secondItem="cFb-OJ-JyR" secondAttribute="bottom" constant="16" id="2mb-uV-lMN"/>
@@ -231,7 +228,7 @@
                                                     <constraint firstAttribute="height" constant="348" id="p2A-Ye-qas"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GwY-YH-J7l">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GwY-YH-J7l" userLabel="DonationHistoryView">
                                                 <rect key="frame" x="0.0" y="1022" width="414" height="348"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BI2-Ar-RB5">
@@ -250,7 +247,6 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.86551520689999994" green="0.731408155" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="N8U-Xm-RbF" secondAttribute="trailing" constant="16" id="3GY-8k-hSD"/>
                                                     <constraint firstItem="BI2-Ar-RB5" firstAttribute="leading" secondItem="GwY-YH-J7l" secondAttribute="leading" constant="16" id="8uX-Uj-mGZ"/>
@@ -307,9 +303,14 @@
                     <size key="freeformSize" width="414" height="1500"/>
                     <connections>
                         <outlet property="achievementCollectionView" destination="bdd-UR-LnW" id="F0N-KO-AMu"/>
+                        <outlet property="achievementView" destination="yF6-gg-2Le" id="v4D-vi-2XT"/>
+                        <outlet property="donationHistoryView" destination="GwY-YH-J7l" id="NeF-g2-e7h"/>
+                        <outlet property="friendView" destination="bMp-q2-5vr" id="ocj-S3-XpO"/>
                         <outlet property="impactTableView" destination="s8K-o2-I9G" id="5EM-vc-X4i"/>
+                        <outlet property="impactView" destination="B7B-04-cLQ" id="qe0-4k-GyZ"/>
                         <outlet property="userAvatar" destination="wzU-ip-U6S" id="4dQ-8u-rHq"/>
                         <outlet property="userNameLabel" destination="FiA-kU-ynE" id="lFa-v2-64k"/>
+                        <outlet property="userProfileView" destination="8c9-gi-eAN" id="sn6-BL-co1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

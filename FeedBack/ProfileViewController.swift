@@ -3,6 +3,11 @@ import UIKit
 
 class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var donationHistoryView: UIView!
+    @IBOutlet weak var friendView: UIView!
+    @IBOutlet weak var achievementView: UIView!
+    @IBOutlet weak var impactView: UIView!
+    @IBOutlet weak var userProfileView: UIView!
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var impactTableView: UITableView!
@@ -10,19 +15,19 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     let sampleData:[Dictionary<String, Any>] = [
         [
-            "impactInfo" : "You helped treating:",
+            "impactInfo" : "You helped treating",
             "impact" : "10",
             "afterImpactInfo" : "children with antimalarial medicine"
         ],
         [
-            "impactInfo" : "Your money funded:",
+            "impactInfo" : "You helped funding",
             "impact" : "7",
             "afterImpactInfo" : "malaria nets in developing countries."
         ],
         [
-            "impactInfo" : "You helped treating:",
+            "impactInfo" : "You helped treating",
             "impact" : "70",
-            "afterImpactInfo" : "with NTDs(neglected tropical diseases)"
+            "afterImpactInfo" : "people with NTDs(neglected tropical diseases)"
         ]
     ]
     
@@ -32,6 +37,21 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewDidLoad()
         setupCollectionView()
         setupTableView()
+        setupSeperatorLines()
+    }
+    
+    fileprivate func setupSeperatorLines(){
+        setupBottomBorder(for: userProfileView)
+        setupBottomBorder(for: impactView)
+        setupBottomBorder(for: achievementView)
+        setupBottomBorder(for: friendView)
+    }
+    
+    fileprivate func setupBottomBorder(for view: UIView) {
+        let bottomBorder: CALayer = CALayer()
+        bottomBorder.frame = CGRect(x: 0, y: view.frame.size.height+2, width: view.frame.size.width, height: 2)
+        bottomBorder.backgroundColor = UIColor.purple.cgColor
+        view.layer.addSublayer(bottomBorder)
     }
     
     fileprivate func setupCollectionView() {

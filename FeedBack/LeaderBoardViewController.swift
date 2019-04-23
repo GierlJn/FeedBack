@@ -35,7 +35,7 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     private func setViewBorders(){
         let bottomBorder: CALayer = CALayer()
-        bottomBorder.frame = CGRect(x: 0, y: selectionUIView.frame.size.height+1, width: selectionUIView.frame.size.width, height: 1)
+        bottomBorder.frame = CGRect(x: 0, y: selectionUIView.frame.size.height+2, width: selectionUIView.frame.size.width, height: 2)
         bottomBorder.backgroundColor = UIColor.purple.cgColor
         selectionUIView.layer.addSublayer(bottomBorder)
     }

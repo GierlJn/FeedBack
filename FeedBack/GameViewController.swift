@@ -14,19 +14,18 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableViewTest.delegate = self
         tableViewTest.dataSource = self
-    
         
-        let bottomBorder: CALayer = CALayer()
-        bottomBorder.frame = CGRect(x: 0, y: userView.frame.size.height+1, width: userView.frame.size.width, height: 1)
-        bottomBorder.backgroundColor = UIColor.purple.cgColor
-        userView.layer.addSublayer(bottomBorder)
-        
-
+        setupBottomBorder()
     }
     
+    fileprivate func setupBottomBorder() {
+        let bottomBorder: CALayer = CALayer()
+        bottomBorder.frame = CGRect(x: 0, y: userView.frame.size.height+2, width: userView.frame.size.width, height: 2)
+        bottomBorder.backgroundColor = UIColor.purple.cgColor
+        userView.layer.addSublayer(bottomBorder)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Charity.sampleData.count+1
@@ -46,8 +45,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         let character = Charity.sampleData[indexPath.row]
-        
-        
         
         cell.charityNameLabel.text = character["name"] as? String
         cell.charityAvatar.image = character["picture"] as? UIImage
