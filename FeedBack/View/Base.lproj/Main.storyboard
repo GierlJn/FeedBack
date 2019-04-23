@@ -59,7 +59,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8c9-gi-eAN" userLabel="UserName View">
                                                 <rect key="frame" x="0.0" y="16" width="414" height="128"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FiA-kU-ynE">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Julian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FiA-kU-ynE">
                                                         <rect key="frame" x="144" y="43" width="137" height="42"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="137" id="VpY-xa-0yv"/>
@@ -69,7 +69,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="420" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sx7-hD-y51">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sx7-hD-y51">
                                                         <rect key="frame" x="297" y="30" width="95" height="68"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="95" id="JQf-Wr-c70"/>
@@ -146,7 +146,7 @@
                                                 <color key="backgroundColor" red="0.86551520689999994" green="0.731408155" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B7B-04-cLQ" userLabel="Achievement">
-                                                <rect key="frame" x="0.0" y="152" width="414" height="230"/>
+                                                <rect key="frame" x="0.0" y="152" width="414" height="276"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The impact you make" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Brq-Ya-Dhf">
                                                         <rect key="frame" x="16" y="16" width="248" height="33"/>
@@ -158,20 +158,41 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s8K-o2-I9G">
-                                                        <rect key="frame" x="16" y="65" width="382" height="149"/>
+                                                        <rect key="frame" x="16" y="65" width="382" height="139"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="139" id="Bu0-Wt-j1s"/>
+                                                        </constraints>
                                                     </tableView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook_share" translatesAutoresizingMaskIntoConstraints="NO" id="4tN-EG-8DK">
+                                                        <rect key="frame" x="244" y="212" width="154" height="48"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="154" id="Rzq-hS-bn3"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitter_share" translatesAutoresizingMaskIntoConstraints="NO" id="4ka-dL-Ipa">
+                                                        <rect key="frame" x="16" y="212" width="155" height="48"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="155" id="qZd-GX-PUT"/>
+                                                        </constraints>
+                                                    </imageView>
                                                 </subviews>
+                                                <color key="backgroundColor" red="0.86551520689999994" green="0.731408155" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="4ka-dL-Ipa" secondAttribute="bottom" constant="16" id="3k6-Oo-84X"/>
                                                     <constraint firstItem="s8K-o2-I9G" firstAttribute="centerX" secondItem="B7B-04-cLQ" secondAttribute="centerX" id="D4a-es-DJt"/>
-                                                    <constraint firstAttribute="height" constant="230" id="EwL-Bq-DI9"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Brq-Ya-Dhf" secondAttribute="trailing" constant="16" id="F4n-tZ-cy5"/>
                                                     <constraint firstAttribute="trailing" secondItem="s8K-o2-I9G" secondAttribute="trailing" constant="16" id="Gnf-tz-o9q"/>
                                                     <constraint firstItem="Brq-Ya-Dhf" firstAttribute="leading" secondItem="B7B-04-cLQ" secondAttribute="leading" constant="16" id="MXa-Wj-yh8"/>
+                                                    <constraint firstItem="4ka-dL-Ipa" firstAttribute="leading" secondItem="B7B-04-cLQ" secondAttribute="leading" constant="16" id="R7z-q1-uVD"/>
                                                     <constraint firstItem="Brq-Ya-Dhf" firstAttribute="top" secondItem="B7B-04-cLQ" secondAttribute="top" constant="16" id="RPJ-5G-O1q"/>
+                                                    <constraint firstItem="4ka-dL-Ipa" firstAttribute="top" secondItem="s8K-o2-I9G" secondAttribute="bottom" constant="8" id="Snw-3l-gjO"/>
                                                     <constraint firstItem="s8K-o2-I9G" firstAttribute="top" secondItem="Brq-Ya-Dhf" secondAttribute="bottom" constant="16" id="WwB-6b-W6w"/>
-                                                    <constraint firstAttribute="bottom" secondItem="s8K-o2-I9G" secondAttribute="bottom" constant="16" id="clk-Ae-PUu"/>
+                                                    <constraint firstAttribute="trailing" secondItem="4tN-EG-8DK" secondAttribute="trailing" constant="16" id="ZbU-zC-ChS"/>
                                                     <constraint firstItem="s8K-o2-I9G" firstAttribute="leading" secondItem="B7B-04-cLQ" secondAttribute="leading" constant="16" id="cxp-yC-WVr"/>
+                                                    <constraint firstAttribute="bottom" secondItem="4tN-EG-8DK" secondAttribute="bottom" constant="16" id="kJM-HT-Npy"/>
+                                                    <constraint firstAttribute="height" constant="276" id="lvV-QE-Cj5"/>
+                                                    <constraint firstItem="4tN-EG-8DK" firstAttribute="top" secondItem="s8K-o2-I9G" secondAttribute="bottom" constant="8" id="qfE-gp-1Ck"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -673,10 +694,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="facebook_share" width="670" height="128"/>
         <image name="heart" width="30" height="30"/>
         <image name="lion" width="384" height="500"/>
         <image name="list" width="30" height="30"/>
         <image name="search" width="30" height="30"/>
+        <image name="twitter_share" width="664" height="126"/>
         <image name="user" width="300" height="300"/>
         <image name="user_male" width="30" height="30"/>
     </resources>
