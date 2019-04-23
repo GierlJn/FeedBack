@@ -26,6 +26,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         ]
     ]
     
+    let sampleAchievements = [AchievementModel(image: UIImage(imageLiteralResourceName: "medal-2.png"), title: "Humanitarian"), AchievementModel(image: UIImage(imageLiteralResourceName: "heart_achievement.png"), title: "Sharing is caring"), AchievementModel(image: UIImage(imageLiteralResourceName: "like.png"), title: "You're awesome!")]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
@@ -45,19 +47,14 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let user = UserDataModel.sampleData
-        let achievements = user["achievements"] as! [AchievementModel]
-        return achievements.count
+        return sampleAchievements.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = achievementCollectionView.dequeueReusableCell(withReuseIdentifier: "achievementCell", for: indexPath) as! AchievementCell
-        let user = UserDataModel.sampleData
-        let achievements = user["achievements"] as! [AchievementModel]
-    
         
-        cell.achievementImage.image = achievements[indexPath.row].image
-        cell.achievementTitle.text = achievements[indexPath.row].title
+        cell.achievementImage.image = sampleAchievements[indexPath.row].image
+        cell.achievementTitle.text = sampleAchievements[indexPath.row].title
         return cell
     }
     
