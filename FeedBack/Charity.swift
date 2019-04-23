@@ -19,7 +19,7 @@ class Charity{
         ],
         [
             "picture": #imageLiteral(resourceName: "sightsavers_logo"),
-            "name" : "Sightsavers",
+            "name" : "SightSavers",
             "progress" : Float(0.7),
             "points" :  "7",
             "information" : "Sightsavers is a UK-based international charity which fights avoidable blindness and promotes equal opportunities for visually impaired people.",
