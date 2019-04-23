@@ -10,6 +10,7 @@ import UIKit
 
 class RankedUserTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userPointsLabel: UILabel!
     @IBOutlet weak var userRankLabel: UILabel!

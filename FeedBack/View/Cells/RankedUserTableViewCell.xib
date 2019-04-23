@@ -71,6 +71,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="userAvatar" destination="gP5-bE-Orl" id="P1L-lZ-FBD"/>
                 <outlet property="userNameLabel" destination="Xgj-ty-WWN" id="RL3-zW-WPX"/>
                 <outlet property="userPointsLabel" destination="A1t-6D-ryy" id="K5e-EQ-MTM"/>
                 <outlet property="userRankLabel" destination="AOS-QI-yTh" id="Pfo-PP-T0h"/>
