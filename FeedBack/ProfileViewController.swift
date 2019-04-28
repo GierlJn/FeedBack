@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         [
             "impactInfo" : "You helped treating",
             "impact" : "10",
-            "afterImpactInfo" : "children with antimalarial medicine"
+            "afterImpactInfo" : "children with antimalarial medicine."
         ],
         [
             "impactInfo" : "You helped funding",
@@ -27,7 +27,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         [
             "impactInfo" : "You helped treating",
             "impact" : "70",
-            "afterImpactInfo" : "people with NTDs(neglected tropical diseases)"
+            "afterImpactInfo" : "people with NTDs(neglected tropical diseases)."
         ]
     ]
     
@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     fileprivate func setupBottomBorder(for view: UIView) {
         let bottomBorder: CALayer = CALayer()
-        bottomBorder.frame = CGRect(x: 0, y: view.frame.size.height+2, width: view.frame.size.width, height: 2)
+        bottomBorder.frame = CGRect(x: 0, y: view.frame.size.height+1, width: view.frame.size.width, height: 1)
         bottomBorder.backgroundColor = UIColor.purple.cgColor
         view.layer.addSublayer(bottomBorder)
     }
