@@ -12,7 +12,6 @@
 		B920004022759BB9004F74A6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920003F22759BB9004F74A6 /* RegisterViewController.swift */; };
 		B920004422759BF0004F74A6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920004322759BF0004F74A6 /* LogInViewController.swift */; };
 		B92000462275ADD6004F74A6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92000452275ADD6004F74A6 /* SettingsViewController.swift */; };
-		B920004A2275B74E004F74A6 /* ProfileSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92000492275B74E004F74A6 /* ProfileSettingsTableViewController.swift */; };
 		B922C5F3226EF3DF006E0D2C /* ImpactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B922C5F1226EF3DF006E0D2C /* ImpactTableViewCell.swift */; };
 		B922C5F4226EF3DF006E0D2C /* ImpactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B922C5F2226EF3DF006E0D2C /* ImpactTableViewCell.xib */; };
 		B922C5F8226F1BF4006E0D2C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B922C5F7226F1BF4006E0D2C /* User.swift */; };
@@ -78,7 +77,6 @@
 		B920003F22759BB9004F74A6 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B920004322759BF0004F74A6 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		B92000452275ADD6004F74A6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		B92000492275B74E004F74A6 /* ProfileSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsTableViewController.swift; sourceTree = "<group>"; };
 		B922C5F1226EF3DF006E0D2C /* ImpactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactTableViewCell.swift; sourceTree = "<group>"; };
 		B922C5F2226EF3DF006E0D2C /* ImpactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImpactTableViewCell.xib; sourceTree = "<group>"; };
 		B922C5F7226F1BF4006E0D2C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 				B920003F22759BB9004F74A6 /* RegisterViewController.swift */,
 				B920004322759BF0004F74A6 /* LogInViewController.swift */,
 				B92000452275ADD6004F74A6 /* SettingsViewController.swift */,
-				B92000492275B74E004F74A6 /* ProfileSettingsTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -561,7 +558,6 @@
 				B922C5F3226EF3DF006E0D2C /* ImpactTableViewCell.swift in Sources */,
 				B99EA0AA2258CB3700256A89 /* AppDelegate.swift in Sources */,
 				B945E500226B0AAC0032EB7A /* RankedUserTableViewCell.swift in Sources */,
-				B920004A2275B74E004F74A6 /* ProfileSettingsTableViewController.swift in Sources */,
 				B95F928522649CAF007F7755 /* UserDataModel.swift in Sources */,
 				B95F928022649549007F7755 /* AchievementCell.swift in Sources */,
 				B98DBDD8226DC6870007B36F /* LastActiveDonationTableViewCell.swift in Sources */,

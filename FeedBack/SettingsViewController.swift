@@ -16,7 +16,10 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func popView(_ sender: Any) {
+        self.dismiss(animated: false, completion: nil);
+    }
+    
     /*
     // MARK: - Navigation
 

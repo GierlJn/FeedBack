@@ -320,7 +320,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="xHf-p9-Z1f">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="awM-vC-acR">
                             <connections>
-                                <segue destination="N1s-t4-gwj" kind="push" id="9Wp-xH-yPb"/>
+                                <segue destination="N1s-t4-gwj" kind="presentation" id="3G2-dv-yla"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -343,24 +343,42 @@
         <!--Settings-->
         <scene sceneID="x5h-7t-hZJ">
             <objects>
-                <viewController id="N1s-t4-gwj" sceneMemberID="viewController">
+                <viewController id="N1s-t4-gwj" customClass="SettingsViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gov-rE-gVA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwe-ic-Vg0">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <connections>
                                     <segue destination="cX2-gR-HXx" kind="embed" id="PYD-Dg-iXz"/>
                                 </connections>
                             </containerView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dzp-Ak-yEw">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="IeY-l7-9mt"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Settings" id="uDY-1e-DLj">
+                                        <barButtonItem key="rightBarButtonItem" title="Close" id="m8r-kf-kyV">
+                                            <connections>
+                                                <action selector="popView:" destination="N1s-t4-gwj" id="P96-kn-lvX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cwe-ic-Vg0" firstAttribute="trailing" secondItem="szO-pF-URl" secondAttribute="trailing" id="6fw-5D-Kce"/>
+                            <constraint firstItem="Dzp-Ak-yEw" firstAttribute="leading" secondItem="szO-pF-URl" secondAttribute="leading" id="OyM-qn-bNZ"/>
                             <constraint firstItem="cwe-ic-Vg0" firstAttribute="leading" secondItem="szO-pF-URl" secondAttribute="leading" id="VVH-ht-H7C"/>
-                            <constraint firstItem="cwe-ic-Vg0" firstAttribute="top" secondItem="szO-pF-URl" secondAttribute="top" id="aG1-CX-sAr"/>
+                            <constraint firstItem="Dzp-Ak-yEw" firstAttribute="top" secondItem="szO-pF-URl" secondAttribute="top" id="ZpI-KG-xoR"/>
+                            <constraint firstItem="cwe-ic-Vg0" firstAttribute="top" secondItem="Dzp-Ak-yEw" secondAttribute="bottom" id="jK7-eV-076"/>
                             <constraint firstItem="cwe-ic-Vg0" firstAttribute="bottom" secondItem="szO-pF-URl" secondAttribute="bottom" id="kT6-kq-gh5"/>
+                            <constraint firstItem="Dzp-Ak-yEw" firstAttribute="trailing" secondItem="szO-pF-URl" secondAttribute="trailing" id="szS-PF-0No"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="szO-pF-URl"/>
                     </view>
@@ -377,7 +395,7 @@
             <objects>
                 <tableViewController id="cX2-gR-HXx" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="33" sectionFooterHeight="28" id="FSn-5Y-jkZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
@@ -729,7 +747,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGb-in-dex" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6501" y="520"/>
+            <point key="canvasLocation" x="6520" y="537"/>
         </scene>
         <!--Log In-->
         <scene sceneID="Xn1-bL-mnb">
