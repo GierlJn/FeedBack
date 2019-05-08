@@ -1,7 +1,8 @@
 
 import UIKit
+import FirebaseAuth
 
-class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate {
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate, ProfileViewDelegate {
 
     @IBOutlet weak var donationHistoryView: UIView!
     @IBOutlet weak var friendView: UIView!
@@ -12,6 +13,21 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var impactTableView: UITableView!
     @IBOutlet weak var achievementCollectionView: UICollectionView!
+    var handle: AuthStateDidChangeListenerHandle?
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if let user = user{
+                self.userNameLabel.text = user.displayName!
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
     
     let sampleData:[Dictionary<String, Any>] = [
         [
@@ -38,6 +54,11 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         setupCollectionView()
         setupTableView()
         setupSeperatorLines()
+    }
+    
+    func updateDisplayName(_ newUserName: String) {
+        print("new name set")
+        self.userNameLabel.text = newUserName
     }
     
     fileprivate func setupSeperatorLines(){
@@ -89,6 +110,18 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         cell.impactLabel.text = impact["impact"] as? String
         cell.afterImpactLabel.text = impact["afterImpactInfo"] as? String
         return cell
+    }
+    
+    @IBAction func settingsButtonTouched(_ sender: Any) {
+        performSegue(withIdentifier: "showSettingsSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "showSettingsSegue"){
+            print("preparesegue")
+            let settingsViewController = segue.destination as? SettingsViewController
+            settingsViewController?.delegate = self
+        }
     }
     
 

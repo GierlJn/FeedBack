@@ -8,11 +8,14 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +25,25 @@ class RegisterViewController: UIViewController {
     
 
     @IBAction func registerButtonPressed(_ sender: Any) {
+        
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
             if(error != nil){
-                print(error)
+                print(error!)
                 return
             }
             print("success")
-            self.performSegue(withIdentifier: "goToMain", sender: self)
+            
+            if(self.userNameTextField.text! != ""){
+                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                changeRequest?.displayName = self.userNameTextField.text!
+                changeRequest?.commitChanges { (error) in
+                    if(error != nil){
+                        print(error!)
+                    }
+                    self.performSegue(withIdentifier: "goToMain", sender: self)
+                }
+            
+            }
         }
     }
     

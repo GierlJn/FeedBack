@@ -7,6 +7,7 @@ target 'FeedBack' do
 
   # Pods for FeedBack
 pod 'Firebase'
+pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'SVProgressHUD'
