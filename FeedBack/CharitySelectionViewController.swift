@@ -21,13 +21,10 @@ class CharitySelectionViewController: UIViewController, UITableViewDataSource, U
         let charityCategory = Charity.sampleData[section]
         controller.charityName = charityCategory["name"] as! String
         
-        // execute in main thread
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(controller, animated: false)
         }
         
-        print("clicked section : \(section)")
-        // print(TableData[row])
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

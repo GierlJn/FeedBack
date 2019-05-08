@@ -20,6 +20,7 @@
 		B9338FC82282B30D0021943C /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FC72282B30D0021943C /* SettingsTableViewController.swift */; };
 		B9338FCA2282B6AD0021943C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FC92282B6AD0021943C /* RootViewController.swift */; };
 		B9338FCE2282BAFB0021943C /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FCD2282BAFB0021943C /* RootNavigationController.swift */; };
+		B9338FD02283051B0021943C /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FCF2283051B0021943C /* ChangePasswordViewController.swift */; };
 		B943B66A225B621400F8C560 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B943B669225B621400F8C560 /* GameViewController.swift */; };
 		B943B66D225B7F3300F8C560 /* ActiveDonationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B943B66B225B7F3300F8C560 /* ActiveDonationViewCell.swift */; };
 		B943B66E225B7F3300F8C560 /* ActiveDonationViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B943B66C225B7F3300F8C560 /* ActiveDonationViewCell.xib */; };
@@ -88,6 +89,7 @@
 		B9338FC72282B30D0021943C /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		B9338FC92282B6AD0021943C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		B9338FCD2282BAFB0021943C /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
+		B9338FCF2283051B0021943C /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		B943B669225B621400F8C560 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		B943B66B225B7F3300F8C560 /* ActiveDonationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveDonationViewCell.swift; sourceTree = "<group>"; };
 		B943B66C225B7F3300F8C560 /* ActiveDonationViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActiveDonationViewCell.xib; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				B9338FC92282B6AD0021943C /* RootViewController.swift */,
 				B95F9278226494CF007F7755 /* ProfileViewController.swift */,
 				B964F0C72261F16300D55C58 /* CharitySelectionViewController.swift */,
+				B9338FCF2283051B0021943C /* ChangePasswordViewController.swift */,
 				B95F927022646DC4007F7755 /* CharityInfoViewController.swift */,
 				B943B669225B621400F8C560 /* GameViewController.swift */,
 				B923087B226764EA00D85B43 /* LeaderBoardViewController.swift */,
@@ -559,6 +562,7 @@
 				B922C5F8226F1BF4006E0D2C /* User.swift in Sources */,
 				B920004022759BB9004F74A6 /* RegisterViewController.swift in Sources */,
 				B923087E22676E7E00D85B43 /* GlobalLeaderBoardModel.swift in Sources */,
+				B9338FD02283051B0021943C /* ChangePasswordViewController.swift in Sources */,
 				B943B66D225B7F3300F8C560 /* ActiveDonationViewCell.swift in Sources */,
 				B95F9279226494CF007F7755 /* ProfileViewController.swift in Sources */,
 				B964F0BE2261D85500D55C58 /* ExploreViewController.swift in Sources */,

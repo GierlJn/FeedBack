@@ -27,23 +27,16 @@ class SettingsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user{
-                //self.userNameLabel.text = user.displayName!
+                self.userNameTextField.text = user.displayName!
             }
         }
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,7 +50,8 @@ class SettingsTableViewController: UITableViewController {
     }
     
     @IBAction func emailGotEdited(_ sender: Any) {
-        delegate?.emailHasChanged(emailTextField.text!)
+        //delegate?.emailHasChanged(emailTextField.text!)
+        //performEmailSegue
     }
     
     @IBAction func userNameGotEdited(_ sender: Any) {
