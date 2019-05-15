@@ -1,5 +1,6 @@
 
 import UIKit
+import Firebase
 
 class CharitySelectionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -11,6 +12,8 @@ class CharitySelectionViewController: UIViewController, UITableViewDataSource, U
         super.viewDidLoad()
         contentTableView.delegate = self
         contentTableView.dataSource = self
+        
+            
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -18,7 +21,7 @@ class CharitySelectionViewController: UIViewController, UITableViewDataSource, U
         let section = indexPath.section
         
         let controller : CharityInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: "CharityInfoViewController") as! CharityInfoViewController
-        let charityCategory = Charity.sampleData[section]
+        let charityCategory = CharitySample.sampleData[section]
         controller.charityName = charityCategory["name"] as! String
         
         DispatchQueue.main.async {
@@ -28,12 +31,12 @@ class CharitySelectionViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Charity.sampleData.count
+        return CharitySample.sampleData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("CharityTableViewCell", owner: self, options: nil)?.first as! CharityTableViewCell
-        let charity = Charity.sampleData[indexPath.row]
+        let charity = CharitySample.sampleData[indexPath.row]
         
         cell.charityName.text = charity["name"] as? String
         cell.informationLabel.text = charity["information"] as? String

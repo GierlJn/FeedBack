@@ -10,11 +10,12 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +23,39 @@ class RegisterViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ref = Database.database().reference()
+    }
+    
 
     @IBAction func registerButtonPressed(_ sender: Any) {
         
+        guard !userNameTextField.text!.isEmpty else{
+            self.showMessagePrompt("Name can't be empty")
+            return
+        }
+        
+        guard !passwordTextField.text!.isEmpty else{
+            self.showMessagePrompt("Password can't be empty")
+            return
+        }
+        
+        guard !emailTextField.text!.isEmpty else{
+            self.showMessagePrompt("Email can't be empty")
+            return
+        }
+        
+        
+        
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
-            if(error != nil){
-                print(error!)
+            guard let user = result?.user, error == nil else {
+                self.showMessagePrompt(error!.localizedDescription)
                 return
             }
-            print("success")
-            
+            let username = self.userNameTextField.text!
+            self.saveUserInfo(user, withUsername: username)
+            /*
             if(self.userNameTextField.text! != ""){
                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                 changeRequest?.displayName = self.userNameTextField.text!
@@ -41,9 +65,33 @@ class RegisterViewController: UIViewController {
                     }
                     self.performSegue(withIdentifier: "goToMain", sender: self)
                 }
-            
             }
+            */
+                
         }
+    }
+    
+    func saveUserInfo(_ user: Firebase.User, withUsername username: String) {
+        
+        // Create a change request
+        self.showSpinner {}
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = username
+        
+        // Commit profile changes to server
+        changeRequest?.commitChanges() { (error) in
+            self.dismiss(animated: true, completion: nil)
+            if let error = error {
+                self.showMessagePrompt(error.localizedDescription)
+                return
+            }
+            
+            // [START basic_write]
+            self.ref.child("users").child(user.uid).setValue(["username": username])
+            // [END basic_write]
+            self.performSegue(withIdentifier: "goToMain", sender: nil)
+        }
+        
     }
     
     

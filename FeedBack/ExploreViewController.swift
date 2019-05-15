@@ -6,7 +6,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var contentTableView: UITableView!
     
     
-    var charityCategories = [CharityCategory(nameOfCategory: "Animals"), CharityCategory(nameOfCategory: "Health"), CharityCategory(nameOfCategory: "Enviromental"), CharityCategory(nameOfCategory: "Most Effective")]
+    var charityCategories = [CharityCategory.animals, CharityCategory.enviromental, CharityCategory.others, CharityCategory.health]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,12 +19,12 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
 
         let controller : CharitySelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "CharitySelectionViewController") as! CharitySelectionViewController
         
-        controller.charityCategoryId = charityCategories[indexPath.row].nameOfCategory
+        controller.charityCategoryId = charityCategories[indexPath.row].rawValue
         
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(controller, animated: false)
         }
-        print("clicked : \(charityCategories[indexPath.row].nameOfCategory)")
+        print("clicked : \(charityCategories[indexPath.row].rawValue)")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,7 +33,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("CharityCategoryTableViewCell", owner: self, options: nil)?.first as! CharityCategoryTableViewCell
-        cell.charityTitleLabel.text = charityCategories[indexPath.row].nameOfCategory
+        cell.charityTitleLabel.text = charityCategories[indexPath.row].rawValue
         return cell
     }
 

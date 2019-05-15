@@ -1,43 +1,79 @@
 
 
 import Foundation
-import UIKit
+import Firebase
 
-class Charity{
-    
-    
-    static let sampleData:[Dictionary<String, Any>] = [
-        [
-            "picture": #imageLiteral(resourceName: "malaria_consortium_logo"),
-            "name" : "Malaria Consortium",
-            "progress" : Float(0.33),
-            "points" : "5",
-            "information" : "Malaria Consortium specialises in the prevention, treatment, and control of malaria and other communicable diseases in Africa and Asia",
-            "statsInfo" : "5€ may fund 1 Child treated",
-            "statsSum" : "Children treated:",
-            "statsSumMock" : "10"
-        ],
-        [
-            "picture": #imageLiteral(resourceName: "sightsavers_logo"),
-            "name" : "SightSavers",
-            "progress" : Float(0.7),
-            "points" :  "7",
-            "information" : "Sightsavers is a UK-based international charity which fights avoidable blindness and promotes equal opportunities for visually impaired people.",
-            "statsInfo" : "1€ may fund 1 NTD treated",
-            "statsSum" : "NTD's treated:",
-            "statsSumMock" : "70"
-        ],
-        [
-            "picture": #imageLiteral(resourceName: "logo_foundation_big_Square"),
-            "name" : "Against Malaria Foundation",
-            "progress" : Float(0.2),
-            "points" :  "3",
-            "statsInfo" : "4€ may fund 1 malaria net",
-            "information" : "Against Malaria Foundation (AMF) enables distributions of long-lasting insecticide-treated bed nets (for protection against malaria) in developing countries.",
-            "statsSum" : "Malaria nets funded:",
-            "statsSumMock" : "7"
-        ]
-    ]
-    
+enum CharityCategory: String{
+    case animals = "Animals"
+    case health = "Health"
+    case enviromental = "Enviromental"
+    case others = "Others"
+}
 
+enum CharityImpactType{
+    case childTreated, netFounded, ntdTreated, none
+}
+
+
+class Charity: NSObject{
+    var cid: String
+    var name: String
+    var category: CharityCategory
+    var impactCount: Int
+    var impactType: CharityImpactType
+    var website: String
+    
+    init(cid: String, name: String, impactCount: Int, impactType: CharityImpactType, website: String, category: CharityCategory){
+        self.cid = cid
+        self.name = name
+        self.impactCount = impactCount
+        self.impactType = impactType
+        self.website = website
+        self.category = category
+    }
+    
+    init?(snapshot: DataSnapshot){
+        let cid = snapshot.key
+        guard let charityDb = snapshot.value as? [String:Any] else { return nil }
+        guard let name = charityDb["charityname"] as? String else { return nil }
+        guard let categoryAsString = charityDb["category"] as? String else { return nil }
+        guard let impactCount = charityDb["impactcount"] as? String else { return nil }
+        guard let impactTypeAsString = charityDb["impacttype"] as? String else { return nil }
+        guard let website = charityDb["website"] as? String else { return nil }
+        
+        func getCategory(_ categoryString: String) -> CharityCategory{
+            switch(categoryString){
+            case "health":
+                return CharityCategory.health
+            case "enviroment":
+                return CharityCategory.enviromental
+            case "animals":
+                return CharityCategory.animals
+            default:
+                return CharityCategory.others
+            }
+        }
+        
+        func getType(_ string: String) -> CharityImpactType{
+            switch(string){
+            case "childtreated":
+                return CharityImpactType.childTreated
+            case "netfounded":
+                return CharityImpactType.netFounded
+            case "ntdtreated":
+                return CharityImpactType.ntdTreated
+            default:
+                return CharityImpactType.none
+            }
+        }
+        
+        self.cid = cid
+        self.name = name
+        self.category = getCategory(categoryAsString)
+        self.impactCount = Int(impactCount)!
+        self.impactType = getType(impactTypeAsString)
+        self.website = website
+        
+    }
+    
 }

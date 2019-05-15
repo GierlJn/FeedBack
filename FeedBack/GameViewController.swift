@@ -6,7 +6,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var avatarPicture: UIImageView!
     @IBOutlet weak var tableViewTest: UITableView!
     @IBOutlet weak var userView: UIView!
-    
     @IBOutlet weak var donationSumLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
@@ -28,7 +27,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Charity.sampleData.count+1
+        return CharitySample.sampleData.count+1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,7 +43,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return lastCell
         }
         
-        let character = Charity.sampleData[indexPath.row]
+        let character = CharitySample.sampleData[indexPath.row]
         
         cell.charityNameLabel.text = character["name"] as? String
         cell.charityAvatar.image = character["picture"] as? UIImage
