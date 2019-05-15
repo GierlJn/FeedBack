@@ -11,7 +11,7 @@ pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'SVProgressHUD'
-pod 'ChameleonFramework'
+pod 'ChameleonFramework', :inhibit_warnings => true
 pod 'GradientProgressBar', '~> 1.0'
 
 
