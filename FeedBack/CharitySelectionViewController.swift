@@ -16,6 +16,9 @@ class CharitySelectionViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         
         ref = Database.database().reference(withPath: charityPath)
+        
+        
+        
         dataSource = FUITableViewDataSource(query: getQuery(), populateCell: { (contentTableView, indexPath, snap) -> UITableViewCell in
             let cell = Bundle.main.loadNibNamed("CharityTableViewCell", owner: self, options: nil)?.first as! CharityTableViewCell
             guard let charity = Charity(snapshot: snap) else { return cell }
@@ -53,7 +56,7 @@ class CharitySelectionViewController: UIViewController, UITableViewDelegate {
     }
     
     func getQuery() -> DatabaseQuery {
-        return self.ref
+        return self.ref.queryOrdered(byChild: "category").queryEqual(toValue: charityCategory?.rawValue)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

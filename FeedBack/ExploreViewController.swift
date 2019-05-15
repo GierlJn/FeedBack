@@ -6,7 +6,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var contentTableView: UITableView!
     
     
-    var charityCategories = [CharityCategory.animals, CharityCategory.enviromental, CharityCategory.others, CharityCategory.health]
+    var charityCategories = [CharityCategory.animals, CharityCategory.enviromental, CharityCategory.health, CharityCategory.others]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,18 +16,15 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         contentTableView.deselectRow(at: indexPath, animated: true)
-
-        let controller : CharitySelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "CharitySelectionViewController") as! CharitySelectionViewController
-        
-        controller.charityCategory = charityCategories[indexPath.row]
-        
-        
-        
-        
-        DispatchQueue.main.async {
-            self.navigationController?.pushViewController(controller, animated: false)
+        performSegue(withIdentifier: "goToCharitySelection", sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath: IndexPath = sender as? IndexPath else { return }
+        guard let charitySelectionVc: CharitySelectionViewController = segue.destination as? CharitySelectionViewController else{
+            return
         }
-        print("clicked : \(charityCategories[indexPath.row].rawValue)")
+        charitySelectionVc.charityCategory = charityCategories[indexPath.row]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
