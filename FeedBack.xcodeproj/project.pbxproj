@@ -237,10 +237,10 @@
 			children = (
 				B964F0BD2261D85500D55C58 /* ExploreViewController.swift */,
 				B964F0C72261F16300D55C58 /* CharitySelectionViewController.swift */,
+				B95F927022646DC4007F7755 /* CharityInfoViewController.swift */,
 				B9338FC92282B6AD0021943C /* RootViewController.swift */,
 				B95F9278226494CF007F7755 /* ProfileViewController.swift */,
 				B9338FCF2283051B0021943C /* ChangePasswordViewController.swift */,
-				B95F927022646DC4007F7755 /* CharityInfoViewController.swift */,
 				B943B669225B621400F8C560 /* GameViewController.swift */,
 				B923087B226764EA00D85B43 /* LeaderBoardViewController.swift */,
 				B920003F22759BB9004F74A6 /* RegisterViewController.swift */,

@@ -34,9 +34,12 @@ class CharitySelectionViewController: UIViewController, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        contentTableView.deselectRow(at: indexPath, animated: true)
-        let section = indexPath.section
+        //contentTableView.deselectRow(at: indexPath, animated: true)
         
+        performSegue(withIdentifier: "goToCharityInfo", sender: indexPath)
+        
+        /*
+        let section = indexPath.section
         let controller : CharityInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: "CharityInfoViewController") as! CharityInfoViewController
         let charityCategory = CharitySample.sampleData[section]
         controller.charityName = charityCategory["name"] as! String
@@ -44,7 +47,19 @@ class CharitySelectionViewController: UIViewController, UITableViewDelegate {
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(controller, animated: false)
         }
+        */
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath: IndexPath = sender as? IndexPath else { return }
+        guard let charitySelectionVc: CharityInfoViewController = segue.destination as? CharityInfoViewController else{
+            return
+        }
+        
+        if let dataSource = dataSource {
+            charitySelectionVc.charityId = dataSource.snapshot(at: indexPath.row).key
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
