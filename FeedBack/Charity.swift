@@ -4,10 +4,10 @@ import Foundation
 import Firebase
 
 enum CharityCategory: String{
-    case animals = "Animals"
-    case health = "Health"
-    case enviromental = "Enviromental"
-    case others = "Others"
+    case animals = "animals"
+    case health = "health"
+    case enviromental = "enviromental"
+    case others = "others"
 }
 
 enum CharityImpactType{

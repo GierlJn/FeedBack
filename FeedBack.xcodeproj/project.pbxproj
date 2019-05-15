@@ -51,6 +51,8 @@
 		B9D32C9F228BE91500F11743 /* UserDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32C9E228BE91500F11743 /* UserDataBase.swift */; };
 		B9D32CA1228BF43900F11743 /* UIViewController+alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32CA0228BF43900F11743 /* UIViewController+alerts.swift */; };
 		B9D32CA3228C06DE00F11743 /* Charity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32CA2228C06DE00F11743 /* Charity.swift */; };
+		B9D32CA5228C221F00F11743 /* UIImage+resizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32CA4228C221F00F11743 /* UIImage+resizeImage.swift */; };
+		B9D32CA7228C227600F11743 /* DatabasePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32CA6228C227600F11743 /* DatabasePaths.swift */; };
 		E38EB810EAD53DCDC352D82D /* Pods_FeedBackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BB0E358CA75828C685B0C /* Pods_FeedBackUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +130,8 @@
 		B9D32C9E228BE91500F11743 /* UserDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataBase.swift; sourceTree = "<group>"; };
 		B9D32CA0228BF43900F11743 /* UIViewController+alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alerts.swift"; sourceTree = "<group>"; };
 		B9D32CA2228C06DE00F11743 /* Charity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charity.swift; sourceTree = "<group>"; };
+		B9D32CA4228C221F00F11743 /* UIImage+resizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImage+resizeImage.swift"; path = "FeedBack/UIImage+resizeImage.swift"; sourceTree = SOURCE_ROOT; };
+		B9D32CA6228C227600F11743 /* DatabasePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatabasePaths.swift; path = FeedBack/DatabasePaths.swift; sourceTree = SOURCE_ROOT; };
 		F347233263347792BC25AE9B /* Pods-FeedBackUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedBackUITests.debug.xcconfig"; path = "Target Support Files/Pods-FeedBackUITests/Pods-FeedBackUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,9 +236,9 @@
 			isa = PBXGroup;
 			children = (
 				B964F0BD2261D85500D55C58 /* ExploreViewController.swift */,
+				B964F0C72261F16300D55C58 /* CharitySelectionViewController.swift */,
 				B9338FC92282B6AD0021943C /* RootViewController.swift */,
 				B95F9278226494CF007F7755 /* ProfileViewController.swift */,
-				B964F0C72261F16300D55C58 /* CharitySelectionViewController.swift */,
 				B9338FCF2283051B0021943C /* ChangePasswordViewController.swift */,
 				B95F927022646DC4007F7755 /* CharityInfoViewController.swift */,
 				B943B669225B621400F8C560 /* GameViewController.swift */,
@@ -252,6 +256,8 @@
 		B95F927522648221007F7755 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				B9D32CA4228C221F00F11743 /* UIImage+resizeImage.swift */,
+				B9D32CA6228C227600F11743 /* DatabasePaths.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -561,6 +567,7 @@
 				B9D32CA1228BF43900F11743 /* UIViewController+alerts.swift in Sources */,
 				B920004422759BF0004F74A6 /* LogInViewController.swift in Sources */,
 				B964F0C12261D94E00D55C58 /* CharityCategoryTableViewCell.swift in Sources */,
+				B9D32CA5228C221F00F11743 /* UIImage+resizeImage.swift in Sources */,
 				B9D32C9F228BE91500F11743 /* UserDataBase.swift in Sources */,
 				B964F0CB2261F23F00D55C58 /* CharityTableViewCell.swift in Sources */,
 				B923087C226764EA00D85B43 /* LeaderBoardViewController.swift in Sources */,
@@ -569,6 +576,7 @@
 				B922C5F8226F1BF4006E0D2C /* User.swift in Sources */,
 				B920004022759BB9004F74A6 /* RegisterViewController.swift in Sources */,
 				B923087E22676E7E00D85B43 /* GlobalLeaderBoardModel.swift in Sources */,
+				B9D32CA7228C227600F11743 /* DatabasePaths.swift in Sources */,
 				B9338FD02283051B0021943C /* ChangePasswordViewController.swift in Sources */,
 				B943B66D225B7F3300F8C560 /* ActiveDonationViewCell.swift in Sources */,
 				B95F9279226494CF007F7755 /* ProfileViewController.swift in Sources */,

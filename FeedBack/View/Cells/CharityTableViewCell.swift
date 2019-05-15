@@ -4,11 +4,9 @@ import UIKit
 
 class CharityTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var charityName: UILabel!
-    @IBOutlet weak var charityLogo: UIImageView!
     
-    @IBOutlet weak var informationLabel: UILabel!
-    
+    @IBOutlet weak var charityImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

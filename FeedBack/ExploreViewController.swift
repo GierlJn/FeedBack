@@ -19,7 +19,10 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
 
         let controller : CharitySelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "CharitySelectionViewController") as! CharitySelectionViewController
         
-        controller.charityCategoryId = charityCategories[indexPath.row].rawValue
+        controller.charityCategory = charityCategories[indexPath.row]
+        
+        
+        
         
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(controller, animated: false)
@@ -33,13 +36,15 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("CharityCategoryTableViewCell", owner: self, options: nil)?.first as! CharityCategoryTableViewCell
-        cell.charityTitleLabel.text = charityCategories[indexPath.row].rawValue
+        cell.charityTitleLabel.text = charityCategories[indexPath.row].rawValue.uppercased()
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 158.5
     }
+    
+    
 
 }
 

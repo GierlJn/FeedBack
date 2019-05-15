@@ -1,20 +1,38 @@
 
 import UIKit
 import Firebase
+import FirebaseUI
 
-class CharitySelectionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CharitySelectionViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var contentTableView: UITableView!
+    var charityCategory: CharityCategory?
     
-    var charityCategoryId = "mockupId"
+    var ref: DatabaseReference!
+    
+    var dataSource: FUITableViewDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentTableView.delegate = self
-        contentTableView.dataSource = self
         
-            
+        ref = Database.database().reference(withPath: charityPath)
+        dataSource = FUITableViewDataSource(query: getQuery(), populateCell: { (contentTableView, indexPath, snap) -> UITableViewCell in
+            let cell = Bundle.main.loadNibNamed("CharityTableViewCell", owner: self, options: nil)?.first as! CharityTableViewCell
+            guard let charity = Charity(snapshot: snap) else { return cell }
+            cell.charityImage.image = UIImage(named: "malaria_consortium_logo")
+            cell.nameLabel.text = charity.name
+            return cell
+        })
+        
+        dataSource?.bind(to: contentTableView)
+        contentTableView.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.contentTableView.reloadData()
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         contentTableView.deselectRow(at: indexPath, animated: true)
@@ -30,23 +48,16 @@ class CharitySelectionViewController: UIViewController, UITableViewDataSource, U
         
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CharitySample.sampleData.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("CharityTableViewCell", owner: self, options: nil)?.first as! CharityTableViewCell
-        let charity = CharitySample.sampleData[indexPath.row]
-        
-        cell.charityName.text = charity["name"] as? String
-        cell.informationLabel.text = charity["information"] as? String
-        cell.charityLogo.image = charity["picture"] as? UIImage
-        
-        return cell
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130.5
     }
     
+    func getQuery() -> DatabaseQuery {
+        return self.ref
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        getQuery().removeAllObservers()
+    }
 }

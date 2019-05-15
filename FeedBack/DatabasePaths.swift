@@ -1,0 +1,1 @@
+let charityPath = "charitys"
