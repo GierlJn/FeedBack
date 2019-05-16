@@ -14,7 +14,7 @@ class CharitySelectionViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference(withPath: charityPath)
+        ref = Database.database().reference(withPath: charityChildPath)
         dataSource = FUITableViewDataSource(query: getQuery(), populateCell: { (contentTableView, indexPath, snap) -> UITableViewCell in
             let cell = Bundle.main.loadNibNamed("CharityTableViewCell", owner: self, options: nil)?.first as! CharityTableViewCell
             guard let charity = Charity(snapshot: snap) else { return cell }

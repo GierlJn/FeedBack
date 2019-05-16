@@ -16,7 +16,7 @@ class CharityInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        charityRef = ref.child(charityPath).child(charityId)
+        charityRef = ref.child(charityChildPath).child(charityId)
         
         infoLabel.text = "asdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsf"
         infoLabel.preferredMaxLayoutWidth = 500
