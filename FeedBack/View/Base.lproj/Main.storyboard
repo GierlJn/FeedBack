@@ -1619,7 +1619,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter how much you would like to donate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBK-t8-b9c">
-                                <rect key="frame" x="50.5" y="437.5" width="313" height="21"/>
+                                <rect key="frame" x="50.5" y="239" width="313" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="jBT-yt-EQP"/>
                                     <constraint firstAttribute="width" constant="313" id="lgh-4a-sPu"/>
@@ -1628,8 +1628,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MbE-Ov-AbA">
-                                <rect key="frame" x="109" y="466.5" width="196" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MbE-Ov-AbA">
+                                <rect key="frame" x="109" y="268" width="196" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="PtA-yZ-L4R"/>
                                     <constraint firstAttribute="width" constant="196" id="nNP-fN-v6p"/>
@@ -1638,8 +1638,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOT-ta-UiC">
-                                <rect key="frame" x="49" y="504.5" width="316" height="90"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOT-ta-UiC">
+                                <rect key="frame" x="49" y="306" width="316" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This equals to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbT-Ku-RCI">
                                         <rect key="frame" x="0.0" y="0.0" width="316" height="21"/>
@@ -1692,9 +1692,9 @@
                         <constraints>
                             <constraint firstItem="U8Y-et-qXV" firstAttribute="trailing" secondItem="vlh-SE-PvM" secondAttribute="trailing" constant="16" id="B9L-Sr-RvL"/>
                             <constraint firstItem="MbE-Ov-AbA" firstAttribute="top" secondItem="FBK-t8-b9c" secondAttribute="bottom" constant="8" id="ERV-me-Zev"/>
-                            <constraint firstItem="FBK-t8-b9c" firstAttribute="centerY" secondItem="umZ-9H-qqO" secondAttribute="centerY" id="JaX-9q-WyW"/>
                             <constraint firstItem="FBK-t8-b9c" firstAttribute="centerX" secondItem="umZ-9H-qqO" secondAttribute="centerX" id="KaB-8x-GxU"/>
                             <constraint firstItem="eOT-ta-UiC" firstAttribute="centerX" secondItem="umZ-9H-qqO" secondAttribute="centerX" id="S1h-9K-GeC"/>
+                            <constraint firstItem="FBK-t8-b9c" firstAttribute="top" secondItem="vlh-SE-PvM" secondAttribute="bottom" constant="100" id="SpY-qO-3oa"/>
                             <constraint firstItem="MbE-Ov-AbA" firstAttribute="centerX" secondItem="umZ-9H-qqO" secondAttribute="centerX" id="Tqd-WG-NNf"/>
                             <constraint firstItem="FBK-t8-b9c" firstAttribute="centerX" secondItem="umZ-9H-qqO" secondAttribute="centerX" id="Xxi-SP-tvr"/>
                             <constraint firstItem="eOT-ta-UiC" firstAttribute="top" secondItem="MbE-Ov-AbA" secondAttribute="bottom" constant="8" id="kPL-Ox-vdc"/>
@@ -1704,6 +1704,9 @@
                         <viewLayoutGuide key="safeArea" id="U8Y-et-qXV"/>
                     </view>
                     <connections>
+                        <outlet property="impactAmountTextLabel" destination="JD4-Uu-YD0" id="uhW-4F-Afx"/>
+                        <outlet property="impactView" destination="eOT-ta-UiC" id="JDo-r2-hnJ"/>
+                        <outlet property="moneyAmountTextField" destination="MbE-Ov-AbA" id="HnI-tj-n4H"/>
                         <outlet property="titleLabel" destination="vlh-SE-PvM" id="Rsc-f7-gsk"/>
                     </connections>
                 </viewController>
