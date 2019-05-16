@@ -7,6 +7,8 @@ class DonationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if(charity != nil){
         titleLabel.text = charity!.name
+        }
     }
 }

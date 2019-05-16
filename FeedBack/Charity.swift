@@ -19,11 +19,11 @@ class Charity: NSObject{
     var cid: String
     var name: String
     var category: CharityCategory
-    var impactCount: Int
+    var impactCount: Float
     var impactType: CharityImpactType
     var website: String
     
-    init(cid: String, name: String, impactCount: Int, impactType: CharityImpactType, website: String, category: CharityCategory){
+    init(cid: String, name: String, impactCount: Float, impactType: CharityImpactType, website: String, category: CharityCategory){
         self.cid = cid
         self.name = name
         self.impactCount = impactCount
@@ -35,11 +35,11 @@ class Charity: NSObject{
     init?(snapshot: DataSnapshot){
         let cid = snapshot.key
         guard let charityDb = snapshot.value as? [String:Any] else { return nil }
-        guard let name = charityDb["charityname"] as? String else { return nil }
-        guard let categoryAsString = charityDb["category"] as? String else { return nil }
-        guard let impactCount = charityDb["impactcount"] as? String else { return nil }
-        guard let impactTypeAsString = charityDb["impacttype"] as? String else { return nil }
-        guard let website = charityDb["website"] as? String else { return nil }
+        guard let name = charityDb[charityNameChildPath] as? String else { return nil }
+        guard let categoryAsString = charityDb[charityCategoryChildPath] as? String else { return nil }
+        guard let impactCount = charityDb[charityImpactPerDollarChildPath] as? String else { return nil }
+        guard let impactTypeAsString = charityDb[charityImpactTypeChildPath] as? String else { return nil }
+        guard let website = charityDb[charityWebsiteChildPath] as? String else { return nil }
         
         func getCategory(_ categoryString: String) -> CharityCategory{
             switch(categoryString){
@@ -70,7 +70,7 @@ class Charity: NSObject{
         self.cid = cid
         self.name = name
         self.category = getCategory(categoryAsString)
-        self.impactCount = Int(impactCount)!
+        self.impactCount = Float(impactCount)!
         self.impactType = getType(impactTypeAsString)
         self.website = website
         

@@ -1,6 +1,8 @@
 let charityChildPath = "charitys"
+
 let charityNameChildPath = "charityname"
 let charityAboutChildPath = "about"
+let charityCategoryChildPath = "category"
 let charityImpactPerDollarChildPath = "impactperdollar"
 let charityImpactTypeChildPath = "impacttype"
 let charityLongInformationChildPath = "longinformation"
