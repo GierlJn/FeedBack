@@ -1594,11 +1594,46 @@
                     <connections>
                         <outlet property="charityTitle" destination="fjK-T7-UKp" id="cgg-4a-YAe"/>
                         <outlet property="infoLabel" destination="P9X-J6-jFO" id="b0P-vr-M7k"/>
+                        <segue destination="EFe-IE-hV3" kind="show" identifier="goToDonation" id="iRx-7p-hHD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYz-Ue-U7z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5289.8550724637689" y="-433.25892857142856"/>
+        </scene>
+        <!--Donation View Controller-->
+        <scene sceneID="3Jc-cp-hzw">
+            <objects>
+                <viewController id="EFe-IE-hV3" customClass="DonationViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="umZ-9H-qqO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vlh-SE-PvM">
+                                <rect key="frame" x="16" y="88" width="382" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="vY6-Hd-2OM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vlh-SE-PvM" firstAttribute="leading" secondItem="U8Y-et-qXV" secondAttribute="leading" constant="16" id="7aL-ig-2Vx"/>
+                            <constraint firstItem="vlh-SE-PvM" firstAttribute="top" secondItem="U8Y-et-qXV" secondAttribute="top" id="YKD-jF-Kpw"/>
+                            <constraint firstItem="U8Y-et-qXV" firstAttribute="trailing" secondItem="vlh-SE-PvM" secondAttribute="trailing" constant="16" id="vpa-15-kT0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="U8Y-et-qXV"/>
+                    </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="vlh-SE-PvM" id="Rsc-f7-gsk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qcA-sg-tYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6499" y="-780"/>
         </scene>
         <!--Root Navigation Controller-->
         <scene sceneID="DPP-95-1or">

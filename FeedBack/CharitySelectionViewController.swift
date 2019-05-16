@@ -34,20 +34,8 @@ class CharitySelectionViewController: UIViewController, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //contentTableView.deselectRow(at: indexPath, animated: true)
         
         performSegue(withIdentifier: "goToCharityInfo", sender: indexPath)
-        
-        /*
-        let section = indexPath.section
-        let controller : CharityInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: "CharityInfoViewController") as! CharityInfoViewController
-        let charityCategory = CharitySample.sampleData[section]
-        controller.charityName = charityCategory["name"] as! String
-        
-        DispatchQueue.main.async {
-            self.navigationController?.pushViewController(controller, animated: false)
-        }
-        */
         
     }
     

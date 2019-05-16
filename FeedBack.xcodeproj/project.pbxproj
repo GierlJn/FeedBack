@@ -53,6 +53,7 @@
 		B9D32CA3228C06DE00F11743 /* Charity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32CA2228C06DE00F11743 /* Charity.swift */; };
 		B9D32CA5228C221F00F11743 /* UIImage+resizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32CA4228C221F00F11743 /* UIImage+resizeImage.swift */; };
 		B9D32CA7228C227600F11743 /* DatabasePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32CA6228C227600F11743 /* DatabasePaths.swift */; };
+		B9DD99C5228D4F3900A8A189 /* DonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DD99C4228D4F3900A8A189 /* DonationViewController.swift */; };
 		E38EB810EAD53DCDC352D82D /* Pods_FeedBackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BB0E358CA75828C685B0C /* Pods_FeedBackUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +133,7 @@
 		B9D32CA2228C06DE00F11743 /* Charity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charity.swift; sourceTree = "<group>"; };
 		B9D32CA4228C221F00F11743 /* UIImage+resizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImage+resizeImage.swift"; path = "FeedBack/UIImage+resizeImage.swift"; sourceTree = SOURCE_ROOT; };
 		B9D32CA6228C227600F11743 /* DatabasePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatabasePaths.swift; path = FeedBack/DatabasePaths.swift; sourceTree = SOURCE_ROOT; };
+		B9DD99C4228D4F3900A8A189 /* DonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationViewController.swift; sourceTree = "<group>"; };
 		F347233263347792BC25AE9B /* Pods-FeedBackUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedBackUITests.debug.xcconfig"; path = "Target Support Files/Pods-FeedBackUITests/Pods-FeedBackUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,6 +251,7 @@
 				B9338FC72282B30D0021943C /* SettingsTableViewController.swift */,
 				B9338FCD2282BAFB0021943C /* RootNavigationController.swift */,
 				B9D32CA0228BF43900F11743 /* UIViewController+alerts.swift */,
+				B9DD99C4228D4F3900A8A189 /* DonationViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/GradientProgressBar/GradientProgressBar.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -503,6 +507,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GradientProgressBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -580,6 +585,7 @@
 				B9338FD02283051B0021943C /* ChangePasswordViewController.swift in Sources */,
 				B943B66D225B7F3300F8C560 /* ActiveDonationViewCell.swift in Sources */,
 				B95F9279226494CF007F7755 /* ProfileViewController.swift in Sources */,
+				B9DD99C5228D4F3900A8A189 /* DonationViewController.swift in Sources */,
 				B964F0BE2261D85500D55C58 /* ExploreViewController.swift in Sources */,
 				B9338FCA2282B6AD0021943C /* RootViewController.swift in Sources */,
 				B92000462275ADD6004F74A6 /* SettingsViewController.swift in Sources */,

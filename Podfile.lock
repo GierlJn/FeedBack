@@ -78,6 +78,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - Stripe (15.0.1)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -88,6 +89,7 @@ DEPENDENCIES:
   - Firebase/Database
   - FirebaseUI/Database
   - GradientProgressBar (~> 1.0)
+  - Stripe
   - SVProgressHUD
 
 SPEC REPOS:
@@ -107,6 +109,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - Stripe
     - SVProgressHUD
 
 SPEC CHECKSUMS:
@@ -125,8 +128,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Stripe: 2c4d0a88817361a102886315ff452d90f65e898b
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: b0144a6796b7a2417d001a7ebd22602d153435a1
+PODFILE CHECKSUM: 73b747d436951d96d45545a7c39d41af179b31a6
 
 COCOAPODS: 1.6.1

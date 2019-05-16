@@ -42,6 +42,14 @@ class CharityInfoViewController: UIViewController {
     }
     
     @IBAction func donateButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToDonation", sender: charity)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let charityObj: Charity = sender as? Charity else { return }
+        guard let destinationVc: DonationViewController = segue.destination as? DonationViewController else{
+            return
+        }
+        destinationVc.charity = charityObj
+    }
 }

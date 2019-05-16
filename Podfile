@@ -14,6 +14,7 @@ pod 'FirebaseUI/Database'
 pod 'SVProgressHUD'
 pod 'ChameleonFramework', :inhibit_warnings => true
 pod 'GradientProgressBar', '~> 1.0'
+pod 'Stripe'
 
 
   target 'FeedBackTests' do
