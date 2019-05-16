@@ -1518,20 +1518,56 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1029"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fjK-T7-UKp">
-                                                <rect key="frame" x="16" y="32" width="382" height="52"/>
+                                                <rect key="frame" x="16" y="176" width="382" height="52"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="52" id="gDz-ry-YJP"/>
+                                                    <constraint firstAttribute="height" constant="52" id="WvG-oP-F3B"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DwD-CB-mYj">
+                                                <rect key="frame" x="64" y="32" width="286" height="128"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="128" id="cIW-rE-WgI"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="748" text="Label" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9X-J6-jFO">
+                                                <rect key="frame" x="32" y="244" width="42" height="20.5"/>
+                                                <color key="backgroundColor" red="0.77980125422600732" green="0.83254941975801056" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iqd-Pv-OxE">
+                                                <rect key="frame" x="163.5" y="364.5" width="87" height="50"/>
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="87" id="ODU-BV-YeR"/>
+                                                    <constraint firstAttribute="height" constant="50" id="uOZ-OW-8pS"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                                <state key="normal" title="Donate">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="donateButtonPressed:" destination="0vO-GD-1f5" eventType="touchUpInside" id="H24-RB-sGX"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="fjK-T7-UKp" firstAttribute="leading" secondItem="1bK-DC-zg1" secondAttribute="leading" constant="16" id="VBX-bw-OSm"/>
-                                            <constraint firstItem="fjK-T7-UKp" firstAttribute="top" secondItem="1bK-DC-zg1" secondAttribute="top" constant="32" id="clQ-aj-9SJ"/>
-                                            <constraint firstAttribute="trailing" secondItem="fjK-T7-UKp" secondAttribute="trailing" constant="16" id="fer-Lg-htN"/>
+                                            <constraint firstItem="P9X-J6-jFO" firstAttribute="top" secondItem="fjK-T7-UKp" secondAttribute="bottom" constant="16" id="0rE-uU-6Nk"/>
+                                            <constraint firstItem="Iqd-Pv-OxE" firstAttribute="centerX" secondItem="1bK-DC-zg1" secondAttribute="centerX" id="9nV-V1-BuG"/>
+                                            <constraint firstItem="DwD-CB-mYj" firstAttribute="leading" secondItem="1bK-DC-zg1" secondAttribute="leading" constant="64" id="Uxd-IE-DS0"/>
+                                            <constraint firstItem="fjK-T7-UKp" firstAttribute="top" secondItem="DwD-CB-mYj" secondAttribute="bottom" constant="16" id="ZdB-ob-I5K"/>
+                                            <constraint firstAttribute="trailing" secondItem="DwD-CB-mYj" secondAttribute="trailing" constant="64" id="aS1-In-hvq"/>
+                                            <constraint firstItem="DwD-CB-mYj" firstAttribute="top" secondItem="1bK-DC-zg1" secondAttribute="top" constant="32" id="bj8-8B-Wlq"/>
+                                            <constraint firstAttribute="trailing" secondItem="P9X-J6-jFO" secondAttribute="trailing" priority="749" constant="32" id="d6W-7H-hv0"/>
+                                            <constraint firstAttribute="trailing" secondItem="fjK-T7-UKp" secondAttribute="trailing" constant="16" id="mZg-Tq-ltq"/>
+                                            <constraint firstItem="fjK-T7-UKp" firstAttribute="leading" secondItem="1bK-DC-zg1" secondAttribute="leading" constant="16" id="njz-dn-e34"/>
+                                            <constraint firstItem="P9X-J6-jFO" firstAttribute="leading" secondItem="1bK-DC-zg1" secondAttribute="leading" constant="32" id="pop-Ei-4xa"/>
+                                            <constraint firstItem="Iqd-Pv-OxE" firstAttribute="top" secondItem="P9X-J6-jFO" secondAttribute="bottom" constant="100" id="xnW-17-B71"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1557,6 +1593,7 @@
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="charityTitle" destination="fjK-T7-UKp" id="cgg-4a-YAe"/>
+                        <outlet property="infoLabel" destination="P9X-J6-jFO" id="b0P-vr-M7k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYz-Ue-U7z" userLabel="First Responder" sceneMemberID="firstResponder"/>

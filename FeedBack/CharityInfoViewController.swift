@@ -5,6 +5,8 @@ class CharityInfoViewController: UIViewController {
 
     @IBOutlet weak var charityTitle: UILabel!
     
+    @IBOutlet weak var infoLabel: UILabel!
+    
     lazy var ref: DatabaseReference = Database.database().reference()
     
     var charityRef: DatabaseReference!
@@ -16,7 +18,12 @@ class CharityInfoViewController: UIViewController {
         
         charityRef = ref.child(charityPath).child(charityId)
         
-        //charityInfoBox.numberOfLines = 0
+        infoLabel.text = "asdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsf"
+        infoLabel.preferredMaxLayoutWidth = 500
+        infoLabel.numberOfLines = 0
+        infoLabel.sizeToFit()
+        
+        
         //charityInfoBox.sizeToFit()
         // Do any additional setup after loading the view.
     }
@@ -34,5 +41,7 @@ class CharityInfoViewController: UIViewController {
         charityRef.removeAllObservers()
     }
     
-
+    @IBAction func donateButtonPressed(_ sender: Any) {
+    }
+    
 }
