@@ -1,4 +1,5 @@
 import UIKit
+import Firebase
 
 class DonationViewController: UIViewController, UITextFieldDelegate{
 
@@ -7,25 +8,36 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var userInputAmountTextField: UITextField!
     @IBOutlet weak var calculatedCharityImpactTextLabel: UILabel!
     @IBOutlet weak var impactView: UIView!
-    var impactPerDollar: Float?
+    @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var impactDescriptionTextLabel: UILabel!
+    var impactPerDollar: Float?
+    var charityId: String?
+    var impactType: CharityImpactType?
+    var ref: DatabaseReference!
+    var user: Firebase.User?
+    let currency = "$"
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
+        user = Auth.auth().currentUser
+        
         userInputAmountTextField.delegate = self
         userInputAmountTextField.keyboardType = .numberPad
         userInputAmountTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)),
                             for: UIControl.Event.editingChanged)
-        if(charity != nil){
-            titleLabel.text = charity!.name
-            impactPerDollar = charity?.impactPerDollar
-            impactDescriptionTextLabel.text = createImpactDisplayText(impactType: charity!.impactType)
-        }
+        guard let charity = charity else { return }
+        titleLabel.text = charity.name
+        impactPerDollar = charity.impactPerDollar
+        charityId = charity.cid
+        impactType = charity.impactType
+        impactDescriptionTextLabel.text = createImpactDisplayText()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let invalidCharacters = CharacterSet(charactersIn: "0123456789.").inverted
+        let invalidCharacters = CharacterSet(charactersIn: "0123456789").inverted
         if(string.rangeOfCharacter(from: invalidCharacters) == nil){
             return true
         }
@@ -51,8 +63,8 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         return amountEntered*valuePerDollar
     }
     
-    func createImpactDisplayText(impactType: CharityImpactType)->String{
-        switch(impactType){
+    func createImpactDisplayText()->String{
+        switch(impactType!){
         case .childTreated:
             return "children treated"
         case .netFounded:
@@ -64,8 +76,25 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         }
     }
     @IBAction func donateButtonPressed(_ sender: Any) {
+        guard let user = user else { return }
+        guard let donationAmount = userInputAmountTextField.text else { return }
+        guard let impactType = impactType?.rawValue else { return }
+        guard let charityId = charityId else { return }
         
-        
-        
+        let timestamp = NSDate().timeIntervalSince1970
+        if(Int(donationAmount)! < 1){
+            showMessagePrompt("Donation must be atleast 1\(currency)")
+            return
+        }
+        let updateValues = ["charityid":charityId,
+                            "donationamount":donationAmount,
+                            "impacttype":impactType,
+                            "timestamp":timestamp,
+                            "currency":currency] as [String: Any]
+        self.ref.child("users").child(user.uid).child("donations").childByAutoId().updateChildValues(updateValues)
+    
+        let mainTabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"mainTabBarController") as! MainTabBarViewController
+        mainTabBarController.selectedIndex = 3
+        self.present(mainTabBarController, animated: true, completion: nil)
     }
 }

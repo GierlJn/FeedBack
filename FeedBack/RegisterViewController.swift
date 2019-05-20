@@ -88,6 +88,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             
             // [START basic_write]
             self.ref.child("users").child(user.uid).setValue(["username": username])
+            
             // [END basic_write]
             self.performSegue(withIdentifier: "goToMain", sender: nil)
         }

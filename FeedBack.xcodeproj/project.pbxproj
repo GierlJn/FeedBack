@@ -48,6 +48,7 @@
 		B99EA0B62258CB3800256A89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B99EA0B42258CB3800256A89 /* LaunchScreen.storyboard */; };
 		B99EA0C12258CB3800256A89 /* FeedBackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99EA0C02258CB3800256A89 /* FeedBackTests.swift */; };
 		B99EA0CC2258CB3800256A89 /* FeedBackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99EA0CB2258CB3800256A89 /* FeedBackUITests.swift */; };
+		B9A159AC2292B66C0074E61F /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A159AB2292B66C0074E61F /* MainTabBarViewController.swift */; };
 		B9D32C9F228BE91500F11743 /* UserDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32C9E228BE91500F11743 /* UserDataBase.swift */; };
 		B9D32CA1228BF43900F11743 /* UIViewController+alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32CA0228BF43900F11743 /* UIViewController+alerts.swift */; };
 		B9D32CA3228C06DE00F11743 /* Charity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32CA2228C06DE00F11743 /* Charity.swift */; };
@@ -128,6 +129,7 @@
 		B99EA0C72258CB3800256A89 /* FeedBackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedBackUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B99EA0CB2258CB3800256A89 /* FeedBackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackUITests.swift; sourceTree = "<group>"; };
 		B99EA0CD2258CB3800256A89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9A159AB2292B66C0074E61F /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		B9D32C9E228BE91500F11743 /* UserDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataBase.swift; sourceTree = "<group>"; };
 		B9D32CA0228BF43900F11743 /* UIViewController+alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alerts.swift"; sourceTree = "<group>"; };
 		B9D32CA2228C06DE00F11743 /* Charity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charity.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				B9338FCD2282BAFB0021943C /* RootNavigationController.swift */,
 				B9D32CA0228BF43900F11743 /* UIViewController+alerts.swift */,
 				B9DD99C4228D4F3900A8A189 /* DonationViewController.swift */,
+				B9A159AB2292B66C0074E61F /* MainTabBarViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				B920004022759BB9004F74A6 /* RegisterViewController.swift in Sources */,
 				B923087E22676E7E00D85B43 /* GlobalLeaderBoardModel.swift in Sources */,
 				B9D32CA7228C227600F11743 /* DatabasePaths.swift in Sources */,
+				B9A159AC2292B66C0074E61F /* MainTabBarViewController.swift in Sources */,
 				B9338FD02283051B0021943C /* ChangePasswordViewController.swift in Sources */,
 				B943B66D225B7F3300F8C560 /* ActiveDonationViewCell.swift in Sources */,
 				B95F9279226494CF007F7755 /* ProfileViewController.swift in Sources */,
