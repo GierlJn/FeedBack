@@ -1,5 +1,7 @@
 
 import UIKit
+import Firebase
+import FirebaseUI
 
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -10,14 +12,25 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     
+    var ref: DatabaseReference!
+    var dataSource: FUITableViewDataSource?
+    var user: Firebase.User?
+    var donations: [String:Any]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let user = Firebase.Auth.auth().currentUser else { return }
+        ref = Database.database().reference(withPath: "users").child(user.uid).child("donations")
+        ref.observe(DataEventType.value) { (snapshot) in
+            self.donations = snapshot.value as? [String:Any]
+        }
+        
         tableViewTest.delegate = self
         tableViewTest.dataSource = self
-        
         setupBottomBorder()
     }
+    
+    
     
     fileprivate func setupBottomBorder() {
         let bottomBorder: CALayer = CALayer()

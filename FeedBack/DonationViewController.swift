@@ -11,7 +11,7 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var impactDescriptionTextLabel: UILabel!
     var impactPerDollar: Float?
-    var charityId: String?
+    var charityName: String?
     var impactType: CharityImpactType?
     var ref: DatabaseReference!
     var user: Firebase.User?
@@ -30,8 +30,8 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
                             for: UIControl.Event.editingChanged)
         guard let charity = charity else { return }
         titleLabel.text = charity.name
+        charityName = charity.name
         impactPerDollar = charity.impactPerDollar
-        charityId = charity.cid
         impactType = charity.impactType
         impactDescriptionTextLabel.text = createImpactDisplayText()
     }
@@ -79,18 +79,20 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         guard let user = user else { return }
         guard let donationAmount = userInputAmountTextField.text else { return }
         guard let impactType = impactType?.rawValue else { return }
-        guard let charityId = charityId else { return }
+        guard let charityName = charityName else { return }
+        guard let impactAmount = calculatedCharityImpactTextLabel.text else { return }
         
         let timestamp = NSDate().timeIntervalSince1970
         if(Int(donationAmount)! < 1){
             showMessagePrompt("Donation must be atleast 1\(currency)")
             return
         }
-        let updateValues = ["charityid":charityId,
+        let updateValues = [charityNameChildPath:charityName,
                             "donationamount":donationAmount,
-                            "impacttype":impactType,
+                            impactTypeChildPath:impactType,
                             "timestamp":timestamp,
-                            "currency":currency] as [String: Any]
+                            "currency":currency,
+                            impactAmountChildPath:impactAmount] as [String: Any]
         self.ref.child("users").child(user.uid).child("donations").childByAutoId().updateChildValues(updateValues)
     
         let mainTabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"mainTabBarController") as! MainTabBarViewController

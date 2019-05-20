@@ -9,3 +9,6 @@ let charityLongInformationChildPath = "longinformation"
 let charitySourceLinkChildPath = "sourcelink"
 let charityWebsiteChildPath = "website"
 let charityLogoChildPath = "logo"
+
+let impactAmountChildPath = "impactamount"
+let impactTypeChildPath = "impacttype"

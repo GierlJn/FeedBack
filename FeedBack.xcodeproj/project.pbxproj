@@ -49,6 +49,7 @@
 		B99EA0C12258CB3800256A89 /* FeedBackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99EA0C02258CB3800256A89 /* FeedBackTests.swift */; };
 		B99EA0CC2258CB3800256A89 /* FeedBackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99EA0CB2258CB3800256A89 /* FeedBackUITests.swift */; };
 		B9A159AC2292B66C0074E61F /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A159AB2292B66C0074E61F /* MainTabBarViewController.swift */; };
+		B9A159AE2292CB8D0074E61F /* GameDonation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A159AD2292CB8D0074E61F /* GameDonation.swift */; };
 		B9D32C9F228BE91500F11743 /* UserDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32C9E228BE91500F11743 /* UserDataBase.swift */; };
 		B9D32CA1228BF43900F11743 /* UIViewController+alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32CA0228BF43900F11743 /* UIViewController+alerts.swift */; };
 		B9D32CA3228C06DE00F11743 /* Charity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32CA2228C06DE00F11743 /* Charity.swift */; };
@@ -130,6 +131,7 @@
 		B99EA0CB2258CB3800256A89 /* FeedBackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackUITests.swift; sourceTree = "<group>"; };
 		B99EA0CD2258CB3800256A89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9A159AB2292B66C0074E61F /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		B9A159AD2292CB8D0074E61F /* GameDonation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDonation.swift; sourceTree = "<group>"; };
 		B9D32C9E228BE91500F11743 /* UserDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataBase.swift; sourceTree = "<group>"; };
 		B9D32CA0228BF43900F11743 /* UIViewController+alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alerts.swift"; sourceTree = "<group>"; };
 		B9D32CA2228C06DE00F11743 /* Charity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charity.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				B95F9282226496DC007F7755 /* AchievementModel.swift */,
 				B9D32C9E228BE91500F11743 /* UserDataBase.swift */,
 				B9D32CA2228C06DE00F11743 /* Charity.swift */,
+				B9A159AD2292CB8D0074E61F /* GameDonation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				B9338FCE2282BAFB0021943C /* RootNavigationController.swift in Sources */,
 				B99EA0AA2258CB3700256A89 /* AppDelegate.swift in Sources */,
 				B945E500226B0AAC0032EB7A /* RankedUserTableViewCell.swift in Sources */,
+				B9A159AE2292CB8D0074E61F /* GameDonation.swift in Sources */,
 				B9338FC82282B30D0021943C /* SettingsTableViewController.swift in Sources */,
 				B95F928522649CAF007F7755 /* UserDataModel.swift in Sources */,
 				B95F928022649549007F7755 /* AchievementCell.swift in Sources */,
