@@ -26,6 +26,7 @@ class CharitySelectionViewController: UIViewController, UITableViewDelegate {
         dataSource?.bind(to: contentTableView)
         contentTableView.delegate = self
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -15,17 +15,11 @@ class CharityInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         charityRef = ref.child(charityChildPath).child(charityId)
-        
-        infoLabel.text = "asdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsfdfasdfasdfadsf"
         infoLabel.preferredMaxLayoutWidth = 500
         infoLabel.numberOfLines = 0
-        infoLabel.sizeToFit()
         
-        
-        //charityInfoBox.sizeToFit()
-        // Do any additional setup after loading the view.
+        infoLabel.layoutIfNeeded()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +27,8 @@ class CharityInfoViewController: UIViewController {
         charityRef.observe(DataEventType.value) { (snapshot) in
             self.charity = Charity(snapshot: snapshot)
             self.charityTitle.text = self.charity?.name
+            self.infoLabel.text = "tetx tetx tetx tetx tetx tetx tetx tetx te tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx tx tetx tetx tetx tetx tetx tetx blablibub blablibub blablibub blablibub blablibub blablibub blablibub "
+            self.infoLabel.sizeToFit()
         }
     }
     
