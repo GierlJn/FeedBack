@@ -15,14 +15,19 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var ref: DatabaseReference!
     var dataSource: FUITableViewDataSource?
     var user: Firebase.User?
-    var donations: [String:Any]?
+    var donations = [GameDonation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let user = Firebase.Auth.auth().currentUser else { return }
         ref = Database.database().reference(withPath: "users").child(user.uid).child("donations")
         ref.observe(DataEventType.value) { (snapshot) in
-            self.donations = snapshot.value as? [String:Any]
+            for case let donationSnapshot as DataSnapshot in snapshot.children{
+                let donationDb = donationSnapshot.value as? [String:Any]
+                guard let gameDonation = GameDonation(snapshot: donationSnapshot) else { return }
+                self.donations.append(gameDonation)
+                print(self.donations)
+            }
         }
         
         tableViewTest.delegate = self
