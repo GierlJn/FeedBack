@@ -4,9 +4,9 @@ import Firebase
 import FirebaseUI
 
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+    //TODO: differnent name
     @IBOutlet weak var avatarPicture: UIImageView!
-    @IBOutlet weak var tableViewTest: UITableView!
+    @IBOutlet weak var gameTableView: UITableView!
     @IBOutlet weak var userView: UIView!
     @IBOutlet weak var donationSumLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
@@ -17,6 +17,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var user: Firebase.User?
     var allDonations = [GameDonation]()
     var mappedDonations = [GameDonation]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,22 +30,27 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             self.mapDonations()
         }
-        tableViewTest.delegate = self
-        tableViewTest.dataSource = self
+        gameTableView.delegate = self
+        gameTableView.dataSource = self
         setupBottomBorder()
     }
     
     func mapDonations(){
         for impactType in CharityImpactType.allValues{
-            let donationsForImpactType = allDonations.filter{ $0.impactType == impactType }
+            print(impactType)
+            let donationsForImpactType = allDonations.filter{
+                return $0.impactType == impactType }
             let sum: Float = donationsForImpactType.reduce(0.0) { (result: Float, donation: GameDonation) -> Float in
                 return result + Float(donation.impactAmount)!
             }
-            print("impactType: \(impactType)\nsum: \(sum)")
+            if(!donationsForImpactType.isEmpty){
+            let charityName: String = donationsForImpactType[0].name // to be changed, impacttypes can have different charities
+            let mappedDonation = GameDonation(name: charityName, impactType: impactType, impactAmount: String(sum))
+            mappedDonations.append(mappedDonation)
+            gameTableView.reloadData()
+            }
         }
     }
-    
-    
     
     fileprivate func setupBottomBorder() {
         let bottomBorder: CALayer = CALayer()
@@ -54,33 +60,45 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CharitySample.sampleData.count+1
+        return mappedDonations.count+1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
+
         let cell = Bundle.main.loadNibNamed("ActiveDonationViewCell", owner: self, options: nil)?.first as! ActiveDonationViewCell
         let lastCell = Bundle.main.loadNibNamed("LastActiveDonationTableViewCell", owner: self, options: nil)?.first as! LastActiveDonationTableViewCell
-        
         let totalRow =
             tableView.numberOfRows(inSection: indexPath.section)
         if(indexPath.row == totalRow - 1)
         {
             return lastCell
         }
+        //let character = CharitySample.sampleData[indexPath.row]
+        let donationCellContent = mappedDonations[indexPath.row]
+        cell.charityNameLabel.text = donationCellContent.name
         
-        let character = CharitySample.sampleData[indexPath.row]
+        var impactTypeText = ""
+        switch(donationCellContent.impactType){
+        case .childTreated:
+            impactTypeText = "Children treated"
+        case .netFounded:
+            impactTypeText = "Malaria nets funded"
+        case .ntdTreated:
+            impactTypeText = "NTD's treated"
+        case .none:
+            impactTypeText = ""
+        }
+        cell.statsSumLabel.text = impactTypeText
+        cell.statsSumInNumbers.text = donationCellContent.impactAmount
         
-        cell.charityNameLabel.text = character["name"] as? String
-        cell.charityAvatar.image = character["picture"] as? UIImage
-        cell.monthlyProgress.progress = (character["progress"] as? Float)!
-        cell.levelLabel.text = character["points"] as? String
-        cell.statsInfoLabel.text = character["statsInfo"] as? String
-        cell.statsSumLabel.text = character["statsSum"] as? String
-        cell.statsSumInNumbers.text = character["statsSumMock"] as? String
-        
-        
+        //cell.statsSumLabel
+        //cell.charityNameLabel.text = character["name"] as? String
+        //cell.charityAvatar.image = character["picture"] as? UIImage
+        //cell.monthlyProgress.progress = (character["progress"] as? Float)!
+        //cell.levelLabel.text = character["points"] as? String
+        //cell.statsInfoLabel.text = character["statsInfo"] as? String
+        //cell.statsSumLabel.text = character["statsSum"] as? String
+        //cell.statsSumInNumbers.text = character["statsSumMock"] as? String
         return cell
     }
     

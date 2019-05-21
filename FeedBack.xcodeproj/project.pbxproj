@@ -197,10 +197,10 @@
 			children = (
 				B95F927E22649549007F7755 /* AchievementCell.swift */,
 				B943B66B225B7F3300F8C560 /* ActiveDonationViewCell.swift */,
+				B943B66C225B7F3300F8C560 /* ActiveDonationViewCell.xib */,
 				B98DBDD6226DC6870007B36F /* LastActiveDonationTableViewCell.swift */,
 				B98DBDD7226DC6870007B36F /* LastActiveDonationTableViewCell.xib */,
 				B95F927F22649549007F7755 /* AchievementCell.xib */,
-				B943B66C225B7F3300F8C560 /* ActiveDonationViewCell.xib */,
 				B964F0C92261F23F00D55C58 /* CharityTableViewCell.swift */,
 				B964F0CA2261F23F00D55C58 /* CharityTableViewCell.xib */,
 				B964F0BF2261D94E00D55C58 /* CharityCategoryTableViewCell.swift */,
