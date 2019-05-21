@@ -4,10 +4,6 @@ import UIKit
 class ExploreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     @IBOutlet weak var contentTableView: UITableView!
-    
-    
-    var charityCategories = [CharityCategory.animals, CharityCategory.enviromental, CharityCategory.health, CharityCategory.others]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         contentTableView.delegate = self
@@ -24,16 +20,16 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         guard let charitySelectionVc: CharitySelectionViewController = segue.destination as? CharitySelectionViewController else{
             return
         }
-        charitySelectionVc.charityCategory = charityCategories[indexPath.row]
+        charitySelectionVc.charityCategory = CharityCategory.allValues[indexPath.row]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return charityCategories.count
+        return CharityCategory.allValues.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("CharityCategoryTableViewCell", owner: self, options: nil)?.first as! CharityCategoryTableViewCell
-        cell.charityTitleLabel.text = charityCategories[indexPath.row].rawValue.uppercased()
+        cell.charityTitleLabel.text = CharityCategory.allValues[indexPath.row].rawValue.uppercased()
         return cell
     }
 

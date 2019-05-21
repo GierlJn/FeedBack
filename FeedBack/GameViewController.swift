@@ -15,7 +15,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var ref: DatabaseReference!
     var dataSource: FUITableViewDataSource?
     var user: Firebase.User?
-    var donations = [GameDonation]()
+    var allDonations = [GameDonation]()
+    var mappedDonations = [GameDonation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +24,24 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ref = Database.database().reference(withPath: "users").child(user.uid).child("donations")
         ref.observe(DataEventType.value) { (snapshot) in
             for case let donationSnapshot as DataSnapshot in snapshot.children{
-                let donationDb = donationSnapshot.value as? [String:Any]
                 guard let gameDonation = GameDonation(snapshot: donationSnapshot) else { return }
-                self.donations.append(gameDonation)
-                print(self.donations)
+                self.allDonations.append(gameDonation)
             }
+            self.mapDonations()
         }
-        
         tableViewTest.delegate = self
         tableViewTest.dataSource = self
         setupBottomBorder()
+    }
+    
+    func mapDonations(){
+        for impactType in CharityImpactType.allValues{
+            let donationsForImpactType = allDonations.filter{ $0.impactType == impactType }
+            let sum: Float = donationsForImpactType.reduce(0.0) { (result: Float, donation: GameDonation) -> Float in
+                return result + Float(donation.impactAmount)!
+            }
+            print("impactType: \(impactType)\nsum: \(sum)")
+        }
     }
     
     
