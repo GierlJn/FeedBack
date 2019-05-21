@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		311BB92DE4917EA38A24841B /* Pods_FeedBack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FAEE6398C3444A7340C699 /* Pods_FeedBack.framework */; };
 		5264EB89E3AF07560273C6F2 /* Pods_FeedBackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FA7F9DA571C2223EA208B6 /* Pods_FeedBackTests.framework */; };
+		B91A795722941E4600AA554F /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A795622941E4600AA554F /* Level.swift */; };
 		B920004022759BB9004F74A6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920003F22759BB9004F74A6 /* RegisterViewController.swift */; };
 		B920004422759BF0004F74A6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920004322759BF0004F74A6 /* LogInViewController.swift */; };
 		B92000462275ADD6004F74A6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92000452275ADD6004F74A6 /* SettingsViewController.swift */; };
@@ -85,6 +86,7 @@
 		657A6FDC98F463987C9B2DE7 /* Pods-FeedBackUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedBackUITests.release.xcconfig"; path = "Target Support Files/Pods-FeedBackUITests/Pods-FeedBackUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9EA88E3F556F9C5B521E13F5 /* Pods-FeedBackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedBackTests.release.xcconfig"; path = "Target Support Files/Pods-FeedBackTests/Pods-FeedBackTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5FA7F9DA571C2223EA208B6 /* Pods_FeedBackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedBackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B91A795622941E4600AA554F /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		B920003F22759BB9004F74A6 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B920004322759BF0004F74A6 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		B92000452275ADD6004F74A6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				B9D32C9E228BE91500F11743 /* UserDataBase.swift */,
 				B9D32CA2228C06DE00F11743 /* Charity.swift */,
 				B9A159AD2292CB8D0074E61F /* GameDonation.swift */,
+				B91A795622941E4600AA554F /* Level.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				B9D32CA5228C221F00F11743 /* UIImage+resizeImage.swift in Sources */,
 				B9D32C9F228BE91500F11743 /* UserDataBase.swift in Sources */,
 				B964F0CB2261F23F00D55C58 /* CharityTableViewCell.swift in Sources */,
+				B91A795722941E4600AA554F /* Level.swift in Sources */,
 				B923087C226764EA00D85B43 /* LeaderBoardViewController.swift in Sources */,
 				B943B66A225B621400F8C560 /* GameViewController.swift in Sources */,
 				B95F9283226496DC007F7755 /* AchievementModel.swift in Sources */,

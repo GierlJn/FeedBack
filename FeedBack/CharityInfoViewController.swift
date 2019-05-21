@@ -19,7 +19,6 @@ class CharityInfoViewController: UIViewController {
         charityRef = ref.child(charityPath).child(charityId)
         infoLabel.preferredMaxLayoutWidth = 500
         infoLabel.numberOfLines = 0
-        
         infoLabel.layoutIfNeeded()
     }
 
@@ -28,7 +27,8 @@ class CharityInfoViewController: UIViewController {
         charityRef.observe(DataEventType.value) { (snapshot) in
             self.charity = Charity(snapshot: snapshot)
             self.charityTitle.text = self.charity?.name
-            self.infoLabel.text = "tetx tetx tetx tetx tetx tetx tetx tetx te tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx tx tetx tetx tetx tetx tetx tetx blablibub blablibub blablibub blablibub blablibub blablibub blablibub "
+            self.infoLabel.text = self.charity?.about
+            self.logoImageView.image = self.charity?.getLogoImage()
             self.infoLabel.sizeToFit()
             //self.downloadLogo(self.charity!.logo)
         }

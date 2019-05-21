@@ -37,6 +37,37 @@ class GameDonation: NSObject{
         self.impactAmount = impactAmount
         self.logo = logo
     }
+    
+    func getLogoImage()->UIImage?{
+        if(!isLogoDownloaded()){
+            print("not downloaded")
+            return nil
+        }
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        guard let url = NSURL(fileURLWithPath: path).appendingPathComponent(logo) else { return nil }
+        guard let image = UIImage(contentsOfFile: url.path) else {
+            print(url.path)
+            print("image couldnt load)")
+            return nil
+        }
+        return image
+    }
+    
+    private func isLogoDownloaded()->Bool{
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let url = NSURL(fileURLWithPath: path)
+        if let pathComponent = url.appendingPathComponent(logo) {
+            let filePath = pathComponent.path
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: filePath) {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
 
 }
 

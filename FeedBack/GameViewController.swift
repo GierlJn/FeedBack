@@ -96,6 +96,14 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         cell.statsSumLabel.text = impactTypeText
         cell.statsSumInNumbers.text = donationCellContent.impactAmount
+        cell.charityAvatar.image = donationCellContent.getLogoImage()
+        
+        let level = Level.getLevelForChildrenTreated(for: Int(Float(donationCellContent.impactAmount)!))
+        cell.levelLabel.text = String(level)
+        let progress = Level.getProgressUntilNextLevel(for: Float(donationCellContent.impactAmount)!)
+        cell.monthlyProgress.progress = progress
+        
+        
         //cell.logoString = donationCellContent.logo
         
         //cell.statsSumLabel
