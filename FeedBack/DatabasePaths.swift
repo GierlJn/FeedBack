@@ -1,14 +1,19 @@
-let charityChildPath = "charitys"
+let charityPath = "charitys"
+let namePath = "charityname"
+let aboutPath = "about"
+let categoryPath = "category"
+let impactPerDollarPath = "impactperdollar"
+let impactTypePath = "impacttype"
+let longInformationPath = "longinformation"
+let sourceLinkPath = "sourcelink"
+let websitePath = "website"
+let logoPath = "logo"
 
-let charityNameChildPath = "charityname"
-let charityAboutChildPath = "about"
-let charityCategoryChildPath = "category"
-let charityImpactPerDollarChildPath = "impactperdollar"
-let charityImpactTypeChildPath = "impacttype"
-let charityLongInformationChildPath = "longinformation"
-let charitySourceLinkChildPath = "sourcelink"
-let charityWebsiteChildPath = "website"
-let charityLogoChildPath = "logo"
-
-let impactAmountChildPath = "impactamount"
+let impactAmountPath = "impactamount"
 let impactTypeChildPath = "impacttype"
+
+let donationAmountPath = "donationamount"
+let timestampPath = "timestamp"
+let currencyPath = "currency"
+
+extension String: Error {}

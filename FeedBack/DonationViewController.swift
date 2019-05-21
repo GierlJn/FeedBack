@@ -13,9 +13,10 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     var impactPerDollar: Float?
     var charityName: String?
     var impactType: CharityImpactType?
+    var charityLogo: String?
     var ref: DatabaseReference!
     var user: Firebase.User?
-    let currency = "$"
+    let currency: String? = "$"
 
     
     
@@ -33,7 +34,9 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         charityName = charity.name
         impactPerDollar = charity.impactPerDollar
         impactType = charity.impactType
+        charityLogo = charity.logo
         impactDescriptionTextLabel.text = createImpactDisplayText()
+        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -75,26 +78,36 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
             return ""
         }
     }
+
     @IBAction func donateButtonPressed(_ sender: Any) {
         guard let user = user else { return }
         guard let donationAmount = userInputAmountTextField.text else { return }
         guard let impactType = impactType?.rawValue else { return }
         guard let charityName = charityName else { return }
         guard let impactAmount = calculatedCharityImpactTextLabel.text else { return }
-        
+        guard let charityLogo = charityLogo else { return }
+        guard let impactPerDollar = impactPerDollar else { return }
+        guard let currency = currency else { return }
         let timestamp = NSDate().timeIntervalSince1970
         if(Int(donationAmount)! < 1){
             showMessagePrompt("Donation must be atleast 1\(currency)")
             return
         }
-        let updateValues = [charityNameChildPath:charityName,
-                            "donationamount":donationAmount,
+        
+        let updateValues = [namePath:charityName,
+                            donationAmountPath:donationAmount,
                             impactTypeChildPath:impactType,
-                            "timestamp":timestamp,
-                            "currency":currency,
-                            impactAmountChildPath:impactAmount] as [String: Any]
+                            timestampPath:timestamp,
+                            currencyPath:currency,
+                            impactAmountPath:impactAmount,
+                            logoPath:charityLogo,
+                            impactPerDollarPath:impactPerDollar] as [String: Any]
         self.ref.child("users").child(user.uid).child("donations").childByAutoId().updateChildValues(updateValues)
     
+        initializeGameViewController()
+    }
+    
+    fileprivate func initializeGameViewController() {
         let mainTabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"mainTabBarController") as! MainTabBarViewController
         mainTabBarController.selectedIndex = 3
         self.present(mainTabBarController, animated: true, completion: nil)

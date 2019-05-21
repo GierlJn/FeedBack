@@ -23,9 +23,101 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Database.database().isPersistenceEnabled = true
         //let database = Database.database().reference()
         //database.setValue("Test sent data")
-        
+        downloadCharityLogos()
         return true
     }
+    
+    func downloadCharityLogos(){
+        let ref: DatabaseReference! = Database.database().reference(withPath: charityPath)
+        ref.observe(DataEventType.value) { (snapshot) in
+            for case let charitySnapshot as DataSnapshot in snapshot.children{
+                guard let charity = Charity(snapshot: charitySnapshot) else { return }
+                if(!self.isLogoInCache(charity.logo)){
+                    self.downloadLogo(charity.logo)
+                }else{
+                    print("\(charity.logo) is already cached")
+                }
+            }
+        }
+    }
+    
+    func downloadLogo(_ logoFileName: String){
+        let storage: Storage = Storage.storage()
+        let reference: StorageReference = storage.reference(forURL: "gs://feedback-cf3dc.appspot.com/" + logoFileName)
+        
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        guard let localURL = NSURL(fileURLWithPath: path).appendingPathComponent(logoFileName) else {
+            print("error: url not found")
+            return
+        }
+        reference.write(toFile: localURL) { url, error in
+            if let error = error {
+                print("An error occurred!: \(error)")
+            } else {
+                print("Local file for \(logoFileName) is saved")
+            }
+        }
+    }
+    
+    func isLogoInCache(_ logoFileName: String)->Bool{
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let url = NSURL(fileURLWithPath: path)
+        if let pathComponent = url.appendingPathComponent(logoFileName) {
+            let filePath = pathComponent.path
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: filePath) {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+/*
+ func getLogo(){
+ let cachedDirectory = FileManager.default.urls(for: FileManager.SearchPathDirectory.cachesDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).first!
+ let localUrl = cachedDirectory.appendingPathComponent(fileName)
+ if(FileManager.default.fileExists(atPath: localUrl)){
+ //getLogoFromCache
+ }else{
+ //downloadLogo
+ }
+ }
+ 
+ func getLogoFromCache(_ fileName: String){
+ 
+ }
+ 
+ func downloadLogo(_ fileName: String, completion: @escaping(UIImage?, Error?)->()){
+ let localUrl = ""
+ 
+ if(FileManager.default.fileExists(atPath: localUrl)){
+ 
+ }
+ 
+ let storage: Storage = Storage.storage()
+ let reference: StorageReference = storage.reference(forURL: "gs://feedback-cf3dc.appspot.com/")
+ reference.downloadURL { (url, error) in
+ guard let imageUrl = url, error == nil else {
+ print("Error: check Url")
+ completion(nil, error)
+ return
+ }
+ guard let data = NSData(contentsOf: imageUrl) else {
+ print("Error: check Url")
+ completion(nil, error)
+ return
+ }
+ guard let image = UIImage(data: data as Data) else {
+ completion(nil, error)
+ return
+ }
+ completion(image, nil)
+ 
+ }
+ }
+ */
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

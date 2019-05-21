@@ -51,15 +51,15 @@ class Charity: NSObject{
     init?(snapshot: DataSnapshot){
         let cid = snapshot.key
         guard let charityDb = snapshot.value as? [String:Any] else { return nil }
-        guard let name = charityDb[charityNameChildPath] as? String else { return nil }
-        guard let categoryAsString = charityDb[charityCategoryChildPath] as? String else { return nil }
-        guard let impactPerDollar = charityDb[charityImpactPerDollarChildPath] as? String else { return nil }
-        guard let impactTypeAsString = charityDb[charityImpactTypeChildPath] as? String else { return nil }
-        guard let website = charityDb[charityWebsiteChildPath] as? String else { return nil }
-        guard let logo = charityDb[charityLogoChildPath] as? String else { return nil }
-        guard let longInformation = charityDb[charityLongInformationChildPath] as? String else { return nil }
-        guard let sourceLink = charityDb[charitySourceLinkChildPath] as? String else { return nil }
-        guard let about = charityDb[charityAboutChildPath] as? String else { return nil }
+        guard let name = charityDb[namePath] as? String else { return nil }
+        guard let categoryAsString = charityDb[categoryPath] as? String else { return nil }
+        guard let impactPerDollar = charityDb[impactPerDollarPath] as? String else { return nil }
+        guard let impactTypeAsString = charityDb[impactTypePath] as? String else { return nil }
+        guard let website = charityDb[websitePath] as? String else { return nil }
+        guard let logo = charityDb[logoPath] as? String else { return nil }
+        guard let longInformation = charityDb[longInformationPath] as? String else { return nil }
+        guard let sourceLink = charityDb[sourceLinkPath] as? String else { return nil }
+        guard let about = charityDb[aboutPath] as? String else { return nil }
         
         self.cid = cid
         self.name = name
@@ -71,7 +71,37 @@ class Charity: NSObject{
         self.longInformation = longInformation
         self.sourceLink = sourceLink
         self.about = about
-        
     }
     
+    func getLogoImage()->UIImage?{
+        if(!isLogoDownloaded()){
+            print("not downloaded")
+            return nil
+        }
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        guard let url = NSURL(fileURLWithPath: path).appendingPathComponent(logo) else { return nil }
+        guard let image = UIImage(contentsOfFile: url.path) else {
+            print(url.path)
+            print("image couldnt load)")
+            return nil
+        }
+        return image
+    }
+    
+    private func isLogoDownloaded()->Bool{
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let url = NSURL(fileURLWithPath: path)
+        if let pathComponent = url.appendingPathComponent(logo) {
+            let filePath = pathComponent.path
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: filePath) {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
 }
+

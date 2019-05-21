@@ -14,11 +14,15 @@ class CharitySelectionViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference(withPath: charityChildPath)
+        ref = Database.database().reference(withPath: charityPath)
         dataSource = FUITableViewDataSource(query: getQuery(), populateCell: { (contentTableView, indexPath, snap) -> UITableViewCell in
             let cell = Bundle.main.loadNibNamed("CharityTableViewCell", owner: self, options: nil)?.first as! CharityTableViewCell
             guard let charity = Charity(snapshot: snap) else { return cell }
-            cell.charityImage.image = UIImage(named: "malaria_consortium_logo")
+            guard let logoImage = charity.getLogoImage() else {
+                print("image not available")
+                return cell
+            }
+            cell.charityImage.image = logoImage
             cell.nameLabel.text = charity.name
             return cell
         })
@@ -45,7 +49,6 @@ class CharitySelectionViewController: UIViewController, UITableViewDelegate {
         guard let charitySelectionVc: CharityInfoViewController = segue.destination as? CharityInfoViewController else{
             return
         }
-        
         if let dataSource = dataSource {
             charitySelectionVc.charityId = dataSource.snapshot(at: indexPath.row).key
         }

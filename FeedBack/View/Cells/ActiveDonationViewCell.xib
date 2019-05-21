@@ -43,16 +43,6 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4€ may fund 1 Child treated " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="csR-AO-AHd">
-                        <rect key="frame" x="137" y="45" width="217" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="PvR-JJ-XWw"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="132" id="xCc-1n-xXp"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXC-iX-6Bz">
                         <rect key="frame" x="40" y="99.5" width="42.5" height="18"/>
                         <constraints>
@@ -64,7 +54,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Treated Children:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xDX-cT-QJq">
-                        <rect key="frame" x="137" y="74" width="132" height="21"/>
+                        <rect key="frame" x="137" y="66" width="132" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="132" id="eL4-rZ-DKk"/>
                             <constraint firstAttribute="height" constant="21" id="xtw-IB-Zm9"/>
@@ -74,7 +64,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXXX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mcm-Uv-qay">
-                        <rect key="frame" x="274" y="74" width="63" height="21"/>
+                        <rect key="frame" x="274" y="66" width="63" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="6Uv-RA-x98"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="Y73-Xl-mCd"/>
@@ -85,20 +75,17 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="DLw-IP-sFc" firstAttribute="top" secondItem="xDX-cT-QJq" secondAttribute="bottom" constant="16" id="0YD-im-ybI"/>
                     <constraint firstItem="mcm-Uv-qay" firstAttribute="leading" secondItem="xDX-cT-QJq" secondAttribute="trailing" constant="5" id="1sY-Tg-0t1"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="csR-AO-AHd" secondAttribute="trailing" constant="30" id="6R1-sj-riX"/>
-                    <constraint firstItem="mcm-Uv-qay" firstAttribute="top" secondItem="csR-AO-AHd" secondAttribute="bottom" constant="8" id="DQ9-ae-Epv"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3rh-Xz-jQn" secondAttribute="trailing" constant="30" id="HRk-Pr-i5C"/>
                     <constraint firstItem="zsA-03-czV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="NIw-Cf-pp5"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mcm-Uv-qay" secondAttribute="trailing" constant="30" id="T1R-Ab-G6h"/>
+                    <constraint firstItem="DLw-IP-sFc" firstAttribute="top" secondItem="mcm-Uv-qay" secondAttribute="bottom" constant="16" id="UhX-FL-HjH"/>
                     <constraint firstItem="3rh-Xz-jQn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="VXQ-Sd-xvM"/>
-                    <constraint firstItem="xDX-cT-QJq" firstAttribute="top" secondItem="csR-AO-AHd" secondAttribute="bottom" constant="8" id="ZT0-HS-Kdy"/>
                     <constraint firstItem="zsA-03-czV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="dwb-6D-elI"/>
-                    <constraint firstItem="csR-AO-AHd" firstAttribute="leading" secondItem="zsA-03-czV" secondAttribute="trailing" constant="32" id="gga-wY-0zP"/>
                     <constraint firstAttribute="trailing" secondItem="DLw-IP-sFc" secondAttribute="trailing" constant="27" id="hXl-G6-04g"/>
                     <constraint firstItem="vXC-iX-6Bz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="llV-Mn-g7J"/>
                     <constraint firstItem="3rh-Xz-jQn" firstAttribute="leading" secondItem="zsA-03-czV" secondAttribute="trailing" constant="32" id="qrQ-6a-Sfp"/>
-                    <constraint firstItem="csR-AO-AHd" firstAttribute="top" secondItem="3rh-Xz-jQn" secondAttribute="bottom" constant="8" id="wHC-D1-hyl"/>
                     <constraint firstItem="xDX-cT-QJq" firstAttribute="leading" secondItem="zsA-03-czV" secondAttribute="trailing" constant="32" id="wUu-uS-E3j"/>
                     <constraint firstItem="vXC-iX-6Bz" firstAttribute="top" secondItem="zsA-03-czV" secondAttribute="bottom" constant="5" id="yBd-pu-Wjq"/>
                     <constraint firstAttribute="bottom" secondItem="DLw-IP-sFc" secondAttribute="bottom" constant="21.5" id="zZe-gG-WGS"/>
@@ -110,7 +97,6 @@
                 <outlet property="charityNameLabel" destination="3rh-Xz-jQn" id="fgg-bZ-u3u"/>
                 <outlet property="levelLabel" destination="vXC-iX-6Bz" id="oPj-O3-jAA"/>
                 <outlet property="monthlyProgress" destination="DLw-IP-sFc" id="3zl-Mv-YGc"/>
-                <outlet property="statsInfoLabel" destination="csR-AO-AHd" id="l3Z-9p-AmY"/>
                 <outlet property="statsSumInNumbers" destination="mcm-Uv-qay" id="vMa-VF-EVo"/>
                 <outlet property="statsSumLabel" destination="xDX-cT-QJq" id="8Yq-3v-Gh8"/>
             </connections>

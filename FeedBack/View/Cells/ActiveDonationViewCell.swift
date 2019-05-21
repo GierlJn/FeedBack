@@ -8,6 +8,7 @@
 
 import UIKit
 import GradientProgressBar
+import FirebaseStorage
 
 class ActiveDonationViewCell: UITableViewCell {
 
@@ -19,12 +20,11 @@ class ActiveDonationViewCell: UITableViewCell {
     @IBOutlet weak var statsSumLabel: UILabel!
     @IBOutlet weak var statsSumInNumbers: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

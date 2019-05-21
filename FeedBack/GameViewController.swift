@@ -17,10 +17,12 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var user: Firebase.User?
     var allDonations = [GameDonation]()
     var mappedDonations = [GameDonation]()
-
     
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         guard let user = Firebase.Auth.auth().currentUser else { return }
         ref = Database.database().reference(withPath: "users").child(user.uid).child("donations")
         ref.observe(DataEventType.value) { (snapshot) in
@@ -43,9 +45,13 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let sum: Float = donationsForImpactType.reduce(0.0) { (result: Float, donation: GameDonation) -> Float in
                 return result + Float(donation.impactAmount)!
             }
+            
+            
             if(!donationsForImpactType.isEmpty){
-            let charityName: String = donationsForImpactType[0].name // to be changed, impacttypes can have different charities
-            let mappedDonation = GameDonation(name: charityName, impactType: impactType, impactAmount: String(sum))
+                
+                let charityName: String = donationsForImpactType[0].name // to be changed, impacttypes can have different charities
+                let charityLogo: String = donationsForImpactType[0].logo
+                let mappedDonation = GameDonation(name: charityName, impactType: impactType, impactAmount: String(sum), logo: charityLogo)
             mappedDonations.append(mappedDonation)
             gameTableView.reloadData()
             }
@@ -90,6 +96,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         cell.statsSumLabel.text = impactTypeText
         cell.statsSumInNumbers.text = donationCellContent.impactAmount
+        //cell.logoString = donationCellContent.logo
         
         //cell.statsSumLabel
         //cell.charityNameLabel.text = character["name"] as? String
@@ -105,6 +112,4 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 129.5
     }
-
-
 }

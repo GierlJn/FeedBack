@@ -5,6 +5,7 @@ class CharityInfoViewController: UIViewController {
 
     @IBOutlet weak var charityTitle: UILabel!
     
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     
     lazy var ref: DatabaseReference = Database.database().reference()
@@ -15,7 +16,7 @@ class CharityInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        charityRef = ref.child(charityChildPath).child(charityId)
+        charityRef = ref.child(charityPath).child(charityId)
         infoLabel.preferredMaxLayoutWidth = 500
         infoLabel.numberOfLines = 0
         
@@ -29,6 +30,26 @@ class CharityInfoViewController: UIViewController {
             self.charityTitle.text = self.charity?.name
             self.infoLabel.text = "tetx tetx tetx tetx tetx tetx tetx tetx te tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx  tetx tetx tetx tetx tetx tetx tx tetx tetx tetx tetx tetx tetx blablibub blablibub blablibub blablibub blablibub blablibub blablibub "
             self.infoLabel.sizeToFit()
+            //self.downloadLogo(self.charity!.logo)
+        }
+    }
+    
+    func downloadLogo(_ fileName: String){
+        let storage: Storage = Storage.storage()
+        let reference: StorageReference = storage.reference(forURL: "gs://feedback-cf3dc.appspot.com/" + fileName)
+        reference.downloadURL { (url, error) in
+            guard let imageUrl = url, error == nil else {
+                print("Error: check Url")
+                return
+            }
+            guard let data = NSData(contentsOf: imageUrl) else {
+                print("Error: check Url")
+                return
+            }
+            guard let image = UIImage(data: data as Data) else {
+                return
+            }
+            self.logoImageView.image = image
         }
     }
     
