@@ -6,13 +6,15 @@ class GameDonation: NSObject{
     var impactType: CharityImpactType
     var impactAmount: String
     var logo: String
+    var amount: Float
     var logoImage: UIImage?
     
-    init(name: String, impactType: CharityImpactType, impactAmount: String, logo: String){
+    init(name: String, impactType: CharityImpactType, impactAmount: String, logo: String, amount: Float){
         self.name = name
         self.impactType = impactType
         self.impactAmount = impactAmount
         self.logo = logo
+        self.amount = amount
     }
     
     init?(snapshot: DataSnapshot){
@@ -31,11 +33,16 @@ class GameDonation: NSObject{
         guard let logo = donationDb[logoPath] as? String else {
             print("logo not found")
             return nil }
+        guard let amount = donationDb[donationAmountPath] as? String else {
+            print("donationAmount not found")
+            return nil
+        }
         
         self.name = name
         self.impactType = CharityImpactType.init(rawValue: impactTypeAsString) ?? CharityImpactType.none
         self.impactAmount = impactAmount
         self.logo = logo
+        self.amount = Float(amount)!
     }
     
     func getLogoImage()->UIImage?{
@@ -66,6 +73,26 @@ class GameDonation: NSObject{
             }
         } else {
             return false
+        }
+    }
+    
+    func getLevelForImpactAmount()-> Int{
+        // TODO: math
+        switch Float(impactAmount)!{
+        case 0..<10:
+            return 1
+        case 10..<30:
+            return 2
+        case 30..<70:
+            return 3
+        case 70..<150:
+            return 4
+        case 150..<310:
+            return 5
+        case 310...:
+            return 6
+        default:
+            return 0
         }
     }
 

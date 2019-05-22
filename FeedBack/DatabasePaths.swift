@@ -16,4 +16,8 @@ let donationAmountPath = "donationamount"
 let timestampPath = "timestamp"
 let currencyPath = "currency"
 
+let levelPath = "level"
+let totaldonationsPath = "totaldonations"
+let userNamePath = "username"
+
 extension String: Error {}

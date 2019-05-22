@@ -40,4 +40,22 @@ class Level{
             return 0
         }
     }
+    
+    static func getRankForLevel(level: Int)->String{
+        switch level{
+        case 1..<8:
+            return "Newbie"
+        case 8..<32:
+            return "Helper"
+        case 32..<128:
+            return "Humanist"
+        case 128..<256:
+            return "Philantropist"
+        case 256...:
+            return "Altruist"
+        default:
+            return ""
+        }
+    }
+    
 }

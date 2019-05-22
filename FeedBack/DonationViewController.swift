@@ -15,6 +15,9 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     var impactType: CharityImpactType?
     var charityLogo: String?
     var ref: DatabaseReference!
+    var userRef: DatabaseReference!
+    var donationSumRef: DatabaseReference!
+    
     var user: Firebase.User?
     let currency: String? = "$"
 
@@ -25,6 +28,8 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         ref = Database.database().reference()
         user = Auth.auth().currentUser
         
+        userRef = Database.database().reference()
+        donationSumRef = Database.database().reference()
         userInputAmountTextField.delegate = self
         userInputAmountTextField.keyboardType = .numberPad
         userInputAmountTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)),
@@ -36,7 +41,6 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         impactType = charity.impactType
         charityLogo = charity.logo
         impactDescriptionTextLabel.text = createImpactDisplayText()
-        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -103,9 +107,17 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
                             logoPath:charityLogo,
                             impactPerDollarPath:impactPerDollar] as [String: Any]
         self.ref.child("users").child(user.uid).child("donations").childByAutoId().updateChildValues(updateValues)
-    
+        
+        
+        donationSumRef.child("users").child(user.uid).observe(DataEventType.value) { (snapshot) in
+            guard let dbUser = User(snapshot: snapshot) else { return }
+            let userLevel = dbUser.getSumOfAllLevels()
+            self.userRef.child("users").child(user.uid).updateChildValues(([levelPath:userLevel] as [String:Any]))
+        }
+        
         initializeGameViewController()
     }
+
     
     fileprivate func initializeGameViewController() {
         let mainTabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"mainTabBarController") as! MainTabBarViewController

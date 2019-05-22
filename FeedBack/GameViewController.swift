@@ -13,6 +13,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var rankLabel: UILabel!
     
     var ref: DatabaseReference!
+    var userRef: DatabaseReference!
     var dataSource: FUITableViewDataSource?
     var user: Firebase.User?
     var allDonations = [GameDonation]()
@@ -22,8 +23,16 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         guard let user = Firebase.Auth.auth().currentUser else { return }
+        userRef = Database.database().reference(withPath: "users").child(user.uid)
+        userRef.observe(DataEventType.value) { (snapshot) in
+            guard let user = User(snapshot: snapshot) else { return }
+            self.levelLabel.text = String(user.level)
+            let rank = Level.getRankForLevel(level: user.level)
+            self.rankLabel.text = rank
+            self.donationSumLabel.text = String(user.getTotalDonationSum())
+        }
+        
         ref = Database.database().reference(withPath: "users").child(user.uid).child("donations")
         ref.observe(DataEventType.value) { (snapshot) in
             for case let donationSnapshot as DataSnapshot in snapshot.children{
@@ -45,15 +54,13 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let sum: Float = donationsForImpactType.reduce(0.0) { (result: Float, donation: GameDonation) -> Float in
                 return result + Float(donation.impactAmount)!
             }
-            
-            
             if(!donationsForImpactType.isEmpty){
                 
                 let charityName: String = donationsForImpactType[0].name // to be changed, impacttypes can have different charities
                 let charityLogo: String = donationsForImpactType[0].logo
-                let mappedDonation = GameDonation(name: charityName, impactType: impactType, impactAmount: String(sum), logo: charityLogo)
-            mappedDonations.append(mappedDonation)
-            gameTableView.reloadData()
+                let mappedDonation = GameDonation(name: charityName, impactType: impactType, impactAmount: String(sum), logo: charityLogo, amount: 0)
+                mappedDonations.append(mappedDonation)
+                gameTableView.reloadData()
             }
         }
     }
@@ -79,7 +86,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         {
             return lastCell
         }
-        //let character = CharitySample.sampleData[indexPath.row]
         let donationCellContent = mappedDonations[indexPath.row]
         cell.charityNameLabel.text = donationCellContent.name
         
@@ -98,26 +104,19 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.statsSumInNumbers.text = donationCellContent.impactAmount
         cell.charityAvatar.image = donationCellContent.getLogoImage()
         
-        let level = Level.getLevelForChildrenTreated(for: Int(Float(donationCellContent.impactAmount)!))
+        //let level = Level.getLevelForChildrenTreated(for: Int(Float(donationCellContent.impactAmount)!))
+        let level = donationCellContent.getLevelForImpactAmount()
+        //TODO GET LEVELS FOR RANK
         cell.levelLabel.text = String(level)
         let progress = Level.getProgressUntilNextLevel(for: Float(donationCellContent.impactAmount)!)
         cell.monthlyProgress.progress = progress
         
-        
-        //cell.logoString = donationCellContent.logo
-        
-        //cell.statsSumLabel
-        //cell.charityNameLabel.text = character["name"] as? String
-        //cell.charityAvatar.image = character["picture"] as? UIImage
-        //cell.monthlyProgress.progress = (character["progress"] as? Float)!
-        //cell.levelLabel.text = character["points"] as? String
-        //cell.statsInfoLabel.text = character["statsInfo"] as? String
-        //cell.statsSumLabel.text = character["statsSum"] as? String
-        //cell.statsSumInNumbers.text = character["statsSumMock"] as? String
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 129.5
     }
+    
+
 }

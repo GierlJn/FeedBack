@@ -54,7 +54,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             let username = self.userNameTextField.text!
-            self.saveUserInfo(user, withUsername: username)
+            self.saveInitialUserInfo(user, withUsername: username)
             /*
             if(self.userNameTextField.text! != ""){
                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
@@ -71,13 +71,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func saveUserInfo(_ user: Firebase.User, withUsername username: String) {
-        
-        // Create a change request
+    func saveInitialUserInfo(_ user: Firebase.User, withUsername username: String) {
         self.showSpinner {}
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
         changeRequest?.displayName = username
-        
         // Commit profile changes to server
         changeRequest?.commitChanges() { (error) in
             self.dismiss(animated: true, completion: nil)
@@ -86,10 +83,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             
-            // [START basic_write]
-            self.ref.child("users").child(user.uid).setValue(["username": username])
+            let initialValues = [userNamePath: username,
+                                levelPath:1,
+                                totaldonationsPath:0] as [String: Any]
             
-            // [END basic_write]
+            self.ref.child("users").child(user.uid).updateChildValues(initialValues)
             self.performSegue(withIdentifier: "goToMain", sender: nil)
         }
         

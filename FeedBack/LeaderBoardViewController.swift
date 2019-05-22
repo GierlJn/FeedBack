@@ -16,12 +16,12 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     let leaderBoardTypes = [LeaderBoardTypes.GeoLeaderboard, LeaderBoardTypes.TotalLeaderBoard]
     var selectedLeaderBoard = LeaderBoardTypes.TotalLeaderBoard
     
-    let sampleData = [
-        User(userName: "Bill Gates", userLevel: 1900, userAvatar: UIImage(imageLiteralResourceName: "bill_gates.jpeg")),
-        User(userName: "Warren Buffet", userLevel: 1500, userAvatar: UIImage(imageLiteralResourceName: "buffet.jpeg")),
-        User(userName: "Mark Zuckerberg", userLevel: 1300, userAvatar: UIImage(imageLiteralResourceName: "zuckerberg.jpeg")),
-        User(userName: "Paul Allen", userLevel: 1000, userAvatar: UIImage(imageLiteralResourceName: "paul_allen.jpeg"))
-                      ]
+    //let sampleData = [
+        //User(userName: "Bill Gates", userLevel: 1900, userAvatar: UIImage(imageLiteralResourceName: "bill_gates.jpeg")),
+        //User(userName: "Warren Buffet", userLevel: 1500, userAvatar: UIImage(imageLiteralResourceName: "buffet.jpeg")),
+        //User(userName: "Mark Zuckerberg", userLevel: 1300, userAvatar: UIImage(imageLiteralResourceName: "zuckerberg.jpeg")),
+        //User(userName: "Paul Allen", userLevel: 1000, userAvatar: UIImage(imageLiteralResourceName: "paul_allen.jpeg"))
+                      //]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sampleData.count
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,17 +83,17 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
         switch(selectedLeaderBoard){
         case .GeoLeaderboard:
             let cell = Bundle.main.loadNibNamed("RankedUserTableViewCell", owner: self, options: nil)?.first as! RankedUserTableViewCell
-            cell.userNameLabel.text = sampleData[indexPath.row].userName
-            cell.userPointsLabel.text = String(sampleData[indexPath.row].userLevel)
-            cell.userAvatar.image = sampleData[indexPath.row].userAvatar
-            cell.userRankLabel.text = String(indexPath.row+1)
+            //cell.userNameLabel.text = sampleData[indexPath.row].userName
+            //cell.userPointsLabel.text = String(sampleData[indexPath.row].userLevel)
+            //cell.userAvatar.image = sampleData[indexPath.row].userAvatar
+            //cell.userRankLabel.text = String(indexPath.row+1)
             return cell
         case .TotalLeaderBoard:
             let cell = Bundle.main.loadNibNamed("RankedUserTableViewCell", owner: self, options: nil)?.first as! RankedUserTableViewCell
-            cell.userNameLabel.text = sampleData[indexPath.row].userName
-            cell.userPointsLabel.text = String(sampleData[indexPath.row].userLevel)
-            cell.userAvatar.image = sampleData[indexPath.row].userAvatar
-            cell.userRankLabel.text = String(indexPath.row+1)
+            //cell.userNameLabel.text = sampleData[indexPath.row].userName
+            //cell.userPointsLabel.text = String(sampleData[indexPath.row].userLevel)
+            //cell.userAvatar.image = sampleData[indexPath.row].userAvatar
+            //cell.userRankLabel.text = String(indexPath.row+1)
             return cell
         }
         
