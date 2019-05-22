@@ -10,6 +10,7 @@ class User: NSObject{
     var friends: [Friend]
     var donations: [GameDonation]
     var achievements: [Achievement]
+    var mappedDonations: [GameDonation]?
     
     init(userName: String, level: Int, friends: [Friend], donations: [GameDonation], achievements: [Achievement]){
         self.userName = userName
@@ -34,6 +35,7 @@ class User: NSObject{
         self.donations = [GameDonation]()
         self.friends = [Friend]()
         self.achievements = [Achievement]()
+        
         let friendSnapshot = snapshot.childSnapshot(forPath: "friends")
         for case let friendSnapshot as DataSnapshot in friendSnapshot.children{
             guard let friend = Friend(snapshot: friendSnapshot) else {
@@ -51,6 +53,23 @@ class User: NSObject{
         }
     }
     
+    func mapDonations(){
+        self.mappedDonations = [GameDonation]()
+        for impactType in CharityImpactType.allValues{
+            let donationsForImpactType = donations.filter{
+                return $0.impactType == impactType }
+            let sum: Float = donationsForImpactType.reduce(0.0) { (result: Float, donation: GameDonation) -> Float in
+                return result + Float(donation.impactAmount)!
+            }
+            if(!donationsForImpactType.isEmpty){
+                let charityName: String = donationsForImpactType[0].name // to be changed, impacttypes can have different charities
+                let charityLogo: String = donationsForImpactType[0].logo
+                let mappedDonation = GameDonation(name: charityName, impactType: impactType, impactAmount: String(sum), logo: charityLogo, amount: 0)
+                mappedDonations!.append(mappedDonation)
+            }
+        }
+    }
+    
     func getTotalDonationSum()->Float{
         let sum: Float = donations.reduce(0.0) { (result: Float, donation: GameDonation) -> Float in
             return result + donation.amount
@@ -65,23 +84,7 @@ class User: NSObject{
         return sum
     }
     
+    
+    
 }
-/*        for impactType in CharityImpactType.allValues{
- print(impactType)
- let donationsForImpactType = allDonations.filter{
- return $0.impactType == impactType }
- let sum: Float = donationsForImpactType.reduce(0.0) { (result: Float, donation: GameDonation) -> Float in
- return result + Float(donation.impactAmount)!
- }
- 
- 
- if(!donationsForImpactType.isEmpty){
- 
- let charityName: String = donationsForImpactType[0].name // to be changed, impacttypes can have different charities
- let charityLogo: String = donationsForImpactType[0].logo
- let mappedDonation = GameDonation(name: charityName, impactType: impactType, impactAmount: String(sum), logo: charityLogo)
- mappedDonations.append(mappedDonation)
- gameTableView.reloadData()
- }
- }
- */
+
