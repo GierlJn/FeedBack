@@ -11,16 +11,6 @@ enum CharityCategory: String{
     static let allValues = [animals, health, enviromental, others]
 }
 
-enum CharityImpactType: String{
-    case childTreated = "treatchild"
-    case netFounded = "malarianets"
-    case ntdTreated = "treatntd"
-    case none = "none"
-    static let allValues = [childTreated, netFounded, ntdTreated, none]
-}
-
-
-
 
 class Charity: NSObject{
     var cid: String

@@ -20,21 +20,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="DEI-Y8-gMn">
-                        <rect key="frame" x="83" y="9.5" width="20" height="25"/>
+                        <rect key="frame" x="79" y="9.5" width="45" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="0vI-g8-R6X"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="YIV-hM-cVC"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="YIV-hM-cVC"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="afterImpactInfo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9ks-si-lQX">
-                        <rect key="frame" x="111" y="10" width="92" height="24"/>
+                        <rect key="frame" x="128" y="10" width="85.5" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="zj5-FG-018"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -49,13 +49,13 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="9ks-si-lQX" firstAttribute="leading" secondItem="DEI-Y8-gMn" secondAttribute="trailing" constant="8" id="9FO-cH-tid"/>
+                    <constraint firstItem="9ks-si-lQX" firstAttribute="leading" secondItem="DEI-Y8-gMn" secondAttribute="trailing" constant="4" id="9FO-cH-tid"/>
                     <constraint firstItem="FWN-Ff-taP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="AEN-1V-tbj"/>
                     <constraint firstItem="9ks-si-lQX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="AOQ-YV-f0q"/>
                     <constraint firstItem="FWN-Ff-taP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="S1s-mG-MTx"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9ks-si-lQX" secondAttribute="trailing" id="XsC-Fk-wt9"/>
                     <constraint firstItem="DEI-Y8-gMn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fVp-yP-ZmB"/>
-                    <constraint firstItem="DEI-Y8-gMn" firstAttribute="leading" secondItem="FWN-Ff-taP" secondAttribute="trailing" constant="8" id="sFX-iI-GYZ"/>
+                    <constraint firstItem="DEI-Y8-gMn" firstAttribute="leading" secondItem="FWN-Ff-taP" secondAttribute="trailing" constant="4" id="sFX-iI-GYZ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

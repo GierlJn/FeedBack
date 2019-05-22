@@ -7,7 +7,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var donationSumLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
-    @IBOutlet weak var donationHistoryView: UIView!
     @IBOutlet weak var friendView: UIView!
     @IBOutlet weak var achievementView: UIView!
     @IBOutlet weak var impactView: UIView!
@@ -18,6 +17,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var achievementCollectionView: UICollectionView!
     //var handle: AuthStateDidChangeListenerHandle?
     var userRef: DatabaseReference!
+    var mappedDonations = [GameDonation]()
+    var allDonations = [GameDonation]()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -29,6 +30,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             self.levelLabel.text = String(user.level)
             self.rankLabel.text = Level.getRankForLevel(level: user.level)
             self.donationSumLabel.text = String(user.donationHolder.getTotalDonationSum()) + " " + currency
+            self.allDonations = user.donationHolder.donations
+            self.mappedDonations = user.donationHolder.getMappedDonations()
+            self.impactTableView.reloadData()
         }
         
         /*
@@ -115,17 +119,18 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sampleData.count
+        return mappedDonations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("ImpactTableViewCell", owner: self, options: nil)?.first as! ImpactTableViewCell
-        let impact = sampleData[indexPath.row]
-        cell.impactNameLabel.text = impact["impactInfo"] as? String
-        cell.impactLabel.text = impact["impact"] as? String
-        cell.afterImpactLabel.text = impact["afterImpactInfo"] as? String
+        let donation = mappedDonations[indexPath.row]
+        cell.impactNameLabel.text = donation.impactType.getimpactDescriptionStringBeforeValue()
+        cell.impactLabel.text = String(Int(Float(donation.impactAmount)!))
+        cell.afterImpactLabel.text = donation.impactType.getimpactDescriptionStringAfterValue()
         return cell
     }
+
     
     @IBAction func settingsButtonTouched(_ sender: Any) {
         performSegue(withIdentifier: "showSettingsSegue", sender: self)
