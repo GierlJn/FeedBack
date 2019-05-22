@@ -43,6 +43,8 @@
 		B964F0C82261F16300D55C58 /* CharitySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964F0C72261F16300D55C58 /* CharitySelectionViewController.swift */; };
 		B964F0CB2261F23F00D55C58 /* CharityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964F0C92261F23F00D55C58 /* CharityTableViewCell.swift */; };
 		B964F0CC2261F23F00D55C58 /* CharityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B964F0CA2261F23F00D55C58 /* CharityTableViewCell.xib */; };
+		B97351CE22952DF500FFBB3E /* DonationsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351CD22952DF500FFBB3E /* DonationsHolder.swift */; };
+		B97351D022952F9800FFBB3E /* FriendsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351CF22952F9800FFBB3E /* FriendsHolder.swift */; };
 		B98DBDD8226DC6870007B36F /* LastActiveDonationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98DBDD6226DC6870007B36F /* LastActiveDonationTableViewCell.swift */; };
 		B98DBDD9226DC6870007B36F /* LastActiveDonationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B98DBDD7226DC6870007B36F /* LastActiveDonationTableViewCell.xib */; };
 		B99EA0AA2258CB3700256A89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99EA0A92258CB3700256A89 /* AppDelegate.swift */; };
@@ -122,6 +124,8 @@
 		B964F0C72261F16300D55C58 /* CharitySelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharitySelectionViewController.swift; sourceTree = "<group>"; };
 		B964F0C92261F23F00D55C58 /* CharityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityTableViewCell.swift; sourceTree = "<group>"; };
 		B964F0CA2261F23F00D55C58 /* CharityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharityTableViewCell.xib; sourceTree = "<group>"; };
+		B97351CD22952DF500FFBB3E /* DonationsHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationsHolder.swift; sourceTree = "<group>"; };
+		B97351CF22952F9800FFBB3E /* FriendsHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsHolder.swift; sourceTree = "<group>"; };
 		B98DBDD6226DC6870007B36F /* LastActiveDonationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastActiveDonationTableViewCell.swift; sourceTree = "<group>"; };
 		B98DBDD7226DC6870007B36F /* LastActiveDonationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LastActiveDonationTableViewCell.xib; sourceTree = "<group>"; };
 		B99EA0A62258CB3700256A89 /* FeedBack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedBack.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +230,8 @@
 				B95F9276226485D7007F7755 /* CharitySample.swift */,
 				B95F928422649CAF007F7755 /* UserDataModel.swift */,
 				B922C5F7226F1BF4006E0D2C /* User.swift */,
+				B97351CD22952DF500FFBB3E /* DonationsHolder.swift */,
+				B97351CF22952F9800FFBB3E /* FriendsHolder.swift */,
 				B91A795A2294354000AA554F /* Friend.swift */,
 				B91A7958229431A900AA554F /* Achievement.swift */,
 				B923087D22676E7E00D85B43 /* GlobalLeaderBoardModel.swift */,
@@ -598,9 +604,11 @@
 				B920004022759BB9004F74A6 /* RegisterViewController.swift in Sources */,
 				B923087E22676E7E00D85B43 /* GlobalLeaderBoardModel.swift in Sources */,
 				B9D32CA7228C227600F11743 /* DatabasePaths.swift in Sources */,
+				B97351D022952F9800FFBB3E /* FriendsHolder.swift in Sources */,
 				B91A795B2294354000AA554F /* Friend.swift in Sources */,
 				B9A159AC2292B66C0074E61F /* MainTabBarViewController.swift in Sources */,
 				B91A7959229431A900AA554F /* Achievement.swift in Sources */,
+				B97351CE22952DF500FFBB3E /* DonationsHolder.swift in Sources */,
 				B9338FD02283051B0021943C /* ChangePasswordViewController.swift in Sources */,
 				B943B66D225B7F3300F8C560 /* ActiveDonationViewCell.swift in Sources */,
 				B95F9279226494CF007F7755 /* ProfileViewController.swift in Sources */,

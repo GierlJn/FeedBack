@@ -111,7 +111,7 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         
         donationSumRef.child("users").child(user.uid).observe(DataEventType.value) { (snapshot) in
             guard let dbUser = User(snapshot: snapshot) else { return }
-            let userLevel = dbUser.getSumOfAllLevels()
+            let userLevel = dbUser.donationHolder.getSumOfAllLevels()
             self.userRef.child("users").child(user.uid).updateChildValues(([levelPath:userLevel] as [String:Any]))
         }
         

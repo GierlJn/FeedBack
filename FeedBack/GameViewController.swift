@@ -12,11 +12,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     
-    var ref: DatabaseReference!
     var userRef: DatabaseReference!
     var dataSource: FUITableViewDataSource?
     var user: Firebase.User?
-    var allDonations = [GameDonation]()
     var mappedDonations = [GameDonation]()
     
     
@@ -30,39 +28,15 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.levelLabel.text = String(user.level)
             let rank = Level.getRankForLevel(level: user.level)
             self.rankLabel.text = rank
-            self.donationSumLabel.text = String(user.getTotalDonationSum())
+            self.donationSumLabel.text = String(user.donationHolder.getTotalDonationSum())
+            self.mappedDonations = user.donationHolder.getMappedDonations()
+            print(user.donationHolder.getMappedDonations())
+            self.gameTableView.reloadData()
         }
         
-        ref = Database.database().reference(withPath: "users").child(user.uid).child("donations")
-        ref.observe(DataEventType.value) { (snapshot) in
-            for case let donationSnapshot as DataSnapshot in snapshot.children{
-                guard let gameDonation = GameDonation(snapshot: donationSnapshot) else { return }
-                self.allDonations.append(gameDonation)
-            }
-            self.mapDonations()
-        }
         gameTableView.delegate = self
         gameTableView.dataSource = self
         setupBottomBorder()
-    }
-    
-    func mapDonations(){
-        for impactType in CharityImpactType.allValues{
-            print(impactType)
-            let donationsForImpactType = allDonations.filter{
-                return $0.impactType == impactType }
-            let sum: Float = donationsForImpactType.reduce(0.0) { (result: Float, donation: GameDonation) -> Float in
-                return result + Float(donation.impactAmount)!
-            }
-            if(!donationsForImpactType.isEmpty){
-                
-                let charityName: String = donationsForImpactType[0].name // to be changed, impacttypes can have different charities
-                let charityLogo: String = donationsForImpactType[0].logo
-                let mappedDonation = GameDonation(name: charityName, impactType: impactType, impactAmount: String(sum), logo: charityLogo, amount: 0)
-                mappedDonations.append(mappedDonation)
-                gameTableView.reloadData()
-            }
-        }
     }
     
     fileprivate func setupBottomBorder() {
@@ -106,7 +80,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         //let level = Level.getLevelForChildrenTreated(for: Int(Float(donationCellContent.impactAmount)!))
         let level = donationCellContent.getLevelForImpactAmount()
-        //TODO GET LEVELS FOR RANK
+        //TODO GET LEVELS For each category
         cell.levelLabel.text = String(level)
         let progress = Level.getProgressUntilNextLevel(for: Float(donationCellContent.impactAmount)!)
         cell.monthlyProgress.progress = progress
