@@ -1,6 +1,8 @@
 import UIKit
 import Firebase
 
+let currency = "$"
+
 class DonationViewController: UIViewController, UITextFieldDelegate{
 
     var charity: Charity?
@@ -19,7 +21,6 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     var donationSumRef: DatabaseReference!
     
     var user: Firebase.User?
-    let currency: String? = "$"
 
     
     
@@ -91,7 +92,6 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         guard let impactAmount = calculatedCharityImpactTextLabel.text else { return }
         guard let charityLogo = charityLogo else { return }
         guard let impactPerDollar = impactPerDollar else { return }
-        guard let currency = currency else { return }
         let timestamp = NSDate().timeIntervalSince1970
         if(Int(donationAmount)! < 1){
             showMessagePrompt("Donation must be atleast 1\(currency)")

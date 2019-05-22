@@ -28,7 +28,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.levelLabel.text = String(user.level)
             let rank = Level.getRankForLevel(level: user.level)
             self.rankLabel.text = rank
-            self.donationSumLabel.text = String(user.donationHolder.getTotalDonationSum())
+            self.donationSumLabel.text = String(user.donationHolder.getTotalDonationSum()) + " " + currency
             self.mappedDonations = user.donationHolder.getMappedDonations()
             print(user.donationHolder.getMappedDonations())
             self.gameTableView.reloadData()
@@ -66,21 +66,19 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var impactTypeText = ""
         switch(donationCellContent.impactType){
         case .childTreated:
-            impactTypeText = "Children treated"
+            impactTypeText = "Children treated: "
         case .netFounded:
-            impactTypeText = "Malaria nets funded"
+            impactTypeText = "Malaria nets funded: "
         case .ntdTreated:
-            impactTypeText = "NTD's treated"
+            impactTypeText = "NTD's treated: "
         case .none:
             impactTypeText = ""
         }
         cell.statsSumLabel.text = impactTypeText
-        cell.statsSumInNumbers.text = donationCellContent.impactAmount
+        cell.statsSumInNumbers.text = String(Int(Float(donationCellContent.impactAmount)!))
         cell.charityAvatar.image = donationCellContent.getLogoImage()
         
-        //let level = Level.getLevelForChildrenTreated(for: Int(Float(donationCellContent.impactAmount)!))
         let level = donationCellContent.getLevelForImpactAmount()
-        //TODO GET LEVELS For each category
         cell.levelLabel.text = String(level)
         let progress = Level.getProgressUntilNextLevel(for: Float(donationCellContent.impactAmount)!)
         cell.monthlyProgress.progress = progress
