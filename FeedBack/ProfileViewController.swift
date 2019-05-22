@@ -1,9 +1,12 @@
 
 import UIKit
-import FirebaseAuth
+import Firebase
 
-class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate, ProfileViewDelegate {
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var donationSumLabel: UILabel!
+    @IBOutlet weak var rankLabel: UILabel!
+    @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var donationHistoryView: UIView!
     @IBOutlet weak var friendView: UIView!
     @IBOutlet weak var achievementView: UIView!
@@ -13,20 +16,32 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var impactTableView: UITableView!
     @IBOutlet weak var achievementCollectionView: UICollectionView!
-    var handle: AuthStateDidChangeListenerHandle?
+    //var handle: AuthStateDidChangeListenerHandle?
+    var userRef: DatabaseReference!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        guard let user = Firebase.Auth.auth().currentUser else { return }
+        userRef = Database.database().reference(withPath: "users").child(user.uid)
+        userRef.observe(DataEventType.value) { (snapshot) in
+            guard let user = User(snapshot: snapshot) else { return }
+            self.userNameLabel.text = String(user.userName)
+            self.levelLabel.text = String(user.level)
+            self.rankLabel.text = Level.getRankForLevel(level: user.level)
+            self.donationSumLabel.text = String(user.donationHolder.getTotalDonationSum()) + " " + currency
+        }
+        
+        /*
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user{
                 self.userNameLabel.text = user.displayName!
             }
-        }
+        }*/
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        Auth.auth().removeStateDidChangeListener(handle!)
+        //Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     let sampleData:[Dictionary<String, Any>] = [
@@ -55,12 +70,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         setupTableView()
         setupSeperatorLines()
     }
-    
+    /*
     func updateDisplayName(_ newUserName: String) {
         print("new name set")
         self.userNameLabel.text = newUserName
     }
-    
+    */
     fileprivate func setupSeperatorLines(){
         setupBottomBorder(for: userProfileView)
         setupBottomBorder(for: impactView)
@@ -120,7 +135,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         if(segue.identifier == "showSettingsSegue"){
             print("preparesegue")
             let settingsViewController = segue.destination as? SettingsViewController
-            settingsViewController?.delegate = self
+            //settingsViewController?.delegate = self
         }
     }
     

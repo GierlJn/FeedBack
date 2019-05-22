@@ -2,9 +2,9 @@
 import UIKit
 import FirebaseAuth
 
-protocol ProfileViewDelegate: AnyObject{
-    func updateDisplayName(_ newUserName: String)
-}
+//protocol ProfileViewDelegate: AnyObject{
+    //func updateDisplayName(_ newUserName: String)
+//}
 
 class SettingsViewController: UIViewController, SettingsDelegate {
     
@@ -13,7 +13,7 @@ class SettingsViewController: UIViewController, SettingsDelegate {
     var newEmail: String?
     var userNameHasChanged = false
     var emailHasChanged = false
-    weak var delegate: ProfileViewDelegate?
+    //weak var delegate: ProfileViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,7 @@ class SettingsViewController: UIViewController, SettingsDelegate {
                 //  TODO: show alert
             }else{
                 print("new name called")
-                self.delegate?.updateDisplayName(self.newUserName!)
+                //self.delegate?.updateDisplayName(self.newUserName!)
             }
         }
     }
