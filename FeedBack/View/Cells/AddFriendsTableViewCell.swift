@@ -2,18 +2,33 @@
 
 import UIKit
 
+protocol AddFriendCellDelegate: class{
+    func addFriendButtonPressedForUser(cell: AddFriendsTableViewCell)
+}
+
+
 class AddFriendsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userImage: UIImageView!
     
     @IBOutlet weak var userNameLabel: UILabel!
     
+    var uniqueUserId: String?
+    
+    weak var delegate: AddFriendCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.delegate = nil
+    }
 
     @IBAction func addFriendButtonPressed(_ sender: Any) {
+        self.delegate?.addFriendButtonPressedForUser(cell: self)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
