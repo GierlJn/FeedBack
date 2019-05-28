@@ -58,14 +58,31 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         setupSeperatorLines()
     }
     
-    fileprivate func showShareActivityOptions(_ saveFileURL: URL) {
-        let activityController = UIActivityViewController(activityItems: ["iPhysics Demo File Sharing", saveFileURL], applicationActivities: nil)
+    @IBAction func shareButtonPressed(_ sender: Any) {
+        var textToShare = ""
+        for donation in mappedDonations{
+            textToShare.append(donation.impactType.getimpactDescriptionStringBeforeValue() + " ")
+            textToShare.append(String(Int(Float(donation.impactAmount)!)))
+            textToShare.append(" " + donation.impactType.getimpactDescriptionStringAfterValue())
+            textToShare.append("\n")
+        }
         
+        textToShare.append("\n\nKeep track of your donations and compete with your friends: [inviteLink]")
+        
+        
+        showShareActivityOptions(textToShare)
+    }
+    
+    
+    fileprivate func showShareActivityOptions(_ text: String) {
+        let textToShare = [ text ]
+        let activityController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
         if let popoverController = activityController.popoverPresentationController {
             popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
             popoverController.sourceView = self.view
             popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
         }
+        activityController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop ]
         self.present(activityController, animated: true, completion: nil)
     }
     

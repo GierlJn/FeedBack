@@ -11,11 +11,11 @@ enum CharityImpactType: String{
         var string = ""
         switch(self){
         case .childTreated:
-            string = "You helped treating"
+            string = "I helped treating"
         case .netFounded:
-            string = "You helped funding"
+            string = "I helped funding"
         case .ntdTreated:
-            string =  "You helped funding"
+            string =  "I helped funding"
         default:
             string = ""
         }
