@@ -9,15 +9,17 @@
 import UIKit
 import Firebase
 import Stripe
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+ 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FBSDKCoreKit.ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         STPPaymentConfiguration.shared().publishableKey = "pk_test_y9vO4PDpSho0Zp7m0ziEhJRe00pxvUYsyV"
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
@@ -25,6 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //database.setValue("Test sent data")
         downloadCharityLogos()
         return true
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return FBSDKCoreKit.ApplicationDelegate.shared.application(application,
+                                                                   open: url,
+                                                                   sourceApplication: sourceApplication,
+                                                                   annotation: annotation)
     }
     
     func downloadCharityLogos(){
@@ -74,51 +83,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
     }
-/*
- func getLogo(){
- let cachedDirectory = FileManager.default.urls(for: FileManager.SearchPathDirectory.cachesDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).first!
- let localUrl = cachedDirectory.appendingPathComponent(fileName)
- if(FileManager.default.fileExists(atPath: localUrl)){
- //getLogoFromCache
- }else{
- //downloadLogo
- }
- }
- 
- func getLogoFromCache(_ fileName: String){
- 
- }
- 
- func downloadLogo(_ fileName: String, completion: @escaping(UIImage?, Error?)->()){
- let localUrl = ""
- 
- if(FileManager.default.fileExists(atPath: localUrl)){
- 
- }
- 
- let storage: Storage = Storage.storage()
- let reference: StorageReference = storage.reference(forURL: "gs://feedback-cf3dc.appspot.com/")
- reference.downloadURL { (url, error) in
- guard let imageUrl = url, error == nil else {
- print("Error: check Url")
- completion(nil, error)
- return
- }
- guard let data = NSData(contentsOf: imageUrl) else {
- print("Error: check Url")
- completion(nil, error)
- return
- }
- guard let image = UIImage(data: data as Data) else {
- completion(nil, error)
- return
- }
- completion(image, nil)
- 
- }
- }
- */
-
+    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+        return FBSDKCoreKit.ApplicationDelegate.shared.application(application, open: url, options: options)
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -135,6 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        AppEvents.activateApp()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

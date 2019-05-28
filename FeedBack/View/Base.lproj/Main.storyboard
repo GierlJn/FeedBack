@@ -422,18 +422,22 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="medical-assistance-1" translatesAutoresizingMaskIntoConstraints="NO" id="VT0-Bq-Mlo">
-                                                    <rect key="frame" x="125" y="3" width="38" height="38"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnG-xA-Qcg">
+                                                    <rect key="frame" x="121" y="3.5" width="37" height="37"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="38" id="ghu-ZD-84O"/>
-                                                        <constraint firstAttribute="width" constant="38" id="qpB-GU-ozC"/>
+                                                        <constraint firstAttribute="height" constant="37" id="1x8-QD-xGi"/>
+                                                        <constraint firstAttribute="width" constant="37" id="KEK-V9-OX1"/>
                                                     </constraints>
-                                                </imageView>
+                                                    <state key="normal" image="medical-assistance-1"/>
+                                                    <connections>
+                                                        <action selector="setProfilePictureButtonTapped:" destination="cX2-gR-HXx" eventType="touchUpInside" id="Kwh-RU-YOE"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="VT0-Bq-Mlo" firstAttribute="centerY" secondItem="pGp-91-uUw" secondAttribute="centerY" id="8Q0-Jd-fWz"/>
+                                                <constraint firstItem="FnG-xA-Qcg" firstAttribute="leading" secondItem="pGp-91-uUw" secondAttribute="leading" constant="121" id="Eyv-Lq-qCJ"/>
                                                 <constraint firstItem="tKX-hF-sik" firstAttribute="centerY" secondItem="pGp-91-uUw" secondAttribute="centerY" id="G2u-1i-Ge1"/>
-                                                <constraint firstItem="VT0-Bq-Mlo" firstAttribute="leading" secondItem="pGp-91-uUw" secondAttribute="leading" constant="125" id="cbU-dQ-1Dw"/>
+                                                <constraint firstItem="FnG-xA-Qcg" firstAttribute="centerY" secondItem="pGp-91-uUw" secondAttribute="centerY" id="gaX-pO-TC3"/>
                                                 <constraint firstItem="tKX-hF-sik" firstAttribute="leading" secondItem="pGp-91-uUw" secondAttribute="leadingMargin" id="qGy-sf-YnQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -777,13 +781,13 @@
                     <connections>
                         <outlet property="emailTextField" destination="Feq-YF-fFZ" id="WvB-uo-A7j"/>
                         <outlet property="passwordButtonOutlet" destination="H8j-W9-txi" id="23a-qF-8D3"/>
-                        <outlet property="userAvatarOutlet" destination="VT0-Bq-Mlo" id="Fn7-zf-Fgq"/>
                         <outlet property="userNameTextField" destination="Xti-bb-mQb" id="tc3-J4-BQC"/>
+                        <outlet property="userProfilePicture" destination="FnG-xA-Qcg" id="xRd-pI-yFI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGb-in-dex" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6520" y="537"/>
+            <point key="canvasLocation" x="6518.840579710145" y="536.38392857142856"/>
         </scene>
         <!--Change Password View Controller-->
         <scene sceneID="UA5-uf-Jfq">

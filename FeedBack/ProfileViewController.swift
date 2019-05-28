@@ -2,7 +2,7 @@
 import UIKit
 import Firebase
 
-class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate {
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate{
 
     @IBOutlet weak var donationSumLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
@@ -47,24 +47,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewWillDisappear(true)
         //Auth.auth().removeStateDidChangeListener(handle!)
     }
-    
-    let sampleData:[Dictionary<String, Any>] = [
-        [
-            "impactInfo" : "You helped treating",
-            "impact" : "10",
-            "afterImpactInfo" : "children with antimalarial medicine."
-        ],
-        [
-            "impactInfo" : "You helped funding",
-            "impact" : "7",
-            "afterImpactInfo" : "malaria nets in developing countries."
-        ],
-        [
-            "impactInfo" : "You helped treating",
-            "impact" : "70",
-            "afterImpactInfo" : "people with NTDs(neglected tropical diseases)."
-        ]
-    ]
+
     
     let sampleAchievements = [AchievementModel(image: UIImage(imageLiteralResourceName: "medal-2.png"), title: "Humanitarian"), AchievementModel(image: UIImage(imageLiteralResourceName: "heart_achievement.png"), title: "Sharing is caring"), AchievementModel(image: UIImage(imageLiteralResourceName: "like.png"), title: "You're awesome!")]
     
@@ -74,12 +57,18 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         setupTableView()
         setupSeperatorLines()
     }
-    /*
-    func updateDisplayName(_ newUserName: String) {
-        print("new name set")
-        self.userNameLabel.text = newUserName
+    
+    fileprivate func showShareActivityOptions(_ saveFileURL: URL) {
+        let activityController = UIActivityViewController(activityItems: ["iPhysics Demo File Sharing", saveFileURL], applicationActivities: nil)
+        
+        if let popoverController = activityController.popoverPresentationController {
+            popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
+            popoverController.sourceView = self.view
+            popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+        }
+        self.present(activityController, animated: true, completion: nil)
     }
-    */
+    
     fileprivate func setupSeperatorLines(){
         setupBottomBorder(for: userProfileView)
         setupBottomBorder(for: impactView)

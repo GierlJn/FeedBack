@@ -2,6 +2,16 @@ PODS:
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
+  - FBSDKCoreKit (5.0.0):
+    - FBSDKCoreKit/Basics (= 5.0.0)
+    - FBSDKCoreKit/Core (= 5.0.0)
+  - FBSDKCoreKit/Basics (5.0.0)
+  - FBSDKCoreKit/Core (5.0.0):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (5.0.0):
+    - FBSDKCoreKit (= 5.0.0)
+  - FBSDKShareKit (5.0.0):
+    - FBSDKCoreKit (= 5.0.0)
   - Firebase (6.0.0):
     - Firebase/Core (= 6.0.0)
   - Firebase/Analytics (6.0.0):
@@ -90,6 +100,9 @@ PODS:
 
 DEPENDENCIES:
   - ChameleonFramework
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - Firebase
   - Firebase/Analytics
   - Firebase/Auth
@@ -103,6 +116,9 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ChameleonFramework
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -123,6 +139,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  FBSDKCoreKit: ba361d4a9d4dc29ff218822b849b22d4f869c7bb
+  FBSDKLoginKit: c6d0dc187bd076e370dffa10f7fc8a3562a6892c
+  FBSDKShareKit: edf3450bf82ce0c626b31943f370d3729082746d
   Firebase: fa80b9d987ca014a1ba9357496ef2a0178b28b12
   FirebaseAnalytics: 1743c5f4de3687d0745709dfdc4b1dea1484f44c
   FirebaseAuth: efc72b0f6fe075d2a6de8d81a6d9de83ef2b47eb
@@ -141,6 +160,6 @@ SPEC CHECKSUMS:
   Stripe: 2c4d0a88817361a102886315ff452d90f65e898b
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 4d8ae778f29cdf5cb905719d5155edbc9ae9c4ad
+PODFILE CHECKSUM: 897586870a53403765bc9156c3a966b6b9fb62c0
 
 COCOAPODS: 1.6.1

@@ -14,11 +14,11 @@ protocol SettingsDelegate: AnyObject{
     func emailHasChanged(_ email: String)
 }
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var userAvatarOutlet: UIImageView!
+    
+    @IBOutlet weak var userProfilePicture: UIButton!
     @IBOutlet weak var passwordButtonOutlet: UIButton!
-    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     
@@ -69,59 +69,87 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    @IBAction func setProfilePictureButtonTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Change Avatar", message: "", preferredStyle: .actionSheet)
+        
+        let profileImagePicker = UIImagePickerController()
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraAction = UIAlertAction(title: "Take a photo", style: .default) { (action) in
+                profileImagePicker.allowsEditing = false
+                profileImagePicker.sourceType = UIImagePickerController.SourceType.camera
+                profileImagePicker.cameraCaptureMode = .photo
+                profileImagePicker.modalPresentationStyle = .fullScreen
+                self.present(profileImagePicker, animated: true, completion: nil)
+            }
+            alertController.addAction(cameraAction)
+        }
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let photosLibraryAction = UIAlertAction(title: "Pick image", style: .default) { (action) in
+                profileImagePicker.sourceType = .photoLibrary
+                profileImagePicker.delegate = self
+                self.present(profileImagePicker, animated: true, completion: nil)
+            }
+            alertController.addAction(photosLibraryAction)
+        }
+        
+        alertController.addAction(UIAlertAction(title: "Abort", style: .destructive, handler: { (action) in
+            return
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        guard let optimizedImageData = selectedImage.pngData() else { return }
+        uploadProfileImage(imageData: optimizedImageData)
+        picker.dismiss(animated: true, completion: nil)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
+//        //if let profileImage = info[UIImagePickerControllerOriginalImage] as? UIImage, let optimizedImageData = UIImageJPEGRepresentation(profileImage, 0.6){
+//            //uploadProfileImage(imageData: optimizedImageData)
+//        //}
+//        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+//        picker.dismiss(animated: true, completion:nil)
+//    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
+    {
+        picker.dismiss(animated: true, completion:nil)
     }
-    */
+    
+    func uploadProfileImage(imageData: Data){
+        let activityIndicator = UIActivityIndicatorView.init(style: .gray)
+        activityIndicator.startAnimating()
+        activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
+        
+        let storageReference = Storage.storage().reference()
+        let currentUser = Auth.auth().currentUser
+        let profileImageRef = storageReference.child("users").child(currentUser!.uid).child("\(currentUser!.uid)-profileImage.jpg")
+        
+        let uploadMetaData = StorageMetadata()
+        uploadMetaData.contentType = "image/jpeg"
+        
+        profileImageRef.putData(imageData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
+            
+            activityIndicator.stopAnimating()
+            activityIndicator.removeFromSuperview()
+            
+            if error != nil{
+                print("Error: \(String(describing: error?.localizedDescription))")
+                return
+            } else {
+                self.userProfilePicture.setImage(UIImage(data: imageData), for: .normal) 
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+                print("Meta data of uploaded image \(String(describing: uploadedImageMeta))")
+                self.tableView.reloadData()
+            }
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

@@ -1,7 +1,8 @@
 
 import UIKit
 import FirebaseAuth
-
+import FBSDKCoreKit
+import FBSDKLoginKit
 //protocol ProfileViewDelegate: AnyObject{
     //func updateDisplayName(_ newUserName: String)
 //}
@@ -17,7 +18,9 @@ class SettingsViewController: UIViewController, SettingsDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        
         guard let tableViewController = children.first as? SettingsTableViewController else{
             fatalError("Check storyboard for missing SettingsTableViewController")
         }
