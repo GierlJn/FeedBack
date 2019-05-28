@@ -1,3 +1,5 @@
+
+
 let charityPath = "charitys"
 let namePath = "charityname"
 let aboutPath = "about"
@@ -19,5 +21,7 @@ let currencyPath = "currency"
 let levelPath = "level"
 let totaldonationsPath = "totaldonations"
 let userNamePath = "username"
+
+let usersPath = "users"
 
 extension String: Error {}

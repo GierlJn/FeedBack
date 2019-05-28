@@ -63,6 +63,9 @@ PODS:
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseUI/Database (7.0.0):
     - Firebase/Database (~> 6.0)
+  - FirebaseUI/Storage (7.0.0):
+    - Firebase/Storage (~> 6.0)
+    - SDWebImage (~> 4.0)
   - GoogleAppMeasurement (6.0.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -95,6 +98,9 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - SDWebImage (4.4.6):
+    - SDWebImage/Core (= 4.4.6)
+  - SDWebImage/Core (4.4.6)
   - Stripe (15.0.1)
   - SVProgressHUD (2.2.5)
 
@@ -109,6 +115,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - FirebaseUI/Database
+  - FirebaseUI/Storage
   - GradientProgressBar (~> 1.0)
   - Stripe
   - SVProgressHUD
@@ -134,6 +141,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - SDWebImage
     - Stripe
     - SVProgressHUD
 
@@ -157,9 +165,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   Stripe: 2c4d0a88817361a102886315ff452d90f65e898b
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 897586870a53403765bc9156c3a966b6b9fb62c0
+PODFILE CHECKSUM: a3bbb35cc4bea8bf6843be40bfe9d51247dad117
 
 COCOAPODS: 1.6.1

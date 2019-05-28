@@ -9,6 +9,7 @@ target 'FeedBack' do
 pod 'Firebase'
 pod 'Firebase/Analytics'
 pod 'Firebase/Storage'
+pod 'FirebaseUI/Storage'
 pod 'Firebase/Auth'
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'

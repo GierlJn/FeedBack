@@ -66,10 +66,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             textToShare.append(" " + donation.impactType.getimpactDescriptionStringAfterValue())
             textToShare.append("\n")
         }
-        
         textToShare.append("\n\nKeep track of your donations and compete with your friends: [inviteLink]")
-        
-        
         showShareActivityOptions(textToShare)
     }
     
@@ -84,6 +81,23 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         activityController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop ]
         self.present(activityController, animated: true, completion: nil)
+    }
+    
+    @IBAction func addFriendsButtonPressed(_ sender: Any) {
+        let alertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        let inviteFriendsAction = UIAlertAction(title: "Invite friends", style: .default) { (action) in
+            self.showShareActivityOptions("Come join me: [inviteLink]")
+        }
+        alertController.addAction(inviteFriendsAction)
+        let searchForFriendsAction = UIAlertAction(title: "Search for friends", style: .default) { (action) in
+            self.performSegue(withIdentifier: "addFriendsSegue", sender: self)
+        }
+        alertController.addAction(searchForFriendsAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
+            return
+        }
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     fileprivate func setupSeperatorLines(){

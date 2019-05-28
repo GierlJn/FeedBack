@@ -59,7 +59,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, LoginButton
             return
         }
         
-        
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
             guard let user = result?.user, error == nil else {
                 self.showMessagePrompt(error!.localizedDescription)
@@ -83,6 +82,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, LoginButton
             
             let initialValues = [userNamePath: username,
                                 levelPath:1] as [String: Any]
+            
             
             self.ref.child("users").child(user.uid).updateChildValues(initialValues)
             self.performSegue(withIdentifier: "goToMain", sender: nil)
