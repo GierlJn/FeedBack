@@ -110,7 +110,8 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         guard let selectedImage = info[.originalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-        guard let optimizedImageData = selectedImage.pngData() else { return }
+        guard let optimizedImageData = selectedImage.jpegData(compressionQuality: 0.5) else { return }
+        //guard let optimizedImageData = UIImageJPEGRepresentation(selectedImage, 0.5) else { return }
         uploadProfileImage(imageData: optimizedImageData)
         picker.dismiss(animated: true, completion: nil)
     }
@@ -134,10 +135,8 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         uploadMetaData.contentType = "image/jpeg"
         SDImageCache.shared().removeImage(forKey: profileImageRef.fullPath)
         profileImageRef.putData(imageData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
-            
             activityIndicator.stopAnimating()
             activityIndicator.removeFromSuperview()
-            
             if error != nil{
                 print("Error: \(String(describing: error?.localizedDescription))")
                 return
