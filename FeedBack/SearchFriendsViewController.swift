@@ -55,7 +55,10 @@ class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFri
         print(cell.uniqueUserId)
     }
     
-    
+    func addFriend(_ uniqueId: String){
+        guard let currentUser = Auth.auth().currentUser else { return }
+        self.ref.child(usersPath).child(currentUser.uid).child("friends")
+    }
     
     func getQuery() -> DatabaseQuery {
         print(searchInput)
