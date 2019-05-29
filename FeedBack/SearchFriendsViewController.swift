@@ -12,6 +12,7 @@ class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFri
     var ref: DatabaseReference!
     var dataSource: FUITableViewDataSource?
     
+    var currentUser = Auth.auth().currentUser
     var searchInput = ""
        
         
@@ -33,14 +34,18 @@ class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFri
     func reloadDataSource(){
         dataSource = FUITableViewDataSource(query: getQuery(), populateCell: { (tableView, indexPath, snapshot) -> UITableViewCell in
             let cell = Bundle.main.loadNibNamed("AddFriendsTableViewCell", owner: self, options: nil)?.first as! AddFriendsTableViewCell
-            cell.delegate = self
             guard let user = User(snapshot: snapshot) else { return cell }
+            cell.delegate = self
             let storageReference = Storage.storage().reference()
             let profileImageRef = storageReference.child(usersPath).child(user.uniqueId).child("\(user.uniqueId)-profileImage.jpg")
             let placeholderImage = UIImage(named: "user.png")
             cell.userImage.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
+            cell.userImage.setRounded()
             cell.userNameLabel.text = user.userName
             cell.uniqueUserId = user.uniqueId
+            if(user.uniqueId == self.currentUser?.uid){
+                cell.hideAddFriendButton()
+            }
             return cell
         })
         dataSource?.bind(to: tableView)
@@ -48,9 +53,7 @@ class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFri
     
     func addFriendButtonPressedForUser(cell: AddFriendsTableViewCell) {
         guard let indexPath = self.tableView.indexPath(for: cell) else { return }
-        print("Button tapped on row \(indexPath.row)")
         let cell = tableView.cellForRow(at: indexPath) as! AddFriendsTableViewCell
-        print(cell.uniqueUserId)
     }
     
     func addFriend(_ uniqueId: String){

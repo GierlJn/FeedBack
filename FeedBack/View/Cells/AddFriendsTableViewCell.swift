@@ -10,8 +10,8 @@ protocol AddFriendCellDelegate: class{
 class AddFriendsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userImage: UIImageView!
-    
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var addFriendButton: UIButton!
     
     var uniqueUserId: String?
     
@@ -26,6 +26,10 @@ class AddFriendsTableViewCell: UITableViewCell {
         super.prepareForReuse()
         self.delegate = nil
     }
+    
+    func hideAddFriendButton(){
+        addFriendButton.isHidden = true
+    }
 
     @IBAction func addFriendButtonPressed(_ sender: Any) {
         self.delegate?.addFriendButtonPressedForUser(cell: self)
@@ -36,5 +40,6 @@ class AddFriendsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }
+
+
