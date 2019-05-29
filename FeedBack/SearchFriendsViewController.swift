@@ -14,10 +14,21 @@ class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFri
     
     var currentUser = Auth.auth().currentUser
     var searchInput = ""
-       
+    
+    var currentUserRef: DatabaseReference!
+    var currentUserData: User?
+    
+    var friendsOfCurrentUser: [Friend]?
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let currentUser = currentUser else { return }
+        currentUserRef = Database.database().reference(withPath: "users").child(currentUser.uid)
+        currentUserRef.observe(DataEventType.value) { (snapshot) in
+            guard let currentUserData = User(snapshot: snapshot) else { return }
+            self.currentUserData = currentUserData
+            self.friendsOfCurrentUser = currentUserData.friendsHolder.friends
+        }
         ref = Database.database().reference(withPath: usersPath)
         tableView.delegate = self
     }
@@ -46,19 +57,38 @@ class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFri
             if(user.uniqueId == self.currentUser?.uid){
                 cell.hideAddFriendButton()
             }
+            if(self.userIsAddedAsFriend(uniqueId: user.uniqueId)){
+                cell.hideAddFriendButton()
+            }
             return cell
         })
         dataSource?.bind(to: tableView)
     }
     
+    func userIsAddedAsFriend(uniqueId: String)->Bool{
+        if(self.friendsOfCurrentUser!.contains(where: { (friend) -> Bool in
+            friend.uniqueId == uniqueId
+        })){
+            return true
+        }else{
+            return false
+        }
+    }
+    
     func addFriendButtonPressedForUser(cell: AddFriendsTableViewCell) {
         guard let indexPath = self.tableView.indexPath(for: cell) else { return }
         let cell = tableView.cellForRow(at: indexPath) as! AddFriendsTableViewCell
+        guard let friendId = cell.uniqueUserId else { return }
+        addFriend(friendId)
     }
     
     func addFriend(_ uniqueId: String){
         guard let currentUser = Auth.auth().currentUser else { return }
-        self.ref.child(usersPath).child(currentUser.uid).child("friends")
+        
+        let updateValues = [uniqueId:"true"] as [String:Any]
+        self.ref.child(currentUser.uid).child("friends").updateChildValues(updateValues)
+        reloadDataSource()
+        self.tableView.reloadData()
     }
     
     func getQuery() -> DatabaseQuery {
