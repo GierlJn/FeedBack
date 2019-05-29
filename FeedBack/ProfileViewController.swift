@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var achievementView: UIView!
     @IBOutlet weak var impactView: UIView!
     @IBOutlet weak var userProfileView: UIView!
-    @IBOutlet weak var userAvatar: UIImageView!
+    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var impactTableView: UITableView!
     @IBOutlet weak var achievementCollectionView: UICollectionView!
@@ -21,6 +21,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     var mappedDonations = [GameDonation]()
     var allDonations = [GameDonation]()
     
+    var user: User?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -28,23 +29,24 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         userRef = Database.database().reference(withPath: "users").child(user.uid)
         userRef.observe(DataEventType.value) { (snapshot) in
             guard let user = User(snapshot: snapshot) else { return }
+            self.user = user
             self.userNameLabel.text = String(user.userName)
             self.levelLabel.text = String(user.level)
             self.rankLabel.text = Level.getRankForLevel(level: user.level)
             self.donationSumLabel.text = String(user.donationHolder.getTotalDonationSum()) + " " + currency
             self.allDonations = user.donationHolder.donations
             self.mappedDonations = user.donationHolder.getMappedDonations()
-            self.setupUserImage(user)
+            self.setupUserImage()
             self.impactTableView.reloadData()
         }
     }
     
-    fileprivate func setupUserImage(_ user: User) {
+    fileprivate func setupUserImage() {
         let storageReference = Storage.storage().reference()
-        let profileImageRef = storageReference.child(usersPath).child(user.uniqueId).child("\(user.uniqueId)-profileImage.jpg")
+        let profileImageRef = storageReference.child(usersPath).child(user!.uniqueId).child("\(user!.uniqueId)-profileImage.jpg")
         let placeholderImage = UIImage(named: "user.png")
-        userAvatar.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
-        userAvatar.setRounded()
+        userImage.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
+        userImage.setRounded()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

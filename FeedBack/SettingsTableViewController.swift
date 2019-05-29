@@ -12,7 +12,7 @@ protocol SettingsDelegate: AnyObject{
 class SettingsTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
-    @IBOutlet weak var userProfilePictureButton: UIButton!
+    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var passwordButtonOutlet: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
@@ -34,11 +34,11 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     fileprivate func setupUserImage() {
-    Storage.storage().reference().child(usersPath).child(user!.uniqueId).child("\(user!.uniqueId)-profileImage.jpg").downloadURL { (url, error) in
-            self.userProfilePictureButton.sd_setImage(with: url, for: .normal, completed: nil)
-        }
-        
-        self.userProfilePictureButton.imageView!.setRounded()
+        let storageReference = Storage.storage().reference()
+        let profileImageRef = storageReference.child(usersPath).child(user!.uniqueId).child("\(user!.uniqueId)-profileImage.jpg")
+        let placeholderImage = UIImage(named: "user.png")
+        userImage.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
+        userImage.setRounded()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -111,7 +111,6 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         guard let optimizedImageData = selectedImage.jpegData(compressionQuality: 0.5) else { return }
-        //guard let optimizedImageData = UIImageJPEGRepresentation(selectedImage, 0.5) else { return }
         uploadProfileImage(imageData: optimizedImageData)
         picker.dismiss(animated: true, completion: nil)
     }
@@ -141,7 +140,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
                 print("Error: \(String(describing: error?.localizedDescription))")
                 return
             } else {
-                self.userProfilePictureButton.setImage(UIImage(data: imageData), for: .normal) 
+                self.setupUserImage()
                 print("Meta data of uploaded image \(String(describing: uploadedImageMeta))")
                 self.tableView.reloadData()
             }

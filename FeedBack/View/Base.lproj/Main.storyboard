@@ -342,7 +342,7 @@
                         <outlet property="impactView" destination="B7B-04-cLQ" id="qe0-4k-GyZ"/>
                         <outlet property="levelLabel" destination="Sx7-hD-y51" id="Io5-9j-fIA"/>
                         <outlet property="rankLabel" destination="8HL-vw-N8P" id="JrV-zf-6Hj"/>
-                        <outlet property="userAvatar" destination="wzU-ip-U6S" id="4dQ-8u-rHq"/>
+                        <outlet property="userImage" destination="wzU-ip-U6S" id="4dQ-8u-rHq"/>
                         <outlet property="userNameLabel" destination="FiA-kU-ynE" id="aaZ-cY-djU"/>
                         <outlet property="userProfileView" destination="8c9-gi-eAN" id="sn6-BL-co1"/>
                         <segue destination="N1s-t4-gwj" kind="presentation" identifier="showSettingsSegue" modalTransitionStyle="coverVertical" id="xrM-Gx-9qp"/>
@@ -503,22 +503,34 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnG-xA-Qcg">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uXd-1v-clr">
                                                     <rect key="frame" x="121" y="3.5" width="37" height="37"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="37" id="1x8-QD-xGi"/>
-                                                        <constraint firstAttribute="width" constant="37" id="KEK-V9-OX1"/>
+                                                        <constraint firstAttribute="height" constant="37" id="pAI-Qa-lhc"/>
+                                                        <constraint firstAttribute="width" constant="37" id="tF7-h4-h18"/>
                                                     </constraints>
-                                                    <state key="normal" image="medical-assistance-1"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnG-xA-Qcg">
+                                                    <rect key="frame" x="158" y="4.5" width="86" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="F7M-o9-cuv"/>
+                                                        <constraint firstAttribute="width" constant="86" id="uXr-dn-p7L"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <state key="normal" title="Edit">
+                                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="setProfilePictureButtonTapped:" destination="cX2-gR-HXx" eventType="touchUpInside" id="Kwh-RU-YOE"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="FnG-xA-Qcg" firstAttribute="leading" secondItem="pGp-91-uUw" secondAttribute="leading" constant="121" id="Eyv-Lq-qCJ"/>
+                                                <constraint firstItem="uXd-1v-clr" firstAttribute="leading" secondItem="pGp-91-uUw" secondAttribute="leading" constant="121" id="2o9-75-aMx"/>
+                                                <constraint firstItem="FnG-xA-Qcg" firstAttribute="centerY" secondItem="pGp-91-uUw" secondAttribute="centerY" id="FC4-wO-213"/>
                                                 <constraint firstItem="tKX-hF-sik" firstAttribute="centerY" secondItem="pGp-91-uUw" secondAttribute="centerY" id="G2u-1i-Ge1"/>
-                                                <constraint firstItem="FnG-xA-Qcg" firstAttribute="centerY" secondItem="pGp-91-uUw" secondAttribute="centerY" id="gaX-pO-TC3"/>
+                                                <constraint firstItem="uXd-1v-clr" firstAttribute="centerY" secondItem="pGp-91-uUw" secondAttribute="centerY" id="Hal-V4-dpj"/>
+                                                <constraint firstItem="FnG-xA-Qcg" firstAttribute="leading" secondItem="uXd-1v-clr" secondAttribute="trailing" id="pzU-NH-TjU"/>
                                                 <constraint firstItem="tKX-hF-sik" firstAttribute="leading" secondItem="pGp-91-uUw" secondAttribute="leadingMargin" id="qGy-sf-YnQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -862,8 +874,8 @@
                     <connections>
                         <outlet property="emailTextField" destination="Feq-YF-fFZ" id="WvB-uo-A7j"/>
                         <outlet property="passwordButtonOutlet" destination="H8j-W9-txi" id="23a-qF-8D3"/>
+                        <outlet property="userImage" destination="uXd-1v-clr" id="sOt-zf-Lea"/>
                         <outlet property="userNameTextField" destination="Xti-bb-mQb" id="tc3-J4-BQC"/>
-                        <outlet property="userProfilePictureButton" destination="FnG-xA-Qcg" id="OW4-sO-hWd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGb-in-dex" userLabel="First Responder" sceneMemberID="firstResponder"/>
