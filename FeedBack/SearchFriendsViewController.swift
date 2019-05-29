@@ -75,6 +75,13 @@ class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFri
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! AddFriendsTableViewCell
+        guard let userId = cell.uniqueUserId else { return }
+        print(userId)
+        performSegue(withIdentifier: "goToPublicProfile", sender: indexPath)
+    }
+    
     func addFriendButtonPressedForUser(cell: AddFriendsTableViewCell) {
         guard let indexPath = self.tableView.indexPath(for: cell) else { return }
         let cell = tableView.cellForRow(at: indexPath) as! AddFriendsTableViewCell
@@ -99,6 +106,16 @@ class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFri
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         getQuery().removeAllObservers()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath: IndexPath = sender as? IndexPath else { return }
+        guard let destinationVc: PublicUserProfileViewController = segue.destination as? PublicUserProfileViewController else{
+            return
+        }
+        let cell = tableView.cellForRow(at: indexPath) as! AddFriendsTableViewCell
+        guard let userId = cell.uniqueUserId else { return }
+        destinationVc.userId = userId
     }
 
 }

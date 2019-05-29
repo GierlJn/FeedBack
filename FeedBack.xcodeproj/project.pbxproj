@@ -48,6 +48,7 @@
 		B97351D2229534DA00FFBB3E /* AchievementsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351D1229534DA00FFBB3E /* AchievementsHolder.swift */; };
 		B97351D422954C3700FFBB3E /* CharityImpacTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */; };
 		B9869E19229E664F00FE140B /* UIImageView + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9869E18229E664F00FE140B /* UIImageView + extensions.swift */; };
+		B9869E1B229EB36A00FE140B /* PublicUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9869E1A229EB36A00FE140B /* PublicUserProfileViewController.swift */; };
 		B98DBDD8226DC6870007B36F /* LastActiveDonationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98DBDD6226DC6870007B36F /* LastActiveDonationTableViewCell.swift */; };
 		B98DBDD9226DC6870007B36F /* LastActiveDonationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B98DBDD7226DC6870007B36F /* LastActiveDonationTableViewCell.xib */; };
 		B99EA0AA2258CB3700256A89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99EA0A92258CB3700256A89 /* AppDelegate.swift */; };
@@ -135,6 +136,7 @@
 		B97351D1229534DA00FFBB3E /* AchievementsHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsHolder.swift; sourceTree = "<group>"; };
 		B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityImpacTypeEnum.swift; sourceTree = "<group>"; };
 		B9869E18229E664F00FE140B /* UIImageView + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImageView + extensions.swift"; path = "FeedBack/UIImageView + extensions.swift"; sourceTree = SOURCE_ROOT; };
+		B9869E1A229EB36A00FE140B /* PublicUserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicUserProfileViewController.swift; sourceTree = "<group>"; };
 		B98DBDD6226DC6870007B36F /* LastActiveDonationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastActiveDonationTableViewCell.swift; sourceTree = "<group>"; };
 		B98DBDD7226DC6870007B36F /* LastActiveDonationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LastActiveDonationTableViewCell.xib; sourceTree = "<group>"; };
 		B99EA0A62258CB3700256A89 /* FeedBack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedBack.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,6 +292,7 @@
 				B9D32CA0228BF43900F11743 /* UIViewController+alerts.swift */,
 				B9DD99C4228D4F3900A8A189 /* DonationViewController.swift */,
 				B9A159AB2292B66C0074E61F /* MainTabBarViewController.swift */,
+				B9869E1A229EB36A00FE140B /* PublicUserProfileViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 				B95F9279226494CF007F7755 /* ProfileViewController.swift in Sources */,
 				B9DD99C5228D4F3900A8A189 /* DonationViewController.swift in Sources */,
 				B964F0BE2261D85500D55C58 /* ExploreViewController.swift in Sources */,
+				B9869E1B229EB36A00FE140B /* PublicUserProfileViewController.swift in Sources */,
 				B9338FCA2282B6AD0021943C /* RootViewController.swift in Sources */,
 				B92000462275ADD6004F74A6 /* SettingsViewController.swift in Sources */,
 				B95F927122646DC4007F7755 /* CharityInfoViewController.swift in Sources */,
