@@ -1,6 +1,7 @@
 
 import UIKit
 import Firebase
+import FirebaseUI
 
 class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate{
 
@@ -20,6 +21,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     var mappedDonations = [GameDonation]()
     var allDonations = [GameDonation]()
     
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         guard let user = Firebase.Auth.auth().currentUser else { return }
@@ -32,20 +34,21 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             self.donationSumLabel.text = String(user.donationHolder.getTotalDonationSum()) + " " + currency
             self.allDonations = user.donationHolder.donations
             self.mappedDonations = user.donationHolder.getMappedDonations()
+            self.setupUserImage(user)
             self.impactTableView.reloadData()
         }
-        
-        /*
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            if let user = user{
-                self.userNameLabel.text = user.displayName!
-            }
-        }*/
+    }
+    
+    fileprivate func setupUserImage(_ user: User) {
+        let storageReference = Storage.storage().reference()
+        let profileImageRef = storageReference.child(usersPath).child(user.uniqueId).child("\(user.uniqueId)-profileImage.jpg")
+        let placeholderImage = UIImage(named: "user.png")
+        userAvatar.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
+        userAvatar.setRounded()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        //Auth.auth().removeStateDidChangeListener(handle!)
     }
 
     

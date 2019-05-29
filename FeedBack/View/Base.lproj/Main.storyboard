@@ -541,7 +541,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="userName" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Julian" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xti-bb-mQb">
-                                                    <rect key="frame" x="121" y="13.5" width="261" height="17"/>
+                                                    <rect key="frame" x="121" y="13.5" width="447" height="17"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" textContentType="name"/>
@@ -578,7 +578,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8j-W9-txi">
-                                                    <rect key="frame" x="121" y="7" width="261" height="30"/>
+                                                    <rect key="frame" x="121" y="7" width="447" height="30"/>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Password"/>
                                                     <connections>
@@ -614,7 +614,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="julian.gierl@gmx.de" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Feq-YF-fFZ">
-                                                    <rect key="frame" x="121" y="13.5" width="241" height="17"/>
+                                                    <rect key="frame" x="121" y="13.5" width="427" height="17"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" textContentType="name"/>
@@ -654,7 +654,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Hks-mb-y2r">
-                                                    <rect key="frame" x="349" y="6.5" width="49" height="31"/>
+                                                    <rect key="frame" x="535" y="6.5" width="49" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="47" id="CWk-Im-JK0"/>
                                                         <constraint firstAttribute="height" constant="31" id="fiv-G2-KnF"/>
@@ -687,7 +687,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3zh-aS-fzC">
-                                                    <rect key="frame" x="349" y="6.5" width="49" height="31"/>
+                                                    <rect key="frame" x="535" y="6.5" width="49" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="31" id="9d2-TJ-UVb"/>
                                                         <constraint firstAttribute="width" constant="47" id="FtJ-Uf-nba"/>
@@ -714,7 +714,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tzk-w1-iLF">
-                                                    <rect key="frame" x="349" y="6.5" width="49" height="31"/>
+                                                    <rect key="frame" x="535" y="6.5" width="49" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="31" id="HrY-LW-W5b"/>
                                                         <constraint firstAttribute="width" constant="47" id="pUf-xs-uI7"/>
@@ -757,7 +757,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hg2-2k-bvr">
-                                                    <rect key="frame" x="349" y="6.5" width="49" height="31"/>
+                                                    <rect key="frame" x="535" y="6.5" width="49" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="31" id="Mrx-KL-g4q"/>
                                                         <constraint firstAttribute="width" constant="47" id="fRH-KN-GqL"/>
@@ -784,7 +784,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s3Z-Nf-Pa0">
-                                                    <rect key="frame" x="147.5" y="7" width="119" height="30"/>
+                                                    <rect key="frame" x="240.5" y="7" width="119" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="62" id="V7V-27-gCP"/>
                                                         <constraint firstAttribute="height" constant="30" id="fnO-dq-tgV"/>
@@ -863,7 +863,7 @@
                         <outlet property="emailTextField" destination="Feq-YF-fFZ" id="WvB-uo-A7j"/>
                         <outlet property="passwordButtonOutlet" destination="H8j-W9-txi" id="23a-qF-8D3"/>
                         <outlet property="userNameTextField" destination="Xti-bb-mQb" id="tc3-J4-BQC"/>
-                        <outlet property="userProfilePicture" destination="FnG-xA-Qcg" id="xRd-pI-yFI"/>
+                        <outlet property="userProfilePictureButton" destination="FnG-xA-Qcg" id="OW4-sO-hWd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGb-in-dex" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1528,11 +1528,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Donations" image="heart" id="cny-0Q-jg9"/>
                     <connections>
-                        <outlet property="avatarPicture" destination="XoN-bh-vfl" id="aVM-wz-5WB"/>
                         <outlet property="donationSumLabel" destination="8ti-dG-QyO" id="aLT-M2-7Um"/>
                         <outlet property="gameTableView" destination="Ya9-cD-Ddd" id="rJX-6f-uT3"/>
                         <outlet property="levelLabel" destination="rHu-MR-Ch1" id="UNz-ts-0x0"/>
                         <outlet property="rankLabel" destination="YYw-Q9-wO0" id="Ljd-JO-C24"/>
+                        <outlet property="userImage" destination="XoN-bh-vfl" id="aVM-wz-5WB"/>
                         <outlet property="userView" destination="v7k-9u-mzI" id="cBZ-wH-LGg"/>
                     </connections>
                 </viewController>

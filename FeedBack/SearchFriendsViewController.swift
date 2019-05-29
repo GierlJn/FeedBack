@@ -13,9 +13,7 @@ class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFri
     var dataSource: FUITableViewDataSource?
     
     var searchInput = ""
-    
-    var userIdsForIndexPath = [Int:String]()
-        
+       
         
     override func viewDidLoad() {
         super.viewDidLoad()

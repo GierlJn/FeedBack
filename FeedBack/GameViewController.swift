@@ -5,7 +5,7 @@ import FirebaseUI
 
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     //TODO: differnent name
-    @IBOutlet weak var avatarPicture: UIImageView!
+    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var gameTableView: UITableView!
     @IBOutlet weak var userView: UIView!
     @IBOutlet weak var donationSumLabel: UILabel!
@@ -14,29 +14,37 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var userRef: DatabaseReference!
     var dataSource: FUITableViewDataSource?
-    var user: Firebase.User?
     var mappedDonations = [GameDonation]()
     
+    var user: User?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let user = Firebase.Auth.auth().currentUser else { return }
-        userRef = Database.database().reference(withPath: "users").child(user.uid)
+        guard let loggedInUser = Firebase.Auth.auth().currentUser else { return }
+        userRef = Database.database().reference(withPath: "users").child(loggedInUser.uid)
         userRef.observe(DataEventType.value) { (snapshot) in
             guard let user = User(snapshot: snapshot) else { return }
+            self.user = user
             self.levelLabel.text = String(user.level)
             let rank = Level.getRankForLevel(level: user.level)
             self.rankLabel.text = rank
             self.donationSumLabel.text = String(user.donationHolder.getTotalDonationSum()) + " " + currency
             self.mappedDonations = user.donationHolder.getMappedDonations()
-            print(user.donationHolder.getMappedDonations())
+            self.setupUserImage()
             self.gameTableView.reloadData()
         }
-        
         gameTableView.delegate = self
         gameTableView.dataSource = self
         setupBottomBorder()
+    }
+    
+    fileprivate func setupUserImage() {
+        let storageReference = Storage.storage().reference()
+        let profileImageRef = storageReference.child(usersPath).child(user!.uniqueId).child("\(user!.uniqueId)-profileImage.jpg")
+        let placeholderImage = UIImage(named: "user.png")
+        userImage.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
+        userImage.setRounded()
     }
     
     fileprivate func setupBottomBorder() {

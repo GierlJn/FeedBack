@@ -1,13 +1,8 @@
-//
-//  SettingsTableViewController.swift
-//  FeedBack
-//
-//  Created by Julian on 08.05.19.
-//  Copyright © 2019 gierljn. All rights reserved.
-//
 
 import UIKit
 import Firebase
+import FirebaseUI
+
 
 protocol SettingsDelegate: AnyObject{
     func userNameHasChanged(_ userName: String)
@@ -17,31 +12,42 @@ protocol SettingsDelegate: AnyObject{
 class SettingsTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
-    @IBOutlet weak var userProfilePicture: UIButton!
+    @IBOutlet weak var userProfilePictureButton: UIButton!
     @IBOutlet weak var passwordButtonOutlet: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     
     weak var delegate: SettingsDelegate?
-    var handle: AuthStateDidChangeListenerHandle?
+    var ref: DatabaseReference!
+    
+    var user: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let user = Firebase.Auth.auth().currentUser else { return }
+        ref = Database.database().reference(withPath: usersPath).child(user.uid)
+        ref.observe(DataEventType.value) { (snapshot) in
+            guard let user = User(snapshot: snapshot) else { return }
+            self.user = user
+            self.setupUserImage()
+        }
+    }
     
+    fileprivate func setupUserImage() {
+    Storage.storage().reference().child(usersPath).child(user!.uniqueId).child("\(user!.uniqueId)-profileImage.jpg").downloadURL { (url, error) in
+            self.userProfilePictureButton.sd_setImage(with: url, for: .normal, completed: nil)
+        }
+        
+        self.userProfilePictureButton.imageView!.setRounded()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            if let user = user{
-                self.userNameTextField.text = user.displayName!
-            }
-        }
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        Auth.auth().removeStateDidChangeListener(handle!)
     }
 
     @IBAction func changePasswordButtonTouched(_ sender: Any) {
@@ -126,7 +132,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         
         let uploadMetaData = StorageMetadata()
         uploadMetaData.contentType = "image/jpeg"
-        
+        SDImageCache.shared().removeImage(forKey: profileImageRef.fullPath)
         profileImageRef.putData(imageData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
             
             activityIndicator.stopAnimating()
@@ -136,8 +142,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
                 print("Error: \(String(describing: error?.localizedDescription))")
                 return
             } else {
-                self.userProfilePicture.setImage(UIImage(data: imageData), for: .normal) 
-
+                self.userProfilePictureButton.setImage(UIImage(data: imageData), for: .normal) 
                 print("Meta data of uploaded image \(String(describing: uploadedImageMeta))")
                 self.tableView.reloadData()
             }

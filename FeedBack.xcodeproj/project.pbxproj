@@ -47,6 +47,7 @@
 		B97351D022952F9800FFBB3E /* FriendsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351CF22952F9800FFBB3E /* FriendsHolder.swift */; };
 		B97351D2229534DA00FFBB3E /* AchievementsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351D1229534DA00FFBB3E /* AchievementsHolder.swift */; };
 		B97351D422954C3700FFBB3E /* CharityImpacTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */; };
+		B9869E19229E664F00FE140B /* UIImageView + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9869E18229E664F00FE140B /* UIImageView + extensions.swift */; };
 		B98DBDD8226DC6870007B36F /* LastActiveDonationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98DBDD6226DC6870007B36F /* LastActiveDonationTableViewCell.swift */; };
 		B98DBDD9226DC6870007B36F /* LastActiveDonationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B98DBDD7226DC6870007B36F /* LastActiveDonationTableViewCell.xib */; };
 		B99EA0AA2258CB3700256A89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99EA0A92258CB3700256A89 /* AppDelegate.swift */; };
@@ -133,6 +134,7 @@
 		B97351CF22952F9800FFBB3E /* FriendsHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsHolder.swift; sourceTree = "<group>"; };
 		B97351D1229534DA00FFBB3E /* AchievementsHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsHolder.swift; sourceTree = "<group>"; };
 		B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityImpacTypeEnum.swift; sourceTree = "<group>"; };
+		B9869E18229E664F00FE140B /* UIImageView + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImageView + extensions.swift"; path = "FeedBack/UIImageView + extensions.swift"; sourceTree = SOURCE_ROOT; };
 		B98DBDD6226DC6870007B36F /* LastActiveDonationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastActiveDonationTableViewCell.swift; sourceTree = "<group>"; };
 		B98DBDD7226DC6870007B36F /* LastActiveDonationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LastActiveDonationTableViewCell.xib; sourceTree = "<group>"; };
 		B99EA0A62258CB3700256A89 /* FeedBack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedBack.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -273,6 +275,7 @@
 			children = (
 				B95F9278226494CF007F7755 /* ProfileViewController.swift */,
 				B9C4B0F7229D2B840002111A /* SearchFriendsViewController.swift */,
+				B9338FC72282B30D0021943C /* SettingsTableViewController.swift */,
 				B943B669225B621400F8C560 /* GameViewController.swift */,
 				B964F0C72261F16300D55C58 /* CharitySelectionViewController.swift */,
 				B964F0BD2261D85500D55C58 /* ExploreViewController.swift */,
@@ -283,7 +286,6 @@
 				B920003F22759BB9004F74A6 /* RegisterViewController.swift */,
 				B920004322759BF0004F74A6 /* LogInViewController.swift */,
 				B92000452275ADD6004F74A6 /* SettingsViewController.swift */,
-				B9338FC72282B30D0021943C /* SettingsTableViewController.swift */,
 				B9338FCD2282BAFB0021943C /* RootNavigationController.swift */,
 				B9D32CA0228BF43900F11743 /* UIViewController+alerts.swift */,
 				B9DD99C4228D4F3900A8A189 /* DonationViewController.swift */,
@@ -297,6 +299,7 @@
 			children = (
 				B9D32CA4228C221F00F11743 /* UIImage+resizeImage.swift */,
 				B9D32CA6228C227600F11743 /* DatabasePaths.swift */,
+				B9869E18229E664F00FE140B /* UIImageView + extensions.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				B95F9277226485D7007F7755 /* CharitySample.swift in Sources */,
 				B9D32CA1228BF43900F11743 /* UIViewController+alerts.swift in Sources */,
 				B920004422759BF0004F74A6 /* LogInViewController.swift in Sources */,
+				B9869E19229E664F00FE140B /* UIImageView + extensions.swift in Sources */,
 				B964F0C12261D94E00D55C58 /* CharityCategoryTableViewCell.swift in Sources */,
 				B9D32CA5228C221F00F11743 /* UIImage+resizeImage.swift in Sources */,
 				B9D32C9F228BE91500F11743 /* UserDataBase.swift in Sources */,
