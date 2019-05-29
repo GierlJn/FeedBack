@@ -3,9 +3,7 @@ import UIKit
 import FirebaseAuth
 import FBSDKCoreKit
 import FBSDKLoginKit
-//protocol ProfileViewDelegate: AnyObject{
-    //func updateDisplayName(_ newUserName: String)
-//}
+import FirebaseDatabase
 
 class SettingsViewController: UIViewController, SettingsDelegate {
     
@@ -14,17 +12,13 @@ class SettingsViewController: UIViewController, SettingsDelegate {
     var newEmail: String?
     var userNameHasChanged = false
     var emailHasChanged = false
-    //weak var delegate: ProfileViewDelegate?
+    let user = Auth.auth().currentUser
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        
-        guard let tableViewController = children.first as? SettingsTableViewController else{
-            fatalError("Check storyboard for missing SettingsTableViewController")
-        }
-        
+        ref = Database.database().reference()
+        guard let tableViewController = children.first as? SettingsTableViewController else{ return }
         settingsTableViewController = tableViewController
         settingsTableViewController!.delegate = self
     }
@@ -48,6 +42,7 @@ class SettingsViewController: UIViewController, SettingsDelegate {
     private func saveChanges(){
         if(userNameHasChanged){
             saveNewUserName()
+            changeUserNameInDatabase()
         }
         if(emailHasChanged){
             saveNewEmail()
@@ -63,9 +58,14 @@ class SettingsViewController: UIViewController, SettingsDelegate {
                 //  TODO: show alert
             }else{
                 print("new name called")
-                //self.delegate?.updateDisplayName(self.newUserName!)
             }
         }
+    }
+    
+    private func changeUserNameInDatabase(){
+        //let initialValues = [userNamePath: newUserName,
+                             //levelPath:1] as [String: Any]
+        self.ref.child(usersPath).child(user!.uid).child(userNamePath).setValue(newUserName)
     }
     
     private func saveNewEmail(){

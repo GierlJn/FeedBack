@@ -109,14 +109,6 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         picker.dismiss(animated: true, completion: nil)
     }
     
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
-//        //if let profileImage = info[UIImagePickerControllerOriginalImage] as? UIImage, let optimizedImageData = UIImageJPEGRepresentation(profileImage, 0.6){
-//            //uploadProfileImage(imageData: optimizedImageData)
-//        //}
-//        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
-//        picker.dismiss(animated: true, completion:nil)
-//    }
-    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
         picker.dismiss(animated: true, completion:nil)
