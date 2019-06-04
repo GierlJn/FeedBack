@@ -15,14 +15,19 @@ class PublicUserProfileViewController: UIViewController, UICollectionViewDelegat
     @IBOutlet weak var impactTableView: UITableView!
     @IBOutlet weak var achievementCollectionView: UICollectionView!
     @IBOutlet weak var userNameLabel: UILabel!
-    
+    @IBOutlet weak var addFriendButtonOutlet: UIButton!
     
     var userRef: DatabaseReference!
+    var userFriends: [Friend]?
     var mappedDonations = [GameDonation]()
     var allDonations = [GameDonation]()
-    
     var userId: String?
     var user: User?
+    
+    var currentUserLogin = Auth.auth().currentUser
+    var currentUser: User?
+    var currentUserRef: DatabaseReference!
+    var currentUserFriends: [Friend]?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -40,12 +45,20 @@ class PublicUserProfileViewController: UIViewController, UICollectionViewDelegat
         super.viewWillDisappear(true)
     }
     
+    @IBAction func addAsFriendButton(_ sender: Any) {
+        if(userIsAddedAsFriend()){
+            print("remove friend")
+        }else{
+            print("add friend")
+        }
+    }
     
     let sampleAchievements = [AchievementModel(image: UIImage(imageLiteralResourceName: "medal-2.png"), title: "Humanitarian"), AchievementModel(image: UIImage(imageLiteralResourceName: "heart_achievement.png"), title: "Sharing is caring"), AchievementModel(image: UIImage(imageLiteralResourceName: "like.png"), title: "You're awesome!")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let currentUser = Firebase.Auth.auth().currentUser else { return }
+        guard let currentUserLogin = currentUserLogin else { return }
+        
         guard let userId = userId else { return }
         userRef = Database.database().reference(withPath: usersPath).child(userId)
         userRef.observe(DataEventType.value) { (snapshot) in
@@ -59,9 +72,37 @@ class PublicUserProfileViewController: UIViewController, UICollectionViewDelegat
             self.setupUserImage()
             self.impactTableView.reloadData()
         }
+        
+        currentUserRef = Database.database().reference(withPath: usersPath).child(currentUserLogin.uid)
+        currentUserRef.observe(DataEventType.value) { (snapshot) in
+            guard let currentUser = User(snapshot: snapshot) else { return }
+            self.currentUser = currentUser
+            self.currentUserFriends = currentUser.friendsHolder.friends
+            self.updateAddFriendButton()
+        }
+        
         setupCollectionView()
         setupTableView()
         setupSeperatorLines()
+        
+    }
+    
+    fileprivate func updateAddFriendButton(){
+        if(userIsAddedAsFriend()){
+            addFriendButtonOutlet.setTitle("Remove friend", for: .normal)
+        }else{
+            addFriendButtonOutlet.setTitle("Add as friend", for: .normal)
+        }
+    }
+    
+    fileprivate func userIsAddedAsFriend()->Bool{
+        if(self.currentUserFriends!.contains(where: { (friend) -> Bool in
+            friend.uniqueId == user?.uniqueId
+        })){
+            return true
+        }else{
+            return false
+        }
     }
     
     fileprivate func setupSeperatorLines(){
