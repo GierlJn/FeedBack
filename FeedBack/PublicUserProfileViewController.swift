@@ -48,10 +48,23 @@ class PublicUserProfileViewController: UIViewController, UICollectionViewDelegat
     @IBAction func addAsFriendButton(_ sender: Any) {
         if(userIsAddedAsFriend()){
             print("remove friend")
+            removeFriend()
         }else{
             print("add friend")
+            addFriend()
         }
+        updateAddFriendButton()
     }
+    
+    func addFriend(){
+        let updateValues = [user!.uniqueId:"true"] as [String:Any]
+        currentUserRef.child("friends").updateChildValues(updateValues)
+    }
+    
+    func removeFriend(){
+        currentUserRef.child("friends").child(user!.uniqueId).removeValue()
+    }
+    
     
     let sampleAchievements = [AchievementModel(image: UIImage(imageLiteralResourceName: "medal-2.png"), title: "Humanitarian"), AchievementModel(image: UIImage(imageLiteralResourceName: "heart_achievement.png"), title: "Sharing is caring"), AchievementModel(image: UIImage(imageLiteralResourceName: "like.png"), title: "You're awesome!")]
     

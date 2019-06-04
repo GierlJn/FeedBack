@@ -78,7 +78,6 @@ class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFri
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! AddFriendsTableViewCell
         guard let userId = cell.uniqueUserId else { return }
-        print(userId)
         performSegue(withIdentifier: "goToPublicProfile", sender: indexPath)
     }
     
