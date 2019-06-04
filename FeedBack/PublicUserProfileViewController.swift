@@ -14,7 +14,6 @@ class PublicUserProfileViewController: UIViewController, UICollectionViewDelegat
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var impactTableView: UITableView!
     @IBOutlet weak var achievementCollectionView: UICollectionView!
-    
     @IBOutlet weak var userNameLabel: UILabel!
     
     var userRef: DatabaseReference!

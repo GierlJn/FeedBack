@@ -46,6 +46,8 @@ class User: NSObject{
         self.donationHolder = donationHolder
     }
     
+    
+    
     func getUserImage(completion: @escaping(UIImage)->()){
         let storageReference = Storage.storage().reference()
         let profileImageRef = storageReference.child("users").child(uniqueId).child("\(uniqueId)-profileImage.jpg")

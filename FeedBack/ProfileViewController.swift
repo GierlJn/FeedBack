@@ -16,11 +16,11 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var impactTableView: UITableView!
     @IBOutlet weak var achievementCollectionView: UICollectionView!
-    //var handle: AuthStateDidChangeListenerHandle?
+    @IBOutlet weak var friendsTableView: UITableView!
+    
     var userRef: DatabaseReference!
     var mappedDonations = [GameDonation]()
     var allDonations = [GameDonation]()
-    
     var user: User?
 
     override func viewDidAppear(_ animated: Bool) {

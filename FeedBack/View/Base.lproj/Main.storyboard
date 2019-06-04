@@ -338,6 +338,7 @@
                         <outlet property="achievementView" destination="yF6-gg-2Le" id="v4D-vi-2XT"/>
                         <outlet property="donationSumLabel" destination="1ce-u9-iwY" id="7uC-zh-dED"/>
                         <outlet property="friendView" destination="bMp-q2-5vr" id="ocj-S3-XpO"/>
+                        <outlet property="friendsTableView" destination="UVs-I3-OD2" id="rDU-h0-kim"/>
                         <outlet property="impactTableView" destination="s8K-o2-I9G" id="5EM-vc-X4i"/>
                         <outlet property="impactView" destination="B7B-04-cLQ" id="qe0-4k-GyZ"/>
                         <outlet property="levelLabel" destination="Sx7-hD-y51" id="Io5-9j-fIA"/>
@@ -2119,6 +2120,7 @@
                         <outlet property="achievementCollectionView" destination="Iar-6a-HLr" id="ep6-7Q-YwA"/>
                         <outlet property="achievementView" destination="5xc-vA-edq" id="dth-aU-8Mm"/>
                         <outlet property="friendView" destination="JdW-yF-czx" id="iTy-Kv-L79"/>
+                        <outlet property="friendsTableView" destination="gQX-xc-Zno" id="irD-sO-pOQ"/>
                         <outlet property="impactTableView" destination="Xbs-J2-vsJ" id="Dnd-ab-4xM"/>
                         <outlet property="impactView" destination="qJc-GW-8vS" id="hAw-zH-TIf"/>
                         <outlet property="levelLabel" destination="BEa-ly-D7A" id="QWP-WB-ZGf"/>
