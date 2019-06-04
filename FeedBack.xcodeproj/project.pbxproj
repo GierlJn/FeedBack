@@ -68,6 +68,8 @@
 		B9D32CA5228C221F00F11743 /* UIImage+resizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32CA4228C221F00F11743 /* UIImage+resizeImage.swift */; };
 		B9D32CA7228C227600F11743 /* DatabasePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32CA6228C227600F11743 /* DatabasePaths.swift */; };
 		B9DD99C5228D4F3900A8A189 /* DonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DD99C4228D4F3900A8A189 /* DonationViewController.swift */; };
+		B9F4926C22A650C500A23C49 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F4926A22A650C500A23C49 /* FriendTableViewCell.swift */; };
+		B9F4926D22A650C500A23C49 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9F4926B22A650C500A23C49 /* FriendTableViewCell.xib */; };
 		E38EB810EAD53DCDC352D82D /* Pods_FeedBackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BB0E358CA75828C685B0C /* Pods_FeedBackUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -162,6 +164,8 @@
 		B9D32CA4228C221F00F11743 /* UIImage+resizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImage+resizeImage.swift"; path = "FeedBack/UIImage+resizeImage.swift"; sourceTree = SOURCE_ROOT; };
 		B9D32CA6228C227600F11743 /* DatabasePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatabasePaths.swift; path = FeedBack/DatabasePaths.swift; sourceTree = SOURCE_ROOT; };
 		B9DD99C4228D4F3900A8A189 /* DonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationViewController.swift; sourceTree = "<group>"; };
+		B9F4926A22A650C500A23C49 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		B9F4926B22A650C500A23C49 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		F347233263347792BC25AE9B /* Pods-FeedBackUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedBackUITests.debug.xcconfig"; path = "Target Support Files/Pods-FeedBackUITests/Pods-FeedBackUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -235,6 +239,8 @@
 				B922C5F2226EF3DF006E0D2C /* ImpactTableViewCell.xib */,
 				B9C4B0F3229D25BE0002111A /* AddFriendsTableViewCell.swift */,
 				B9C4B0F4229D25BE0002111A /* AddFriendsTableViewCell.xib */,
+				B9F4926A22A650C500A23C49 /* FriendTableViewCell.swift */,
+				B9F4926B22A650C500A23C49 /* FriendTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -472,6 +478,7 @@
 				B99EA0B62258CB3800256A89 /* LaunchScreen.storyboard in Resources */,
 				B99EA0B32258CB3800256A89 /* Assets.xcassets in Resources */,
 				B945E507226B1ADE0032EB7A /* GoogleService-Info.plist in Resources */,
+				B9F4926D22A650C500A23C49 /* FriendTableViewCell.xib in Resources */,
 				B9C4B0F6229D25BE0002111A /* AddFriendsTableViewCell.xib in Resources */,
 				B964F0CC2261F23F00D55C58 /* CharityTableViewCell.xib in Resources */,
 				B945E501226B0AAC0032EB7A /* RankedUserTableViewCell.xib in Resources */,
@@ -659,6 +666,7 @@
 				B9C4B0F8229D2B840002111A /* SearchFriendsViewController.swift in Sources */,
 				B9A159AE2292CB8D0074E61F /* GameDonation.swift in Sources */,
 				B9338FC82282B30D0021943C /* SettingsTableViewController.swift in Sources */,
+				B9F4926C22A650C500A23C49 /* FriendTableViewCell.swift in Sources */,
 				B95F928522649CAF007F7755 /* UserDataModel.swift in Sources */,
 				B9C4B0F5229D25BE0002111A /* AddFriendsTableViewCell.swift in Sources */,
 				B95F928022649549007F7755 /* AchievementCell.swift in Sources */,
