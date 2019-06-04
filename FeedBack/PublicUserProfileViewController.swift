@@ -26,21 +26,6 @@ class PublicUserProfileViewController: UIViewController, UICollectionViewDelegat
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
-        guard let currentUser = Firebase.Auth.auth().currentUser else { return }
-        guard let userId = userId else { return }
-        userRef = Database.database().reference(withPath: usersPath).child(userId)
-        userRef.observe(DataEventType.value) { (snapshot) in
-            guard let user = User(snapshot: snapshot) else { return }
-            self.user = user
-            self.userNameLabel.text = String(user.userName)
-            self.levelLabel.text = String(user.level)
-            self.rankLabel.text = Level.getRankForLevel(level: user.level)
-            self.allDonations = user.donationHolder.donations
-            self.mappedDonations = user.donationHolder.getMappedDonations()
-            self.setupUserImage()
-            self.impactTableView.reloadData()
-        }
     }
     
     fileprivate func setupUserImage() {
@@ -60,6 +45,20 @@ class PublicUserProfileViewController: UIViewController, UICollectionViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let currentUser = Firebase.Auth.auth().currentUser else { return }
+        guard let userId = userId else { return }
+        userRef = Database.database().reference(withPath: usersPath).child(userId)
+        userRef.observe(DataEventType.value) { (snapshot) in
+            guard let user = User(snapshot: snapshot) else { return }
+            self.user = user
+            self.userNameLabel.text = String(user.userName)
+            self.levelLabel.text = String(user.level)
+            self.rankLabel.text = Level.getRankForLevel(level: user.level)
+            self.allDonations = user.donationHolder.donations
+            self.mappedDonations = user.donationHolder.getMappedDonations()
+            self.setupUserImage()
+            self.impactTableView.reloadData()
+        }
         setupCollectionView()
         setupTableView()
         setupSeperatorLines()
