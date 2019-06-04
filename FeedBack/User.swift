@@ -10,15 +10,15 @@ class User: NSObject{
     var level: Int
     var friendsHolder: FriendsHolder
     var donationHolder: DonationsHolder
-    var achievements: [Achievement]
+    var achievementHolder: AchievementsFirebaseEntryHolder
     
-    init(uniqueId: String, userName: String, level: Int, friendsHolder: FriendsHolder, donationHolder: DonationsHolder, achievements: [Achievement]){
+    init(uniqueId: String, userName: String, level: Int, friendsHolder: FriendsHolder, donationHolder: DonationsHolder, achievementHolder: AchievementsFirebaseEntryHolder){
         self.uniqueId = uniqueId
         self.userName = userName
         self.level = level
         self.friendsHolder = friendsHolder
         self.donationHolder = donationHolder
-        self.achievements = achievements
+        self.achievementHolder = achievementHolder
     }
     
     init?(snapshot: DataSnapshot){
@@ -38,11 +38,15 @@ class User: NSObject{
         guard let friendHolder = FriendsHolder(snapshot: snapshot.childSnapshot(forPath: "friends")) else {
             print(" friendHolder not found " )
             return nil }
+        guard let achievementHolder = AchievementsFirebaseEntryHolder(snapshot: snapshot.childSnapshot(forPath: "achievements")) else {
+            print(" no achievementholder found ")
+            return nil }
+        
 
         self.userName = userName
         self.level = level
         self.friendsHolder = friendHolder
-        self.achievements = [Achievement]()
+        self.achievementHolder = achievementHolder
         self.donationHolder = donationHolder
     }
     

@@ -1,16 +1,16 @@
 import Foundation
 import FirebaseDatabase
 
-class AchievementsHolder: NSObject{
-    var achievements = [Achievement]()
+class AchievementsFirebaseEntryHolder: NSObject{
+    var achievements = [AchievementFirebaseEntry]()
     
-    init(achievements: [Achievement]){
+    init(achievements: [AchievementFirebaseEntry]){
         self.achievements = achievements
     }
     
     init?(snapshot: DataSnapshot){
         for case let achievementSnap as DataSnapshot in snapshot.children{
-            guard let achievement = Achievement(snapshot: achievementSnap) else {
+            guard let achievement = AchievementFirebaseEntry(snapshot: achievementSnap) else {
                 print(" achievement not found ")
                 return }
             self.achievements.append(achievement)

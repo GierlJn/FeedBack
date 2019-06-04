@@ -23,6 +23,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     var allDonations = [GameDonation]()
     var user: User?
     var friends: [Friend]?
+    var achievements = [AchievementFirebaseEntry]()
+    
+    let allAchievements = Achievements.getAllAvailableAchievements()
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -39,8 +42,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             self.mappedDonations = user.donationHolder.getMappedDonations()
             self.setupUserImage()
             self.friends = user.friendsHolder.friends
+            self.achievements = user.achievementHolder.achievements
             self.impactTableView.reloadData()
             self.friendsTableView.reloadData()
+            self.achievementCollectionView.reloadData()
         }
     }
     
@@ -56,9 +61,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewWillDisappear(true)
     }
 
-    
-    let sampleAchievements = [AchievementModel(image: UIImage(imageLiteralResourceName: "medal-2.png"), title: "Humanitarian"), AchievementModel(image: UIImage(imageLiteralResourceName: "heart_achievement.png"), title: "Sharing is caring"), AchievementModel(image: UIImage(imageLiteralResourceName: "like.png"), title: "You're awesome!")]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
@@ -142,15 +144,31 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sampleAchievements.count
+        return allAchievements.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = achievementCollectionView.dequeueReusableCell(withReuseIdentifier: "achievementCell", for: indexPath) as! AchievementCell
+        let achievementForCell = allAchievements[indexPath.row]
         
-        cell.achievementImage.image = sampleAchievements[indexPath.row].image
-        cell.achievementTitle.text = sampleAchievements[indexPath.row].title
+        if(!userHasAchievement(achievementId: achievementForCell.key)){
+            cell.achievementImage.alpha = 0.3
+            cell.achievementTitle.alpha = 0.3
+        }
+        
+        cell.achievementImage.image = achievementForCell.image
+        cell.achievementTitle.text = achievementForCell.name
         return cell
+    }
+    
+    func userHasAchievement(achievementId: String)->Bool{
+        if(self.achievements.contains(where: { (entry) -> Bool in
+            entry.id == achievementId
+        })){
+            return true
+        }else{
+            return false
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -164,7 +182,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         if (tableView == impactTableView){
             let cell = Bundle.main.loadNibNamed("ImpactTableViewCell", owner: self, options: nil)?.first as! ImpactTableViewCell
             let donation = mappedDonations[indexPath.row]
