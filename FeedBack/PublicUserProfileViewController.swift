@@ -16,6 +16,7 @@ class PublicUserProfileViewController: UIViewController, UICollectionViewDelegat
     @IBOutlet weak var achievementCollectionView: UICollectionView!
     @IBOutlet weak var userNameLabel: UILabel!
     
+    
     var userRef: DatabaseReference!
     var mappedDonations = [GameDonation]()
     var allDonations = [GameDonation]()

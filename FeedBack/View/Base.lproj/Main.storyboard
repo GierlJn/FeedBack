@@ -348,6 +348,7 @@
                         <outlet property="userProfileView" destination="8c9-gi-eAN" id="sn6-BL-co1"/>
                         <segue destination="N1s-t4-gwj" kind="presentation" identifier="showSettingsSegue" modalTransitionStyle="coverVertical" id="xrM-Gx-9qp"/>
                         <segue destination="OSW-Ys-v4C" kind="presentation" identifier="addFriendsSegue" id="Pa1-YJ-eE6"/>
+                        <segue destination="RJG-g9-BcK" kind="presentation" identifier="goToPublicUserProfile" id="yIt-Uy-kFs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -425,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nv1-MO-Qhi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5579.7101449275369" y="1292.4107142857142"/>
+            <point key="canvasLocation" x="3939" y="1637"/>
         </scene>
         <!--Settings-->
         <scene sceneID="x5h-7t-hZJ">
@@ -2120,7 +2121,6 @@
                         <outlet property="achievementCollectionView" destination="Iar-6a-HLr" id="ep6-7Q-YwA"/>
                         <outlet property="achievementView" destination="5xc-vA-edq" id="dth-aU-8Mm"/>
                         <outlet property="friendView" destination="JdW-yF-czx" id="iTy-Kv-L79"/>
-                        <outlet property="friendsTableView" destination="gQX-xc-Zno" id="irD-sO-pOQ"/>
                         <outlet property="impactTableView" destination="Xbs-J2-vsJ" id="Dnd-ab-4xM"/>
                         <outlet property="impactView" destination="qJc-GW-8vS" id="hAw-zH-TIf"/>
                         <outlet property="levelLabel" destination="BEa-ly-D7A" id="QWP-WB-ZGf"/>
@@ -2144,6 +2144,7 @@
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="yIt-Uy-kFs"/>
         <segue reference="JOi-Mq-qJC"/>
     </inferredMetricsTieBreakers>
 </document>

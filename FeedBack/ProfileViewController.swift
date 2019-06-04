@@ -93,9 +93,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     @IBAction func addFriendsButtonPressed(_ sender: Any) {
-        print(friends!.count)
-        print(friends)
-        /*
         let alertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
         let inviteFriendsAction = UIAlertAction(title: "Invite friends", style: .default) { (action) in
             self.showShareActivityOptions("Come join me: [inviteLink]")
@@ -110,7 +107,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
- */
     }
     
     fileprivate func setupSeperatorLines(){
@@ -170,7 +166,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if (tableView == impactTableView){
-            print("impactTableView loaded")
             let cell = Bundle.main.loadNibNamed("ImpactTableViewCell", owner: self, options: nil)?.first as! ImpactTableViewCell
             let donation = mappedDonations[indexPath.row]
             cell.impactNameLabel.text = donation.impactType.getimpactDescriptionStringBeforeValue()
@@ -178,15 +173,13 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             cell.afterImpactLabel.text = donation.impactType.getimpactDescriptionStringAfterValue()
             return cell
         } else if (tableView == friendsTableView){
-            print("friendstableView loaded")
             let cell = Bundle.main.loadNibNamed("FriendTableViewCell", owner: self, options: nil)?.first as! FriendTableViewCell
             guard let friends = friends else { return cell }
             let friend = friends[indexPath.row]
-            //cell.userNameLabel.text = friend.uniqueId
-            
             let friendRef = Database.database().reference(withPath: "users").child(friend.uniqueId)
             friendRef.observe(DataEventType.value) { (snapshot) in
                 guard let friendUser = User(snapshot: snapshot) else { return }
+                cell.uniqueId = friend.uniqueId
                 cell.userNameLabel.text = friendUser.userName
                 cell.userLevelLabel.text = String(friendUser.level)
                 let storageReference = Storage.storage().reference()
@@ -205,13 +198,22 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         performSegue(withIdentifier: "showSettingsSegue", sender: self)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "showSettingsSegue"){
-            print("preparesegue")
-            let settingsViewController = segue.destination as? SettingsViewController
-            //settingsViewController?.delegate = self
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(tableView == friendsTableView){
+        performSegue(withIdentifier: "goToPublicUserProfile", sender: indexPath)
         }
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "showSettingsSegue"){
+            let settingsViewController = segue.destination as? SettingsViewController
+        }else if (segue.identifier == "goToPublicUserProfile"){
+            guard let indexPath: IndexPath = sender as? IndexPath else { return }
+            guard let publicUserProfileViewController = segue.destination as? PublicUserProfileViewController else{
+                return
+            }
+            let selectedCell = friendsTableView.cellForRow(at: indexPath) as! FriendTableViewCell
+            publicUserProfileViewController.userId = selectedCell.uniqueId
+        }
+    }
 }
