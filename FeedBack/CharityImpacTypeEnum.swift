@@ -27,7 +27,7 @@ enum CharityImpactType: String{
         case .netFounded:
             return "malaria nets in developing countries."
         case .ntdTreated:
-            return "people with NTDs(neglected tropical diseases)."
+            return "treatments for people with NTDs."
         default:
             return nil
         }
