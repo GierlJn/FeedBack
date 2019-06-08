@@ -33,6 +33,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
             self.emailTextField.text = currentUser.email
             self.setupUserImage()
         }
+        
     }
     
     fileprivate func setupUserImage() {

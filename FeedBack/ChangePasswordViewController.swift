@@ -43,7 +43,7 @@ class ChangePasswordViewController: UIViewController {
         user?.reauthenticate(with: credential, completion: { (result, error) in
             if let error = error {
                 print("error: \(error)")
-                //TODO: alert
+                self.showMessagePrompt("Wrong password.")
             } else {
                 print("successfully reauthenticated")
                 self.changePassword()
@@ -57,6 +57,7 @@ class ChangePasswordViewController: UIViewController {
         user?.updatePassword(to: newPasswordTextField.text!, completion: { (error) in
             if let error = error {
                 print("new password error: \(error)")
+                self.showMessagePrompt("Password too short.")
             }else{
                 print("password changed")
                 self.dismiss(animated: false, completion: nil)
@@ -99,15 +100,6 @@ class ChangePasswordViewController: UIViewController {
             newPasswordToggleOutlet.setImage(image, for: UIControl.State.normal)
         }
     }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
