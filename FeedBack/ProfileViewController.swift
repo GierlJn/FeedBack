@@ -175,6 +175,26 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         return cell
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let achievement = allAchievements[indexPath.row]
+        if(userHasAchievement(achievementId: achievement.key)){
+            let achievementWithDate = achievements.first { (entry) -> Bool in
+                entry.id == achievement.key
+            }
+            let achievementAchievedDate = achievementWithDate?.getTimeStampAsString()
+            let alert = UIAlertController(title: achievement.name, message: "\(achievement.messageWhenAchieved)\n\(achievementAchievedDate ?? "")", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+        }else{
+            let alert = UIAlertController(title: achievement.name, message: "\(achievement.description)", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+        }
+    }
+
     func userHasAchievement(achievementId: String)->Bool{
         if(self.achievements.contains(where: { (entry) -> Bool in
             entry.id == achievementId
@@ -186,7 +206,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         switch(tableView){
         case impactTableView:
             return mappedDonations.count

@@ -42,6 +42,10 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         impactType = charity.impactType
         charityLogo = charity.logo
         impactDescriptionTextLabel.text = impactType?.getShortDescription()
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -123,9 +127,10 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     }
 
     func grantAchievementWithAlert(_ achievement: Achievement){
+        let timestamp = NSDate().timeIntervalSince1970
         guard let user = user else { return }
-        self.userRef.child("users").child(user.uid).child("achievements").updateChildValues(([achievement.key:true] as [String:Any]))
-        let alert = UIAlertController(title: achievement.name, message: achievement.description, preferredStyle: .alert)
+        self.userRef.child("users").child(user.uid).child("achievements").updateChildValues(([achievement.key:timestamp] as [String:Any]))
+        let alert = UIAlertController(title: achievement.name, message: achievement.messageWhenAchieved, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Nice!", style: .default) { (action) in
             if (self.alertQueue.isEmpty){
                 self.initializeGameViewController()
@@ -136,7 +141,6 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         }
         alert.addAction(okAction)
         alertQueue.append(alert)
-        
     }
     
     func userHasAchievement(userAchievements: [AchievementFirebaseEntry], achievementId: String)->Bool{
