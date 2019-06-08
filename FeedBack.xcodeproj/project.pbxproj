@@ -58,7 +58,9 @@
 		B99EA0C12258CB3800256A89 /* FeedBackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99EA0C02258CB3800256A89 /* FeedBackTests.swift */; };
 		B99EA0CC2258CB3800256A89 /* FeedBackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99EA0CB2258CB3800256A89 /* FeedBackUITests.swift */; };
 		B9A159AC2292B66C0074E61F /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A159AB2292B66C0074E61F /* MainTabBarViewController.swift */; };
-		B9A159AE2292CB8D0074E61F /* GameDonation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A159AD2292CB8D0074E61F /* GameDonation.swift */; };
+		B9A159AE2292CB8D0074E61F /* Donation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A159AD2292CB8D0074E61F /* Donation.swift */; };
+		B9B81CB322AB960300C11CE8 /* DonationTableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B81CB122AB960300C11CE8 /* DonationTableTableViewCell.swift */; };
+		B9B81CB422AB960300C11CE8 /* DonationTableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9B81CB222AB960300C11CE8 /* DonationTableTableViewCell.xib */; };
 		B9C4B0F5229D25BE0002111A /* AddFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4B0F3229D25BE0002111A /* AddFriendsTableViewCell.swift */; };
 		B9C4B0F6229D25BE0002111A /* AddFriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C4B0F4229D25BE0002111A /* AddFriendsTableViewCell.xib */; };
 		B9C4B0F8229D2B840002111A /* SearchFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4B0F7229D2B840002111A /* SearchFriendsViewController.swift */; };
@@ -155,7 +157,9 @@
 		B99EA0CB2258CB3800256A89 /* FeedBackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackUITests.swift; sourceTree = "<group>"; };
 		B99EA0CD2258CB3800256A89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9A159AB2292B66C0074E61F /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
-		B9A159AD2292CB8D0074E61F /* GameDonation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDonation.swift; sourceTree = "<group>"; };
+		B9A159AD2292CB8D0074E61F /* Donation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Donation.swift; sourceTree = "<group>"; };
+		B9B81CB122AB960300C11CE8 /* DonationTableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationTableTableViewCell.swift; sourceTree = "<group>"; };
+		B9B81CB222AB960300C11CE8 /* DonationTableTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DonationTableTableViewCell.xib; sourceTree = "<group>"; };
 		B9C4B0F3229D25BE0002111A /* AddFriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		B9C4B0F4229D25BE0002111A /* AddFriendsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFriendsTableViewCell.xib; sourceTree = "<group>"; };
 		B9C4B0F7229D2B840002111A /* SearchFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +247,8 @@
 				B9C4B0F4229D25BE0002111A /* AddFriendsTableViewCell.xib */,
 				B9F4926A22A650C500A23C49 /* FriendTableViewCell.swift */,
 				B9F4926B22A650C500A23C49 /* FriendTableViewCell.xib */,
+				B9B81CB122AB960300C11CE8 /* DonationTableTableViewCell.swift */,
+				B9B81CB222AB960300C11CE8 /* DonationTableTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -265,7 +271,7 @@
 				B9D32C9E228BE91500F11743 /* UserDataBase.swift */,
 				B9D32CA2228C06DE00F11743 /* Charity.swift */,
 				B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */,
-				B9A159AD2292CB8D0074E61F /* GameDonation.swift */,
+				B9A159AD2292CB8D0074E61F /* Donation.swift */,
 				B91A795622941E4600AA554F /* Level.swift */,
 			);
 			name = Model;
@@ -488,6 +494,7 @@
 				B922C5F4226EF3DF006E0D2C /* ImpactTableViewCell.xib in Resources */,
 				B98DBDD9226DC6870007B36F /* LastActiveDonationTableViewCell.xib in Resources */,
 				B943B66E225B7F3300F8C560 /* ActiveDonationViewCell.xib in Resources */,
+				B9B81CB422AB960300C11CE8 /* DonationTableTableViewCell.xib in Resources */,
 				B95F928122649549007F7755 /* AchievementCell.xib in Resources */,
 				B99EA0B12258CB3700256A89 /* Main.storyboard in Resources */,
 				B964F0C22261D94E00D55C58 /* CharityCategoryTableViewCell.xib in Resources */,
@@ -664,10 +671,11 @@
 				B922C5F3226EF3DF006E0D2C /* ImpactTableViewCell.swift in Sources */,
 				B9D32CA3228C06DE00F11743 /* Charity.swift in Sources */,
 				B9338FCE2282BAFB0021943C /* RootNavigationController.swift in Sources */,
+				B9B81CB322AB960300C11CE8 /* DonationTableTableViewCell.swift in Sources */,
 				B99EA0AA2258CB3700256A89 /* AppDelegate.swift in Sources */,
 				B945E500226B0AAC0032EB7A /* RankedUserTableViewCell.swift in Sources */,
 				B9C4B0F8229D2B840002111A /* SearchFriendsViewController.swift in Sources */,
-				B9A159AE2292CB8D0074E61F /* GameDonation.swift in Sources */,
+				B9A159AE2292CB8D0074E61F /* Donation.swift in Sources */,
 				B9338FC82282B30D0021943C /* SettingsTableViewController.swift in Sources */,
 				B9F4926C22A650C500A23C49 /* FriendTableViewCell.swift in Sources */,
 				B95F928522649CAF007F7755 /* UserDataModel.swift in Sources */,

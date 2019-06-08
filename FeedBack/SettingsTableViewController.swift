@@ -24,11 +24,13 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let user = Firebase.Auth.auth().currentUser else { return }
-        ref = Database.database().reference(withPath: usersPath).child(user.uid)
+        guard let currentUser = Firebase.Auth.auth().currentUser else { return }
+        ref = Database.database().reference(withPath: usersPath).child(currentUser.uid)
         ref.observe(DataEventType.value) { (snapshot) in
             guard let user = User(snapshot: snapshot) else { return }
             self.user = user
+            self.userNameTextField.text = user.userName
+            self.emailTextField.text = currentUser.email
             self.setupUserImage()
         }
     }
