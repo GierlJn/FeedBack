@@ -72,12 +72,14 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBAction func shareButtonPressed(_ sender: Any) {
         var textToShare = ""
         for donation in mappedDonations{
-            textToShare.append(donation.impactType.getimpactDescriptionStringBeforeValue() + " ")
+            textToShare.append(donation.impactType.getimpactDescriptionStringBeforeValue() ?? "")
+            textToShare.append(" ")
             textToShare.append(String(Int(Float(donation.impactAmount)!)))
-            textToShare.append(" " + donation.impactType.getimpactDescriptionStringAfterValue())
+            textToShare.append(" ")
+            textToShare.append(donation.impactType.getimpactDescriptionStringAfterValue() ?? "")
             textToShare.append("\n")
         }
-        textToShare.append("\n\nKeep track of your donations and compete with your friends: [inviteLink]")
+        textToShare.append("Keep track of your donations and compete with your friends: [inviteLink]")
         showShareActivityOptions(textToShare)
     }
     
@@ -154,6 +156,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         if(!userHasAchievement(achievementId: achievementForCell.key)){
             cell.achievementImage.alpha = 0.3
             cell.achievementTitle.alpha = 0.3
+        }else{
+            cell.achievementImage.alpha = 1
+            cell.achievementTitle.alpha = 1
         }
         
         cell.achievementImage.image = achievementForCell.image

@@ -7,33 +7,42 @@ enum CharityImpactType: String{
     static let allValues = [childTreated, netFounded, ntdTreated, none]
     
     
-    func getimpactDescriptionStringBeforeValue()->String{
-        var string = ""
+    func getimpactDescriptionStringBeforeValue()->String?{
         switch(self){
         case .childTreated:
-            string = "I helped treating"
+            return "I helped treating"
         case .netFounded:
-            string = "I helped funding"
+            return "I helped funding"
         case .ntdTreated:
-            string =  "I helped funding"
+            return  "I helped funding"
         default:
-            string = ""
+            return nil
         }
-        return string
     }
     
-    func getimpactDescriptionStringAfterValue()->String{
-        var string = ""
+    func getimpactDescriptionStringAfterValue()->String?{
         switch(self){
         case .childTreated:
-            string = "children with antimalarial medicine."
+            return "children with antimalarial medicine."
         case .netFounded:
-            string = "malaria nets in developing countries."
+            return "malaria nets in developing countries."
         case .ntdTreated:
-            string =  "people with NTDs(neglected tropical diseases)."
+            return "people with NTDs(neglected tropical diseases)."
         default:
-            string = ""
+            return nil
         }
-        return string
+    }
+    
+    func getShortDescription()->String?{
+        switch(self){
+        case .childTreated:
+            return "children treated"
+        case .netFounded:
+            return "funded malaria nets"
+        case .ntdTreated:
+            return "treated people"
+        default:
+            return nil
+        }
     }
 }

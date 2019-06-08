@@ -46,7 +46,7 @@ class DonationsHolder: NSObject{
         let mappedDonations = getMappedDonations()
         let sum: Int = mappedDonations.reduce(0) { (result: Int, donation: GameDonation) -> Int in
             return result + donation.getLevelForImpactAmount()
-        }//nicht auf jede einzelen donation sondern auf zusammengeasste mapdonation
+        }
         return sum
     }
     
