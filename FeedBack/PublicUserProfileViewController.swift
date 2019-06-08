@@ -19,8 +19,8 @@ class PublicUserProfileViewController: UIViewController, UICollectionViewDelegat
     
     var userRef: DatabaseReference!
     var userFriends: [Friend]?
-    var mappedDonations = [GameDonation]()
-    var allDonations = [GameDonation]()
+    var mappedDonations = [Donation]()
+    var allDonations = [Donation]()
     var userId: String?
     var user: User?
     

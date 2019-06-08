@@ -337,6 +337,7 @@
                         <outlet property="achievementCollectionView" destination="bdd-UR-LnW" id="F0N-KO-AMu"/>
                         <outlet property="achievementView" destination="yF6-gg-2Le" id="v4D-vi-2XT"/>
                         <outlet property="donationSumLabel" destination="1ce-u9-iwY" id="7uC-zh-dED"/>
+                        <outlet property="donationTableView" destination="BI2-Ar-RB5" id="yGG-xc-BMl"/>
                         <outlet property="friendView" destination="bMp-q2-5vr" id="ocj-S3-XpO"/>
                         <outlet property="friendsTableView" destination="UVs-I3-OD2" id="rDU-h0-kim"/>
                         <outlet property="impactTableView" destination="s8K-o2-I9G" id="5EM-vc-X4i"/>

@@ -14,15 +14,16 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var userProfileView: UIView!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var impactTableView: UITableView!
     @IBOutlet weak var achievementCollectionView: UICollectionView!
+    @IBOutlet weak var impactTableView: UITableView!
     @IBOutlet weak var friendsTableView: UITableView!
+    @IBOutlet weak var donationTableView: UITableView!
     
     var userRef: DatabaseReference!
-    var mappedDonations = [GameDonation]()
-    var allDonations = [GameDonation]()
+    var mappedDonations = [Donation]()
+    var allDonations = [Donation]()
     var user: User?
-    var friends: [Friend]?
+    var friends = [Friend]()
     var achievements = [AchievementFirebaseEntry]()
     
     let allAchievements = Achievements.getAllAvailableAchievements()
@@ -45,7 +46,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             self.achievements = user.achievementHolder.achievements
             self.impactTableView.reloadData()
             self.friendsTableView.reloadData()
+            self.donationTableView.reloadData()
             self.achievementCollectionView.reloadData()
+            
         }
     }
     
@@ -64,8 +67,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        setupTableView()
+        setupImpactTableView()
         setupFriendsTableView()
+        setupDonationTableView()
         setupSeperatorLines()
     }
     
@@ -133,10 +137,15 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         achievementCollectionView.register(UINib.init(nibName: "AchievementCell", bundle: nil), forCellWithReuseIdentifier: "achievementCell")
     }
     
-    fileprivate func setupTableView() {
+    fileprivate func setupImpactTableView() {
         impactTableView.dataSource = self
         impactTableView.delegate = self
         impactTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+    }
+    
+    fileprivate func setupDonationTableView() {
+        donationTableView.dataSource = self
+        impactTableView.delegate = self
     }
     
     fileprivate func setupFriendsTableView(){
@@ -177,26 +186,32 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (tableView == impactTableView){
+        
+        switch(tableView){
+        case impactTableView:
             return mappedDonations.count
-        } else if (tableView == friendsTableView){
-            guard let friends = friends else { return 0 }
+        case friendsTableView:
             return friends.count
+        case donationTableView:
+            return allDonations.count
+        default:
+            return 0
         }
-        return 0
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (tableView == impactTableView){
+        
+        switch(tableView){
+        case impactTableView:
             let cell = Bundle.main.loadNibNamed("ImpactTableViewCell", owner: self, options: nil)?.first as! ImpactTableViewCell
             let donation = mappedDonations[indexPath.row]
             cell.impactNameLabel.text = donation.impactType.getimpactDescriptionStringBeforeValue()
             cell.impactLabel.text = String(Int(Float(donation.impactAmount)!))
             cell.afterImpactLabel.text = donation.impactType.getimpactDescriptionStringAfterValue()
             return cell
-        } else if (tableView == friendsTableView){
+        case friendsTableView:
             let cell = Bundle.main.loadNibNamed("FriendTableViewCell", owner: self, options: nil)?.first as! FriendTableViewCell
-            guard let friends = friends else { return cell }
             let friend = friends[indexPath.row]
             let friendRef = Database.database().reference(withPath: "users").child(friend.uniqueId)
             friendRef.observe(DataEventType.value) { (snapshot) in
@@ -211,8 +226,17 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
                 cell.userImage.setRounded()
             }
             return cell
-            }
-        return UITableViewCell()
+        case donationTableView:
+            let cell = Bundle.main.loadNibNamed("DonationTableTableViewCell", owner: self, options: nil)?.first as! DonationTableTableViewCell
+            let donation = allDonations[indexPath.row]
+            cell.amountLabel.text = String(donation.amount) + currency
+            cell.recipientLabel.text = donation.name
+            cell.dateLabel.text = donation.getTimeStampAsString()
+            return cell
+            
+        default:
+            return UITableViewCell()
+        }
     }
 
     

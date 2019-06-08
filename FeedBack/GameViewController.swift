@@ -14,7 +14,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var userRef: DatabaseReference!
     var dataSource: FUITableViewDataSource?
-    var mappedDonations = [GameDonation]()
+    var mappedDonations = [Donation]()
     
     var user: User?
     

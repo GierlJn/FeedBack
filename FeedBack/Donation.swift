@@ -1,20 +1,22 @@
 import Foundation
 import Firebase
 
-class GameDonation: NSObject{
+class Donation: NSObject{
     var name: String
     var impactType: CharityImpactType
     var impactAmount: String
     var logo: String
     var amount: Float
+    var timeStamp: Double
     var logoImage: UIImage?
     
-    init(name: String, impactType: CharityImpactType, impactAmount: String, logo: String, amount: Float){
+    init(name: String, impactType: CharityImpactType, impactAmount: String, logo: String, amount: Float, timeStamp: Double){
         self.name = name
         self.impactType = impactType
         self.impactAmount = impactAmount
         self.logo = logo
         self.amount = amount
+        self.timeStamp = timeStamp
     }
     
     init?(snapshot: DataSnapshot){
@@ -37,12 +39,23 @@ class GameDonation: NSObject{
             print("donationAmount not found")
             return nil
         }
+        guard let timeStamp = donationDb[timestampPath] as? Double else { return nil }
         
         self.name = name
         self.impactType = CharityImpactType.init(rawValue: impactTypeAsString) ?? CharityImpactType.none
         self.impactAmount = impactAmount
         self.logo = logo
         self.amount = Float(amount)!
+        self.timeStamp = timeStamp
+    }
+    
+    func getTimeStampAsString() -> String {
+        let x = timeStamp
+        let date = NSDate(timeIntervalSince1970: x)
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        return formatter.string(from: date as Date)
     }
     
     func getLogoImage()->UIImage?{
