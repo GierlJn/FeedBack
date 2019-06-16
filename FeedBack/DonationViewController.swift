@@ -19,9 +19,7 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     var ref: DatabaseReference!
     var userRef: DatabaseReference!
     var donationSumRef: DatabaseReference!
-    
     var user: Firebase.User?
-
     var alertQueue = [UIAlertController]()
     
     override func viewDidLoad() {

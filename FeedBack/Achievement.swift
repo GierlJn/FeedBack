@@ -25,7 +25,7 @@ class Achievements{
     
     static let saveFiftyAchievement = Achievement(key: "fiftychildrentreated", name: "50 Children treated", messageWhenAchieved: "Wow! Your donations helped treating over 50 children!", image: UIImage(imageLiteralResourceName: "saveFiftyAchievement.png"), description: "Help treating 50 children with your donations")
     
-    static let saveHundredAchievement = Achievement(key: "hundredchildrentreated", name: "100 Children treated", messageWhenAchieved: "Awesome! Your donations helped treating over 100 children!", image: UIImage(imageLiteralResourceName: "saveHundredAchievement.png"), description: "Help treating 50 children with your donations")
+    static let saveHundredAchievement = Achievement(key: "hundredchildrentreated", name: "100 Children treated", messageWhenAchieved: "Awesome! Your donations helped treating over 100 children!", image: UIImage(imageLiteralResourceName: "saveHundredAchievement.png"), description: "Help treating 100 children with your donations")
     
     static let pushNotificationAchievement = Achievement(key: "pushnotificationactivated", name: "Good Informed", messageWhenAchieved: "You are receiving push notifications from us!", image: UIImage(imageLiteralResourceName: "pushNotificiationAchievement.png"), description: "Turn on push notifications in settings to get reminders.")
     

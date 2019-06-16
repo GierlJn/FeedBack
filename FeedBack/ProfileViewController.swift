@@ -25,24 +25,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     var user: User?
     var friends = [Friend]()
     var achievements = [AchievementFirebaseEntry]()
-    
     let allAchievements = Achievements.getAllAvailableAchievements()
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-    }
-    
-    fileprivate func setupUserImage() {
-        let storageReference = Storage.storage().reference()
-        let profileImageRef = storageReference.child(usersPath).child(user!.uniqueId).child("\(user!.uniqueId)-profileImage.jpg")
-        let placeholderImage = UIImage(named: "user.png")
-        userImage.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
-        userImage.setRounded()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +54,14 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         setupFriendsTableView()
         setupDonationTableView()
         setupSeperatorLines()
+    }
+    
+    fileprivate func setupUserImage() {
+        let storageReference = Storage.storage().reference()
+        let profileImageRef = storageReference.child(usersPath).child(user!.uniqueId).child("\(user!.uniqueId)-profileImage.jpg")
+        let placeholderImage = UIImage(named: "user.png")
+        userImage.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
+        userImage.setRounded()
     }
     
     @IBAction func shareButtonPressed(_ sender: Any) {

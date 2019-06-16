@@ -5,19 +5,14 @@ import FirebaseUI
 
 class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFriendCellDelegate, UITextFieldDelegate{
 
-
     @IBOutlet weak var textFieldOutlet: UITextField!
     @IBOutlet weak var tableView: UITableView!
-    
     var ref: DatabaseReference!
     var dataSource: FUITableViewDataSource?
-    
     var currentUser = Auth.auth().currentUser
     var searchInput = ""
-    
     var currentUserRef: DatabaseReference!
     var currentUserData: User?
-    
     var friendsOfCurrentUser: [Friend]?
         
     override func viewDidLoad() {
@@ -34,10 +29,7 @@ class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFri
         tableView.delegate = self
     }
     
-    
-    
     @IBAction func returnButtonPressed(_ sender: Any) {
-        
         searchInput = textFieldOutlet.text!
         reloadDataSource()
         self.tableView.reloadData()

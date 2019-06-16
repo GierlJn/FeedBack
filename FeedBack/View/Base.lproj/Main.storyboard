@@ -1890,7 +1890,7 @@
         <!--Profile-->
         <scene sceneID="6p2-qX-ajh">
             <objects>
-                <viewController id="RJG-g9-BcK" customClass="PublicUserProfileViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="publicUserProfie" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RJG-g9-BcK" customClass="PublicUserProfileViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vxS-B2-CPk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1979,7 +1979,7 @@
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Iar-6a-HLr">
                                                         <rect key="frame" x="16" y="82" width="382" height="124"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="3" id="cWb-qI-ugo">
+                                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="3" id="cWb-qI-ugo">
                                                             <size key="itemSize" width="90" height="90"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -2105,6 +2105,7 @@
                         <outlet property="achievementView" destination="5xc-vA-edq" id="dth-aU-8Mm"/>
                         <outlet property="addFriendButtonOutlet" destination="dxw-ad-FxZ" id="Pp5-H2-aqU"/>
                         <outlet property="friendView" destination="JdW-yF-czx" id="iTy-Kv-L79"/>
+                        <outlet property="friendsTableView" destination="gQX-xc-Zno" id="Cel-1l-0qM"/>
                         <outlet property="impactTableView" destination="Xbs-J2-vsJ" id="Dnd-ab-4xM"/>
                         <outlet property="impactView" destination="qJc-GW-8vS" id="hAw-zH-TIf"/>
                         <outlet property="levelLabel" destination="BEa-ly-D7A" id="QWP-WB-ZGf"/>
