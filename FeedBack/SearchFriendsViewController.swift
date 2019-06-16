@@ -3,7 +3,7 @@ import UIKit
 import Firebase
 import FirebaseUI
 
-class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFriendCellDelegate{
+class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFriendCellDelegate, UITextFieldDelegate{
 
 
     @IBOutlet weak var textFieldOutlet: UITextField!
@@ -22,6 +22,7 @@ class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFri
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        textFieldOutlet.returnKeyType = .search
         guard let currentUser = currentUser else { return }
         currentUserRef = Database.database().reference(withPath: "users").child(currentUser.uid)
         currentUserRef.observe(DataEventType.value) { (snapshot) in
@@ -33,13 +34,14 @@ class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFri
         tableView.delegate = self
     }
     
-    @IBAction func abortButtonPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
+    
+    
     @IBAction func returnButtonPressed(_ sender: Any) {
+        
         searchInput = textFieldOutlet.text!
         reloadDataSource()
         self.tableView.reloadData()
+        self.view.endEditing(true)
     }
     
     func reloadDataSource(){

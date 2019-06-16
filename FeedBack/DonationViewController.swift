@@ -35,6 +35,8 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         userInputAmountTextField.keyboardType = .numberPad
         userInputAmountTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)),
                             for: UIControl.Event.editingChanged)
+        
+        
         guard let charity = charity else { return }
         titleLabel.text = charity.name
         charityName = charity.name
@@ -53,6 +55,12 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         if(string.rangeOfCharacter(from: invalidCharacters) == nil){
             return true
         }
+        return false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        print("should return ")
         return false
     }
     
