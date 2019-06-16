@@ -14,15 +14,17 @@ class RankedUserTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userPointsLabel: UILabel!
     @IBOutlet weak var userRankLabel: UILabel!
+    
+    var uniqueUserId: String?
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

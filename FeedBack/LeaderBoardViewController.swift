@@ -1,43 +1,76 @@
-
-
 import UIKit
+import Firebase
+import FirebaseUI
 
 enum LeaderBoardTypes{
     case GeoLeaderboard, TotalLeaderBoard
 }
 
-class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource{
+class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate{
 
     @IBOutlet weak var typeOfLeaderBoardPickerView: UIPickerView!
     @IBOutlet weak var leaderBoardTableView: UITableView!
     @IBOutlet weak var selectionUIView: UIView!
-    
-    
+    var ref: DatabaseReference!
+    var dataSource: FUITableViewDataSource?
+    var currentUser = Auth.auth().currentUser
     let leaderBoardTypes = [LeaderBoardTypes.GeoLeaderboard, LeaderBoardTypes.TotalLeaderBoard]
     var selectedLeaderBoard = LeaderBoardTypes.TotalLeaderBoard
     
-    //let sampleData = [
-        //User(userName: "Bill Gates", userLevel: 1900, userAvatar: UIImage(imageLiteralResourceName: "bill_gates.jpeg")),
-        //User(userName: "Warren Buffet", userLevel: 1500, userAvatar: UIImage(imageLiteralResourceName: "buffet.jpeg")),
-        //User(userName: "Mark Zuckerberg", userLevel: 1300, userAvatar: UIImage(imageLiteralResourceName: "zuckerberg.jpeg")),
-        //User(userName: "Paul Allen", userLevel: 1000, userAvatar: UIImage(imageLiteralResourceName: "paul_allen.jpeg"))
-                      //]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLeaderBoard()
-        setupLeaderBoardTableView()
+        setupPickerView()
+        ref = Database.database().reference(withPath: usersPath)
+        leaderBoardTableView.delegate = self
         setViewBorders()
     }
     
-    private func setupLeaderBoard(){
+    private func setupPickerView(){
         typeOfLeaderBoardPickerView.dataSource = self
         typeOfLeaderBoardPickerView.delegate = self
     }
     
-    private func setupLeaderBoardTableView(){
-        leaderBoardTableView.dataSource = self
-        leaderBoardTableView.delegate = self
+    func setDataSource(){
+        switch(selectedLeaderBoard){
+        case .GeoLeaderboard:
+            dataSource = FUITableViewDataSource(query: getQuery(), populateCell: { (tableView, indexPath, snapshot) -> UITableViewCell in
+                let cell = Bundle.main.loadNibNamed("RankedUserTableViewCell", owner: self, options: nil)?.first as! RankedUserTableViewCell
+                guard let user = User(snapshot: snapshot) else { return cell }
+                let storageReference = Storage.storage().reference()
+                let profileImageRef = storageReference.child(usersPath).child(user.uniqueId).child("\(user.uniqueId)-profileImage.jpg")
+                let placeholderImage = UIImage(named: "user.png")
+                cell.userAvatar.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
+                cell.userAvatar.setRounded()
+                cell.userNameLabel.text = user.userName
+                cell.uniqueUserId = user.uniqueId
+                return cell
+            })
+            dataSource?.bind(to: leaderBoardTableView)
+        case .TotalLeaderBoard:
+            dataSource = FUITableViewDataSource(query: getQuery(), populateCell: { (tableView, indexPath, snapshot) -> UITableViewCell in
+                let cell = Bundle.main.loadNibNamed("RankedUserTableViewCell", owner: self, options: nil)?.first as! RankedUserTableViewCell
+                guard let user = User(snapshot: snapshot) else { return cell }
+                let storageReference = Storage.storage().reference()
+                let profileImageRef = storageReference.child(usersPath).child(user.uniqueId).child("\(user.uniqueId)-profileImage.jpg")
+                let placeholderImage = UIImage(named: "user.png")
+                cell.userAvatar.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
+                cell.userAvatar.setRounded()
+                cell.userNameLabel.text = user.userName
+                cell.uniqueUserId = user.uniqueId
+                cell.userPointsLabel.text = String(user.level)
+                
+                return cell
+            })
+            dataSource?.bind(to: leaderBoardTableView)
+        }
+        
+        
+    }
+    
+    func getQuery() -> DatabaseQuery {
+        return self.ref.queryOrdered(byChild: levelPath)
+        //return self.ref.queryOrdered(byChild: userNamePath)
+        //queryOrdered(byChild: userNamePath).queryStarting(atValue: searchInput)
     }
     
     private func setViewBorders(){
@@ -58,9 +91,9 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch(leaderBoardTypes[row]){
             case .GeoLeaderboard:
-                return "Leaderboard Local"
+                return "Local"
             case .TotalLeaderBoard:
-                return "Leaderboard Global"
+                return "Global"
         }
     }
     
@@ -71,34 +104,10 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
             case .TotalLeaderBoard:
                 selectedLeaderBoard = .TotalLeaderBoard
         }
+        setDataSource()
         leaderBoardTableView.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        switch(selectedLeaderBoard){
-        case .GeoLeaderboard:
-            let cell = Bundle.main.loadNibNamed("RankedUserTableViewCell", owner: self, options: nil)?.first as! RankedUserTableViewCell
-            //cell.userNameLabel.text = sampleData[indexPath.row].userName
-            //cell.userPointsLabel.text = String(sampleData[indexPath.row].userLevel)
-            //cell.userAvatar.image = sampleData[indexPath.row].userAvatar
-            //cell.userRankLabel.text = String(indexPath.row+1)
-            return cell
-        case .TotalLeaderBoard:
-            let cell = Bundle.main.loadNibNamed("RankedUserTableViewCell", owner: self, options: nil)?.first as! RankedUserTableViewCell
-            //cell.userNameLabel.text = sampleData[indexPath.row].userName
-            //cell.userPointsLabel.text = String(sampleData[indexPath.row].userLevel)
-            //cell.userAvatar.image = sampleData[indexPath.row].userAvatar
-            //cell.userRankLabel.text = String(indexPath.row+1)
-            return cell
-        }
-        
-        
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
