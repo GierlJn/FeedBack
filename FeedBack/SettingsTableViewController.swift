@@ -133,6 +133,8 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         let currentUser = Auth.auth().currentUser
         let profileImageRef = storageReference.child("users").child(currentUser!.uid).child("\(currentUser!.uid)-profileImage.jpg")
         
+        
+        
         let uploadMetaData = StorageMetadata()
         uploadMetaData.contentType = "image/jpeg"
         SDImageCache.shared().removeImage(forKey: profileImageRef.fullPath)
@@ -145,6 +147,11 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
             } else {
                 self.setupUserImage()
                 print("Meta data of uploaded image \(String(describing: uploadedImageMeta))")
+                
+                let imageLinkRef = Database.database().reference(withPath: "users").child(currentUser!.uid)
+                let timestamp = NSDate().timeIntervalSince1970
+                imageLinkRef.updateChildValues(  ["profileImageSet" : timestamp ])
+                
                 self.tableView.reloadData()
             }
         }

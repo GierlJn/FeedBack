@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     var user: User?
     var friends = [Friend]()
     var achievements = [AchievementFirebaseEntry]()
+    var currentUser = Auth.auth().currentUser
     let allAchievements = Achievements.getAllAvailableAchievements()
 
     override func viewDidLoad() {
@@ -49,6 +50,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             self.achievementCollectionView.reloadData()
             
         }
+        
+        self.setupUserImage()
         setupCollectionView()
         setupImpactTableView()
         setupFriendsTableView()
@@ -57,8 +60,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     fileprivate func setupUserImage() {
+        print("setupUserImage")
         let storageReference = Storage.storage().reference()
-        let profileImageRef = storageReference.child(usersPath).child(user!.uniqueId).child("\(user!.uniqueId)-profileImage.jpg")
+        let profileImageRef = storageReference.child(usersPath).child(currentUser!.uid).child("\(currentUser!.uid)-profileImage.jpg")
         let placeholderImage = UIImage(named: "user.png")
         userImage.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
         userImage.setRounded()
