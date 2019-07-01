@@ -1318,13 +1318,30 @@
                     <connections>
                         <segue destination="wzh-xN-ZM6" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="nIe-RK-mVW" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="sra-hd-un4" kind="relationship" relationship="viewControllers" id="vXz-pf-mWe"/>
                         <segue destination="km0-8x-AZG" kind="relationship" relationship="viewControllers" id="m2X-Wg-lRj"/>
+                        <segue destination="Cwd-UX-TX0" kind="relationship" relationship="viewControllers" id="Ijc-3W-1r9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-61" y="-9"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="sAK-Gy-smR">
+            <objects>
+                <navigationController id="Cwd-UX-TX0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="g8e-A3-u7V"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FCH-MZ-zyE">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="sra-hd-un4" kind="relationship" relationship="rootViewController" id="LgF-HD-jSb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WzV-wy-B1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-636" y="1330"/>
         </scene>
         <!--Leaderboard-->
         <scene sceneID="yJU-Bt-Gfm">
@@ -1335,7 +1352,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MaC-v3-Mhw">
-                                <rect key="frame" x="0.0" y="44" width="414" height="128"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="128"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMQ-D7-wDi">
                                         <rect key="frame" x="85.5" y="9" width="243" height="122"/>
@@ -1352,7 +1369,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zVJ-VO-Sgj">
-                                <rect key="frame" x="20" y="192" width="374" height="621"/>
+                                <rect key="frame" x="20" y="236" width="374" height="577"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -1371,15 +1388,17 @@
                         <viewLayoutGuide key="safeArea" id="eEo-Dt-4iT"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Leaderboard" image="list" id="k98-bi-VJV" userLabel="Leaderboard"/>
+                    <navigationItem key="navigationItem" id="aOl-sb-eF3"/>
                     <connections>
                         <outlet property="leaderBoardTableView" destination="zVJ-VO-Sgj" id="gx1-2y-8Hc"/>
                         <outlet property="selectionUIView" destination="MaC-v3-Mhw" id="kvj-1J-xMD"/>
                         <outlet property="typeOfLeaderBoardPickerView" destination="NMQ-D7-wDi" id="UeJ-Ey-lXf"/>
+                        <segue destination="RJG-g9-BcK" kind="push" identifier="goToPublicProfile" id="6Zj-vH-6AM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Nv-qP-Pym" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="956.52173913043487" y="1091.5178571428571"/>
+            <point key="canvasLocation" x="1836" y="1615"/>
         </scene>
         <!--Donations-->
         <scene sceneID="XfO-Jx-mGD">
@@ -2130,7 +2149,7 @@
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ql2-B9-jsT"/>
+        <segue reference="6Zj-vH-6AM"/>
         <segue reference="JOi-Mq-qJC"/>
     </inferredMetricsTieBreakers>
 </document>

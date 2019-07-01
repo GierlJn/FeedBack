@@ -29,7 +29,7 @@
                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DLw-IP-sFc" customClass="GradientProgressBar" customModule="GradientProgressBar">
                         <rect key="frame" x="137" y="103" width="250" height="5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="250" id="BYi-yS-gjh"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="BYi-yS-gjh"/>
                             <constraint firstAttribute="height" constant="5" id="ery-ek-nZb"/>
                         </constraints>
                     </progressView>
@@ -77,6 +77,7 @@
                 <constraints>
                     <constraint firstItem="DLw-IP-sFc" firstAttribute="top" secondItem="xDX-cT-QJq" secondAttribute="bottom" constant="16" id="0YD-im-ybI"/>
                     <constraint firstItem="mcm-Uv-qay" firstAttribute="leading" secondItem="xDX-cT-QJq" secondAttribute="trailing" constant="5" id="1sY-Tg-0t1"/>
+                    <constraint firstItem="DLw-IP-sFc" firstAttribute="leading" secondItem="vXC-iX-6Bz" secondAttribute="trailing" constant="54.5" id="2Ix-6o-gDK"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3rh-Xz-jQn" secondAttribute="trailing" constant="30" id="HRk-Pr-i5C"/>
                     <constraint firstItem="zsA-03-czV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="NIw-Cf-pp5"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mcm-Uv-qay" secondAttribute="trailing" constant="30" id="T1R-Ab-G6h"/>
