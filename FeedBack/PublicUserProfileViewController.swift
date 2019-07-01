@@ -39,6 +39,9 @@ class PublicUserProfileViewController: UIViewController, UICollectionViewDelegat
         userRef.observe(DataEventType.value) { (snapshot) in
             guard let user = User(snapshot: snapshot) else { return }
             self.user = user
+            if(user.uniqueId == currentUserLogin.uid){
+                self.addFriendButtonOutlet.isHidden = true
+            }
             self.userNameLabel.text = String(user.userName)
             self.levelLabel.text = String(user.level)
             self.rankLabel.text = Level.getRankForLevel(level: user.level)

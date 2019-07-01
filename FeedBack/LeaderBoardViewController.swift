@@ -12,17 +12,43 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var leaderBoardTableView: UITableView!
     @IBOutlet weak var selectionUIView: UIView!
     var ref: DatabaseReference!
+    var userRef: DatabaseReference!
     var dataSource: FUITableViewDataSource?
     var currentUser = Auth.auth().currentUser
     let leaderBoardTypes = [LeaderBoardTypes.GeoLeaderboard, LeaderBoardTypes.TotalLeaderBoard]
-    var selectedLeaderBoard = LeaderBoardTypes.TotalLeaderBoard
+    var selectedLeaderBoard = LeaderBoardTypes.GeoLeaderboard
     var users = [User]()
+    var usersFriends = [User]()
+    var currentUserDb: User?
+    var friendsUniqueIds = [Friend]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPickerView()
         ref = Database.database().reference(withPath: usersPath)
-        let query = ref.queryOrdered(byChild: levelPath).queryLimited(toLast: 5)
+        let query = ref.queryOrdered(byChild: levelPath).queryLimited(toLast: 10)
+        
+        userRef = Database.database().reference(withPath: "users").child(currentUser!.uid)
+        userRef.observe(DataEventType.value) { (snapshot) in
+            guard let currentUserDb = User(snapshot: snapshot) else { return }
+            self.currentUserDb = currentUserDb
+            self.usersFriends.append(currentUserDb)
+            self.friendsUniqueIds = currentUserDb.friendsHolder.friends
+            self.leaderBoardTableView.reloadData()
+            
+            for friendId in self.friendsUniqueIds{
+                let friendRef = Database.database().reference(withPath: "users").child(friendId.uniqueId)
+                friendRef.observe(DataEventType.value) { (snapshot) in
+                    guard let friendUser = User(snapshot: snapshot) else { return }
+                    if(!self.usersFriends.contains(where: { (user) -> Bool in
+                        user.uniqueId == friendUser.uniqueId
+                    })){
+                    self.usersFriends.append(friendUser)
+                    self.leaderBoardTableView.reloadData()
+                    }
+                }
+            }
+        }
         
         query.observe(.value, with: { snapshot in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
@@ -34,6 +60,9 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 }
                 self.leaderBoardTableView.reloadData()
             })
+        
+
+        
         setViewBorders()
         leaderBoardTableView.dataSource = self
         leaderBoardTableView.delegate = self
@@ -45,10 +74,33 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(selectedLeaderBoard == .GeoLeaderboard){
+            return usersFriends.count
+        }
+        
         return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if(selectedLeaderBoard == .GeoLeaderboard){
+            let cell = Bundle.main.loadNibNamed("RankedUserTableViewCell", owner: self, options: nil)?.first as! RankedUserTableViewCell
+            let user = self.usersFriends.sorted(by: { $0.level > $1.level })[indexPath.row]
+            let storageReference = Storage.storage().reference()
+            let profileImageRef = storageReference.child(usersPath).child(user.uniqueId).child("\(user.uniqueId)-profileImage.jpg")
+            let placeholderImage = UIImage(named: "user.png")
+            cell.userAvatar.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
+            cell.userAvatar.setRounded()
+            cell.userNameLabel.text = user.userName
+            cell.userPointsLabel.text = String(user.level)
+            cell.uniqueUserId = user.uniqueId
+            cell.userRankLabel.text = String(indexPath.row+1) + "."
+            if(user.uniqueId == currentUser!.uid){
+            cell.backgroundColor = UIColor.gray
+            }
+            return cell
+        }else{
+        
         let cell = Bundle.main.loadNibNamed("RankedUserTableViewCell", owner: self, options: nil)?.first as! RankedUserTableViewCell
         let user = users[indexPath.row]
         let storageReference = Storage.storage().reference()
@@ -60,7 +112,11 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
         cell.userPointsLabel.text = String(user.level)
         cell.uniqueUserId = user.uniqueId
         cell.userRankLabel.text = String(indexPath.row+1) + "."
+            if(user.uniqueId == currentUser!.uid){
+                cell.backgroundColor = UIColor.lightGray
+            }
         return cell
+        }
     }
     
     private func setViewBorders(){
@@ -81,7 +137,7 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch(leaderBoardTypes[row]){
             case .GeoLeaderboard:
-                return "Local"
+                return "Friends"
             case .TotalLeaderBoard:
                 return "Global"
         }
