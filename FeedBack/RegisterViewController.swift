@@ -29,6 +29,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, LoginButton
             print(error.localizedDescription)
             return
         }
+        if(AccessToken.current == nil){ return }
         let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
         
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in

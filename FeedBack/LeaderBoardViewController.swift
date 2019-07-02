@@ -32,7 +32,14 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
         userRef.observe(DataEventType.value) { (snapshot) in
             guard let currentUserDb = User(snapshot: snapshot) else { return }
             self.currentUserDb = currentUserDb
-            self.usersFriends.append(currentUserDb)
+            
+            if(!self.usersFriends.contains(where: { (user) -> Bool in
+                user.uniqueId == currentUserDb.uniqueId
+            })){
+                self.usersFriends.append(currentUserDb)
+                
+            }
+            
             self.friendsUniqueIds = currentUserDb.friendsHolder.friends
             self.leaderBoardTableView.reloadData()
             

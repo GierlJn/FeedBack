@@ -117,10 +117,12 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     
     fileprivate func updateAchievements(_ achievements: [AchievementFirebaseEntry], _ dbUser: User) {
         if(!userHasAchievement(userAchievements: achievements, achievementId: "firstdonation")){
+            print("first achievement")
             grantAchievementWithAlert(Achievements.firstDonationAchievement)
         }
         if(!userHasAchievement(userAchievements: achievements, achievementId: "donateonehundred")){
             if(dbUser.donationHolder.getTotalDonationSum() >= 100){
+                print("one hundred achievement")
                 grantAchievementWithAlert(Achievements.donateOneHundredAchievement)
             }
         }
@@ -139,10 +141,13 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         let alert = UIAlertController(title: achievement.name, message: achievement.messageWhenAchieved, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Nice!", style: .default) { (action) in
             if (self.alertQueue.isEmpty){
+                print(self.alertQueue)
                 self.initializeGameViewController()
+                
             }else{
                 self.present(self.alertQueue.first!, animated: true)
                 self.alertQueue.removeFirst()
+                print(self.alertQueue)
             }
         }
         alert.addAction(okAction)
@@ -163,7 +168,7 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     
     fileprivate func initializeGameViewController() {
         let mainTabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"mainTabBarController") as! MainTabBarViewController
-        mainTabBarController.selectedIndex = 3
+        mainTabBarController.selectedIndex = 2
         self.present(mainTabBarController, animated: true, completion: nil)
     }
 }
