@@ -83,15 +83,23 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         
         let profileImagePicker = UIImagePickerController()
         
+        //pickerController.delegate = self
+        //pickerController.allowsEditing = true
+        //pickerController.mediaTypes = ["public.image", "public.movie"]
+        //pickerController.sourceType = .camera
+        
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let cameraAction = UIAlertAction(title: "Take a photo", style: .default) { (action) in
                 profileImagePicker.allowsEditing = false
+                profileImagePicker.delegate = self
                 profileImagePicker.sourceType = UIImagePickerController.SourceType.camera
                 profileImagePicker.cameraCaptureMode = .photo
                 profileImagePicker.modalPresentationStyle = .fullScreen
+                print("setupcamera")
                 self.present(profileImagePicker, animated: true, completion: nil)
             }
             alertController.addAction(cameraAction)
+            
         }
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let photosLibraryAction = UIAlertAction(title: "Pick image", style: .default) { (action) in
@@ -109,10 +117,14 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         self.present(alertController, animated: true, completion: nil)
     }
     
+
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.originalImage] as? UIImage else {
+            print("pic error taken")
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
+        print("pic taken")
         guard let optimizedImageData = selectedImage.jpegData(compressionQuality: 0.5) else { return }
         uploadProfileImage(imageData: optimizedImageData)
         picker.dismiss(animated: true, completion: nil)

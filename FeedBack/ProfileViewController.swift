@@ -38,7 +38,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             self.userNameLabel.text = String(user.userName)
             self.levelLabel.text = String(user.level)
             self.rankLabel.text = Level.getRankForLevel(level: user.level)
-            self.donationSumLabel.text = String(user.donationHolder.getTotalDonationSum()) + " " + currency
+            self.donationSumLabel.text = currency + String(user.donationHolder.getTotalDonationSum())
             self.allDonations = user.donationHolder.donations
             self.mappedDonations = user.donationHolder.getMappedDonations()
             self.setupUserImage()

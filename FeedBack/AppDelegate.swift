@@ -1,10 +1,4 @@
-//
-//  AppDelegate.swift
-//  FeedBack
-//
-//  Created by Julian on 06.04.19.
-//  Copyright © 2019 gierljn. All rights reserved.
-//
+
 
 import UIKit
 import Firebase
@@ -17,14 +11,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
  
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         FBSDKCoreKit.ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
         STPPaymentConfiguration.shared().publishableKey = "pk_test_y9vO4PDpSho0Zp7m0ziEhJRe00pxvUYsyV"
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
-        //let database = Database.database().reference()
-        //database.setValue("Test sent data")
         downloadCharityLogos()
         return true
     }

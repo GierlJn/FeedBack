@@ -59,7 +59,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8c9-gi-eAN" userLabel="UserName View">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FiA-kU-ynE">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="FiA-kU-ynE">
                                                         <rect key="frame" x="144" y="43" width="158" height="42"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="137" id="VpY-xa-0yv"/>
@@ -2149,7 +2149,7 @@
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6Zj-vH-6AM"/>
+        <segue reference="yIt-Uy-kFs"/>
         <segue reference="6I5-bb-yHr"/>
     </inferredMetricsTieBreakers>
 </document>
