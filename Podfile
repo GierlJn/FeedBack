@@ -20,6 +20,8 @@ pod 'SVProgressHUD'
 pod 'ChameleonFramework', :inhibit_warnings => true
 pod 'GradientProgressBar', '~> 1.0'
 pod 'Stripe'
+pod 'Alamofire', '~> 4.5'
+pod 'AlamofireImage', '~> 3.3'
 
 
   target 'FeedBackTests' do

@@ -1,4 +1,7 @@
 PODS:
+  - Alamofire (4.8.2)
+  - AlamofireImage (3.5.2):
+    - Alamofire (~> 4.8)
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
@@ -105,6 +108,8 @@ PODS:
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.5)
+  - AlamofireImage (~> 3.3)
   - ChameleonFramework
   - FBSDKCoreKit
   - FBSDKLoginKit
@@ -122,6 +127,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireImage
     - ChameleonFramework
     - FBSDKCoreKit
     - FBSDKLoginKit
@@ -146,6 +153,8 @@ SPEC REPOS:
     - SVProgressHUD
 
 SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   FBSDKCoreKit: ba361d4a9d4dc29ff218822b849b22d4f869c7bb
   FBSDKLoginKit: c6d0dc187bd076e370dffa10f7fc8a3562a6892c
@@ -169,6 +178,6 @@ SPEC CHECKSUMS:
   Stripe: 2c4d0a88817361a102886315ff452d90f65e898b
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: a3bbb35cc4bea8bf6843be40bfe9d51247dad117
+PODFILE CHECKSUM: 8178bed6f7e3a07bf2070764ec8b76829cef8618
 
 COCOAPODS: 1.6.1

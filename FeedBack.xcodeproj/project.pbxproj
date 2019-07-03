@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		311BB92DE4917EA38A24841B /* Pods_FeedBack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FAEE6398C3444A7340C699 /* Pods_FeedBack.framework */; };
 		5264EB89E3AF07560273C6F2 /* Pods_FeedBackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FA7F9DA571C2223EA208B6 /* Pods_FeedBackTests.framework */; };
+		B914F78222CCD10E0042F332 /* StripClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B914F78122CCD10E0042F332 /* StripClient.swift */; };
+		B914F78422CCD1D80042F332 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B914F78322CCD1D80042F332 /* Constants.swift */; };
+		B914F78622CCD7A70042F332 /* checkOutCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B914F78522CCD7A70042F332 /* checkOutCart.swift */; };
 		B91A795722941E4600AA554F /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A795622941E4600AA554F /* Level.swift */; };
 		B91A7959229431A900AA554F /* AchievementFirebaseEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A7958229431A900AA554F /* AchievementFirebaseEntry.swift */; };
 		B91A795B2294354000AA554F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A795A2294354000AA554F /* Friend.swift */; };
@@ -102,6 +105,9 @@
 		657A6FDC98F463987C9B2DE7 /* Pods-FeedBackUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedBackUITests.release.xcconfig"; path = "Target Support Files/Pods-FeedBackUITests/Pods-FeedBackUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9EA88E3F556F9C5B521E13F5 /* Pods-FeedBackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedBackTests.release.xcconfig"; path = "Target Support Files/Pods-FeedBackTests/Pods-FeedBackTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5FA7F9DA571C2223EA208B6 /* Pods_FeedBackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedBackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B914F78122CCD10E0042F332 /* StripClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripClient.swift; sourceTree = "<group>"; };
+		B914F78322CCD1D80042F332 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = FeedBack/Constants.swift; sourceTree = SOURCE_ROOT; };
+		B914F78522CCD7A70042F332 /* checkOutCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkOutCart.swift; sourceTree = "<group>"; };
 		B91A795622941E4600AA554F /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		B91A7958229431A900AA554F /* AchievementFirebaseEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementFirebaseEntry.swift; sourceTree = "<group>"; };
 		B91A795A2294354000AA554F /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
@@ -273,6 +279,7 @@
 				B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */,
 				B9A159AD2292CB8D0074E61F /* Donation.swift */,
 				B91A795622941E4600AA554F /* Level.swift */,
+				B914F78122CCD10E0042F332 /* StripClient.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -305,6 +312,7 @@
 				B92000452275ADD6004F74A6 /* SettingsViewController.swift */,
 				B9338FCD2282BAFB0021943C /* RootNavigationController.swift */,
 				B9D32CA0228BF43900F11743 /* UIViewController+alerts.swift */,
+				B914F78522CCD7A70042F332 /* checkOutCart.swift */,
 				B9DD99C4228D4F3900A8A189 /* DonationViewController.swift */,
 				B9A159AB2292B66C0074E61F /* MainTabBarViewController.swift */,
 				B9869E1A229EB36A00FE140B /* PublicUserProfileViewController.swift */,
@@ -318,6 +326,7 @@
 				B9D32CA4228C221F00F11743 /* UIImage+resizeImage.swift */,
 				B9D32CA6228C227600F11743 /* DatabasePaths.swift */,
 				B9869E18229E664F00FE140B /* UIImageView + extensions.swift */,
+				B914F78322CCD1D80042F332 /* Constants.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -549,6 +558,8 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FeedBack/Pods-FeedBack-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -566,6 +577,8 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
@@ -659,6 +672,9 @@
 				B91A7959229431A900AA554F /* AchievementFirebaseEntry.swift in Sources */,
 				B97351CE22952DF500FFBB3E /* DonationsHolder.swift in Sources */,
 				B97351D2229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift in Sources */,
+				B914F78622CCD7A70042F332 /* checkOutCart.swift in Sources */,
+				B914F78222CCD10E0042F332 /* StripClient.swift in Sources */,
+				B914F78422CCD1D80042F332 /* Constants.swift in Sources */,
 				B9338FD02283051B0021943C /* ChangePasswordViewController.swift in Sources */,
 				B943B66D225B7F3300F8C560 /* ActiveDonationViewCell.swift in Sources */,
 				B95F9279226494CF007F7755 /* ProfileViewController.swift in Sources */,
