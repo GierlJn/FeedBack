@@ -13,9 +13,19 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, LoginButton
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        do {
+            try Auth.auth().signOut()
+        }
+        catch{
+            print("Not Signed in")
+        }
+        
+        
         let loginButton = FBLoginButton()
         loginButton.delegate = self
         loginButton.center = view.center
+        loginButton.permissions = ["public_profile", "email"]
         self.view.addSubview(loginButton)
     }
     
@@ -36,13 +46,22 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, LoginButton
             if let error = error {
                 return
             }
-            self.saveInitialUserInfo( Auth.auth().currentUser!, withUsername: "facebookUser")
             
+            
+            let r = GraphRequest(graphPath: "me", parameters: ["fields":"email,name"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: .get)
+            
+            r.start(completionHandler: { (test, result, error) in
+                if(error == nil)
+                {
+                    let fbData = result as! NSDictionary
+                    self.saveInitialUserInfo( Auth.auth().currentUser!, withUsername: fbData.value(forKey: "name") as! String)
+                }
+            })
         }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        //
+        print("did log out")
     }
     
 
@@ -66,6 +85,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, LoginButton
                 return
             }
             let username = self.userNameTextField.text!
+            
+            
             self.saveInitialUserInfo(user, withUsername: username)
         }
     }
