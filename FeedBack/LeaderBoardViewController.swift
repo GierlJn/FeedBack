@@ -62,7 +62,9 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 self.users = []
                 for snap in snapshots {
                     let user = User(snapshot: snap)
+                    if(user != nil){
                     self.users.insert(user!, at: 0)
+                    }
                     }
                 }
                 self.leaderBoardTableView.reloadData()
