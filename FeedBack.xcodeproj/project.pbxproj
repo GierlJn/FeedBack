@@ -23,6 +23,7 @@
 		B922C5F8226F1BF4006E0D2C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B922C5F7226F1BF4006E0D2C /* User.swift */; };
 		B923087C226764EA00D85B43 /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B923087B226764EA00D85B43 /* LeaderBoardViewController.swift */; };
 		B923087E22676E7E00D85B43 /* GlobalLeaderBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B923087D22676E7E00D85B43 /* GlobalLeaderBoardModel.swift */; };
+		B927164722CDC00200543394 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927164622CDC00200543394 /* Transaction.swift */; };
 		B9338FC82282B30D0021943C /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FC72282B30D0021943C /* SettingsTableViewController.swift */; };
 		B9338FCA2282B6AD0021943C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FC92282B6AD0021943C /* RootViewController.swift */; };
 		B9338FCE2282BAFB0021943C /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FCD2282BAFB0021943C /* RootNavigationController.swift */; };
@@ -119,6 +120,7 @@
 		B922C5F7226F1BF4006E0D2C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B923087B226764EA00D85B43 /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
 		B923087D22676E7E00D85B43 /* GlobalLeaderBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalLeaderBoardModel.swift; sourceTree = "<group>"; };
+		B927164622CDC00200543394 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		B9338FC72282B30D0021943C /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		B9338FC92282B6AD0021943C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		B9338FCD2282BAFB0021943C /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				B9D32CA2228C06DE00F11743 /* Charity.swift */,
 				B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */,
 				B9A159AD2292CB8D0074E61F /* Donation.swift */,
+				B927164622CDC00200543394 /* Transaction.swift */,
 				B91A795622941E4600AA554F /* Level.swift */,
 				B914F78122CCD10E0042F332 /* StripClient.swift */,
 			);
@@ -666,6 +669,7 @@
 				B920004022759BB9004F74A6 /* RegisterViewController.swift in Sources */,
 				B923087E22676E7E00D85B43 /* GlobalLeaderBoardModel.swift in Sources */,
 				B9D32CA7228C227600F11743 /* DatabasePaths.swift in Sources */,
+				B927164722CDC00200543394 /* Transaction.swift in Sources */,
 				B97351D022952F9800FFBB3E /* FriendsHolder.swift in Sources */,
 				B91A795B2294354000AA554F /* Friend.swift in Sources */,
 				B9A159AC2292B66C0074E61F /* MainTabBarViewController.swift in Sources */,

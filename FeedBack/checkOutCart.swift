@@ -9,35 +9,36 @@ final class CheckoutCart {
         // private
     }
     
-    private var donations: [Donation] = []
+    private var transactions: [Transaction] = []
     
-    var cart: [Donation] {
-        return donations
+    var cart: [Transaction] {
+        return transactions
     }
     
     var canPay: Bool {
-        return !donations.isEmpty
+        return !transactions.isEmpty
     }
     
-    var total: Float {
-        return donations.reduce(0) { (result, donation) -> Float in
-            return result + donation.amount
+    var total: Int {
+        return transactions.reduce(0) { (result, transaction) -> Int in
+            return result + transaction.amount
         }
     }
     
-    func addDonation(_ donation: Donation) {
-        guard !donations.contains(donation) else {
-            return
-        }
-        donations.append(donation)
+    func addTransaction(_ transaction: Transaction) {
+//        guard !transactions.contains(transaction) else {
+//            return
+//        }
+        transactions.append(transaction)
     }
     
-    func removeDonation(_ donation: Donation) -> Bool {
-        guard let index = donations.firstIndex(of: donation) else {
-            return false
-        }
-        donations.remove(at: index)
+    func removeTransaction(_ transaction: Transaction) -> Bool {
         return true
+//        guard let index = transactions.firstIndex(of: transaction) else {
+//            return false
+//        }
+//        transactions.remove(at: index)
+//        return true
     }
     
 }

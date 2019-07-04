@@ -22,6 +22,7 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     var donationSumRef: DatabaseReference!
     var user: Firebase.User?
     var alertQueue = [UIAlertController]()
+    var transaction: Transaction?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +84,18 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     }
 
     @IBAction func donateButtonPressed(_ sender: Any) {
+        guard let donationAmount = userInputAmountTextField.text else { return }
+        guard let charityName = charityName else { return }
+
+        if(Int(donationAmount)! < 1){
+            showMessagePrompt("Donation must be atleast 1\(currency)")
+            return
+        }
+        transaction = Transaction(name: charityName, amount: Int(donationAmount)! * 100)
+        
+        //CheckoutCart.shared.addTransaction(transaction)
+        
+        
         let addCardViewController = STPAddCardViewController()
         addCardViewController.delegate = self
         navigationController?.pushViewController(addCardViewController, animated: true)
@@ -171,8 +184,6 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         }
     }
 
-
-    
     fileprivate func initializeGameViewController() {
         let mainTabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"mainTabBarController") as! MainTabBarViewController
         mainTabBarController.selectedIndex = 2
@@ -188,15 +199,20 @@ extension DonationViewController: STPAddCardViewControllerDelegate {
     }
     
     func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
-        StripeClient.shared.completeCharge(with: token, amount: Int(CheckoutCart.shared.total)) { result in
-            
-            let alertController = UIAlertController(title: "Congrats", message: "Your payment was successful!", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
-                self.processDonation()
-            })
-            alertController.addAction(alertAction)
-            self.present(alertController, animated: true)
-            
+        StripeClient.shared.completeCharge(with: token, amount: transaction!.amount, description: transaction!.name) { result in
+            switch result {
+            case .success:
+                completion(nil)
+                
+                let alertController = UIAlertController(title: "Congrats", message: "Your payment was successful!", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    self.processDonation()
+                })
+                alertController.addAction(alertAction)
+                self.present(alertController, animated: true)
+            case .failure(let error):
+                completion(error)
+            }
         }
     }
 }
