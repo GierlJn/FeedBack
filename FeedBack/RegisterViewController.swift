@@ -2,9 +2,9 @@
 import UIKit
 import Firebase
 import FirebaseAuth
-import FBSDKLoginKit
 
-class RegisterViewController: UIViewController, UITextFieldDelegate, LoginButtonDelegate {
+
+class RegisterViewController: UIViewController, UITextFieldDelegate{
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -14,19 +14,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, LoginButton
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        do {
-            try Auth.auth().signOut()
-        }
-        catch{
-            print("Not Signed in")
-        }
-        
-        
-        let loginButton = FBLoginButton()
-        loginButton.delegate = self
-        loginButton.center = view.center
-        loginButton.permissions = ["public_profile", "email"]
-        self.view.addSubview(loginButton)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,35 +22,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, LoginButton
         ref = Database.database().reference()
     }
     
-    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        if let error = error {
-            print(error.localizedDescription)
-            return
-        }
-        if(AccessToken.current == nil){ return }
-        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
-        
-        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-            if let error = error {
-                return
-            }
-            
-            
-            let r = GraphRequest(graphPath: "me", parameters: ["fields":"email,name"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: .get)
-            
-            r.start(completionHandler: { (test, result, error) in
-                if(error == nil)
-                {
-                    let fbData = result as! NSDictionary
-                    self.saveInitialUserInfo( Auth.auth().currentUser!, withUsername: fbData.value(forKey: "name") as! String)
-                }
-            })
-        }
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        print("did log out")
-    }
+
     
 
     @IBAction func registerButtonPressed(_ sender: Any) {

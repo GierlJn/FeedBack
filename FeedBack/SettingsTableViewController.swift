@@ -2,7 +2,7 @@
 import UIKit
 import Firebase
 import FirebaseUI
-
+import FBSDKLoginKit
 
 
 protocol SettingsDelegate: AnyObject{
@@ -10,7 +10,9 @@ protocol SettingsDelegate: AnyObject{
     func emailHasChanged(_ email: String)
 }
 
-class SettingsTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SettingsTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+
+    
     
     
     @IBOutlet weak var userImage: UIImageView!
@@ -78,6 +80,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     @IBAction func signOutButtonTouched(_ sender: Any) {
         do {
             try Auth.auth().signOut()
+            LoginManager().logOut()
             let rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"rootNavigationController") as! RootNavigationController
             self.present(rootViewController, animated: true, completion: nil)
         }
@@ -91,10 +94,6 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         
         let profileImagePicker = UIImagePickerController()
         
-        //pickerController.delegate = self
-        //pickerController.allowsEditing = true
-        //pickerController.mediaTypes = ["public.image", "public.movie"]
-        //pickerController.sourceType = .camera
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let cameraAction = UIAlertAction(title: "Take a photo", style: .default) { (action) in

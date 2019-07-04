@@ -34,14 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                         print("user exists")
                     }
                     
+                    
+                    let mainStoryBoard: UIStoryboard = UIStoryboard(name:"Main", bundle:nil)
+                    let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "mainTabBarController") as! MainTabBarViewController
+                    let appDelegate = UIApplication.shared.delegate
+                    appDelegate?.window??.rootViewController = protectedPage
                 })
                 
                 
                 
-                let mainStoryBoard: UIStoryboard = UIStoryboard(name:"Main", bundle:nil)
-                let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "mainTabBarController") as! MainTabBarViewController
-                let appDelegate = UIApplication.shared.delegate
-                appDelegate?.window??.rootViewController = protectedPage
+                
             }
         }
     }
