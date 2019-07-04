@@ -24,6 +24,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             } else {
                 print("Google Authentification Success")
                 
+                let userManager = UserManager()
+                userManager.isUserRegistered(with: Auth.auth().currentUser!.uid, completion: { (userExists, user) in
+                    
+                    if(!userExists){
+                        print("user does not exist")
+                        userManager.createInitialUserInfo(withUsername: "Google name")
+                    }else{
+                        print("user exists")
+                    }
+                    
+                })
+                
+                
+                
                 let mainStoryBoard: UIStoryboard = UIStoryboard(name:"Main", bundle:nil)
                 let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "mainTabBarController") as! MainTabBarViewController
                 let appDelegate = UIApplication.shared.delegate

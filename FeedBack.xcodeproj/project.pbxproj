@@ -39,7 +39,6 @@
 		B95F928022649549007F7755 /* AchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95F927E22649549007F7755 /* AchievementCell.swift */; };
 		B95F928122649549007F7755 /* AchievementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B95F927F22649549007F7755 /* AchievementCell.xib */; };
 		B95F9283226496DC007F7755 /* AchievementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95F9282226496DC007F7755 /* AchievementModel.swift */; };
-		B95F928522649CAF007F7755 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95F928422649CAF007F7755 /* UserDataModel.swift */; };
 		B964F0BE2261D85500D55C58 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964F0BD2261D85500D55C58 /* ExploreViewController.swift */; };
 		B964F0C12261D94E00D55C58 /* CharityCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964F0BF2261D94E00D55C58 /* CharityCategoryTableViewCell.swift */; };
 		B964F0C22261D94E00D55C58 /* CharityCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B964F0C02261D94E00D55C58 /* CharityCategoryTableViewCell.xib */; };
@@ -76,6 +75,7 @@
 		B9F4926C22A650C500A23C49 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F4926A22A650C500A23C49 /* FriendTableViewCell.swift */; };
 		B9F4926D22A650C500A23C49 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9F4926B22A650C500A23C49 /* FriendTableViewCell.xib */; };
 		B9F4926F22A676C300A23C49 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F4926E22A676C300A23C49 /* Achievement.swift */; };
+		B9F9822522CE1A0000592DBE /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9822422CE1A0000592DBE /* UserManager.swift */; };
 		E38EB810EAD53DCDC352D82D /* Pods_FeedBackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004BB0E358CA75828C685B0C /* Pods_FeedBackUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -135,7 +135,6 @@
 		B95F927E22649549007F7755 /* AchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCell.swift; sourceTree = "<group>"; };
 		B95F927F22649549007F7755 /* AchievementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchievementCell.xib; sourceTree = "<group>"; };
 		B95F9282226496DC007F7755 /* AchievementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementModel.swift; sourceTree = "<group>"; };
-		B95F928422649CAF007F7755 /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		B964F0BD2261D85500D55C58 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		B964F0BF2261D94E00D55C58 /* CharityCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		B964F0C02261D94E00D55C58 /* CharityCategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharityCategoryTableViewCell.xib; sourceTree = "<group>"; };
@@ -178,6 +177,7 @@
 		B9F4926A22A650C500A23C49 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		B9F4926B22A650C500A23C49 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		B9F4926E22A676C300A23C49 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		B9F9822422CE1A0000592DBE /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		F347233263347792BC25AE9B /* Pods-FeedBackUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedBackUITests.debug.xcconfig"; path = "Target Support Files/Pods-FeedBackUITests/Pods-FeedBackUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -264,7 +264,7 @@
 			children = (
 				B99EA0B22258CB3800256A89 /* Assets.xcassets */,
 				B95F9276226485D7007F7755 /* CharitySample.swift */,
-				B95F928422649CAF007F7755 /* UserDataModel.swift */,
+				B9F9822422CE1A0000592DBE /* UserManager.swift */,
 				B922C5F7226F1BF4006E0D2C /* User.swift */,
 				B97351CD22952DF500FFBB3E /* DonationsHolder.swift */,
 				B97351CF22952F9800FFBB3E /* FriendsHolder.swift */,
@@ -677,11 +677,11 @@
 				B9B81CB322AB960300C11CE8 /* DonationTableTableViewCell.swift in Sources */,
 				B99EA0AA2258CB3700256A89 /* AppDelegate.swift in Sources */,
 				B945E500226B0AAC0032EB7A /* RankedUserTableViewCell.swift in Sources */,
+				B9F9822522CE1A0000592DBE /* UserManager.swift in Sources */,
 				B9C4B0F8229D2B840002111A /* SearchFriendsViewController.swift in Sources */,
 				B9A159AE2292CB8D0074E61F /* Donation.swift in Sources */,
 				B9338FC82282B30D0021943C /* SettingsTableViewController.swift in Sources */,
 				B9F4926C22A650C500A23C49 /* FriendTableViewCell.swift in Sources */,
-				B95F928522649CAF007F7755 /* UserDataModel.swift in Sources */,
 				B9F4926F22A676C300A23C49 /* Achievement.swift in Sources */,
 				B9C4B0F5229D25BE0002111A /* AddFriendsTableViewCell.swift in Sources */,
 				B95F928022649549007F7755 /* AchievementCell.swift in Sources */,
