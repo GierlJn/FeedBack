@@ -8,11 +8,17 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
+import GoogleSignIn
 
-class RootViewController: UIViewController {
-
+class RootViewController: UIViewController, GIDSignInUIDelegate {
+    
+    @IBOutlet weak var googeSignInButton: GIDSignInButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        GIDSignIn.sharedInstance().uiDelegate = self
+        //GIDSignIn.sharedInstance().signIn()
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -4,6 +4,7 @@ import Firebase
 import FirebaseUI
 
 
+
 protocol SettingsDelegate: AnyObject{
     func userNameHasChanged(_ userName: String)
     func emailHasChanged(_ email: String)
@@ -16,11 +17,18 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var passwordButtonOutlet: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var linkFacebookSwitch: UISwitch!
     
+    @IBOutlet weak var contactSupportButton: UIButton!
+    @IBOutlet weak var newsNotificationSwitch: UISwitch!
+    @IBOutlet weak var leaderBoardNotificationSwitch: UISwitch!
+    @IBOutlet weak var linkGoogleSwitch: UISwitch!
     weak var delegate: SettingsDelegate?
     var ref: DatabaseReference!
     
     var user: User?
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,7 +157,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         
         let uploadMetaData = StorageMetadata()
         uploadMetaData.contentType = "image/jpeg"
-        SDImageCache.shared().removeImage(forKey: profileImageRef.fullPath)
+        SDImageCache.shared.removeImage(forKey: profileImageRef.fullPath)
         profileImageRef.putData(imageData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
             activityIndicator.stopAnimating()
             activityIndicator.removeFromSuperview()
@@ -168,5 +176,20 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
             }
         }
     }
+    @IBAction func privacyButtonPressed(_ sender: Any) {
+    }
     
+    @IBAction func contactSupportButtonPressed(_ sender: Any) {
+    }
+    
+    @IBAction func linkGoogleSwitchValueChanged(_ sender: Any) {
+//        guard let currentUser = Firebase.Auth.auth().currentUser else { return }
+//        guard let authentication = currentUser.authentication else { return }
+//        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+//                                                       accessToken: authentication.accessToken)
+//        
+    }
+    
+    @IBAction func linkFacebookSwitchValueChanged(_ sender: Any) {
+    }
 }

@@ -93,9 +93,6 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         }
         transaction = Transaction(name: charityName, amount: Int(donationAmount)! * 100)
         
-        //CheckoutCart.shared.addTransaction(transaction)
-        
-        
         let addCardViewController = STPAddCardViewController()
         addCardViewController.delegate = self
         navigationController?.pushViewController(addCardViewController, animated: true)
@@ -203,7 +200,8 @@ extension DonationViewController: STPAddCardViewControllerDelegate {
             switch result {
             case .success:
                 completion(nil)
-                
+                print("token.allResponseFields")
+                print(token.allResponseFields)
                 let alertController = UIAlertController(title: "Congrats", message: "Your payment was successful!", preferredStyle: .alert)
                 let alertAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
                     self.processDonation()

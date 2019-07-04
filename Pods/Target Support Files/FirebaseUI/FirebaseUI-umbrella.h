@@ -21,6 +21,10 @@
 #import "FUISortedArray.h"
 #import "FUITableViewDataSource.h"
 #import "FirebaseStorageUI.h"
+#import "FIRStorageDownloadTask+SDWebImage.h"
+#import "FUIStorageDefine.h"
+#import "FUIStorageImageLoader.h"
+#import "NSURL+FirebaseStorage.h"
 #import "UIImageView+FirebaseStorage.h"
 
 FOUNDATION_EXPORT double FirebaseUIVersionNumber;

@@ -22,6 +22,7 @@ pod 'GradientProgressBar', '~> 1.0'
 pod 'Stripe'
 pod 'Alamofire', '~> 4.5'
 pod 'AlamofireImage', '~> 3.3'
+pod 'GoogleSignIn'
 
 
   target 'FeedBackTests' do

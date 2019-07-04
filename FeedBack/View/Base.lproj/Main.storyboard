@@ -668,6 +668,9 @@
                                                         <constraint firstAttribute="width" constant="47" id="CWk-Im-JK0"/>
                                                         <constraint firstAttribute="height" constant="31" id="fiv-G2-KnF"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="linkFacebookSwitchValueChanged:" destination="cX2-gR-HXx" eventType="valueChanged" id="WAd-WM-cc7"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -702,6 +705,9 @@
                                                         <constraint firstAttribute="height" constant="31" id="9d2-TJ-UVb"/>
                                                         <constraint firstAttribute="width" constant="47" id="FtJ-Uf-nba"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="linkGoogleSwitchValueChanged:" destination="cX2-gR-HXx" eventType="valueChanged" id="jtc-y4-yTk"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -805,6 +811,9 @@
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <state key="normal" title="Contact Support"/>
+                                                    <connections>
+                                                        <action selector="contactSupportButtonPressed:" destination="cX2-gR-HXx" eventType="touchUpInside" id="Vly-Xc-P96"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -829,6 +838,9 @@
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <state key="normal" title="Privacy"/>
+                                                    <connections>
+                                                        <action selector="privacyButtonPressed:" destination="cX2-gR-HXx" eventType="touchUpInside" id="GAu-4T-sns"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -873,7 +885,12 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="contactSupportButton" destination="s3Z-Nf-Pa0" id="XOx-br-aHG"/>
                         <outlet property="emailTextField" destination="Feq-YF-fFZ" id="WvB-uo-A7j"/>
+                        <outlet property="leaderBoardNotificationSwitch" destination="Tzk-w1-iLF" id="akj-Xs-SG7"/>
+                        <outlet property="linkFacebookSwitch" destination="Hks-mb-y2r" id="ClO-2q-glM"/>
+                        <outlet property="linkGoogleSwitch" destination="3zh-aS-fzC" id="Bmq-LI-ahh"/>
+                        <outlet property="newsNotificationSwitch" destination="hg2-2k-bvr" id="rcK-w7-cST"/>
                         <outlet property="passwordButtonOutlet" destination="H8j-W9-txi" id="23a-qF-8D3"/>
                         <outlet property="userImage" destination="uXd-1v-clr" id="sOt-zf-Lea"/>
                         <outlet property="userNameTextField" destination="Xti-bb-mQb" id="tc3-J4-BQC"/>
@@ -1194,6 +1211,14 @@
                                     <segue destination="sxe-Xe-Avi" kind="show" identifier="goToLogIn" id="py6-eG-uG3"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGQ-Ga-lqc" customClass="GIDSignInButton">
+                                <rect key="frame" x="77.5" y="691" width="259" height="63"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="A8b-NS-vhV"/>
+                                    <constraint firstAttribute="width" constant="259" id="MYy-TW-LbQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <accessibility key="accessibilityConfiguration" identifier="rootViewController"/>
@@ -1201,6 +1226,8 @@
                             <constraint firstItem="ftw-Zg-oUt" firstAttribute="leading" secondItem="trG-kh-FJq" secondAttribute="leading" id="Cj3-WW-yyj"/>
                             <constraint firstItem="HGg-TZ-IfX" firstAttribute="leading" secondItem="trG-kh-FJq" secondAttribute="leading" id="EuX-ar-bGt"/>
                             <constraint firstItem="HGg-TZ-IfX" firstAttribute="top" secondItem="ftw-Zg-oUt" secondAttribute="bottom" id="IkV-I3-L7E"/>
+                            <constraint firstItem="ftw-Zg-oUt" firstAttribute="top" secondItem="PGQ-Ga-lqc" secondAttribute="bottom" constant="8" id="PxV-Ou-vf2"/>
+                            <constraint firstItem="PGQ-Ga-lqc" firstAttribute="centerX" secondItem="Nv5-v0-aO3" secondAttribute="centerX" id="VsN-ql-fBv"/>
                             <constraint firstItem="HGg-TZ-IfX" firstAttribute="bottom" secondItem="trG-kh-FJq" secondAttribute="bottom" id="Yuu-Gx-7l3"/>
                             <constraint firstItem="ftw-Zg-oUt" firstAttribute="trailing" secondItem="trG-kh-FJq" secondAttribute="trailing" id="gME-bL-r69"/>
                             <constraint firstItem="HGg-TZ-IfX" firstAttribute="trailing" secondItem="trG-kh-FJq" secondAttribute="trailing" id="ucK-qX-KlE"/>
@@ -1209,6 +1236,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="uJK-cm-akd"/>
                     <connections>
+                        <outlet property="googeSignInButton" destination="PGQ-Ga-lqc" id="dYk-Gu-ni7"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="goToMain" id="JOi-Mq-qJC"/>
                     </connections>
                 </viewController>
@@ -2150,6 +2178,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yIt-Uy-kFs"/>
-        <segue reference="6I5-bb-yHr"/>
+        <segue reference="JOi-Mq-qJC"/>
     </inferredMetricsTieBreakers>
 </document>

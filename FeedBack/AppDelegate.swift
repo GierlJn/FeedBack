@@ -4,13 +4,44 @@ import UIKit
 import Firebase
 import Stripe
 import FBSDKCoreKit
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if (error) != nil {
+            print("An error occured during Google Authentication")
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        Auth.auth().signIn(with: credential) { (user, error) in
+            if (error) != nil {
+                print("Google Authentification Fail")
+            } else {
+                print("Google Authentification Success")
+                
+                let mainStoryBoard: UIStoryboard = UIStoryboard(name:"Main", bundle:nil)
+                let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "mainTabBarController") as! MainTabBarViewController
+                let appDelegate = UIApplication.shared.delegate
+                appDelegate?.window??.rootViewController = protectedPage
+            }
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+    }
+    
 
     var window: UIWindow?
  
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        GIDSignIn.sharedInstance().clientID = "244071801131-9g9239pdpvijhrjrq4kom0ikf9vv5h8l.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self
         FBSDKCoreKit.ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         STPPaymentConfiguration.shared().publishableKey = "pk_test_y9vO4PDpSho0Zp7m0ziEhJRe00pxvUYsyV"
         FirebaseApp.configure()
@@ -24,6 +55,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                                    open: url,
                                                                    sourceApplication: sourceApplication,
                                                                    annotation: annotation)
+        
+        let isFBOpenUrl = FBSDKCoreKit.ApplicationDelegate.shared.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        let isGoogleOpenUrl = GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
+        if isFBOpenUrl { return true }
+        if isGoogleOpenUrl { return true }
+        return false
+        return false
     }
     
     func downloadCharityLogos(){
