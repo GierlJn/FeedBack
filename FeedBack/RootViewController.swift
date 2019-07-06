@@ -67,6 +67,10 @@ class RootViewController: UIViewController, GIDSignInUIDelegate, LoginButtonDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.setGoogleDelegate()
+        
         GIDSignIn.sharedInstance().uiDelegate = self
         //GIDSignIn.sharedInstance().signIn()
         let loginButton = FBLoginButton()

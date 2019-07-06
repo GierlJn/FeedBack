@@ -3,6 +3,7 @@ import UIKit
 import Firebase
 import FirebaseUI
 import FBSDKLoginKit
+import GoogleSignIn
 
 
 protocol SettingsDelegate: AnyObject{
@@ -10,7 +11,9 @@ protocol SettingsDelegate: AnyObject{
     func emailHasChanged(_ email: String)
 }
 
-class SettingsTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class SettingsTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GIDSignInDelegate, GIDSignInUIDelegate{
+
+    
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var passwordButtonOutlet: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
@@ -30,35 +33,52 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let providerData = Auth.auth().currentUser?.providerData
-        for provider in providerData!{
-            print("provider:")
-            print(provider.providerID)
-        }
-        
         setupSwitches()
         guard let currentUser = Firebase.Auth.auth().currentUser else { return }
+        self.emailTextField.text = currentUser.email
         ref = Database.database().reference(withPath: usersPath).child(currentUser.uid)
         ref.observe(DataEventType.value) { (snapshot) in
             guard let user = User(snapshot: snapshot) else { return }
             self.user = user
             self.userNameTextField.text = user.userName
-            self.emailTextField.text = currentUser.email
             self.setupUserImage()
         }
     }
     
+    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
+        //
+    }
+    
+    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
+        //
+    }
+    
     fileprivate func setupSwitches(){
         updateFacebookSwitch()
+        updateGoogleSwitch()
+    }
+    
+    fileprivate func updateGoogleSwitch(){
+        if(hasLinkedProvider(providerId: "google.com")){
+            linkGoogleSwitch.isOn = true
+            return
+        }
+        linkGoogleSwitch.isOn = false
     }
     
     fileprivate func updateFacebookSwitch() {
-        if(AccessToken.current == nil){
-            print("accesstoken is nil")
-            linkFacebookSwitch.isOn = false
-        }else{
+        if(hasLinkedProvider(providerId: "facebook.com")){
             linkFacebookSwitch.isOn = true
+        }else{
+            linkFacebookSwitch.isOn = false
         }
+    }
+    
+    fileprivate func hasLinkedProvider(providerId: String)->Bool{
+        let providerData = Auth.auth().currentUser?.providerData
+        return providerData?.contains(where: { (provider) -> Bool in
+            provider.providerID == providerId
+        }) ?? false
     }
     
     fileprivate func setupUserImage() {
@@ -84,7 +104,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     @IBAction func emailGotEdited(_ sender: Any) {
-        //delegate?.emailHasChanged(emailTextField.text!)
+        delegate?.emailHasChanged(emailTextField.text!)
         //performEmailSegue
     }
     
@@ -198,16 +218,51 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     @IBAction func linkGoogleSwitchValueChanged(_ sender: Any) {
-        
-//        guard let currentUser = Firebase.Auth.auth().currentUser else { return }
-//        guard let authentication = currentUser.authentication else { return }
-//        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-//                                                       accessToken: authentication.accessToken)
-//        
+        GIDSignIn.sharedInstance()?.delegate = self
+        if(!hasLinkedProvider(providerId: "google.com")){
+            GIDSignIn.sharedInstance().signIn()
+        }else{
+            updateGoogleSwitch()
+            Auth.auth().currentUser?.unlink(fromProvider: "google.com", completion: { (user, error) in
+                if(error != nil){
+                    print(error.debugDescription)
+                    self.showMessagePromptWithTitle(error!.localizedDescription, title: "Error")
+                    self.updateGoogleSwitch()
+                    return
+                }
+                self.showMessagePrompt("Your Google account is now unlinked from this account")
+                GIDSignIn.sharedInstance()?.signOut()
+                AccessToken.current = nil
+                self.updateGoogleSwitch()
+            })
+        }
+        updateGoogleSwitch()
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if (error != nil) {
+            print(error.debugDescription)
+            self.showMessagePromptWithTitle(error!.localizedDescription, title: "Error")
+            return
+        }
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        Auth.auth().currentUser?.link(with: credential, completion: { (result, error) in
+            if(error != nil){
+                print(error.debugDescription)
+                self.showMessagePromptWithTitle(error!.localizedDescription, title: "Error")
+                self.updateGoogleSwitch()
+                return
+            }else{
+                print(result?.additionalUserInfo)
+                self.updateGoogleSwitch()
+            }
+        })
     }
     
     @IBAction func linkFacebookSwitchValueChanged(_ sender: Any) {
-        if(AccessToken.current == nil){
+        if(!hasLinkedProvider(providerId: "facebook.com")){
             LoginManager().logIn(permissions: [], from: self) { (result, error) in
                 if(error != nil){
                     print(error.debugDescription)
@@ -245,7 +300,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
                 }
                 self.showMessagePrompt("Your Facebook account is now unlinked from this account")
                 LoginManager().logOut()
-                AccessToken.current = nil
+                //AccessToken.current = nil
                 self.updateFacebookSwitch()
             })
         }

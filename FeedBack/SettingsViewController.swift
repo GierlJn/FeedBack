@@ -69,6 +69,7 @@ class SettingsViewController: UIViewController, SettingsDelegate {
     }
     
     private func saveNewEmail(){
+        print("try to save eamil")
         Auth.auth().currentUser?.updateEmail(to: newEmail!, completion: { (error) in
             if(error != nil){
                 print("error saving email: \(String(describing: error))")
