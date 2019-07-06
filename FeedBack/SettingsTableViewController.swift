@@ -11,10 +11,6 @@ protocol SettingsDelegate: AnyObject{
 }
 
 class SettingsTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-
-    
-    
-    
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var passwordButtonOutlet: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
@@ -29,11 +25,18 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     var ref: DatabaseReference!
     
     var user: User?
-    
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let providerData = Auth.auth().currentUser?.providerData
+        for provider in providerData!{
+            print("provider:")
+            print(provider.providerID)
+        }
+        
+        setupSwitches()
         guard let currentUser = Firebase.Auth.auth().currentUser else { return }
         ref = Database.database().reference(withPath: usersPath).child(currentUser.uid)
         ref.observe(DataEventType.value) { (snapshot) in
@@ -43,7 +46,19 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
             self.emailTextField.text = currentUser.email
             self.setupUserImage()
         }
-        
+    }
+    
+    fileprivate func setupSwitches(){
+        updateFacebookSwitch()
+    }
+    
+    fileprivate func updateFacebookSwitch() {
+        if(AccessToken.current == nil){
+            print("accesstoken is nil")
+            linkFacebookSwitch.isOn = false
+        }else{
+            linkFacebookSwitch.isOn = true
+        }
     }
     
     fileprivate func setupUserImage() {
@@ -81,6 +96,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         do {
             try Auth.auth().signOut()
             LoginManager().logOut()
+            
             let rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"rootNavigationController") as! RootNavigationController
             self.present(rootViewController, animated: true, completion: nil)
         }
@@ -182,6 +198,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     @IBAction func linkGoogleSwitchValueChanged(_ sender: Any) {
+        
 //        guard let currentUser = Firebase.Auth.auth().currentUser else { return }
 //        guard let authentication = currentUser.authentication else { return }
 //        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
@@ -190,5 +207,52 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     @IBAction func linkFacebookSwitchValueChanged(_ sender: Any) {
+        if(AccessToken.current == nil){
+            LoginManager().logIn(permissions: [], from: self) { (result, error) in
+                if(error != nil){
+                    print(error.debugDescription)
+                    self.showMessagePromptWithTitle(error!.localizedDescription, title: "Error")
+                    self.updateFacebookSwitch()
+                    return
+                }
+                if(AccessToken.current == nil){
+                    print("Accesstoken is still nil after loggIn")
+                    self.updateFacebookSwitch()
+                    return
+                }
+                let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+                Auth.auth().currentUser?.link(with: credential, completion: { (authResult, error) in
+                    if(error != nil){
+                        print(error.debugDescription)
+                        self.showMessagePromptWithTitle(error!.localizedDescription, title: "Error")
+                        self.updateFacebookSwitch()
+                        return
+                    }else{
+                        print(authResult?.additionalUserInfo)
+                        //linkin succesful
+                    }
+                    self.updateFacebookSwitch()
+                })
+            }
+        }else{
+            updateFacebookSwitch()
+            Auth.auth().currentUser?.unlink(fromProvider: "facebook.com", completion: { (user, error) in
+                if(error != nil){
+                    print(error.debugDescription)
+                    self.showMessagePromptWithTitle(error!.localizedDescription, title: "Error")
+                    self.updateFacebookSwitch()
+                    return
+                }
+                self.showMessagePrompt("Your Facebook account is now unlinked from this account")
+                LoginManager().logOut()
+                AccessToken.current = nil
+                self.updateFacebookSwitch()
+            })
+        }
+        
+        
+        
+        
+        
     }
 }

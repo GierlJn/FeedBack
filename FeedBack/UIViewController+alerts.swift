@@ -77,6 +77,18 @@ extension UIViewController{
         }
     }
     
+    func showMessagePromptWithTitle(_ message: String?, title: String) {
+        if supportsAlertController() {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: kOK, style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true)
+        } else {
+            let alert = UIAlertView(title: "", message: message!, delegate: nil, cancelButtonTitle: "", otherButtonTitles: kOK)
+            alert.show()
+        }
+    }
+    
     func showSpinner(_ completion: (() -> Void)? = nil) {
         if supportsAlertController() {
             showModernSpinner(completion)
