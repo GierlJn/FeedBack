@@ -18,20 +18,24 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     var impactType: CharityImpactType?
     var charityLogo: String?
     var ref: DatabaseReference!
-    var userRef: DatabaseReference!
     var donationSumRef: DatabaseReference!
-    var user: Firebase.User?
+    var currentUser: Firebase.User?
     var alertQueue = [UIAlertController]()
     var transaction: Transaction?
     let achievmentManager = AchievementManager()
+    var user: User?
+    var userAchievements = [AchievementFirebaseEntry]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.currentUser = Auth.auth().currentUser
         ref = Database.database().reference()
-        user = Auth.auth().currentUser
+        ref.child("users").child(currentUser!.uid).observe(DataEventType.value) { (snapshot) in
+            guard let dbUser = User(snapshot: snapshot) else { return }
+            self.user = dbUser
+            self.userAchievements = dbUser.achievementHolder.achievements
+        }
         
-        userRef = Database.database().reference()
-        donationSumRef = Database.database().reference()
         userInputAmountTextField.delegate = self
         userInputAmountTextField.keyboardType = .numberPad
         userInputAmountTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)),
@@ -121,25 +125,20 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
                             impactAmountPath:impactAmount,
                             logoPath:charityLogo,
                             impactPerDollarPath:impactPerDollar] as [String: Any]
-        self.ref.child("users").child(user.uid).child("donations").childByAutoId().updateChildValues(updateValues)
+        self.ref.child("users").child(currentUser!.uid).child("donations").childByAutoId().updateChildValues(updateValues)
         
-        
-        donationSumRef.child("users").child(user.uid).observe(DataEventType.value) { (snapshot) in
-            guard let dbUser = User(snapshot: snapshot) else { return }
-            let userLevel = dbUser.donationHolder.getSumOfAllLevels()
-            let achievements = dbUser.achievementHolder.achievements
-            self.userRef.child("users").child(user.uid).updateChildValues(([levelPath:userLevel] as [String:Any]))
-            self.updateAchievements(achievements, dbUser)
-        }
+            let userLevel = user.donationHolder.getSumOfAllLevels()
+            self.ref.child("users").child(currentUser!.uid).updateChildValues(([levelPath:userLevel] as [String:Any]))
+        self.updateAchievements(donatedSum: Float(Int(donationAmount)!))
     }
     
-    fileprivate func updateAchievements(_ achievements: [AchievementFirebaseEntry], _ dbUser: User) {
-        if(!userHasAchievement(userAchievements: achievements, achievementId: "firstdonation")){
+    fileprivate func updateAchievements(donatedSum: Float) {
+        if(!userHasAchievement(achievementId: "firstdonation")){
             print("first achievement")
             grantAchievementWithAlert("firstdonation")
         }
-        if(!userHasAchievement(userAchievements: achievements, achievementId: "donateonehundred")){
-            if(dbUser.donationHolder.getTotalDonationSum() >= 100){
+        if(!userHasAchievement(achievementId: "donateonehundred")){
+            if(user!.donationHolder.getTotalDonationSum()+donatedSum >= 100){
                 print("one hundred achievement")
                 grantAchievementWithAlert("donateonehundred")
             }
@@ -151,11 +150,10 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
             alertQueue.removeFirst()
         }
     }
-
+    
     func grantAchievementWithAlert(_ achievementKey: String){
-        guard let user = user else { return }
         guard let achievement = achievmentManager.getAchievementWithKey(achievementKey) else { return }
-        achievmentManager.grantAchievementForKey(achievementKey, userId: user.uid)
+        achievmentManager.grantAchievementForKey(achievementKey, userId: currentUser!.uid)
        
         
         let alert = UIAlertController(title: achievement.name, message: achievement.messageWhenAchieved, preferredStyle: .alert)
@@ -174,7 +172,7 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         alertQueue.append(alert)
     }
     
-    func userHasAchievement(userAchievements: [AchievementFirebaseEntry], achievementId: String)->Bool{
+    func userHasAchievement(achievementId: String)->Bool{
         if(userAchievements.contains(where: { (entry) -> Bool in
             entry.id == achievementId
         })){
