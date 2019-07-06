@@ -23,6 +23,7 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     var user: Firebase.User?
     var alertQueue = [UIAlertController]()
     var transaction: Transaction?
+    let achievmentManager = AchievementManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,12 +136,12 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     fileprivate func updateAchievements(_ achievements: [AchievementFirebaseEntry], _ dbUser: User) {
         if(!userHasAchievement(userAchievements: achievements, achievementId: "firstdonation")){
             print("first achievement")
-            grantAchievementWithAlert(Achievements.firstDonationAchievement)
+            grantAchievementWithAlert("firstdonation")
         }
         if(!userHasAchievement(userAchievements: achievements, achievementId: "donateonehundred")){
             if(dbUser.donationHolder.getTotalDonationSum() >= 100){
                 print("one hundred achievement")
-                grantAchievementWithAlert(Achievements.donateOneHundredAchievement)
+                grantAchievementWithAlert("donateonehundred")
             }
         }
         if (self.alertQueue.isEmpty){
@@ -151,10 +152,12 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         }
     }
 
-    func grantAchievementWithAlert(_ achievement: Achievement){
-        let timestamp = NSDate().timeIntervalSince1970
+    func grantAchievementWithAlert(_ achievementKey: String){
         guard let user = user else { return }
-        self.userRef.child("users").child(user.uid).child("achievements").updateChildValues(([achievement.key:timestamp] as [String:Any]))
+        guard let achievement = achievmentManager.getAchievementWithKey(achievementKey) else { return }
+        achievmentManager.grantAchievementForKey(achievementKey, userId: user.uid)
+       
+        
         let alert = UIAlertController(title: achievement.name, message: achievement.messageWhenAchieved, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Nice!", style: .default) { (action) in
             if (self.alertQueue.isEmpty){

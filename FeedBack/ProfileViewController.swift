@@ -26,8 +26,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     var friends = [Friend]()
     var achievements = [AchievementFirebaseEntry]()
     var currentUser = Auth.auth().currentUser
-    let allAchievements = Achievements.getAllAvailableAchievements()
-
+    let achievementManager = AchievementManager()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let user = Firebase.Auth.auth().currentUser else { return }
@@ -150,12 +151,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allAchievements.count
+        return achievementManager.availableAchievements.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = achievementCollectionView.dequeueReusableCell(withReuseIdentifier: "achievementCell", for: indexPath) as! AchievementCell
-        let achievementForCell = allAchievements[indexPath.row]
+        let achievementForCell = achievementManager.availableAchievements[indexPath.row]
         
         if(!userHasAchievement(achievementId: achievementForCell.key)){
             cell.achievementImage.alpha = 0.3
@@ -172,7 +173,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let achievement = allAchievements[indexPath.row]
+        let achievement = achievementManager.availableAchievements[indexPath.row]
         if(userHasAchievement(achievementId: achievement.key)){
             let achievementWithDate = achievements.first { (entry) -> Bool in
                 entry.id == achievement.key

@@ -23,6 +23,7 @@
 		B923087C226764EA00D85B43 /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B923087B226764EA00D85B43 /* LeaderBoardViewController.swift */; };
 		B923087E22676E7E00D85B43 /* GlobalLeaderBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B923087D22676E7E00D85B43 /* GlobalLeaderBoardModel.swift */; };
 		B927164722CDC00200543394 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927164622CDC00200543394 /* Transaction.swift */; };
+		B9275CD122D0C13B00C96DFF /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9275CD022D0C13B00C96DFF /* AchievementManager.swift */; };
 		B9338FC82282B30D0021943C /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FC72282B30D0021943C /* SettingsTableViewController.swift */; };
 		B9338FCA2282B6AD0021943C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FC92282B6AD0021943C /* RootViewController.swift */; };
 		B9338FCE2282BAFB0021943C /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FCD2282BAFB0021943C /* RootNavigationController.swift */; };
@@ -119,6 +120,7 @@
 		B923087B226764EA00D85B43 /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
 		B923087D22676E7E00D85B43 /* GlobalLeaderBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalLeaderBoardModel.swift; sourceTree = "<group>"; };
 		B927164622CDC00200543394 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		B9275CD022D0C13B00C96DFF /* AchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementManager.swift; sourceTree = "<group>"; };
 		B9338FC72282B30D0021943C /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		B9338FC92282B6AD0021943C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		B9338FCD2282BAFB0021943C /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				B91A795A2294354000AA554F /* Friend.swift */,
 				B91A7958229431A900AA554F /* AchievementFirebaseEntry.swift */,
 				B9F4926E22A676C300A23C49 /* Achievement.swift */,
+				B9275CD022D0C13B00C96DFF /* AchievementManager.swift */,
 				B923087D22676E7E00D85B43 /* GlobalLeaderBoardModel.swift */,
 				B95F9282226496DC007F7755 /* AchievementModel.swift */,
 				B9D32C9E228BE91500F11743 /* UserDataBase.swift */,
@@ -670,6 +673,7 @@
 				B9869E1B229EB36A00FE140B /* PublicUserProfileViewController.swift in Sources */,
 				B9338FCA2282B6AD0021943C /* RootViewController.swift in Sources */,
 				B92000462275ADD6004F74A6 /* SettingsViewController.swift in Sources */,
+				B9275CD122D0C13B00C96DFF /* AchievementManager.swift in Sources */,
 				B95F927122646DC4007F7755 /* CharityInfoViewController.swift in Sources */,
 				B922C5F3226EF3DF006E0D2C /* ImpactTableViewCell.swift in Sources */,
 				B9D32CA3228C06DE00F11743 /* Charity.swift in Sources */,
