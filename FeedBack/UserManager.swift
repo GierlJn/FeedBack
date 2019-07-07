@@ -41,6 +41,7 @@ class UserManager{
                                  levelPath:1] as [String: Any]
             self.ref.child(currentUser.uid).updateChildValues(initialValues)
             print("user is created in db")
+            UserDefaults.standard.set(false, forKey: "pushNotificationKey")
             
         }
         

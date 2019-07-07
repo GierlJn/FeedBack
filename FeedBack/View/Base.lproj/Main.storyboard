@@ -736,6 +736,9 @@
                                                         <constraint firstAttribute="height" constant="31" id="HrY-LW-W5b"/>
                                                         <constraint firstAttribute="width" constant="47" id="pUf-xs-uI7"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="leaderboardNotificationSwitchPressed:" destination="cX2-gR-HXx" eventType="valueChanged" id="r8q-UI-Bha"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Sp-ko-dsB">
                                                     <rect key="frame" x="20" y="11.5" width="106" height="21"/>
@@ -780,6 +783,9 @@
                                                         <constraint firstAttribute="height" constant="31" id="Mrx-KL-g4q"/>
                                                         <constraint firstAttribute="width" constant="47" id="fRH-KN-GqL"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="newsSwitchPressed:" destination="cX2-gR-HXx" eventType="valueChanged" id="gUh-am-b8I"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -838,6 +844,9 @@
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <state key="normal" title="Contact Support"/>
+                                                    <connections>
+                                                        <action selector="contactSupportButtonPressed:" destination="cX2-gR-HXx" eventType="touchUpInside" id="L6O-sl-psD"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -862,6 +871,9 @@
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <state key="normal" title="Privacy"/>
+                                                    <connections>
+                                                        <action selector="privacyButtonPressed:" destination="cX2-gR-HXx" eventType="touchUpInside" id="QcS-wX-HhC"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

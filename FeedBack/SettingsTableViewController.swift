@@ -25,21 +25,24 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var linkGoogleSwitch: UISwitch!
     weak var delegate: SettingsDelegate?
     var ref: DatabaseReference!
-    
+    let achievementManager = AchievementManager()
     var user: User?
-
+    var userAchievements = [AchievementFirebaseEntry]()
+    var alertQueue = [UIAlertController]()
+    var currentUser: Firebase.User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupSwitches()
-        guard let currentUser = Firebase.Auth.auth().currentUser else { return }
-        self.emailTextField.text = currentUser.email
-        ref = Database.database().reference(withPath: usersPath).child(currentUser.uid)
+        currentUser = Firebase.Auth.auth().currentUser
+        self.emailTextField.text = currentUser?.email
+        ref = Database.database().reference(withPath: usersPath).child(currentUser!.uid)
         ref.observe(DataEventType.value) { (snapshot) in
             guard let user = User(snapshot: snapshot) else { return }
             self.user = user
             self.userNameTextField.text = user.userName
+            self.userAchievements = user.achievementHolder.achievements
             self.setupUserImage()
         }
     }
@@ -55,6 +58,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     fileprivate func setupSwitches(){
         updateFacebookSwitch()
         updateGoogleSwitch()
+        updateNotificationSwitch()
     }
     
     fileprivate func updateGoogleSwitch(){
@@ -73,6 +77,11 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         }
     }
     
+    func updateNotificationSwitch(){
+        leaderBoardNotificationSwitch.isOn = UserDefaults.standard.bool(forKey: "pushNotificationKey")
+
+    }
+    
     fileprivate func hasLinkedProvider(providerId: String)->Bool{
         let providerData = Auth.auth().currentUser?.providerData
         return providerData?.contains(where: { (provider) -> Bool in
@@ -84,8 +93,14 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         let storageReference = Storage.storage().reference()
         let profileImageRef = storageReference.child(usersPath).child(user!.uniqueId).child("\(user!.uniqueId)-profileImage.jpg")
         let placeholderImage = UIImage(named: "user.png")
+        SDImageCache.shared.clearMemory()
+        SDImageCache.shared.clearDisk()
         userImage.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
+        
+        print("set user image to ")
+        print(profileImageRef)
         userImage.setRounded()
+        tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -102,6 +117,28 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         //performSegue
     }
     
+    @IBAction func leaderboardNotificationSwitchPressed(_ sender: Any) {
+        if(!userHasAchievement(achievementId: "pushnotificationactivated")){
+            print("")
+            grantAchievementWithAlert("pushnotificationactivated")
+        }
+        let isActive = UserDefaults.standard.bool(forKey: "pushNotificationKey")
+        UserDefaults.standard.set(!isActive, forKey: "pushNotificationKey")
+        updateNotificationSwitch()
+    }
+    
+    @IBAction func newsSwitchPressed(_ sender: Any) {
+    }
+    
+    
+    @IBAction func contactSupportButtonPressed(_ sender: Any) {
+        print("setupuserImage contactsup")
+        setupUserImage()
+    }
+    
+    @IBAction func privacyButtonPressed(_ sender: Any) {
+    }
+    
     @IBAction func emailGotEdited(_ sender: Any) {
         delegate?.emailHasChanged(emailTextField.text!)
         //performEmailSegue
@@ -115,7 +152,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         do {
             try Auth.auth().signOut()
             LoginManager().logOut()
-            
+            UserDefaults.standard.set(false, forKey: "pushNotificationKey")
             let rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier:"rootNavigationController") as! RootNavigationController
             self.present(rootViewController, animated: true, completion: nil)
         }
@@ -168,7 +205,13 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         }
         print("pic taken")
         guard let optimizedImageData = selectedImage.jpegData(compressionQuality: 0.5) else { return }
-        uploadProfileImage(imageData: optimizedImageData)
+        
+        //SDImageCache.shared.clearMemory()
+        //SDImageCache.shared.clearDisk()
+        SDImageCache.shared.clear(with: .all) {
+            self.uploadProfileImage(imageData: optimizedImageData)
+        }
+        
         picker.dismiss(animated: true, completion: nil)
     }
     
@@ -192,8 +235,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         let uploadMetaData = StorageMetadata()
         uploadMetaData.contentType = "image/jpeg"
         
-        SDImageCache.shared.clearMemory()
-        SDImageCache.shared.clearDisk()
+        
         
         
         profileImageRef.putData(imageData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
@@ -203,20 +245,19 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
                 print("Error: \(String(describing: error?.localizedDescription))")
                 return
             } else {
-                self.setupUserImage()
+                //self.setupUserImage()
                 print("Meta data of uploaded image \(String(describing: uploadedImageMeta))")
                 
                 let imageLinkRef = Database.database().reference(withPath: "users").child(currentUser!.uid)
                 let timestamp = NSDate().timeIntervalSince1970
                 imageLinkRef.updateChildValues(  ["profileImageSet" : timestamp ])
                 
+                self.setupUserImage()
                 self.tableView.reloadData()
             }
         }
     }
-    @IBAction func privacyButtonPressed(_ sender: Any) {
-    }
-    
+
 
     
     @IBAction func linkGoogleSwitchValueChanged(_ sender: Any) {
@@ -306,6 +347,27 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
                 self.updateFacebookSwitch()
             })
         }
-
+    }
+    func grantAchievementWithAlert(_ achievementKey: String){
+        guard let achievement = achievementManager.getAchievementWithKey(achievementKey) else { return }
+        achievementManager.grantAchievementForKey(achievementKey, userId: currentUser!.uid)
+        
+        print("grantachievement")
+        let alert = UIAlertController(title: achievement.name, message: achievement.messageWhenAchieved, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Nice!", style: .default) { (action) in
+            return
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func userHasAchievement(achievementId: String)->Bool{
+        if(userAchievements.contains(where: { (entry) -> Bool in
+            entry.id == achievementId
+        })){
+            return true
+        }else{
+            return false
+        }
     }
 }

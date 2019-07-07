@@ -43,15 +43,15 @@ class Level{
     
     static func getRankForLevel(level: Int)->String{
         switch level{
-        case 1..<8:
+        case 1..<3:
             return "Newbie"
-        case 8..<32:
+        case 3..<6:
             return "Helper"
-        case 32..<128:
+        case 6..<12:
             return "Humanist"
-        case 128..<256:
+        case 12..<24:
             return "Philantropist"
-        case 256...:
+        case 24...:
             return "Altruist"
         default:
             return ""
