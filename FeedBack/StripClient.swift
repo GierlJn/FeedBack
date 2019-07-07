@@ -24,17 +24,16 @@ final class StripeClient {
     }()
     
     func completeCharge(with token: STPToken, amount: Int, description: String, completion: @escaping (Result) -> Void) {
-        // 1+
-        print(amount)
+        
         let url = baseURL.appendingPathComponent("charge")
-        // 2
+        
         let params: [String: Any] = [
             "token": token.tokenId,
             "amount": amount,
             "currency": Constants.defaultCurrency,
             "description": description
         ]
-        // 3
+        
         Alamofire.request(url, method: .post, parameters: params)
             .validate(statusCode: 200..<300)
             .responseString { response in

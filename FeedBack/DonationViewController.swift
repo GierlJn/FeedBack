@@ -34,6 +34,8 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
             guard let dbUser = User(snapshot: snapshot) else { return }
             self.user = dbUser
             self.userAchievements = dbUser.achievementHolder.achievements
+            let userLevel = dbUser.donationHolder.getSumOfAllLevels()
+            self.ref.child("users").child(self.currentUser!.uid).updateChildValues(([levelPath:userLevel] as [String:Any]))
         }
         
         userInputAmountTextField.delegate = self
@@ -127,12 +129,12 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
                             impactPerDollarPath:impactPerDollar] as [String: Any]
         self.ref.child("users").child(currentUser!.uid).child("donations").childByAutoId().updateChildValues(updateValues)
         
-            let userLevel = user.donationHolder.getSumOfAllLevels()
-            self.ref.child("users").child(currentUser!.uid).updateChildValues(([levelPath:userLevel] as [String:Any]))
-        self.updateAchievements(donatedSum: Float(Int(donationAmount)!))
+        
+        
+        self.updateAchievements(donatedSum: Float(Int(donationAmount)!), impactAmount: Int(Float(impactAmount)!), impactType: CharityImpactType(rawValue: impactType)!)
     }
     
-    fileprivate func updateAchievements(donatedSum: Float) {
+    fileprivate func updateAchievements(donatedSum: Float, impactAmount: Int, impactType: CharityImpactType) {
         if(!userHasAchievement(achievementId: "firstdonation")){
             print("first achievement")
             grantAchievementWithAlert("firstdonation")
@@ -143,6 +145,23 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
                 grantAchievementWithAlert("donateonehundred")
             }
         }
+        
+        if(impactType == .childTreated){
+            if(!userHasAchievement(achievementId: "fiftychildrentreated")){
+                if(user!.donationHolder.getTotalForImpactType(impactType: .childTreated) + impactAmount >= 50){
+                    print("fiftychildrentreated")
+                    grantAchievementWithAlert("fiftychildrentreated")
+                }
+            }
+            if(!userHasAchievement(achievementId: "hundredchildrentreated")){
+                if(user!.donationHolder.getTotalForImpactType(impactType: .childTreated) + impactAmount >= 100){
+                    print("hundredchildrentreated")
+                    grantAchievementWithAlert("hundredchildrentreated")
+                }
+            }
+        }
+
+        
         if (self.alertQueue.isEmpty){
             initializeGameViewController()
         }else{

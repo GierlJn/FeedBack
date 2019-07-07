@@ -26,13 +26,33 @@ class DonationsHolder: NSObject{
                 return result + Float(donation.impactAmount)!
             }
             if(!donationsForImpactType.isEmpty){
-                let charityName: String = donationsForImpactType[0].name // to be changed, impacttypes can have different charities
+                let charityName: String = donationsForImpactType[0].name // MARK TODO: to be changed, when impacttypes can have more than one charity
                 let charityLogo: String = donationsForImpactType[0].logo
                 let mappedDonation = Donation(name: charityName, impactType: impactType, impactAmount: String(sum), logo: charityLogo, amount: 0, timeStamp: 0)
                 mappedDonations.append(mappedDonation)
             }
         }
         return mappedDonations
+    }
+    
+    func getTotalForImpactType(impactType: CharityImpactType)->Int{
+        let mappedDonations = getMappedDonations()
+        
+        switch (impactType) {
+        case .childTreated:
+            let childrenDonations = mappedDonations.first { (donation) -> Bool in
+                donation.impactType == .childTreated
+            }
+            if((childrenDonations) != nil){
+                return Int(Float(childrenDonations!.impactAmount)!)
+            }else{
+                return 0
+            }
+            
+        default:
+            print("error getting total for impact type")
+            return 0
+        }
     }
     
     func getTotalDonationSum()->Float{

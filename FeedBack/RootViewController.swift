@@ -11,6 +11,7 @@ import FirebaseAuth
 import Firebase
 import GoogleSignIn
 import FBSDKLoginKit
+import PDFKit
 
 class RootViewController: UIViewController, GIDSignInUIDelegate, LoginButtonDelegate {
     
@@ -67,7 +68,6 @@ class RootViewController: UIViewController, GIDSignInUIDelegate, LoginButtonDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.setGoogleDelegate()
         

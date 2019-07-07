@@ -20,7 +20,6 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var linkFacebookSwitch: UISwitch!
     
-    @IBOutlet weak var contactSupportButton: UIButton!
     @IBOutlet weak var newsNotificationSwitch: UISwitch!
     @IBOutlet weak var leaderBoardNotificationSwitch: UISwitch!
     @IBOutlet weak var linkGoogleSwitch: UISwitch!
@@ -82,11 +81,13 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     fileprivate func setupUserImage() {
+        print("setupUserImageSettings")
         let storageReference = Storage.storage().reference()
         let profileImageRef = storageReference.child(usersPath).child(user!.uniqueId).child("\(user!.uniqueId)-profileImage.jpg")
         let placeholderImage = UIImage(named: "user.png")
         userImage.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
         userImage.setRounded()
+         print("setupUserImageSettingsDone")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -214,8 +215,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     @IBAction func privacyButtonPressed(_ sender: Any) {
     }
     
-    @IBAction func contactSupportButtonPressed(_ sender: Any) {
-    }
+
     
     @IBAction func linkGoogleSwitchValueChanged(_ sender: Any) {
         GIDSignIn.sharedInstance()?.delegate = self
@@ -304,10 +304,6 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
                 self.updateFacebookSwitch()
             })
         }
-        
-        
-        
-        
-        
+
     }
 }

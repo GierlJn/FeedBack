@@ -803,16 +803,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s3Z-Nf-Pa0">
-                                                    <rect key="frame" x="147.5" y="7" width="119" height="30"/>
+                                                    <rect key="frame" x="168.5" y="7" width="77" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="62" id="V7V-27-gCP"/>
                                                         <constraint firstAttribute="height" constant="30" id="fnO-dq-tgV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <state key="normal" title="Contact Support"/>
+                                                    <state key="normal" title="Tax Report"/>
                                                     <connections>
-                                                        <action selector="contactSupportButtonPressed:" destination="cX2-gR-HXx" eventType="touchUpInside" id="Vly-Xc-P96"/>
+                                                        <segue destination="LFo-UD-DZZ" kind="show" id="xWa-aA-PRP"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -822,8 +822,32 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="7qX-vl-NEQ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bM0-IZ-4L3">
                                         <rect key="frame" x="0.0" y="528" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bM0-IZ-4L3" id="vWu-vf-PEx">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggl-is-JiW">
+                                                    <rect key="frame" x="147.5" y="7" width="119" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="62" id="7e7-CG-K4X"/>
+                                                        <constraint firstAttribute="height" constant="30" id="TB3-7K-4wI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <state key="normal" title="Contact Support"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ggl-is-JiW" firstAttribute="centerX" secondItem="vWu-vf-PEx" secondAttribute="centerX" id="onu-0X-23b"/>
+                                                <constraint firstItem="Ggl-is-JiW" firstAttribute="centerY" secondItem="vWu-vf-PEx" secondAttribute="centerY" id="wFQ-66-bxt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="7qX-vl-NEQ">
+                                        <rect key="frame" x="0.0" y="572" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7qX-vl-NEQ" id="2Wl-sc-yjk">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -838,9 +862,6 @@
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <state key="normal" title="Privacy"/>
-                                                    <connections>
-                                                        <action selector="privacyButtonPressed:" destination="cX2-gR-HXx" eventType="touchUpInside" id="GAu-4T-sns"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -850,7 +871,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="xS9-Ir-hnE">
-                                        <rect key="frame" x="0.0" y="572" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="616" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xS9-Ir-hnE" id="rZy-W2-4uv">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -885,7 +906,6 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="contactSupportButton" destination="s3Z-Nf-Pa0" id="XOx-br-aHG"/>
                         <outlet property="emailTextField" destination="Feq-YF-fFZ" id="WvB-uo-A7j"/>
                         <outlet property="leaderBoardNotificationSwitch" destination="Tzk-w1-iLF" id="akj-Xs-SG7"/>
                         <outlet property="linkFacebookSwitch" destination="Hks-mb-y2r" id="ClO-2q-glM"/>
@@ -1102,7 +1122,62 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LH6-Lt-PgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7365.217391304348" y="537.05357142857144"/>
+            <point key="canvasLocation" x="8136" y="269"/>
+        </scene>
+        <!--Tax Report View Controller-->
+        <scene sceneID="Ktx-4y-M60">
+            <objects>
+                <viewController id="LFo-UD-DZZ" customClass="TaxReportViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hqY-XA-yRw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfz-84-rqB" customClass="PDFView">
+                                <rect key="frame" x="32" y="66" width="350" height="646"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQ4-m7-EGq">
+                                <rect key="frame" x="146" y="728" width="122" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="IeW-77-adr"/>
+                                    <constraint firstAttribute="width" constant="122" id="ocT-qa-TtE"/>
+                                </constraints>
+                                <state key="normal" title="Export Pdf"/>
+                                <connections>
+                                    <action selector="exportPdfButtonPressed:" destination="LFo-UD-DZZ" eventType="touchUpInside" id="r7g-Ob-ySu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ww1-MP-sEw">
+                                <rect key="frame" x="20" y="20" width="95" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="95" id="CAK-zf-C3D"/>
+                                </constraints>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="returnButtonPressed:" destination="LFo-UD-DZZ" eventType="touchUpInside" id="MBx-HU-zgn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VQ4-m7-EGq" firstAttribute="top" secondItem="pfz-84-rqB" secondAttribute="bottom" constant="16" id="4em-9g-kFR"/>
+                            <constraint firstAttribute="bottom" secondItem="VQ4-m7-EGq" secondAttribute="bottom" constant="16" id="A3p-PM-vFz"/>
+                            <constraint firstItem="Ww1-MP-sEw" firstAttribute="leading" secondItem="S9n-TV-537" secondAttribute="leading" constant="20" id="HWH-iO-xkw"/>
+                            <constraint firstItem="pfz-84-rqB" firstAttribute="leading" secondItem="S9n-TV-537" secondAttribute="leading" constant="32" id="RBK-2d-GGT"/>
+                            <constraint firstItem="S9n-TV-537" firstAttribute="trailing" secondItem="pfz-84-rqB" secondAttribute="trailing" constant="32" id="dTi-HE-aUX"/>
+                            <constraint firstItem="pfz-84-rqB" firstAttribute="top" secondItem="Ww1-MP-sEw" secondAttribute="bottom" constant="16" id="pPX-uU-eNU"/>
+                            <constraint firstItem="Ww1-MP-sEw" firstAttribute="top" secondItem="hqY-XA-yRw" secondAttribute="top" constant="20" id="rWd-Nu-fWo"/>
+                            <constraint firstItem="VQ4-m7-EGq" firstAttribute="centerX" secondItem="hqY-XA-yRw" secondAttribute="centerX" id="ygs-7B-hf2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="S9n-TV-537"/>
+                    </view>
+                    <connections>
+                        <outlet property="pdfView" destination="pfz-84-rqB" id="Ex6-eI-qov"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VGT-l4-dfc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8137.6811594202909" y="907.36607142857133"/>
         </scene>
         <!--Log In-->
         <scene sceneID="Xn1-bL-mnb">
