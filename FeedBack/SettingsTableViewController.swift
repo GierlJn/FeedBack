@@ -1,7 +1,7 @@
 
 import UIKit
 import Firebase
-import FirebaseUI
+import SDWebImage
 import FBSDKLoginKit
 import GoogleSignIn
 
@@ -193,7 +193,11 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         
         let uploadMetaData = StorageMetadata()
         uploadMetaData.contentType = "image/jpeg"
-        SDImageCache.shared.removeImage(forKey: profileImageRef.fullPath)
+        
+        SDImageCache.shared.clearMemory()
+        SDImageCache.shared.clearDisk()
+        
+        
         profileImageRef.putData(imageData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
             activityIndicator.stopAnimating()
             activityIndicator.removeFromSuperview()
