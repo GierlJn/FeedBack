@@ -81,13 +81,11 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     fileprivate func setupUserImage() {
-        print("setupUserImageSettings")
         let storageReference = Storage.storage().reference()
         let profileImageRef = storageReference.child(usersPath).child(user!.uniqueId).child("\(user!.uniqueId)-profileImage.jpg")
         let placeholderImage = UIImage(named: "user.png")
         userImage.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
         userImage.setRounded()
-         print("setupUserImageSettingsDone")
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -61,7 +61,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     fileprivate func setupUserImage() {
-        print("setupUserImage")
         let storageReference = Storage.storage().reference()
         let profileImageRef = storageReference.child(usersPath).child(currentUser!.uid).child("\(currentUser!.uid)-profileImage.jpg")
         let placeholderImage = UIImage(named: "user.png")
