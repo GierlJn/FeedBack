@@ -3,7 +3,11 @@ import UIKit
 import Firebase
 import FirebaseUI
 
-class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate{
+
+
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate, UserManagerDelegate{
+ 
+    
 
     @IBOutlet weak var donationSumLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
@@ -19,40 +23,18 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var friendsTableView: UITableView!
     @IBOutlet weak var donationTableView: UITableView!
     
-    var userRef: DatabaseReference!
-    var mappedDonations = [Donation]()
-    var allDonations = [Donation]()
     var user: User?
-    var friends = [Friend]()
     var achievements = [AchievementFirebaseEntry]()
-    var currentUser = Auth.auth().currentUser
     let achievementManager = AchievementManager()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let user = Firebase.Auth.auth().currentUser else { return }
-        userRef = Database.database().reference(withPath: "users").child(user.uid)
-        userRef.observe(DataEventType.value) { (snapshot) in
-            guard let user = User(snapshot: snapshot) else { return }
-            self.user = user
-            self.userNameLabel.text = String(user.userName)
-            self.levelLabel.text = String(user.level)
-            self.rankLabel.text = Level.getRankForLevel(level: user.level)
-            self.donationSumLabel.text = currency + String(user.donationHolder.getTotalDonationSum())
-            self.allDonations = user.donationHolder.donations
-            self.mappedDonations = user.donationHolder.getMappedDonations()
-            self.userImage.setUserImage(userId: self.currentUser!.uid)
-            self.friends = user.friendsHolder.friends
-            self.achievements = user.achievementHolder.achievements
-            self.impactTableView.reloadData()
-            self.friendsTableView.reloadData()
-            self.donationTableView.reloadData()
-            self.achievementCollectionView.reloadData()
-            
-        }
-        
-        userImage.setUserImage(userId: currentUser!.uid)
+        guard let currentUser = Auth.auth().currentUser else { return }
+        let userManager = UserManager()
+        userManager.delegate = self
+        userManager.observeUserData(forUser: currentUser.uid)
+        userImage.setUserImage(userId: currentUser.uid)
         setupCollectionView()
         setupImpactTableView()
         setupFriendsTableView()
@@ -60,8 +42,27 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         setupSeperatorLines()
     }
     
+    internal func userDataUpdated(user: User) {
+        self.user = user
+        self.userNameLabel.text = String(user.userName)
+        self.levelLabel.text = String(user.level)
+        self.rankLabel.text = Level.getRankForLevel(level: user.level)
+        self.donationSumLabel.text = currency + String(user.donationHolder.getTotalDonationSum())
+        self.userImage.setUserImage(userId: user.uniqueId)
+        self.achievements = user.achievementHolder.achievements
+        self.impactTableView.reloadData()
+        self.friendsTableView.reloadData()
+        self.donationTableView.reloadData()
+        self.achievementCollectionView.reloadData()
+    }
+    
     @IBAction func shareButtonPressed(_ sender: Any) {
+        showShareActivityOptions(generateTextToShare())
+    }
+    
+    fileprivate func generateTextToShare()->String{
         var textToShare = ""
+        guard let mappedDonations = user?.donationHolder.getMappedDonations() else { return textToShare}
         for donation in mappedDonations{
             textToShare.append(donation.impactType.getimpactDescriptionStringBeforeValue() ?? "")
             textToShare.append(" ")
@@ -71,7 +72,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             textToShare.append("\n")
         }
         textToShare.append("Keep track of your donations and compete with your friends: [inviteLink]")
-        showShareActivityOptions(textToShare)
+        return textToShare
     }
     
     
@@ -195,11 +196,11 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(tableView){
         case impactTableView:
-            return mappedDonations.count
+            return user?.donationHolder.getMappedDonations().count ?? 0
         case friendsTableView:
-            return friends.count
+            return user?.friendsHolder.friends.count ?? 0
         case donationTableView:
-            return allDonations.count
+            return user?.donationHolder.donations.count ?? 0
         default:
             return 0
         }
@@ -211,6 +212,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         switch(tableView){
         case impactTableView:
             let cell = Bundle.main.loadNibNamed("ImpactTableViewCell", owner: self, options: nil)?.first as! ImpactTableViewCell
+            guard let mappedDonations = user?.donationHolder.getMappedDonations() else { return cell}
             let donation = mappedDonations[indexPath.row]
             cell.impactNameLabel.text = donation.impactType.getimpactDescriptionStringBeforeValue()
             cell.impactLabel.text = String(Int(Float(donation.impactAmount)!))
@@ -218,6 +220,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             return cell
         case friendsTableView:
             let cell = Bundle.main.loadNibNamed("FriendTableViewCell", owner: self, options: nil)?.first as! FriendTableViewCell
+            guard let friends = user?.friendsHolder.friends else { return cell}
             let friend = friends[indexPath.row]
             let friendRef = Database.database().reference(withPath: "users").child(friend.uniqueId)
             friendRef.observe(DataEventType.value) { (snapshot) in
@@ -234,6 +237,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             return cell
         case donationTableView:
             let cell = Bundle.main.loadNibNamed("DonationTableTableViewCell", owner: self, options: nil)?.first as! DonationTableTableViewCell
+            guard let allDonations = user?.donationHolder.donations else { return cell}
             let donation = allDonations[indexPath.row]
             cell.amountLabel.text = String(donation.amount) + currency
             cell.recipientLabel.text = donation.name
@@ -257,9 +261,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "showSettingsSegue"){
-            //let settingsViewController = segue.destination as? SettingsViewController
-        }else if (segue.identifier == "goToPublicUserProfile"){
+        if (segue.identifier == "goToPublicUserProfile"){
             guard let indexPath: IndexPath = sender as? IndexPath else { return }
             guard let publicUserProfileViewController = segue.destination as? PublicUserProfileViewController else{
                 return
