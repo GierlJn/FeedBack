@@ -154,7 +154,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         //    let code = String.getString(message: userInfo["code"])
         guard let aps = userInfo["aps"] as? Dictionary<String, Any> else { return }
-        guard let alert = aps["alert"] as? String else { return }
+        guard (aps["alert"] as? String) != nil else { return }
         //    guard let body = alert["body"] as? String else { return }
         
         completionHandler([])

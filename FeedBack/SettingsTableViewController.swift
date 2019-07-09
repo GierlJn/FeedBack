@@ -288,12 +288,10 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
                                                        accessToken: authentication.accessToken)
         Auth.auth().currentUser?.link(with: credential, completion: { (result, error) in
             if(error != nil){
-                print(error.debugDescription)
                 self.showMessagePromptWithTitle(error!.localizedDescription, title: "Error")
                 self.updateGoogleSwitch()
                 return
             }else{
-                print(result?.additionalUserInfo)
                 self.updateGoogleSwitch()
             }
         })
@@ -321,7 +319,6 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
                         self.updateFacebookSwitch()
                         return
                     }else{
-                        print(authResult?.additionalUserInfo)
                         //linkin succesful
                     }
                     self.updateFacebookSwitch()
