@@ -42,7 +42,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             self.donationSumLabel.text = currency + String(user.donationHolder.getTotalDonationSum())
             self.allDonations = user.donationHolder.donations
             self.mappedDonations = user.donationHolder.getMappedDonations()
-            self.setupUserImage()
+            self.userImage.setUserImage(userId: self.currentUser!.uid)
             self.friends = user.friendsHolder.friends
             self.achievements = user.achievementHolder.achievements
             self.impactTableView.reloadData()
@@ -52,20 +52,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             
         }
         
-        self.setupUserImage()
+        userImage.setUserImage(userId: currentUser!.uid)
         setupCollectionView()
         setupImpactTableView()
         setupFriendsTableView()
         setupDonationTableView()
         setupSeperatorLines()
-    }
-    
-    fileprivate func setupUserImage() {
-        let storageReference = Storage.storage().reference()
-        let profileImageRef = storageReference.child(usersPath).child(currentUser!.uid).child("\(currentUser!.uid)-profileImage.jpg")
-        let placeholderImage = UIImage(named: "user.png")
-        userImage.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
-        userImage.setRounded()
     }
     
     @IBAction func shareButtonPressed(_ sender: Any) {

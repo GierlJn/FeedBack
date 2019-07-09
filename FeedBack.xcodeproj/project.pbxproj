@@ -26,6 +26,7 @@
 		B9275CD122D0C13B00C96DFF /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9275CD022D0C13B00C96DFF /* AchievementManager.swift */; };
 		B9275CD322D131FA00C96DFF /* PDFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9275CD222D131FA00C96DFF /* PDFManager.swift */; };
 		B9275CD522D135C800C96DFF /* TaxReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9275CD422D135C800C96DFF /* TaxReportViewController.swift */; };
+		B92AEFD622D5134F0031BD80 /* UIImageView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92AEFD522D5134F0031BD80 /* UIImageView+ext.swift */; };
 		B9338FC82282B30D0021943C /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FC72282B30D0021943C /* SettingsTableViewController.swift */; };
 		B9338FCA2282B6AD0021943C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FC92282B6AD0021943C /* RootViewController.swift */; };
 		B9338FCE2282BAFB0021943C /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FCD2282BAFB0021943C /* RootNavigationController.swift */; };
@@ -125,6 +126,7 @@
 		B9275CD022D0C13B00C96DFF /* AchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementManager.swift; sourceTree = "<group>"; };
 		B9275CD222D131FA00C96DFF /* PDFManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFManager.swift; sourceTree = "<group>"; };
 		B9275CD422D135C800C96DFF /* TaxReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxReportViewController.swift; sourceTree = "<group>"; };
+		B92AEFD522D5134F0031BD80 /* UIImageView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ext.swift"; sourceTree = "<group>"; };
 		B9338FC72282B30D0021943C /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		B9338FC92282B6AD0021943C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		B9338FCD2282BAFB0021943C /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				B927164622CDC00200543394 /* Transaction.swift */,
 				B91A795622941E4600AA554F /* Level.swift */,
 				B914F78122CCD10E0042F332 /* StripClient.swift */,
+				B92AEFD522D5134F0031BD80 /* UIImageView+ext.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -699,6 +702,7 @@
 				B9F9822522CE1A0000592DBE /* UserManager.swift in Sources */,
 				B9C4B0F8229D2B840002111A /* SearchFriendsViewController.swift in Sources */,
 				B9A159AE2292CB8D0074E61F /* Donation.swift in Sources */,
+				B92AEFD622D5134F0031BD80 /* UIImageView+ext.swift in Sources */,
 				B9338FC82282B30D0021943C /* SettingsTableViewController.swift in Sources */,
 				B9F4926C22A650C500A23C49 /* FriendTableViewCell.swift in Sources */,
 				B9F4926F22A676C300A23C49 /* Achievement.swift in Sources */,
