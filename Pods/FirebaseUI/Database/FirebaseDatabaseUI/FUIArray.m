@@ -28,7 +28,7 @@
 @property (strong, nonatomic) NSMutableArray<FIRDataSnapshot *> *snapshots;
 
 /**
- * The backing collection that holds all of the array's keys.
+ * The backing collection that holds all of the array's key.
  */
 @property (strong, nonatomic) NSMutableArray<NSString *> *keys;
 
