@@ -24,7 +24,7 @@ class User: NSObject{
     init?(snapshot: DataSnapshot){
         self.uniqueId = snapshot.key
         guard let user = snapshot.value as? [String:Any] else {
-            print(" user not found snapshot : \(snapshot.value)")
+            print(" user not found snapshot : \(snapshot.value.debugDescription)")
             return nil }
         guard let userName = user[userNamePath] as? String else {
             print(" userName not found ")

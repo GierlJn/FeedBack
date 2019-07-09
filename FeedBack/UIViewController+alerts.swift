@@ -27,75 +27,43 @@ class SimpleTextPromptDelegate: NSObject, UIAlertViewDelegate {
         self.completionHandler = completionHandler
         retainedSelf = self
     }
-    
-    func alertView(_ alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
-        if buttonIndex == alertView.firstOtherButtonIndex {
-            completionHandler!(true, alertView.textField(at: 0)?.text)
-        } else {
-            completionHandler!(false, nil)
-        }
-        completionHandler = nil
-        retainedSelf = nil
-    }
+
 }
 
 extension UIViewController{
     
     
     func showTextInputPrompt(withMessage message: String?, completionBlock completion: @escaping AlertPromptCompletionBlock) {
-        if supportsAlertController() {
-            let prompt = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-            weak var weakPrompt: UIAlertController? = prompt
-            let cancelAction = UIAlertAction(title: kCancel, style: .cancel, handler: { action in
-                completion(false, nil)
-            })
-            let okAction = UIAlertAction(title: kOK, style: .default, handler: { action in
-                let strongPrompt: UIAlertController? = weakPrompt
-                completion(true, strongPrompt?.textFields![0].text)
-            })
-            prompt.addTextField(configurationHandler: nil)
-            prompt.addAction(cancelAction)
-            prompt.addAction(okAction)
-            present(prompt, animated: true)
-        } else {
-            let prompt = SimpleTextPromptDelegate(completionHandler: completion)
-            let alertView = UIAlertView(title: "", message: message!, delegate: prompt, cancelButtonTitle: "Cancel", otherButtonTitles: "Ok")
-            alertView.alertViewStyle = .plainTextInput
-            alertView.show()
-        }
+        let prompt = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        weak var weakPrompt: UIAlertController? = prompt
+        let cancelAction = UIAlertAction(title: kCancel, style: .cancel, handler: { action in
+            completion(false, nil)
+        })
+        let okAction = UIAlertAction(title: kOK, style: .default, handler: { action in
+            let strongPrompt: UIAlertController? = weakPrompt
+            completion(true, strongPrompt?.textFields![0].text)
+        })
+        prompt.addTextField(configurationHandler: nil)
+        prompt.addAction(cancelAction)
+        prompt.addAction(okAction)
+        present(prompt, animated: true)
     }
     
     func showMessagePrompt(_ message: String?) {
-        if supportsAlertController() {
-            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: kOK, style: .default, handler: nil)
-            alert.addAction(okAction)
-            present(alert, animated: true)
-        } else {
-            let alert = UIAlertView(title: "", message: message!, delegate: nil, cancelButtonTitle: "", otherButtonTitles: kOK)
-            alert.show()
-        }
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: kOK, style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
     
     func showMessagePromptWithTitle(_ message: String?, title: String) {
-        if supportsAlertController() {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: kOK, style: .default, handler: nil)
-            alert.addAction(okAction)
-            present(alert, animated: true)
-        } else {
-            let alert = UIAlertView(title: "", message: message!, delegate: nil, cancelButtonTitle: "", otherButtonTitles: kOK)
-            alert.show()
-        }
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: kOK, style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
     
     func showSpinner(_ completion: (() -> Void)? = nil) {
-        if supportsAlertController() {
-            showModernSpinner(completion)
-        }
-    }
-    
-    func showModernSpinner(_ completion: (() -> Void)? = nil) {
         var pleaseWaitAlert: UIAlertController? = objc_getAssociatedObject(self, (kPleaseWaitAssociatedObjectKey)) as? UIAlertController
         if pleaseWaitAlert != nil {
             if completion != nil {
@@ -119,18 +87,10 @@ extension UIViewController{
     }
     
     func hideSpinner(_ completion: (() -> Void)? = nil) {
-            hideModernSpinner(completion)
-    }
-    
-    func hideModernSpinner(_ completion: (() -> Void)? = nil) {
         let pleaseWaitAlert: UIAlertController? = objc_getAssociatedObject(self, (kPleaseWaitAssociatedObjectKey)) as? UIAlertController
         
         pleaseWaitAlert?.dismiss(animated: true, completion: completion)
         
         objc_setAssociatedObject(self, (kPleaseWaitAssociatedObjectKey), nil, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-    }
-    
-    func supportsAlertController() -> Bool {
-        return NSClassFromString("UIAlertController") != nil
     }
 }

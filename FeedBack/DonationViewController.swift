@@ -106,7 +106,7 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     }
     
     fileprivate func processDonation(){
-        guard let user = user else { return }
+        //guard let user = user else { return }
         guard let donationAmount = userInputAmountTextField.text else { return }
         guard let impactType = impactType?.rawValue else { return }
         guard let charityName = charityName else { return }

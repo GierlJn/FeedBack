@@ -72,16 +72,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return FBSDKCoreKit.ApplicationDelegate.shared.application(application,
-                                                                   open: url,
-                                                                   sourceApplication: sourceApplication,
-                                                                   annotation: annotation)
+//        return FBSDKCoreKit.ApplicationDelegate.shared.application(application,
+//                                                                   open: url,
+//                                                                   sourceApplication: sourceApplication,
+//                                                                   annotation: annotation)
         
         let isFBOpenUrl = FBSDKCoreKit.ApplicationDelegate.shared.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
         let isGoogleOpenUrl = GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
         if isFBOpenUrl { return true }
         if isGoogleOpenUrl { return true }
-        return false
         return false
     }
     

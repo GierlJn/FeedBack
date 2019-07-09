@@ -266,7 +266,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "showSettingsSegue"){
-            let settingsViewController = segue.destination as? SettingsViewController
+            //let settingsViewController = segue.destination as? SettingsViewController
         }else if (segue.identifier == "goToPublicUserProfile"){
             guard let indexPath: IndexPath = sender as? IndexPath else { return }
             guard let publicUserProfileViewController = segue.destination as? PublicUserProfileViewController else{
