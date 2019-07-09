@@ -4,12 +4,10 @@ import Firebase
 class CharityInfoViewController: UIViewController {
 
     @IBOutlet weak var charityTitle: UILabel!
-    
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     
     lazy var ref: DatabaseReference = Database.database().reference()
-    
     var charityRef: DatabaseReference!
     var charityId = ""
     var charity: Charity?
@@ -30,7 +28,6 @@ class CharityInfoViewController: UIViewController {
             self.infoLabel.text = self.charity?.about
             self.logoImageView.image = self.charity?.getLogoImage()
             self.infoLabel.sizeToFit()
-            //self.downloadLogo(self.charity!.logo)
         }
     }
     

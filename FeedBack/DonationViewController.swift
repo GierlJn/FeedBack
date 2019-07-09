@@ -220,7 +220,6 @@ extension DonationViewController: STPAddCardViewControllerDelegate {
             switch result {
             case .success:
                 completion(nil)
-                print("token.allResponseFields")
                 print(token.allResponseFields)
                 let alertController = UIAlertController(title: "Congrats", message: "Your payment was successful!", preferredStyle: .alert)
                 let alertAction = UIAlertAction(title: "OK", style: .default, handler: { _ in

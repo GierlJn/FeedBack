@@ -5,7 +5,6 @@ import SDWebImage
 import FBSDKLoginKit
 import GoogleSignIn
 
-
 protocol SettingsDelegate: AnyObject{
     func userNameHasChanged(_ userName: String)
     func emailHasChanged(_ email: String)
@@ -13,16 +12,15 @@ protocol SettingsDelegate: AnyObject{
 
 class SettingsTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GIDSignInDelegate, GIDSignInUIDelegate{
 
-    
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var passwordButtonOutlet: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var linkFacebookSwitch: UISwitch!
-    
     @IBOutlet weak var newsNotificationSwitch: UISwitch!
     @IBOutlet weak var leaderBoardNotificationSwitch: UISwitch!
     @IBOutlet weak var linkGoogleSwitch: UISwitch!
+    
     weak var delegate: SettingsDelegate?
     var ref: DatabaseReference!
     let achievementManager = AchievementManager()
@@ -33,7 +31,6 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupSwitches()
         currentUser = Firebase.Auth.auth().currentUser
         self.emailTextField.text = currentUser?.email
@@ -93,8 +90,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         let storageReference = Storage.storage().reference()
         let profileImageRef = storageReference.child(usersPath).child(user!.uniqueId).child("\(user!.uniqueId)-profileImage.jpg")
         let placeholderImage = UIImage(named: "user.png")
-        SDImageCache.shared.clearMemory()
-        SDImageCache.shared.clearDisk()
+        
         userImage.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
         
         print("set user image to ")
@@ -208,9 +204,8 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         
         //SDImageCache.shared.clearMemory()
         //SDImageCache.shared.clearDisk()
-        SDImageCache.shared.clear(with: .all) {
-            self.uploadProfileImage(imageData: optimizedImageData)
-        }
+        self.uploadProfileImage(imageData: optimizedImageData)
+
         
         picker.dismiss(animated: true, completion: nil)
     }
@@ -235,7 +230,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         let uploadMetaData = StorageMetadata()
         uploadMetaData.contentType = "image/jpeg"
         
-        
+        SDImageCache.shared().removeImage(forKey: profileImageRef.fullPath)
         
         
         profileImageRef.putData(imageData, metadata: uploadMetaData) { (uploadedImageMeta, error) in

@@ -15,6 +15,31 @@ import PDFKit
 
 class RootViewController: UIViewController, GIDSignInUIDelegate, LoginButtonDelegate {
     
+    @IBOutlet weak var facebookLoginButton: FBLoginButton!
+    @IBOutlet weak var googeSignInButton: GIDSignInButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.setGoogleDelegate()
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
+        //GIDSignIn.sharedInstance().signIn()
+        //let loginButton = FBLoginButton()
+        facebookLoginButton.delegate = self
+        facebookLoginButton.permissions = ["public_profile", "email"]
+        //self.view.addSubview(loginButton)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if Auth.auth().currentUser != nil {
+            performSegue(withIdentifier: "goToMain", sender: self)
+        } else {
+            // No user is signed in.
+        }
+    }
+    
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         if let error = error {
             print(error.localizedDescription)
@@ -27,8 +52,6 @@ class RootViewController: UIViewController, GIDSignInUIDelegate, LoginButtonDele
                 print("error: Facebook sign in")
                 return
             }
-            
-            
             let r = GraphRequest(graphPath: "me", parameters: ["fields":"email,name"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: .get)
             
             r.start(completionHandler: { (test, result, error) in
@@ -62,41 +85,5 @@ class RootViewController: UIViewController, GIDSignInUIDelegate, LoginButtonDele
         print("did log out")
         LoginManager().logOut()
     }
-    
-    
-    @IBOutlet weak var googeSignInButton: GIDSignInButton!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
-        appDelegate?.setGoogleDelegate()
-        
-        GIDSignIn.sharedInstance().uiDelegate = self
-        //GIDSignIn.sharedInstance().signIn()
-        let loginButton = FBLoginButton()
-        loginButton.delegate = self
-        loginButton.center = view.center
-        loginButton.permissions = ["public_profile", "email"]
-        self.view.addSubview(loginButton)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        if Auth.auth().currentUser != nil {
-            performSegue(withIdentifier: "goToMain", sender: self)
-        } else {
-            // No user is signed in.
-        }
-    }
-    
-
-    /*
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

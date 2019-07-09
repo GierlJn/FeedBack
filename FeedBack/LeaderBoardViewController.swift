@@ -26,7 +26,7 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
         super.viewDidLoad()
         setupPickerView()
         ref = Database.database().reference(withPath: usersPath)
-        let query = ref.queryOrdered(byChild: levelPath).queryLimited(toLast: 10)
+        let query = ref.queryOrdered(byChild: levelPath)
         
         userRef = Database.database().reference(withPath: "users").child(currentUser!.uid)
         userRef.observe(DataEventType.value) { (snapshot) in

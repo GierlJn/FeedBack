@@ -7,16 +7,16 @@ class PDFManager{
     func createPdf(atFilePath filePath: String){
         
         
-        let pdfTitle = "Swift-Generated PDF"
+        let pdfTitle = "Your tax report for 2019"
         let pdfMetadata = [
             // The name of the application creating the PDF.
             kCGPDFContextCreator: "Your iOS App",
             
             // The name of the PDF's author.
-            kCGPDFContextAuthor: "Foo Bar",
+            kCGPDFContextAuthor: "FeedBack",
             
             // The title of the PDF.
-            kCGPDFContextTitle: "Lorem Ipsum",
+            kCGPDFContextTitle: "Tax Report",
             
             // Encrypts the document with the value as the owner password. Used to enable/disable different permissions.
             kCGPDFContextOwnerPassword: "myPassword123"

@@ -48,11 +48,11 @@ class Level{
         case 3..<6:
             return "Helper"
         case 6..<12:
-            return "Humanist"
-        case 12..<24:
             return "Philantropist"
-        case 24...:
+        case 12..<24:
             return "Altruist"
+        case 24...:
+            return "God"
         default:
             return ""
         }

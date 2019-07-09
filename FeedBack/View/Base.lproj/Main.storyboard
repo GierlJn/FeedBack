@@ -1306,6 +1306,13 @@
                                     <constraint firstAttribute="width" constant="259" id="MYy-TW-LbQ"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hzp-jP-eJx" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="77.5" y="645" width="259" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="byW-Lv-g1p"/>
+                                </constraints>
+                                <state key="normal" title="Fb login"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <accessibility key="accessibilityConfiguration" identifier="rootViewController"/>
@@ -1313,16 +1320,20 @@
                             <constraint firstItem="ftw-Zg-oUt" firstAttribute="leading" secondItem="trG-kh-FJq" secondAttribute="leading" id="Cj3-WW-yyj"/>
                             <constraint firstItem="HGg-TZ-IfX" firstAttribute="leading" secondItem="trG-kh-FJq" secondAttribute="leading" id="EuX-ar-bGt"/>
                             <constraint firstItem="HGg-TZ-IfX" firstAttribute="top" secondItem="ftw-Zg-oUt" secondAttribute="bottom" id="IkV-I3-L7E"/>
+                            <constraint firstItem="Hzp-jP-eJx" firstAttribute="centerX" secondItem="Nv5-v0-aO3" secondAttribute="centerX" id="J66-qn-iBs"/>
                             <constraint firstItem="ftw-Zg-oUt" firstAttribute="top" secondItem="PGQ-Ga-lqc" secondAttribute="bottom" constant="8" id="PxV-Ou-vf2"/>
                             <constraint firstItem="PGQ-Ga-lqc" firstAttribute="centerX" secondItem="Nv5-v0-aO3" secondAttribute="centerX" id="VsN-ql-fBv"/>
                             <constraint firstItem="HGg-TZ-IfX" firstAttribute="bottom" secondItem="trG-kh-FJq" secondAttribute="bottom" id="Yuu-Gx-7l3"/>
+                            <constraint firstItem="Hzp-jP-eJx" firstAttribute="width" secondItem="PGQ-Ga-lqc" secondAttribute="width" id="ZKy-KT-Afn"/>
                             <constraint firstItem="ftw-Zg-oUt" firstAttribute="trailing" secondItem="trG-kh-FJq" secondAttribute="trailing" id="gME-bL-r69"/>
+                            <constraint firstItem="PGQ-Ga-lqc" firstAttribute="top" secondItem="Hzp-jP-eJx" secondAttribute="bottom" constant="16" id="mXc-ht-ZpL"/>
                             <constraint firstItem="HGg-TZ-IfX" firstAttribute="trailing" secondItem="trG-kh-FJq" secondAttribute="trailing" id="ucK-qX-KlE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="trG-kh-FJq"/>
                     </view>
                     <navigationItem key="navigationItem" id="uJK-cm-akd"/>
                     <connections>
+                        <outlet property="facebookLoginButton" destination="Hzp-jP-eJx" id="9ju-yW-5Nv"/>
                         <outlet property="googeSignInButton" destination="PGQ-Ga-lqc" id="dYk-Gu-ni7"/>
                         <segue destination="49e-Tb-3d3" kind="presentation" identifier="goToMain" id="JOi-Mq-qJC"/>
                     </connections>
