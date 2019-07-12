@@ -56,6 +56,7 @@
 		B97351D2229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351D1229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift */; };
 		B97351D422954C3700FFBB3E /* CharityImpacTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */; };
 		B9823FD322D8FBA700BCF617 /* UIApplication+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9823FD222D8FBA700BCF617 /* UIApplication+ext.swift */; };
+		B9823FD522D9015000BCF617 /* ImpatTableViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9823FD422D9015000BCF617 /* ImpatTableViewProvider.swift */; };
 		B9869E19229E664F00FE140B /* UIImageView + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9869E18229E664F00FE140B /* UIImageView + extensions.swift */; };
 		B9869E1B229EB36A00FE140B /* PublicUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9869E1A229EB36A00FE140B /* PublicUserProfileViewController.swift */; };
 		B98DBDD8226DC6870007B36F /* LastActiveDonationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98DBDD6226DC6870007B36F /* LastActiveDonationTableViewCell.swift */; };
@@ -159,6 +160,7 @@
 		B97351D1229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsFirebaseEntryHolder.swift; sourceTree = "<group>"; };
 		B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityImpacTypeEnum.swift; sourceTree = "<group>"; };
 		B9823FD222D8FBA700BCF617 /* UIApplication+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+ext.swift"; sourceTree = "<group>"; };
+		B9823FD422D9015000BCF617 /* ImpatTableViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpatTableViewProvider.swift; sourceTree = "<group>"; };
 		B9869E18229E664F00FE140B /* UIImageView + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImageView + extensions.swift"; path = "FeedBack/UIImageView + extensions.swift"; sourceTree = SOURCE_ROOT; };
 		B9869E1A229EB36A00FE140B /* PublicUserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicUserProfileViewController.swift; sourceTree = "<group>"; };
 		B98DBDD6226DC6870007B36F /* LastActiveDonationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastActiveDonationTableViewCell.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 			children = (
 				B95F9278226494CF007F7755 /* ProfileViewController.swift */,
 				B9357A5F22D7BD2F0020A07B /* AchievementCollectionProvider.swift */,
+				B9823FD422D9015000BCF617 /* ImpatTableViewProvider.swift */,
 				B9C4B0F7229D2B840002111A /* SearchFriendsViewController.swift */,
 				B9338FC72282B30D0021943C /* SettingsTableViewController.swift */,
 				B943B669225B621400F8C560 /* GameViewController.swift */,
@@ -716,6 +719,7 @@
 				B92AEFD622D5134F0031BD80 /* UIImageView+ext.swift in Sources */,
 				B9338FC82282B30D0021943C /* SettingsTableViewController.swift in Sources */,
 				B9F4926C22A650C500A23C49 /* FriendTableViewCell.swift in Sources */,
+				B9823FD522D9015000BCF617 /* ImpatTableViewProvider.swift in Sources */,
 				B9357A6022D7BD2F0020A07B /* AchievementCollectionProvider.swift in Sources */,
 				B9F4926F22A676C300A23C49 /* Achievement.swift in Sources */,
 				B9C4B0F5229D25BE0002111A /* AddFriendsTableViewCell.swift in Sources */,

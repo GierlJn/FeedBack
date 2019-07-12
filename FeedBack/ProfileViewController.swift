@@ -22,6 +22,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var user: User?
     var achievementProvider = AchievementCollectionProvider()
+    var impactTableViewProvider = ImpactTableViewProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     internal func userDataUpdated(user: User) {
         self.user = user
         self.achievementProvider.userDataUpdated(achievements: user.achievementHolder.achievements)
+        self.impactTableViewProvider.updateDonations(mappedDonations: user.donationHolder.getMappedDonations())
         self.userNameLabel.text = String(user.userName)
         self.levelLabel.text = String(user.level)
         self.rankLabel.text = Level.getRankForLevel(level: user.level)
@@ -113,8 +115,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     fileprivate func setupImpactTableView() {
-        impactTableView.dataSource = self
-        impactTableView.delegate = self
+        impactTableView.dataSource = impactTableViewProvider
+        impactTableView.delegate = impactTableViewProvider
         impactTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
@@ -146,14 +148,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch(tableView){
-        case impactTableView:
-            let cell = Bundle.main.loadNibNamed("ImpactTableViewCell", owner: self, options: nil)?.first as! ImpactTableViewCell
-            guard let mappedDonations = user?.donationHolder.getMappedDonations() else { return cell}
-            let donation = mappedDonations[indexPath.row]
-            cell.impactNameLabel.text = donation.impactType.getimpactDescriptionStringBeforeValue()
-            cell.impactLabel.text = String(Int(Float(donation.impactAmount)!))
-            cell.afterImpactLabel.text = donation.impactType.getimpactDescriptionStringAfterValue()
-            return cell
         case friendsTableView:
             let cell = Bundle.main.loadNibNamed("FriendTableViewCell", owner: self, options: nil)?.first as! FriendTableViewCell
             guard let friends = user?.friendsHolder.friends else { return cell}
@@ -181,6 +175,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             return cell
             
         default:
+            print("asdfas")
             return UITableViewCell()
         }
     }

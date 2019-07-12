@@ -28,8 +28,6 @@ class UserManager{
         }
     }
     
-    
-    
     func isUserRegistered(with id: String, completion: @escaping (_ exists: Bool, _ user: User?) -> ()) {
         ref.child(id).observeSingleEvent(of: .value) { (snapshot) in
             if snapshot.exists() {
