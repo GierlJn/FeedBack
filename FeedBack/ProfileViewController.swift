@@ -4,18 +4,15 @@ import Firebase
 import FirebaseUI
 
 
-
-class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDataSource, UITableViewDelegate, UserManagerDelegate{
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UserManagerDelegate{
  
-    
-
     @IBOutlet weak var donationSumLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
-    @IBOutlet weak var friendView: UIView!
-    @IBOutlet weak var achievementView: UIView!
-    @IBOutlet weak var impactView: UIView!
-    @IBOutlet weak var userProfileView: UIView!
+    @IBOutlet weak var friendView: ProfileSubView!
+    @IBOutlet weak var achievementView: ProfileSubView!
+    @IBOutlet weak var impactView: ProfileSubView!
+    @IBOutlet weak var userProfileView: ProfileSubView!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var achievementCollectionView: UICollectionView!
@@ -24,32 +21,30 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var donationTableView: UITableView!
     
     var user: User?
-    var achievements = [AchievementFirebaseEntry]()
-    let achievementManager = AchievementManager()
-    
-    
+    var achievementProvider: AchievementProvider?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let currentUser = Auth.auth().currentUser else { return }
         let userManager = UserManager()
         userManager.delegate = self
         userManager.observeUserData(forUser: currentUser.uid)
+        achievementProvider = AchievementProvider(userManager: userManager)
         userImage.setUserImage(userId: currentUser.uid)
         setupCollectionView()
         setupImpactTableView()
         setupFriendsTableView()
         setupDonationTableView()
-        setupSeperatorLines()
     }
     
     internal func userDataUpdated(user: User) {
         self.user = user
+        self.achievementProvider?.userDataUpdated(user: user)
         self.userNameLabel.text = String(user.userName)
         self.levelLabel.text = String(user.level)
         self.rankLabel.text = Level.getRankForLevel(level: user.level)
         self.donationSumLabel.text = currency + String(user.donationHolder.getTotalDonationSum())
         self.userImage.setUserImage(userId: user.uniqueId)
-        self.achievements = user.achievementHolder.achievements
         self.impactTableView.reloadData()
         self.friendsTableView.reloadData()
         self.donationTableView.reloadData()
@@ -58,6 +53,18 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBAction func shareButtonPressed(_ sender: Any) {
         showShareActivityOptions(generateTextToShare())
+    }
+    
+    fileprivate func showShareActivityOptions(_ text: String) {
+        let textToShare = [ text ]
+        let activityController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        if let popoverController = activityController.popoverPresentationController {
+            popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
+            popoverController.sourceView = self.view
+            popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+        }
+        activityController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop ]
+        self.present(activityController, animated: true, completion: nil)
     }
     
     fileprivate func generateTextToShare()->String{
@@ -73,19 +80,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         textToShare.append("Keep track of your donations and compete with your friends: [inviteLink]")
         return textToShare
-    }
-    
-    
-    fileprivate func showShareActivityOptions(_ text: String) {
-        let textToShare = [ text ]
-        let activityController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-        if let popoverController = activityController.popoverPresentationController {
-            popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
-            popoverController.sourceView = self.view
-            popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
-        }
-        activityController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop ]
-        self.present(activityController, animated: true, completion: nil)
     }
     
     @IBAction func addFriendsButtonPressed(_ sender: Any) {
@@ -106,22 +100,16 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     fileprivate func setupSeperatorLines(){
-        setupBottomBorder(for: userProfileView)
-        setupBottomBorder(for: impactView)
-        setupBottomBorder(for: achievementView)
-        setupBottomBorder(for: friendView)
+        userProfileView.addBottomBorder()
+        impactView.addBottomBorder()
+        achievementView.addBottomBorder()
+        friendView.addBottomBorder()
     }
     
-    fileprivate func setupBottomBorder(for view: UIView) {
-        let bottomBorder: CALayer = CALayer()
-        bottomBorder.frame = CGRect(x: 0, y: view.frame.size.height+1, width: view.frame.size.width, height: 1)
-        bottomBorder.backgroundColor = UIColor.purple.cgColor
-        view.layer.addSublayer(bottomBorder)
-    }
     
     fileprivate func setupCollectionView() {
-        achievementCollectionView.dataSource = self
-        achievementCollectionView.delegate = self
+        achievementCollectionView.dataSource = achievementProvider
+        achievementCollectionView.delegate = achievementProvider
         achievementCollectionView.register(UINib.init(nibName: "AchievementCell", bundle: nil), forCellWithReuseIdentifier: "achievementCell")
     }
     
@@ -140,57 +128,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         friendsTableView.dataSource = self
         friendsTableView.delegate = self
         
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return achievementManager.availableAchievements.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = achievementCollectionView.dequeueReusableCell(withReuseIdentifier: "achievementCell", for: indexPath) as! AchievementCell
-        let achievementForCell = achievementManager.availableAchievements[indexPath.row]
-        
-        if(!userHasAchievement(achievementId: achievementForCell.key)){
-            cell.achievementImage.alpha = 0.3
-            cell.achievementTitle.alpha = 0.3
-        }else{
-            cell.achievementImage.alpha = 1
-            cell.achievementTitle.alpha = 1
-        }
-        
-        cell.achievementImage.image = achievementForCell.image
-        cell.achievementTitle.text = achievementForCell.name
-        return cell
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let achievement = achievementManager.availableAchievements[indexPath.row]
-        if(userHasAchievement(achievementId: achievement.key)){
-            let achievementWithDate = achievements.first { (entry) -> Bool in
-                entry.id == achievement.key
-            }
-            let achievementAchievedDate = achievementWithDate?.getTimeStampAsString()
-            let alert = UIAlertController(title: achievement.name, message: "\(achievement.messageWhenAchieved)\n\(achievementAchievedDate ?? "")", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-            alert.addAction(okAction)
-            present(alert, animated: true, completion: nil)
-        }else{
-            let alert = UIAlertController(title: achievement.name, message: "\(achievement.description)", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-            alert.addAction(okAction)
-            present(alert, animated: true, completion: nil)
-        }
-    }
-
-    func userHasAchievement(achievementId: String)->Bool{
-        if(self.achievements.contains(where: { (entry) -> Bool in
-            entry.id == achievementId
-        })){
-            return true
-        }else{
-            return false
-        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -31,6 +31,8 @@
 		B9338FCA2282B6AD0021943C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FC92282B6AD0021943C /* RootViewController.swift */; };
 		B9338FCE2282BAFB0021943C /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FCD2282BAFB0021943C /* RootNavigationController.swift */; };
 		B9338FD02283051B0021943C /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9338FCF2283051B0021943C /* ChangePasswordViewController.swift */; };
+		B9357A5E22D7B7B00020A07B /* UIView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9357A5D22D7B7B00020A07B /* UIView+ext.swift */; };
+		B9357A6022D7BD2F0020A07B /* AchievementCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9357A5F22D7BD2F0020A07B /* AchievementCollectionView.swift */; };
 		B943B66A225B621400F8C560 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B943B669225B621400F8C560 /* GameViewController.swift */; };
 		B943B66D225B7F3300F8C560 /* ActiveDonationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B943B66B225B7F3300F8C560 /* ActiveDonationViewCell.swift */; };
 		B943B66E225B7F3300F8C560 /* ActiveDonationViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B943B66C225B7F3300F8C560 /* ActiveDonationViewCell.xib */; };
@@ -53,6 +55,7 @@
 		B97351D022952F9800FFBB3E /* FriendsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351CF22952F9800FFBB3E /* FriendsHolder.swift */; };
 		B97351D2229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351D1229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift */; };
 		B97351D422954C3700FFBB3E /* CharityImpacTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */; };
+		B9823FD322D8FBA700BCF617 /* UIApplication+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9823FD222D8FBA700BCF617 /* UIApplication+ext.swift */; };
 		B9869E19229E664F00FE140B /* UIImageView + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9869E18229E664F00FE140B /* UIImageView + extensions.swift */; };
 		B9869E1B229EB36A00FE140B /* PublicUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9869E1A229EB36A00FE140B /* PublicUserProfileViewController.swift */; };
 		B98DBDD8226DC6870007B36F /* LastActiveDonationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98DBDD6226DC6870007B36F /* LastActiveDonationTableViewCell.swift */; };
@@ -131,6 +134,8 @@
 		B9338FC92282B6AD0021943C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		B9338FCD2282BAFB0021943C /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		B9338FCF2283051B0021943C /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		B9357A5D22D7B7B00020A07B /* UIView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ext.swift"; sourceTree = "<group>"; };
+		B9357A5F22D7BD2F0020A07B /* AchievementCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCollectionView.swift; sourceTree = "<group>"; };
 		B943B669225B621400F8C560 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		B943B66B225B7F3300F8C560 /* ActiveDonationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveDonationViewCell.swift; sourceTree = "<group>"; };
 		B943B66C225B7F3300F8C560 /* ActiveDonationViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActiveDonationViewCell.xib; sourceTree = "<group>"; };
@@ -153,6 +158,7 @@
 		B97351CF22952F9800FFBB3E /* FriendsHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsHolder.swift; sourceTree = "<group>"; };
 		B97351D1229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsFirebaseEntryHolder.swift; sourceTree = "<group>"; };
 		B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityImpacTypeEnum.swift; sourceTree = "<group>"; };
+		B9823FD222D8FBA700BCF617 /* UIApplication+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+ext.swift"; sourceTree = "<group>"; };
 		B9869E18229E664F00FE140B /* UIImageView + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImageView + extensions.swift"; path = "FeedBack/UIImageView + extensions.swift"; sourceTree = SOURCE_ROOT; };
 		B9869E1A229EB36A00FE140B /* PublicUserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicUserProfileViewController.swift; sourceTree = "<group>"; };
 		B98DBDD6226DC6870007B36F /* LastActiveDonationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastActiveDonationTableViewCell.swift; sourceTree = "<group>"; };
@@ -299,6 +305,8 @@
 		B95F9273226481B9007F7755 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B9357A5D22D7B7B00020A07B /* UIView+ext.swift */,
+				B9823FD222D8FBA700BCF617 /* UIApplication+ext.swift */,
 				B99EA0AF2258CB3700256A89 /* Main.storyboard */,
 				B99EA0B42258CB3800256A89 /* LaunchScreen.storyboard */,
 				B922C5F6226EF403006E0D2C /* Cells */,
@@ -310,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				B95F9278226494CF007F7755 /* ProfileViewController.swift */,
+				B9357A5F22D7BD2F0020A07B /* AchievementCollectionView.swift */,
 				B9C4B0F7229D2B840002111A /* SearchFriendsViewController.swift */,
 				B9338FC72282B30D0021943C /* SettingsTableViewController.swift */,
 				B943B669225B621400F8C560 /* GameViewController.swift */,
@@ -672,12 +681,14 @@
 				B9275CD322D131FA00C96DFF /* PDFManager.swift in Sources */,
 				B920004022759BB9004F74A6 /* RegisterViewController.swift in Sources */,
 				B923087E22676E7E00D85B43 /* GlobalLeaderBoardModel.swift in Sources */,
+				B9823FD322D8FBA700BCF617 /* UIApplication+ext.swift in Sources */,
 				B9D32CA7228C227600F11743 /* DatabasePaths.swift in Sources */,
 				B927164722CDC00200543394 /* Transaction.swift in Sources */,
 				B97351D022952F9800FFBB3E /* FriendsHolder.swift in Sources */,
 				B91A795B2294354000AA554F /* Friend.swift in Sources */,
 				B9A159AC2292B66C0074E61F /* MainTabBarViewController.swift in Sources */,
 				B91A7959229431A900AA554F /* AchievementFirebaseEntry.swift in Sources */,
+				B9357A5E22D7B7B00020A07B /* UIView+ext.swift in Sources */,
 				B97351CE22952DF500FFBB3E /* DonationsHolder.swift in Sources */,
 				B97351D2229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift in Sources */,
 				B914F78222CCD10E0042F332 /* StripClient.swift in Sources */,
@@ -705,6 +716,7 @@
 				B92AEFD622D5134F0031BD80 /* UIImageView+ext.swift in Sources */,
 				B9338FC82282B30D0021943C /* SettingsTableViewController.swift in Sources */,
 				B9F4926C22A650C500A23C49 /* FriendTableViewCell.swift in Sources */,
+				B9357A6022D7BD2F0020A07B /* AchievementCollectionView.swift in Sources */,
 				B9F4926F22A676C300A23C49 /* Achievement.swift in Sources */,
 				B9C4B0F5229D25BE0002111A /* AddFriendsTableViewCell.swift in Sources */,
 				B95F928022649549007F7755 /* AchievementCell.swift in Sources */,

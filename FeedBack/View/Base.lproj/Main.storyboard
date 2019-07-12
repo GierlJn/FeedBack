@@ -56,7 +56,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sei-Zf-Q89" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1370"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8c9-gi-eAN" userLabel="UserName View">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8c9-gi-eAN" userLabel="UserName View" customClass="ProfileSubView" customModule="FeedBack" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="FiA-kU-ynE">
@@ -118,7 +118,7 @@
                                                     <constraint firstItem="2RK-N9-kuP" firstAttribute="top" secondItem="8c9-gi-eAN" secondAttribute="top" constant="27" id="uZb-Ta-anU"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yF6-gg-2Le" userLabel="Achievement">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yF6-gg-2Le" userLabel="Achievement" customClass="ProfileSubView" customModule="FeedBack" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="420" width="414" height="222"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Achievements" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVB-3l-WHe">
@@ -154,7 +154,7 @@
                                                     <constraint firstItem="YVB-3l-WHe" firstAttribute="top" secondItem="yF6-gg-2Le" secondAttribute="top" constant="16" id="zzX-5P-moa"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B7B-04-cLQ" userLabel="ImpactView">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B7B-04-cLQ" userLabel="ImpactView" customClass="ProfileSubView" customModule="FeedBack" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="136" width="414" height="276"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By donating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Brq-Ya-Dhf">
@@ -211,7 +211,7 @@
                                                     <constraint firstAttribute="height" constant="276" id="lvV-QE-Cj5"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMp-q2-5vr" userLabel="FriendView">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMp-q2-5vr" userLabel="FriendView" customClass="ProfileSubView" customModule="FeedBack" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="650" width="414" height="348"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UVs-I3-OD2">
