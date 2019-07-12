@@ -1,22 +1,13 @@
 import UIKit
 import Foundation
 
-class AchievementProvider: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UserManagerDelegate{
+class AchievementCollectionProvider: NSObject, UICollectionViewDelegate, UICollectionViewDataSource{
 
-    
-    
-    private let userManager: UserManager
-    private let achievementManager: AchievementManager
+    private let achievementManager = AchievementManager()
     private var achievements = [AchievementFirebaseEntry]()
-    
-    init(userManager: UserManager){
-        self.userManager = userManager
-        self.achievementManager = AchievementManager()
-    }
-    
-    internal func userDataUpdated(user: User) {
-        self.achievements = user.achievementHolder.achievements
-        
+
+    internal func userDataUpdated(achievements: [AchievementFirebaseEntry]) {
+        self.achievements = achievements
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

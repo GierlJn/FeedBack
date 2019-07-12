@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var donationTableView: UITableView!
     
     var user: User?
-    var achievementProvider: AchievementProvider?
+    var achievementProvider = AchievementCollectionProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let userManager = UserManager()
         userManager.delegate = self
         userManager.observeUserData(forUser: currentUser.uid)
-        achievementProvider = AchievementProvider(userManager: userManager)
         userImage.setUserImage(userId: currentUser.uid)
         setupCollectionView()
         setupImpactTableView()
@@ -39,7 +38,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     internal func userDataUpdated(user: User) {
         self.user = user
-        self.achievementProvider?.userDataUpdated(user: user)
+        self.achievementProvider.userDataUpdated(achievements: user.achievementHolder.achievements)
         self.userNameLabel.text = String(user.userName)
         self.levelLabel.text = String(user.level)
         self.rankLabel.text = Level.getRankForLevel(level: user.level)
