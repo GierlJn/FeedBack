@@ -4,7 +4,7 @@ import Firebase
 import FirebaseUI
 
 
-class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UserManagerDelegate{
+class ProfileViewController: UIViewController, UserManagerDelegate{
  
     @IBOutlet weak var donationSumLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
@@ -21,8 +21,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var donationTableView: UITableView!
     
     var user: User?
-    var achievementProvider = AchievementCollectionProvider()
+    var achievementCollectionViewProvider = AchievementCollectionViewProvider()
     var impactTableViewProvider = ImpactTableViewProvider()
+    var friendsTableViewProvider = FriendTableViewProvider()
+    var donationHistoryTableViewProvider = DonationsHistoryTableViewProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +41,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     internal func userDataUpdated(user: User) {
         self.user = user
-        self.achievementProvider.userDataUpdated(achievements: user.achievementHolder.achievements)
+        self.achievementCollectionViewProvider.userDataUpdated(achievements: user.achievementHolder.achievements)
         self.impactTableViewProvider.updateDonations(mappedDonations: user.donationHolder.getMappedDonations())
+        self.friendsTableViewProvider.update(friends: user.friendsHolder.friends)
+        self.donationHistoryTableViewProvider.update(donations: user.donationHolder.donations)
         self.userNameLabel.text = String(user.userName)
         self.levelLabel.text = String(user.level)
         self.rankLabel.text = Level.getRankForLevel(level: user.level)
@@ -100,17 +104,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         present(alertController, animated: true, completion: nil)
     }
     
-    fileprivate func setupSeperatorLines(){
-        userProfileView.addBottomBorder()
-        impactView.addBottomBorder()
-        achievementView.addBottomBorder()
-        friendView.addBottomBorder()
-    }
-    
-    
     fileprivate func setupCollectionView() {
-        achievementCollectionView.dataSource = achievementProvider
-        achievementCollectionView.delegate = achievementProvider
+        achievementCollectionView.dataSource = achievementCollectionViewProvider
+        achievementCollectionView.delegate = achievementCollectionViewProvider
         achievementCollectionView.register(UINib.init(nibName: "AchievementCell", bundle: nil), forCellWithReuseIdentifier: "achievementCell")
     }
     
@@ -121,75 +117,20 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     fileprivate func setupDonationTableView() {
-        donationTableView.dataSource = self
-        impactTableView.delegate = self
+        donationTableView.dataSource = donationHistoryTableViewProvider
+        impactTableView.delegate = donationHistoryTableViewProvider
     }
     
     fileprivate func setupFriendsTableView(){
-        friendsTableView.dataSource = self
-        friendsTableView.delegate = self
+        friendsTableView.dataSource = friendsTableViewProvider
+        friendsTableView.delegate = friendsTableViewProvider
         
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch(tableView){
-        case impactTableView:
-            return user?.donationHolder.getMappedDonations().count ?? 0
-        case friendsTableView:
-            return user?.friendsHolder.friends.count ?? 0
-        case donationTableView:
-            return user?.donationHolder.donations.count ?? 0
-        default:
-            return 0
-        }
-        
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        switch(tableView){
-        case friendsTableView:
-            let cell = Bundle.main.loadNibNamed("FriendTableViewCell", owner: self, options: nil)?.first as! FriendTableViewCell
-            guard let friends = user?.friendsHolder.friends else { return cell}
-            let friend = friends[indexPath.row]
-            let friendRef = Database.database().reference(withPath: "users").child(friend.uniqueId)
-            friendRef.observe(DataEventType.value) { (snapshot) in
-                guard let friendUser = User(snapshot: snapshot) else { return }
-                cell.uniqueId = friend.uniqueId
-                cell.userNameLabel.text = friendUser.userName
-                cell.userLevelLabel.text = String(friendUser.level)
-                let storageReference = Storage.storage().reference()
-                let profileImageRef = storageReference.child(usersPath).child(friend.uniqueId).child("\(friend.uniqueId)-profileImage.jpg")
-                let placeholderImage = UIImage(named: "user.png")
-                cell.userImage.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
-                cell.userImage.setRounded()
-            }
-            return cell
-        case donationTableView:
-            let cell = Bundle.main.loadNibNamed("DonationTableTableViewCell", owner: self, options: nil)?.first as! DonationTableTableViewCell
-            guard let allDonations = user?.donationHolder.donations else { return cell}
-            let donation = allDonations[indexPath.row]
-            cell.amountLabel.text = String(donation.amount) + currency
-            cell.recipientLabel.text = donation.name
-            cell.dateLabel.text = donation.getTimeStampAsString()
-            return cell
-            
-        default:
-            print("asdfas")
-            return UITableViewCell()
-        }
-    }
-
     
     @IBAction func settingsButtonTouched(_ sender: Any) {
         performSegue(withIdentifier: "showSettingsSegue", sender: self)
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(tableView == friendsTableView){
-        performSegue(withIdentifier: "goToPublicUserProfile", sender: indexPath)
-        }
-    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "goToPublicUserProfile"){
