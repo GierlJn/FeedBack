@@ -1,5 +1,5 @@
 
-
+import Firebase
 import UIKit
 
 protocol AddFriendCellDelegate: class{
@@ -12,7 +12,7 @@ class AddFriendsTableViewCell: UITableViewCell {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var addFriendButton: UIButton!
-    
+    var currentUser = Auth.auth().currentUser
     var uniqueUserId: String?
     
     weak var delegate: AddFriendCellDelegate?
@@ -25,6 +25,16 @@ class AddFriendsTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.delegate = nil
+    }
+    
+    func config(with user: User){
+        let storageReference = Storage.storage().reference()
+        let profileImageRef = storageReference.child(usersPath).child(user.uniqueId).child("\(user.uniqueId)-profileImage.jpg")
+        let placeholderImage = UIImage(named: "user.png")
+        userImage.sd_setImage(with: profileImageRef, placeholderImage: placeholderImage)
+        userImage.setRounded()
+        userNameLabel.text = user.userName
+        uniqueUserId = user.uniqueId
     }
     
     func hideAddFriendButton(){

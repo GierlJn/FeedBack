@@ -303,6 +303,10 @@
 				B927164622CDC00200543394 /* Transaction.swift */,
 				B91A795622941E4600AA554F /* Level.swift */,
 				B914F78122CCD10E0042F332 /* StripClient.swift */,
+				B9357A5F22D7BD2F0020A07B /* AchievementCollectionViewProvider.swift */,
+				B9823FD822D906B700BCF617 /* DonationsHistoryTableViewProvider.swift */,
+				B9823FD422D9015000BCF617 /* ImpactTableViewProvider.swift */,
+				B9823FD622D904C400BCF617 /* FriendTableViewProvider.swift */,
 				B92AEFD522D5134F0031BD80 /* UIImageView+ext.swift */,
 			);
 			name = Model;
@@ -324,10 +328,6 @@
 			isa = PBXGroup;
 			children = (
 				B95F9278226494CF007F7755 /* ProfileViewController.swift */,
-				B9357A5F22D7BD2F0020A07B /* AchievementCollectionViewProvider.swift */,
-				B9823FD422D9015000BCF617 /* ImpactTableViewProvider.swift */,
-				B9823FD822D906B700BCF617 /* DonationsHistoryTableViewProvider.swift */,
-				B9823FD622D904C400BCF617 /* FriendTableViewProvider.swift */,
 				B9C4B0F7229D2B840002111A /* SearchFriendsViewController.swift */,
 				B9338FC72282B30D0021943C /* SettingsTableViewController.swift */,
 				B943B669225B621400F8C560 /* GameViewController.swift */,
