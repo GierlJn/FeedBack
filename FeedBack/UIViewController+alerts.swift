@@ -32,6 +32,17 @@ class SimpleTextPromptDelegate: NSObject, UIAlertViewDelegate {
 
 extension UIViewController{
     
+    func showShareActivityOptions(_ text: String) {
+        let textToShare = [ text ]
+        let activityController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        if let popoverController = activityController.popoverPresentationController {
+            popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
+            popoverController.sourceView = self.view
+            popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+        }
+        activityController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop ]
+        self.present(activityController, animated: true, completion: nil)
+    }
     
     func showTextInputPrompt(withMessage message: String?, completionBlock completion: @escaping AlertPromptCompletionBlock) {
         let prompt = UIAlertController(title: nil, message: message, preferredStyle: .alert)

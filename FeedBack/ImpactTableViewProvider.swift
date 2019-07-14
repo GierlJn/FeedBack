@@ -5,6 +5,8 @@ class ImpactTableViewProvider: NSObject, UITableViewDataSource, UITableViewDeleg
 
     private var mappedDonations = [Donation]()
     
+    
+    
     internal func updateDonations(mappedDonations: [Donation]) {
         self.mappedDonations = mappedDonations
     }

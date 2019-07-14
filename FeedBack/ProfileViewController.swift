@@ -60,18 +60,6 @@ class ProfileViewController: UIViewController, UserManagerDelegate{
         showShareActivityOptions(generateTextToShare())
     }
     
-    fileprivate func showShareActivityOptions(_ text: String) {
-        let textToShare = [ text ]
-        let activityController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-        if let popoverController = activityController.popoverPresentationController {
-            popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
-            popoverController.sourceView = self.view
-            popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
-        }
-        activityController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop ]
-        self.present(activityController, animated: true, completion: nil)
-    }
-    
     fileprivate func generateTextToShare()->String{
         var textToShare = ""
         guard let mappedDonations = user?.donationHolder.getMappedDonations() else { return textToShare}

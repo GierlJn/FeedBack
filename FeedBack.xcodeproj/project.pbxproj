@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		311BB92DE4917EA38A24841B /* Pods_FeedBack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FAEE6398C3444A7340C699 /* Pods_FeedBack.framework */; };
 		5264EB89E3AF07560273C6F2 /* Pods_FeedBackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FA7F9DA571C2223EA208B6 /* Pods_FeedBackTests.framework */; };
+		B90B76AB22DB2F52006E0ACB /* DynamicProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B76AA22DB2F52006E0ACB /* DynamicProfileViewController.swift */; };
 		B914F78222CCD10E0042F332 /* StripClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B914F78122CCD10E0042F332 /* StripClient.swift */; };
 		B914F78422CCD1D80042F332 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B914F78322CCD1D80042F332 /* Constants.swift */; };
 		B91A795722941E4600AA554F /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A795622941E4600AA554F /* Level.swift */; };
@@ -115,6 +116,7 @@
 		657A6FDC98F463987C9B2DE7 /* Pods-FeedBackUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedBackUITests.release.xcconfig"; path = "Target Support Files/Pods-FeedBackUITests/Pods-FeedBackUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9EA88E3F556F9C5B521E13F5 /* Pods-FeedBackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedBackTests.release.xcconfig"; path = "Target Support Files/Pods-FeedBackTests/Pods-FeedBackTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5FA7F9DA571C2223EA208B6 /* Pods_FeedBackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedBackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B90B76AA22DB2F52006E0ACB /* DynamicProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicProfileViewController.swift; sourceTree = "<group>"; };
 		B914F78122CCD10E0042F332 /* StripClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripClient.swift; sourceTree = "<group>"; };
 		B914F78322CCD1D80042F332 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = FeedBack/Constants.swift; sourceTree = SOURCE_ROOT; };
 		B91A795622941E4600AA554F /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -253,6 +255,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B90B76A922DB2F34006E0ACB /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B90B76AA22DB2F52006E0ACB /* DynamicProfileViewController.swift */,
+			);
+			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
 		B922C5F6226EF403006E0D2C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +337,7 @@
 		B95F9274226481C1007F7755 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B90B76A922DB2F34006E0ACB /* ProfileViewController */,
 				B95F9278226494CF007F7755 /* ProfileViewController.swift */,
 				B9C4B0F7229D2B840002111A /* SearchFriendsViewController.swift */,
 				B9338FC72282B30D0021943C /* SettingsTableViewController.swift */,
@@ -682,6 +693,7 @@
 				B9D32C9F228BE91500F11743 /* UserDataBase.swift in Sources */,
 				B964F0CB2261F23F00D55C58 /* CharityTableViewCell.swift in Sources */,
 				B91A795722941E4600AA554F /* Level.swift in Sources */,
+				B90B76AB22DB2F52006E0ACB /* DynamicProfileViewController.swift in Sources */,
 				B923087C226764EA00D85B43 /* LeaderBoardViewController.swift in Sources */,
 				B97351D422954C3700FFBB3E /* CharityImpacTypeEnum.swift in Sources */,
 				B943B66A225B621400F8C560 /* GameViewController.swift in Sources */,
