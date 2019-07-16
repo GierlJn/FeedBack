@@ -9,12 +9,15 @@ class DynamicProfileViewController: UIViewController{
     @IBOutlet weak var userLevel: UILabel!
     @IBOutlet weak var userRankLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var achievementCollectionView: UICollectionView!
     
     var user: User?
+    let achievementCollectionViewProvider = AchievementCollectionViewProvider()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        setupCollectionView()
         guard let currentUser = Auth.auth().currentUser else { return }
         let userManager = UserManager()
         userManager.delegate = self
@@ -23,9 +26,15 @@ class DynamicProfileViewController: UIViewController{
     
     func configureTableView(){
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    fileprivate func setupCollectionView() {
+        achievementCollectionView.dataSource = achievementCollectionViewProvider
+        achievementCollectionView.delegate = achievementCollectionViewProvider
+        achievementCollectionView.register(UINib.init(nibName: "AchievementCell", bundle: nil), forCellWithReuseIdentifier: "achievementCell")
     }
     
     func configureUserInfo(){
@@ -66,10 +75,16 @@ extension DynamicProfileViewController: UITableViewDataSource{
         let sectionName: String
         switch section {
         case 0:
+            if(user?.donationHolder.donations.count == 0){
+                return nil
+            }
             sectionName = NSLocalizedString("Your Impact summary", comment: "")
         case 2:
             sectionName = NSLocalizedString("Friends", comment: "")
         case 1:
+            if(user?.donationHolder.donations.count == 0){
+                return nil
+            }
             sectionName = NSLocalizedString("Donations", comment: "")
         default:
             sectionName = ""
@@ -184,6 +199,8 @@ extension DynamicProfileViewController: UserManagerDelegate{
     func userDataUpdated(user: User) {
         self.user = user
         configureUserInfo()
+        achievementCollectionViewProvider.userDataUpdated(achievements: user.achievementHolder.achievements)
         tableView.reloadData()
+        achievementCollectionView.reloadData()
     }
 }

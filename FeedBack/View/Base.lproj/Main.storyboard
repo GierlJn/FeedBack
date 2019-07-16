@@ -1595,7 +1595,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lKa-DO-6E6">
-                                <rect key="frame" x="0.0" y="224" width="414" height="621"/>
+                                <rect key="frame" x="0.0" y="382" width="414" height="463"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="mpl-Wa-TCQ">
@@ -1608,15 +1608,54 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6et-ti-yI8">
+                                <rect key="frame" x="0.0" y="224" width="414" height="150"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dAg-0g-eKu">
+                                        <rect key="frame" x="8" y="39.5" width="398" height="102.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="3" id="umO-8q-vzd">
+                                            <size key="itemSize" width="90" height="90"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Achievements" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79e-c1-oGG">
+                                        <rect key="frame" x="16" y="10" width="174" height="21.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="174" id="vz1-AX-Y5m"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="dAg-0g-eKu" secondAttribute="bottom" constant="8" id="4Lf-S9-eG6"/>
+                                    <constraint firstItem="79e-c1-oGG" firstAttribute="leading" secondItem="6et-ti-yI8" secondAttribute="leading" constant="16" id="5j1-4z-lVy"/>
+                                    <constraint firstAttribute="height" constant="150" id="IKv-TI-4C9"/>
+                                    <constraint firstItem="dAg-0g-eKu" firstAttribute="leading" secondItem="6et-ti-yI8" secondAttribute="leading" constant="8" id="Ir5-rR-unr"/>
+                                    <constraint firstItem="79e-c1-oGG" firstAttribute="top" secondItem="6et-ti-yI8" secondAttribute="top" constant="10" id="Z5U-fs-Csj"/>
+                                    <constraint firstAttribute="trailing" secondItem="dAg-0g-eKu" secondAttribute="trailing" constant="8" id="bNt-Ca-fWO"/>
+                                    <constraint firstItem="dAg-0g-eKu" firstAttribute="top" secondItem="79e-c1-oGG" secondAttribute="bottom" constant="8" id="brZ-jW-gia"/>
+                                    <constraint firstItem="dAg-0g-eKu" firstAttribute="top" secondItem="79e-c1-oGG" secondAttribute="bottom" constant="8" id="lR8-Py-Ip2"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="G28-IP-CN6" firstAttribute="trailing" secondItem="L2O-S5-Lyz" secondAttribute="trailing" id="2SW-TH-yPs"/>
                             <constraint firstItem="G28-IP-CN6" firstAttribute="top" secondItem="L2O-S5-Lyz" secondAttribute="top" id="4ev-1z-IUy"/>
+                            <constraint firstItem="6et-ti-yI8" firstAttribute="trailing" secondItem="L2O-S5-Lyz" secondAttribute="trailing" id="A7P-US-ovZ"/>
+                            <constraint firstItem="6et-ti-yI8" firstAttribute="leading" secondItem="L2O-S5-Lyz" secondAttribute="leading" id="LW7-tW-axv"/>
+                            <constraint firstItem="lKa-DO-6E6" firstAttribute="top" secondItem="6et-ti-yI8" secondAttribute="bottom" constant="8" id="LiS-dl-S7r"/>
                             <constraint firstItem="lKa-DO-6E6" firstAttribute="bottom" secondItem="L2O-S5-Lyz" secondAttribute="bottom" constant="32" id="Oo5-cz-Hcw"/>
                             <constraint firstItem="lKa-DO-6E6" firstAttribute="leading" secondItem="L2O-S5-Lyz" secondAttribute="leading" id="ej9-dS-pTJ"/>
+                            <constraint firstItem="6et-ti-yI8" firstAttribute="top" secondItem="G28-IP-CN6" secondAttribute="bottom" constant="8" id="mry-2m-xYK"/>
                             <constraint firstItem="G28-IP-CN6" firstAttribute="leading" secondItem="L2O-S5-Lyz" secondAttribute="leading" id="rOH-Pb-jf0"/>
-                            <constraint firstItem="lKa-DO-6E6" firstAttribute="top" secondItem="G28-IP-CN6" secondAttribute="bottom" constant="8" id="sif-CB-SCM"/>
                             <constraint firstItem="lKa-DO-6E6" firstAttribute="trailing" secondItem="L2O-S5-Lyz" secondAttribute="trailing" id="wuZ-5H-E5h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="L2O-S5-Lyz"/>
@@ -1630,6 +1669,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="achievementCollectionView" destination="dAg-0g-eKu" id="zcG-sT-qnO"/>
                         <outlet property="tableView" destination="lKa-DO-6E6" id="MRl-Q8-v7j"/>
                         <outlet property="userAvatar" destination="J4N-a9-mjj" id="mcW-iJ-E5X"/>
                         <outlet property="userLevel" destination="Tyj-nJ-PGu" id="xdY-jX-uqg"/>
@@ -1641,7 +1681,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JG7-5x-STo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2957" y="658"/>
+            <point key="canvasLocation" x="2956.521739130435" y="657.58928571428567"/>
         </scene>
         <!--Donations-->
         <scene sceneID="XfO-Jx-mGD">
