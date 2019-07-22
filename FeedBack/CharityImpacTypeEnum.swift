@@ -23,11 +23,11 @@ enum CharityImpactType: String{
     func getimpactDescriptionStringAfterValue()->String?{
         switch(self){
         case .childTreated:
-            return "children with antimalarial medicine."
+            return "children with antimalarial medicine treated."
         case .netFounded:
-            return "malaria nets in developing countries."
+            return "malaria nets in developing countries funded."
         case .ntdTreated:
-            return "treatments for people with NTDs."
+            return "treatments for people with NTDs funded"
         default:
             return nil
         }

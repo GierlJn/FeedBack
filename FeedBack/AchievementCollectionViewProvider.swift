@@ -15,7 +15,7 @@ class AchievementCollectionViewProvider: NSObject, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "achievementCell", for: indexPath) as! AchievementCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AchievementCell.identifier, for: indexPath) as! AchievementCell
         let achievementForCell = achievementManager.availableAchievements[indexPath.row]
         
         if(!userHasAchievement(achievementId: achievementForCell.key)){

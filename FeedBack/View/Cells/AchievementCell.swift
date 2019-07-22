@@ -14,6 +14,8 @@ class AchievementCell: UICollectionViewCell {
     @IBOutlet weak var achievementImage: UIImageView!
     @IBOutlet weak var achievementTitle: UILabel!
     
+    static let identifier = "achievementCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

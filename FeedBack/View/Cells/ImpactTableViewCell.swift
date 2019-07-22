@@ -11,7 +11,7 @@ import Firebase
 class ImpactTableViewCell: UITableViewCell {
 
     @IBOutlet weak var impactLabel: UILabel!
-    @IBOutlet weak var impactNameLabel: UILabel!
+    //@IBOutlet weak var impactNameLabel: UILabel!
     @IBOutlet weak var afterImpactLabel: UILabel!
     
     static let identifier = "ImpactTableViewCell"
@@ -22,7 +22,7 @@ class ImpactTableViewCell: UITableViewCell {
     }
     
     func configure(for donation: Donation){
-        impactNameLabel.text = donation.impactType.getimpactDescriptionStringBeforeValue()
+        //impactNameLabel.text = donation.impactType.getimpactDescriptionStringBeforeValue()
         impactLabel.text = String(Int(Float(donation.impactAmount)!))
         afterImpactLabel.text = donation.impactType.getimpactDescriptionStringAfterValue()
     }

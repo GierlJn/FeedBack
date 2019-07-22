@@ -24,7 +24,7 @@ class DynamicProfileViewController: UIViewController{
         userManager.observeUserData(forUser: currentUser.uid)
     }
     
-    func configureTableView(){
+    fileprivate func configureTableView(){
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .singleLine
         tableView.dataSource = self
@@ -34,7 +34,7 @@ class DynamicProfileViewController: UIViewController{
     fileprivate func setupCollectionView() {
         achievementCollectionView.dataSource = achievementCollectionViewProvider
         achievementCollectionView.delegate = achievementCollectionViewProvider
-        achievementCollectionView.register(UINib.init(nibName: "AchievementCell", bundle: nil), forCellWithReuseIdentifier: "achievementCell")
+        achievementCollectionView.register(UINib.init(nibName: "AchievementCell", bundle: nil), forCellWithReuseIdentifier: AchievementCell.identifier)
     }
     
     func configureUserInfo(){
@@ -93,33 +93,79 @@ extension DynamicProfileViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if(section != 2){ return nil}
-        let frame = tableView.frame
-        let button = UIButton(frame: .zero)
-        button.tag = section
-        //button.setImage(UIImage(named: "heart"), for: UIControl.State.normal)
-        button.setTitle("Add friend", for: .normal)
-        button.addTarget(self,action:#selector(buttonClicked),for:.touchUpInside)
-        button.setTitleColor(UIColor.black, for: UIControl.State.normal)
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
-        button.translatesAutoresizingMaskIntoConstraints = false
-        headerView.addSubview(button)
-        NSLayoutConstraint.activate([
-            button.widthAnchor.constraint(equalTo: headerView.widthAnchor),
-            button.heightAnchor.constraint(equalTo: headerView.heightAnchor),
-            button.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
-            ])
-        headerView.backgroundColor = UIColor.white
-        return headerView
+        
+        
+        if(section == 2){
+            let frame = tableView.frame
+            let button = UIButton(frame: .zero)
+            button.tag = section
+            //button.setImage(UIImage(named: "heart"), for: UIControl.State.normal)
+            button.setTitle("Add friend", for: .normal)
+            button.addTarget(self,action:#selector(buttonClicked),for:.touchUpInside)
+            button.setTitleColor(UIColor.blue, for: UIControl.State.normal)
+            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
+            button.translatesAutoresizingMaskIntoConstraints = false
+            headerView.addSubview(button)
+            NSLayoutConstraint.activate([
+                button.widthAnchor.constraint(equalTo: headerView.widthAnchor),
+                button.heightAnchor.constraint(equalTo: headerView.heightAnchor),
+                button.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+                button.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+                ])
+            headerView.backgroundColor = UIColor.white
+            return headerView
+        }else if(section == 0 && user?.donationHolder.donations.count ?? 0 > 0){
+            let frame = tableView.frame
+            let button = UIButton(frame: .zero)
+            button.tag = section
+            //button.setImage(UIImage(named: "heart"), for: UIControl.State.normal)
+            button.setTitle("Share your good deeds", for: .normal)
+            button.addTarget(self,action:#selector(shareButtonPressed),for:.touchUpInside)
+            button.setTitleColor(UIColor.blue, for: UIControl.State.normal)
+            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
+            button.translatesAutoresizingMaskIntoConstraints = false
+            headerView.addSubview(button)
+            NSLayoutConstraint.activate([
+                button.widthAnchor.constraint(equalTo: headerView.widthAnchor),
+                button.heightAnchor.constraint(equalTo: headerView.heightAnchor),
+                button.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+                button.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+                ])
+            headerView.backgroundColor = UIColor.white
+            return headerView
+        }
+        return nil
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if(section != 2){ return 0}
-        return CGFloat(40)
+        if(section == 2){
+            return CGFloat(40)
+        }else if(section == 0 && user?.donationHolder.donations.count ?? 0 > 0){
+            return CGFloat(40)
+        }
+        return 0
     }
     
-    @objc func buttonClicked(sender:UIButton)
+    @objc func shareButtonPressed(sender: UIButton) {
+        showShareActivityOptions(generateTextToShare())
+    }
+    
+    fileprivate func generateTextToShare()->String{
+        var textToShare = ""
+        guard let mappedDonations = user?.donationHolder.getMappedDonations() else { return textToShare}
+        for donation in mappedDonations{
+            textToShare.append(donation.impactType.getimpactDescriptionStringBeforeValue() ?? "")
+            textToShare.append(" ")
+            textToShare.append(String(Int(Float(donation.impactAmount)!)))
+            textToShare.append(" ")
+            textToShare.append(donation.impactType.getimpactDescriptionStringAfterValue() ?? "")
+            textToShare.append("\n")
+        }
+        textToShare.append("Keep track of your donations and compete with your friends: [inviteLink]")
+        return textToShare
+    }
+    
+    @objc func buttonClicked(sender: UIButton)
     {
         addFriendsButtonPressed()
     }
