@@ -52,6 +52,7 @@
 		B964F0C82261F16300D55C58 /* CharitySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964F0C72261F16300D55C58 /* CharitySelectionViewController.swift */; };
 		B964F0CB2261F23F00D55C58 /* CharityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964F0C92261F23F00D55C58 /* CharityTableViewCell.swift */; };
 		B964F0CC2261F23F00D55C58 /* CharityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B964F0CA2261F23F00D55C58 /* CharityTableViewCell.xib */; };
+		B968A99F22E5B8C400351152 /* DynamicPublicProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968A99E22E5B8C400351152 /* DynamicPublicProfileViewController.swift */; };
 		B97351CE22952DF500FFBB3E /* DonationsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351CD22952DF500FFBB3E /* DonationsHolder.swift */; };
 		B97351D022952F9800FFBB3E /* FriendsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351CF22952F9800FFBB3E /* FriendsHolder.swift */; };
 		B97351D2229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351D1229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift */; };
@@ -159,6 +160,7 @@
 		B964F0C72261F16300D55C58 /* CharitySelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharitySelectionViewController.swift; sourceTree = "<group>"; };
 		B964F0C92261F23F00D55C58 /* CharityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityTableViewCell.swift; sourceTree = "<group>"; };
 		B964F0CA2261F23F00D55C58 /* CharityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharityTableViewCell.xib; sourceTree = "<group>"; };
+		B968A99E22E5B8C400351152 /* DynamicPublicProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPublicProfileViewController.swift; sourceTree = "<group>"; };
 		B97351CD22952DF500FFBB3E /* DonationsHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationsHolder.swift; sourceTree = "<group>"; };
 		B97351CF22952F9800FFBB3E /* FriendsHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsHolder.swift; sourceTree = "<group>"; };
 		B97351D1229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsFirebaseEntryHolder.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				B90B76AA22DB2F52006E0ACB /* DynamicProfileViewController.swift */,
+				B968A99E22E5B8C400351152 /* DynamicPublicProfileViewController.swift */,
 			);
 			path = ProfileViewController;
 			sourceTree = "<group>";
@@ -715,6 +718,7 @@
 				B914F78222CCD10E0042F332 /* StripClient.swift in Sources */,
 				B914F78422CCD1D80042F332 /* Constants.swift in Sources */,
 				B9823FD722D904C400BCF617 /* FriendTableViewProvider.swift in Sources */,
+				B968A99F22E5B8C400351152 /* DynamicPublicProfileViewController.swift in Sources */,
 				B9338FD02283051B0021943C /* ChangePasswordViewController.swift in Sources */,
 				B9823FD922D906B700BCF617 /* DonationsHistoryTableViewProvider.swift in Sources */,
 				B943B66D225B7F3300F8C560 /* ActiveDonationViewCell.swift in Sources */,
@@ -926,6 +930,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U8GHKMUY53;
 				INFOPLIST_FILE = FeedBack/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -946,6 +951,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U8GHKMUY53;
 				INFOPLIST_FILE = FeedBack/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

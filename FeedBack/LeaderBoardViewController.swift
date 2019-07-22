@@ -173,7 +173,7 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath: IndexPath = sender as? IndexPath else { return }
-        guard let destinationVc: PublicUserProfileViewController = segue.destination as? PublicUserProfileViewController else{
+        guard let destinationVc: DynamicPublicProfileViewController = segue.destination as? DynamicPublicProfileViewController else{
             return
         }
         let cell = leaderBoardTableView.cellForRow(at: indexPath) as! RankedUserTableViewCell

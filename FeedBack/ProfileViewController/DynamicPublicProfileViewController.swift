@@ -2,26 +2,34 @@
 import UIKit
 import Firebase
 
-class DynamicProfileViewController: UIViewController{
-
+class DynamicPublicProfileViewController: UIViewController{
+    
+    
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userLevel: UILabel!
     @IBOutlet weak var userRankLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var achievementCollectionView: UICollectionView!
+    @IBOutlet weak var addFriendButtonOutlet: UIButton!
     
+    let currentUser = Auth.auth().currentUser
+    var userId: String?
     var user: User?
     let achievementCollectionViewProvider = AchievementCollectionViewProvider()
+    var currentUserFriends: [Friend]?
+    var currentUserRef: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        configureAddFriendButton()
         setupCollectionView()
-        guard let currentUser = Auth.auth().currentUser else { return }
+        guard let userId = userId else { return }
         let userManager = UserManager()
         userManager.delegate = self
-        userManager.observeUserData(forUser: currentUser.uid)
+        userManager.observeUserData(forUser: userId)
+        
     }
     
     fileprivate func configureTableView(){
@@ -29,6 +37,16 @@ class DynamicProfileViewController: UIViewController{
         tableView.separatorStyle = .singleLine
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    fileprivate func configureAddFriendButton(){
+        guard let currentUser = currentUser else { return }
+        currentUserRef = Database.database().reference(withPath: usersPath).child(currentUser.uid)
+        currentUserRef.observe(DataEventType.value) { (snapshot) in
+            guard let currentUser = User(snapshot: snapshot) else { return }
+            self.currentUserFriends = currentUser.friendsHolder.friends
+            self.updateAddFriendButton()
+        }
     }
     
     fileprivate func setupCollectionView() {
@@ -43,29 +61,59 @@ class DynamicProfileViewController: UIViewController{
         self.userLevel.text = String(user.level)
         self.userRankLabel.text = Level.getRankForLevel(level: user.level)
         self.userAvatar.setUserImage(userId: user.uniqueId)
+        
+        if(user.uniqueId == currentUser!.uid){
+            self.addFriendButtonOutlet.isHidden = true
+        }
     }
     
-    func addFriendsButtonPressed() {
-        let alertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
-        let inviteFriendsAction = UIAlertAction(title: "Invite friends", style: .default) { (action) in
-            self.showShareActivityOptions("Come join me: [inviteLink]")
+    fileprivate func updateAddFriendButton(){
+        print("updateAddFriendButton")
+        if(userIsAddedAsFriend()){
+            addFriendButtonOutlet.setTitle("Remove friend", for: .normal)
+        }else{
+            addFriendButtonOutlet.setTitle("Add as friend", for: .normal)
         }
-        alertController.addAction(inviteFriendsAction)
-        let searchForFriendsAction = UIAlertAction(title: "Search for friends", style: .default) { (action) in
-            self.performSegue(withIdentifier: "addFriendsSegue", sender: self)
-        }
-        alertController.addAction(searchForFriendsAction)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
-            return
-        }
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
     }
+    
+    fileprivate func userIsAddedAsFriend()->Bool{
+        print(user?.uniqueId)
+        if(self.currentUserFriends!.contains(where: { (friend) -> Bool in
+            friend.uniqueId == userId
+        })){
+            print("treu")
+            return true
+        }else{
+            print("false")
+            return false
+        }
+    }
+    
+    @IBAction func addAsFriendButtonPressed(_ sender: Any) {
+        if(userIsAddedAsFriend()){
+            print("remove friend")
+            removeFriend()
+        }else{
+            print("add friend")
+            addFriend()
+        }
+        updateAddFriendButton()
+    }
+    
+    func addFriend(){
+        let updateValues = [user!.uniqueId:"true"] as [String:Any]
+        currentUserRef.child("friends").updateChildValues(updateValues)
+    }
+    
+    func removeFriend(){
+        currentUserRef.child("friends").child(user!.uniqueId).removeValue()
+    }
+    
     
     
 }
 
-extension DynamicProfileViewController: UITableViewDataSource{
+extension DynamicPublicProfileViewController: UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -78,7 +126,7 @@ extension DynamicProfileViewController: UITableViewDataSource{
             if(user?.donationHolder.donations.count == 0){
                 return nil
             }
-            sectionName = NSLocalizedString("Your Impact summary", comment: "")
+            sectionName = NSLocalizedString("Impact summary", comment: "")
         case 2:
             sectionName = NSLocalizedString("Friends", comment: "")
         case 1:
@@ -92,83 +140,6 @@ extension DynamicProfileViewController: UITableViewDataSource{
         return sectionName
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
-        
-        if(section == 2){
-            let frame = tableView.frame
-            let button = UIButton(frame: .zero)
-            button.tag = section
-            //button.setImage(UIImage(named: "heart"), for: UIControl.State.normal)
-            button.setTitle("Add friend", for: .normal)
-            button.addTarget(self,action:#selector(buttonClicked),for:.touchUpInside)
-            button.setTitleColor(UIColor.blue, for: UIControl.State.normal)
-            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
-            button.translatesAutoresizingMaskIntoConstraints = false
-            headerView.addSubview(button)
-            NSLayoutConstraint.activate([
-                button.widthAnchor.constraint(equalTo: headerView.widthAnchor),
-                button.heightAnchor.constraint(equalTo: headerView.heightAnchor),
-                button.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-                button.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
-                ])
-            headerView.backgroundColor = UIColor.white
-            return headerView
-        }else if(section == 0 && user?.donationHolder.donations.count ?? 0 > 0){
-            let frame = tableView.frame
-            let button = UIButton(frame: .zero)
-            button.tag = section
-            //button.setImage(UIImage(named: "heart"), for: UIControl.State.normal)
-            button.setTitle("Share your good deeds", for: .normal)
-            button.addTarget(self,action:#selector(shareButtonPressed),for:.touchUpInside)
-            button.setTitleColor(UIColor.blue, for: UIControl.State.normal)
-            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
-            button.translatesAutoresizingMaskIntoConstraints = false
-            headerView.addSubview(button)
-            NSLayoutConstraint.activate([
-                button.widthAnchor.constraint(equalTo: headerView.widthAnchor),
-                button.heightAnchor.constraint(equalTo: headerView.heightAnchor),
-                button.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-                button.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
-                ])
-            headerView.backgroundColor = UIColor.white
-            return headerView
-        }
-        return nil
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if(section == 2){
-            return CGFloat(40)
-        }else if(section == 0 && user?.donationHolder.donations.count ?? 0 > 0){
-            return CGFloat(40)
-        }
-        return 0
-    }
-    
-    @objc func shareButtonPressed(sender: UIButton) {
-        showShareActivityOptions(generateTextToShare())
-    }
-    
-    fileprivate func generateTextToShare()->String{
-        var textToShare = ""
-        guard let mappedDonations = user?.donationHolder.getMappedDonations() else { return textToShare}
-        for donation in mappedDonations{
-            textToShare.append(donation.impactType.getimpactDescriptionStringBeforeValue() ?? "")
-            textToShare.append(" ")
-            textToShare.append(String(Int(Float(donation.impactAmount)!)))
-            textToShare.append(" ")
-            textToShare.append(donation.impactType.getimpactDescriptionStringAfterValue() ?? "")
-            textToShare.append("\n")
-        }
-        textToShare.append("Keep track of your donations and compete with your friends: [inviteLink]")
-        return textToShare
-    }
-    
-    @objc func buttonClicked(sender: UIButton)
-    {
-        addFriendsButtonPressed()
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(section){
@@ -233,15 +204,19 @@ extension DynamicProfileViewController: UITableViewDataSource{
     }
 }
 
-extension DynamicProfileViewController: UITableViewDelegate{
+extension DynamicPublicProfileViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.section == 2){
-            UIApplication.topViewController()?.performSegue(withIdentifier: "goToPublicUserProfile", sender: indexPath)
+            let selectedCell = tableView.cellForRow(at: indexPath) as! FriendTableViewCell
+            
+            let vc:DynamicPublicProfileViewController = self.storyboard?.instantiateViewController(withIdentifier: "dynamicPublicUserProfie") as! DynamicPublicProfileViewController
+            vc.userId = selectedCell.uniqueId
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
 
-extension DynamicProfileViewController: UserManagerDelegate{
+extension DynamicPublicProfileViewController: UserManagerDelegate{
     func userDataUpdated(user: User) {
         self.user = user
         configureUserInfo()
@@ -250,3 +225,4 @@ extension DynamicProfileViewController: UserManagerDelegate{
         achievementCollectionView.reloadData()
     }
 }
+
