@@ -7,6 +7,10 @@ class CharityInfoViewController: UIViewController {
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     
+    @IBOutlet weak var buttonToWebsite: UIButton!
+    
+    
+    
     lazy var ref: DatabaseReference = Database.database().reference()
     var charityRef: DatabaseReference!
     var charityId = ""
@@ -25,10 +29,14 @@ class CharityInfoViewController: UIViewController {
         charityRef.observe(DataEventType.value) { (snapshot) in
             self.charity = Charity(snapshot: snapshot)
             self.charityTitle.text = self.charity?.name
-            self.infoLabel.text = self.charity?.about
+            self.infoLabel.text = self.charity?.longInformation
             self.logoImageView.image = self.charity?.getLogoImage()
             self.infoLabel.sizeToFit()
+            self.buttonToWebsite.setTitle(self.charity?.website, for: .normal)
         }
+    }
+    @IBAction func linkButtonPressed(_ sender: Any) {
+        openUrlInBrowser(linkToWebsite: self.charity?.website)
     }
     
     func downloadLogo(_ fileName: String){
@@ -65,5 +73,19 @@ class CharityInfoViewController: UIViewController {
             return
         }
         destinationVc.charity = charityObj
+    }
+    
+    func openUrlInBrowser(linkToWebsite: String?){
+        if(linkToWebsite == nil){return}
+        let alert = UIAlertController(title: "Link", message: "This opens a website in your browser", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default) { (action) in
+            let url = NSURL(string: linkToWebsite!)!
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        }
+        let abort = UIAlertAction(title: "Return", style: .default) { (abort) in
+        }
+        alert.addAction(action)
+        alert.addAction(abort)
+        present(alert, animated: true, completion: nil)
     }
 }

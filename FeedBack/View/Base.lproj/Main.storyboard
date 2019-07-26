@@ -1620,7 +1620,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="749" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="751" text="Label" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9X-J6-jFO">
-                                                <rect key="frame" x="32" y="244" width="350" height="603"/>
+                                                <rect key="frame" x="32" y="244" width="350" height="641"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1640,21 +1640,34 @@
                                                     <action selector="donateButtonPressed:" destination="0vO-GD-1f5" eventType="touchUpInside" id="H24-RB-sGX"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vF5-t6-Lvd">
+                                                <rect key="frame" x="32" y="901" width="350" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="e5F-7e-jJ4"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="linkButtonPressed:" destination="0vO-GD-1f5" eventType="touchUpInside" id="pqm-dj-IUf"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="P9X-J6-jFO" firstAttribute="top" secondItem="fjK-T7-UKp" secondAttribute="bottom" constant="16" id="0rE-uU-6Nk"/>
+                                            <constraint firstAttribute="trailing" secondItem="vF5-t6-Lvd" secondAttribute="trailing" constant="32" id="2Ld-VM-M9g"/>
                                             <constraint firstAttribute="bottom" secondItem="Iqd-Pv-OxE" secondAttribute="bottom" constant="32" id="81G-dO-pdD"/>
                                             <constraint firstItem="Iqd-Pv-OxE" firstAttribute="centerX" secondItem="1bK-DC-zg1" secondAttribute="centerX" id="9nV-V1-BuG"/>
+                                            <constraint firstItem="Iqd-Pv-OxE" firstAttribute="top" secondItem="vF5-t6-Lvd" secondAttribute="bottom" constant="16" id="EPf-mw-xP4"/>
                                             <constraint firstItem="DwD-CB-mYj" firstAttribute="leading" secondItem="1bK-DC-zg1" secondAttribute="leading" constant="64" id="Uxd-IE-DS0"/>
                                             <constraint firstItem="fjK-T7-UKp" firstAttribute="top" secondItem="DwD-CB-mYj" secondAttribute="bottom" constant="16" id="ZdB-ob-I5K"/>
                                             <constraint firstAttribute="trailing" secondItem="DwD-CB-mYj" secondAttribute="trailing" constant="64" id="aS1-In-hvq"/>
+                                            <constraint firstItem="vF5-t6-Lvd" firstAttribute="top" secondItem="P9X-J6-jFO" secondAttribute="bottom" constant="16" id="bFl-qz-Szx"/>
                                             <constraint firstItem="DwD-CB-mYj" firstAttribute="top" secondItem="1bK-DC-zg1" secondAttribute="top" constant="32" id="bj8-8B-Wlq"/>
                                             <constraint firstAttribute="trailing" secondItem="P9X-J6-jFO" secondAttribute="trailing" priority="751" constant="32" id="d6W-7H-hv0"/>
                                             <constraint firstAttribute="trailing" secondItem="fjK-T7-UKp" secondAttribute="trailing" constant="16" id="mZg-Tq-ltq"/>
                                             <constraint firstItem="fjK-T7-UKp" firstAttribute="leading" secondItem="1bK-DC-zg1" secondAttribute="leading" constant="16" id="njz-dn-e34"/>
                                             <constraint firstItem="P9X-J6-jFO" firstAttribute="leading" secondItem="1bK-DC-zg1" secondAttribute="leading" constant="32" id="pop-Ei-4xa"/>
-                                            <constraint firstItem="Iqd-Pv-OxE" firstAttribute="top" secondItem="P9X-J6-jFO" secondAttribute="bottom" constant="100" id="xnW-17-B71"/>
+                                            <constraint firstItem="vF5-t6-Lvd" firstAttribute="leading" secondItem="1bK-DC-zg1" secondAttribute="leading" constant="32" id="uRU-D4-JQl"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1679,6 +1692,7 @@
                     </view>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
+                        <outlet property="buttonToWebsite" destination="vF5-t6-Lvd" id="84z-al-VaE"/>
                         <outlet property="charityTitle" destination="fjK-T7-UKp" id="cgg-4a-YAe"/>
                         <outlet property="infoLabel" destination="P9X-J6-jFO" id="b0P-vr-M7k"/>
                         <outlet property="logoImageView" destination="DwD-CB-mYj" id="vcA-Ez-wPO"/>
