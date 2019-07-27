@@ -7,9 +7,7 @@ class CharitySelectionViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var contentTableView: UITableView!
     var charityCategory: CharityCategory?
-    
     var ref: DatabaseReference!
-    
     var dataSource: FUITableViewDataSource?
     
     override func viewDidLoad() {
@@ -39,9 +37,8 @@ class CharitySelectionViewController: UIViewController, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
         performSegue(withIdentifier: "goToCharityInfo", sender: indexPath)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

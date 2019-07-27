@@ -50,7 +50,7 @@
 		B964F0CB2261F23F00D55C58 /* CharityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964F0C92261F23F00D55C58 /* CharityTableViewCell.swift */; };
 		B964F0CC2261F23F00D55C58 /* CharityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B964F0CA2261F23F00D55C58 /* CharityTableViewCell.xib */; };
 		B968A99F22E5B8C400351152 /* DynamicPublicProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968A99E22E5B8C400351152 /* DynamicPublicProfileViewController.swift */; };
-		B969166222EC3E3F00C6BB03 /* AchievementsFirebaseHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969166122EC3E3F00C6BB03 /* AchievementsFirebaseHolder.swift */; };
+		B969166222EC3E3F00C6BB03 /* AchievementFirebaseHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969166122EC3E3F00C6BB03 /* AchievementFirebaseHolder.swift */; };
 		B97351CE22952DF500FFBB3E /* DonationsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351CD22952DF500FFBB3E /* DonationsHolder.swift */; };
 		B97351D022952F9800FFBB3E /* FriendsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351CF22952F9800FFBB3E /* FriendsHolder.swift */; };
 		B97351D422954C3700FFBB3E /* CharityImpacTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */; };
@@ -154,7 +154,7 @@
 		B964F0C92261F23F00D55C58 /* CharityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityTableViewCell.swift; sourceTree = "<group>"; };
 		B964F0CA2261F23F00D55C58 /* CharityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharityTableViewCell.xib; sourceTree = "<group>"; };
 		B968A99E22E5B8C400351152 /* DynamicPublicProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPublicProfileViewController.swift; sourceTree = "<group>"; };
-		B969166122EC3E3F00C6BB03 /* AchievementsFirebaseHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementsFirebaseHolder.swift; sourceTree = "<group>"; };
+		B969166122EC3E3F00C6BB03 /* AchievementFirebaseHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementFirebaseHolder.swift; sourceTree = "<group>"; };
 		B97351CD22952DF500FFBB3E /* DonationsHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationsHolder.swift; sourceTree = "<group>"; };
 		B97351CF22952F9800FFBB3E /* FriendsHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsHolder.swift; sourceTree = "<group>"; };
 		B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityImpacTypeEnum.swift; sourceTree = "<group>"; };
@@ -504,7 +504,7 @@
 				B9F4926E22A676C300A23C49 /* Achievement.swift */,
 				B95F9282226496DC007F7755 /* AchievementModel.swift */,
 				B9275CD022D0C13B00C96DFF /* AchievementManager.swift */,
-				B969166122EC3E3F00C6BB03 /* AchievementsFirebaseHolder.swift */,
+				B969166122EC3E3F00C6BB03 /* AchievementFirebaseHolder.swift */,
 				B91A7958229431A900AA554F /* AchievementFirebase.swift */,
 			);
 			path = Achievements;
@@ -881,7 +881,7 @@
 				B99EA0AA2258CB3700256A89 /* AppDelegate.swift in Sources */,
 				B945E500226B0AAC0032EB7A /* RankedUserTableViewCell.swift in Sources */,
 				B9F9822522CE1A0000592DBE /* UserManager.swift in Sources */,
-				B969166222EC3E3F00C6BB03 /* AchievementsFirebaseHolder.swift in Sources */,
+				B969166222EC3E3F00C6BB03 /* AchievementFirebaseHolder.swift in Sources */,
 				B9C4B0F8229D2B840002111A /* SearchFriendsViewController.swift in Sources */,
 				B9A159AE2292CB8D0074E61F /* Donation.swift in Sources */,
 				B92AEFD622D5134F0031BD80 /* UIImageView+ext.swift in Sources */,

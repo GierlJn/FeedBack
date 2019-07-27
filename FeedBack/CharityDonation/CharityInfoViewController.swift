@@ -6,10 +6,7 @@ class CharityInfoViewController: UIViewController {
     @IBOutlet weak var charityTitle: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
-    
     @IBOutlet weak var buttonToWebsite: UIButton!
-    
-    
     
     lazy var ref: DatabaseReference = Database.database().reference()
     var charityRef: DatabaseReference!

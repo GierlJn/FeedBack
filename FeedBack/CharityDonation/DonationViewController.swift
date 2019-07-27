@@ -42,8 +42,6 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
         userInputAmountTextField.keyboardType = .numberPad
         userInputAmountTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)),
                             for: UIControl.Event.editingChanged)
-        
-        
         guard let charity = charity else { return }
         titleLabel.text = charity.name
         charityName = charity.name
