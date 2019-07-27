@@ -5,8 +5,6 @@ class ImpactTableViewProvider: NSObject, UITableViewDataSource, UITableViewDeleg
 
     private var mappedDonations = [Donation]()
     
-    
-    
     internal func updateDonations(mappedDonations: [Donation]) {
         self.mappedDonations = mappedDonations
     }
@@ -18,7 +16,6 @@ class ImpactTableViewProvider: NSObject, UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("ImpactTableViewCell", owner: self, options: nil)?.first as! ImpactTableViewCell
         let donation = mappedDonations[indexPath.row]
-        //cell.impactNameLabel.text = donation.impactType.getimpactDescriptionStringBeforeValue()
         cell.impactLabel.text = String(Int(Float(donation.impactAmount)!))
         cell.afterImpactLabel.text = donation.impactType.getimpactDescriptionStringAfterValue()
         return cell

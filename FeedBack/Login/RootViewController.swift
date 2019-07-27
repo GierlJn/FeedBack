@@ -1,10 +1,4 @@
-//
-//  RootViewController.swift
-//  FeedBack
-//
-//  Created by Julian on 08.05.19.
-//  Copyright © 2019 gierljn. All rights reserved.
-//
+
 
 import UIKit
 import FirebaseAuth
@@ -24,11 +18,8 @@ class RootViewController: UIViewController, GIDSignInUIDelegate, LoginButtonDele
         appDelegate?.setGoogleDelegate()
         
         GIDSignIn.sharedInstance().uiDelegate = self
-        //GIDSignIn.sharedInstance().signIn()
-        //let loginButton = FBLoginButton()
         facebookLoginButton.delegate = self
         facebookLoginButton.permissions = ["public_profile", "email"]
-        //self.view.addSubview(loginButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,8 +50,6 @@ class RootViewController: UIViewController, GIDSignInUIDelegate, LoginButtonDele
                 {
                     guard let currentUser = Auth.auth().currentUser else{ return }
                     
-                    
-                    //self.saveInitialUserInfo( Auth.auth().currentUser!, withUsername: fbData.value(forKey: "name") as! String)
                     let userManager = UserManager()
                     userManager.isUserRegistered(with: currentUser.uid, completion: { (userExists, user) in
                         if(!userExists){

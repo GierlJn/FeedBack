@@ -47,6 +47,7 @@ class UserManager{
         let changeRequest = currentUser.createProfileChangeRequest()
         changeRequest.displayName = username
         changeRequest.commitChanges() { (error) in
+            
             if error != nil {
                 print("error creating user")
                 return

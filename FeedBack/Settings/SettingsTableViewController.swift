@@ -25,7 +25,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
     var ref: DatabaseReference!
     let achievementManager = AchievementManager()
     var user: User?
-    var userAchievements = [AchievementFirebaseEntry]()
+    var userAchievements = [AchievementFirebase]()
     var alertQueue = [UIAlertController]()
     var currentUser: Firebase.User?
 

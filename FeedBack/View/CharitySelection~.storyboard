@@ -12,6 +12,7 @@
         <!--Explore View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
                 <viewController id="9pv-A4-QxB" customClass="ExploreViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -37,7 +38,6 @@
                         <segue destination="rvc-Gx-qaR" kind="push" identifier="goToCharitySelection" id="Fuh-JV-25I"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3479.7101449275365" y="-431.91964285714283"/>
         </scene>
@@ -99,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nv1-MO-Qhi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5006" y="836"/>
+            <point key="canvasLocation" x="3742" y="2263"/>
         </scene>
         <!--Log In-->
         <scene sceneID="Xn1-bL-mnb">
@@ -735,7 +735,7 @@
                                     <constraint firstAttribute="bottom" secondItem="YBu-Ld-RUv" secondAttribute="bottom" id="rmM-9L-agx"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ya9-cD-Ddd">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ya9-cD-Ddd">
                                 <rect key="frame" x="0.0" y="180" width="414" height="633"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -769,6 +769,7 @@
         <!--Explore-->
         <scene sceneID="Z2V-X0-bDb">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MCb-QW-9UG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wzh-xN-ZM6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" image="search" id="acW-dT-cKf"/>
                     <toolbarItems/>
@@ -781,13 +782,13 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="nmC-F0-nzC"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MCb-QW-9UG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2568.1159420289855" y="-432.58928571428572"/>
         </scene>
         <!--Charity Selection View Controller-->
         <scene sceneID="rgv-yd-W4F">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a04-cs-V8x" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CharitySelectionViewController" id="rvc-Gx-qaR" customClass="CharitySelectionViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZEV-a7-8Q6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -813,13 +814,13 @@
                         <segue destination="0vO-GD-1f5" kind="show" identifier="goToCharityInfo" id="erV-Iu-Imc"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a04-cs-V8x" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4376.811594202899" y="-433.25892857142856"/>
         </scene>
         <!--Charity Info View Controller-->
         <scene sceneID="IAI-rc-a7e">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cYz-Ue-U7z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="0vO-GD-1f5" customClass="CharityInfoViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nIp-6e-0BP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
@@ -926,13 +927,13 @@
                         <segue destination="EFe-IE-hV3" kind="show" identifier="goToDonation" id="iRx-7p-hHD"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cYz-Ue-U7z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5289.8550724637689" y="-433.25892857142856"/>
         </scene>
         <!--Donation View Controller-->
         <scene sceneID="3Jc-cp-hzw">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qcA-sg-tYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="EFe-IE-hV3" customClass="DonationViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="umZ-9H-qqO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -1073,7 +1074,6 @@
                         <outlet property="userInputAmountTextField" destination="MbE-Ov-AbA" id="HnI-tj-n4H"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qcA-sg-tYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6661" y="-739"/>
         </scene>
@@ -1276,7 +1276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZK-ps-YJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5972" y="1919"/>
+            <point key="canvasLocation" x="5168" y="2263"/>
         </scene>
         <!--Settings-->
         <scene sceneID="1EH-IN-uph">
@@ -1284,7 +1284,7 @@
                 <viewControllerPlaceholder storyboardName="Settings" id="leR-9i-wCg" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CCM-Cu-4w8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4043" y="495"/>
+            <point key="canvasLocation" x="5579.7101449275369" y="537.05357142857144"/>
         </scene>
     </scenes>
     <resources>
@@ -1296,7 +1296,7 @@
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gOY-Dl-rZ0"/>
+        <segue reference="Uvl-mW-oHa"/>
         <segue reference="JOi-Mq-qJC"/>
     </inferredMetricsTieBreakers>
 </document>

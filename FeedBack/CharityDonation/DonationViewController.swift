@@ -24,7 +24,7 @@ class DonationViewController: UIViewController, UITextFieldDelegate{
     var transaction: Transaction?
     let achievmentManager = AchievementManager()
     var user: User?
-    var userAchievements = [AchievementFirebaseEntry]()
+    var userAchievements = [AchievementFirebase]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

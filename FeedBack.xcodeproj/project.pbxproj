@@ -10,10 +10,10 @@
 		311BB92DE4917EA38A24841B /* Pods_FeedBack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FAEE6398C3444A7340C699 /* Pods_FeedBack.framework */; };
 		5264EB89E3AF07560273C6F2 /* Pods_FeedBackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FA7F9DA571C2223EA208B6 /* Pods_FeedBackTests.framework */; };
 		B90B76AB22DB2F52006E0ACB /* DynamicProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B76AA22DB2F52006E0ACB /* DynamicProfileViewController.swift */; };
-		B914F78222CCD10E0042F332 /* StripClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B914F78122CCD10E0042F332 /* StripClient.swift */; };
+		B914F78222CCD10E0042F332 /* StripeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B914F78122CCD10E0042F332 /* StripeClient.swift */; };
 		B914F78422CCD1D80042F332 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B914F78322CCD1D80042F332 /* Constants.swift */; };
 		B91A795722941E4600AA554F /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A795622941E4600AA554F /* Level.swift */; };
-		B91A7959229431A900AA554F /* AchievementFirebaseEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A7958229431A900AA554F /* AchievementFirebaseEntry.swift */; };
+		B91A7959229431A900AA554F /* AchievementFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A7958229431A900AA554F /* AchievementFirebase.swift */; };
 		B91A795B2294354000AA554F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91A795A2294354000AA554F /* Friend.swift */; };
 		B920004022759BB9004F74A6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920003F22759BB9004F74A6 /* RegisterViewController.swift */; };
 		B920004422759BF0004F74A6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B920004322759BF0004F74A6 /* LogInViewController.swift */; };
@@ -50,15 +50,14 @@
 		B964F0CB2261F23F00D55C58 /* CharityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964F0C92261F23F00D55C58 /* CharityTableViewCell.swift */; };
 		B964F0CC2261F23F00D55C58 /* CharityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B964F0CA2261F23F00D55C58 /* CharityTableViewCell.xib */; };
 		B968A99F22E5B8C400351152 /* DynamicPublicProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968A99E22E5B8C400351152 /* DynamicPublicProfileViewController.swift */; };
+		B969166222EC3E3F00C6BB03 /* AchievementsFirebaseHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B969166122EC3E3F00C6BB03 /* AchievementsFirebaseHolder.swift */; };
 		B97351CE22952DF500FFBB3E /* DonationsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351CD22952DF500FFBB3E /* DonationsHolder.swift */; };
 		B97351D022952F9800FFBB3E /* FriendsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351CF22952F9800FFBB3E /* FriendsHolder.swift */; };
-		B97351D2229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351D1229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift */; };
 		B97351D422954C3700FFBB3E /* CharityImpacTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */; };
 		B9823FD322D8FBA700BCF617 /* UIApplication+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9823FD222D8FBA700BCF617 /* UIApplication+ext.swift */; };
 		B9823FD522D9015000BCF617 /* ImpactTableViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9823FD422D9015000BCF617 /* ImpactTableViewProvider.swift */; };
 		B9823FD722D904C400BCF617 /* FriendTableViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9823FD622D904C400BCF617 /* FriendTableViewProvider.swift */; };
 		B9823FD922D906B700BCF617 /* DonationsHistoryTableViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9823FD822D906B700BCF617 /* DonationsHistoryTableViewProvider.swift */; };
-		B9869E1B229EB36A00FE140B /* PublicUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9869E1A229EB36A00FE140B /* PublicUserProfileViewController.swift */; };
 		B98DBDD8226DC6870007B36F /* LastActiveDonationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98DBDD6226DC6870007B36F /* LastActiveDonationTableViewCell.swift */; };
 		B98DBDD9226DC6870007B36F /* LastActiveDonationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B98DBDD7226DC6870007B36F /* LastActiveDonationTableViewCell.xib */; };
 		B99EA0AA2258CB3700256A89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99EA0A92258CB3700256A89 /* AppDelegate.swift */; };
@@ -80,6 +79,7 @@
 		B9D32CA5228C221F00F11743 /* UIImage+resizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32CA4228C221F00F11743 /* UIImage+resizeImage.swift */; };
 		B9D32CA7228C227600F11743 /* DatabasePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D32CA6228C227600F11743 /* DatabasePaths.swift */; };
 		B9DD99C5228D4F3900A8A189 /* DonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DD99C4228D4F3900A8A189 /* DonationViewController.swift */; };
+		B9F403E922EB015C004E5B85 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9F403E822EB015C004E5B85 /* Settings.storyboard */; };
 		B9F4926C22A650C500A23C49 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F4926A22A650C500A23C49 /* FriendTableViewCell.swift */; };
 		B9F4926D22A650C500A23C49 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9F4926B22A650C500A23C49 /* FriendTableViewCell.xib */; };
 		B9F4926F22A676C300A23C49 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F4926E22A676C300A23C49 /* Achievement.swift */; };
@@ -114,10 +114,10 @@
 		9EA88E3F556F9C5B521E13F5 /* Pods-FeedBackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedBackTests.release.xcconfig"; path = "Target Support Files/Pods-FeedBackTests/Pods-FeedBackTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5FA7F9DA571C2223EA208B6 /* Pods_FeedBackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedBackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B90B76AA22DB2F52006E0ACB /* DynamicProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicProfileViewController.swift; sourceTree = "<group>"; };
-		B914F78122CCD10E0042F332 /* StripClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripClient.swift; sourceTree = "<group>"; };
+		B914F78122CCD10E0042F332 /* StripeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeClient.swift; sourceTree = "<group>"; };
 		B914F78322CCD1D80042F332 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = FeedBack/SuppportExtensions/Constants.swift; sourceTree = SOURCE_ROOT; };
 		B91A795622941E4600AA554F /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
-		B91A7958229431A900AA554F /* AchievementFirebaseEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementFirebaseEntry.swift; sourceTree = "<group>"; };
+		B91A7958229431A900AA554F /* AchievementFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementFirebase.swift; sourceTree = "<group>"; };
 		B91A795A2294354000AA554F /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		B920003F22759BB9004F74A6 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B920004322759BF0004F74A6 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -154,15 +154,14 @@
 		B964F0C92261F23F00D55C58 /* CharityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityTableViewCell.swift; sourceTree = "<group>"; };
 		B964F0CA2261F23F00D55C58 /* CharityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharityTableViewCell.xib; sourceTree = "<group>"; };
 		B968A99E22E5B8C400351152 /* DynamicPublicProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPublicProfileViewController.swift; sourceTree = "<group>"; };
+		B969166122EC3E3F00C6BB03 /* AchievementsFirebaseHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementsFirebaseHolder.swift; sourceTree = "<group>"; };
 		B97351CD22952DF500FFBB3E /* DonationsHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationsHolder.swift; sourceTree = "<group>"; };
 		B97351CF22952F9800FFBB3E /* FriendsHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsHolder.swift; sourceTree = "<group>"; };
-		B97351D1229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsFirebaseEntryHolder.swift; sourceTree = "<group>"; };
 		B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharityImpacTypeEnum.swift; sourceTree = "<group>"; };
 		B9823FD222D8FBA700BCF617 /* UIApplication+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+ext.swift"; sourceTree = "<group>"; };
 		B9823FD422D9015000BCF617 /* ImpactTableViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactTableViewProvider.swift; sourceTree = "<group>"; };
 		B9823FD622D904C400BCF617 /* FriendTableViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewProvider.swift; sourceTree = "<group>"; };
 		B9823FD822D906B700BCF617 /* DonationsHistoryTableViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationsHistoryTableViewProvider.swift; sourceTree = "<group>"; };
-		B9869E1A229EB36A00FE140B /* PublicUserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicUserProfileViewController.swift; sourceTree = "<group>"; };
 		B98DBDD6226DC6870007B36F /* LastActiveDonationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastActiveDonationTableViewCell.swift; sourceTree = "<group>"; };
 		B98DBDD7226DC6870007B36F /* LastActiveDonationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LastActiveDonationTableViewCell.xib; sourceTree = "<group>"; };
 		B99EA0A62258CB3700256A89 /* FeedBack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedBack.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +190,7 @@
 		B9D32CA4228C221F00F11743 /* UIImage+resizeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImage+resizeImage.swift"; path = "FeedBack/SuppportExtensions/UIImage+resizeImage.swift"; sourceTree = SOURCE_ROOT; };
 		B9D32CA6228C227600F11743 /* DatabasePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatabasePaths.swift; path = FeedBack/SuppportExtensions/DatabasePaths.swift; sourceTree = SOURCE_ROOT; };
 		B9DD99C4228D4F3900A8A189 /* DonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationViewController.swift; sourceTree = "<group>"; };
+		B9F403E822EB015C004E5B85 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		B9F4926A22A650C500A23C49 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		B9F4926B22A650C500A23C49 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		B9F4926E22A676C300A23C49 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
@@ -252,6 +252,10 @@
 		B90B76A922DB2F34006E0ACB /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B9823FD622D904C400BCF617 /* FriendTableViewProvider.swift */,
+				B9823FD822D906B700BCF617 /* DonationsHistoryTableViewProvider.swift */,
+				B9357A5F22D7BD2F0020A07B /* AchievementCollectionViewProvider.swift */,
+				B9823FD422D9015000BCF617 /* ImpactTableViewProvider.swift */,
 				B90B76AA22DB2F52006E0ACB /* DynamicProfileViewController.swift */,
 				B968A99E22E5B8C400351152 /* DynamicPublicProfileViewController.swift */,
 			);
@@ -261,26 +265,16 @@
 		B922C5F6226EF403006E0D2C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B95F927E22649549007F7755 /* AchievementCell.swift */,
-				B943B66B225B7F3300F8C560 /* ActiveDonationViewCell.swift */,
-				B943B66C225B7F3300F8C560 /* ActiveDonationViewCell.xib */,
-				B98DBDD6226DC6870007B36F /* LastActiveDonationTableViewCell.swift */,
-				B98DBDD7226DC6870007B36F /* LastActiveDonationTableViewCell.xib */,
-				B95F927F22649549007F7755 /* AchievementCell.xib */,
-				B964F0C92261F23F00D55C58 /* CharityTableViewCell.swift */,
-				B964F0CA2261F23F00D55C58 /* CharityTableViewCell.xib */,
-				B964F0BF2261D94E00D55C58 /* CharityCategoryTableViewCell.swift */,
-				B964F0C02261D94E00D55C58 /* CharityCategoryTableViewCell.xib */,
-				B945E4FE226B0AAC0032EB7A /* RankedUserTableViewCell.swift */,
-				B945E4FF226B0AAC0032EB7A /* RankedUserTableViewCell.xib */,
-				B922C5F1226EF3DF006E0D2C /* ImpactTableViewCell.swift */,
-				B922C5F2226EF3DF006E0D2C /* ImpactTableViewCell.xib */,
-				B9C4B0F3229D25BE0002111A /* AddFriendsTableViewCell.swift */,
-				B9C4B0F4229D25BE0002111A /* AddFriendsTableViewCell.xib */,
-				B9F4926A22A650C500A23C49 /* FriendTableViewCell.swift */,
-				B9F4926B22A650C500A23C49 /* FriendTableViewCell.xib */,
-				B9B81CB122AB960300C11CE8 /* DonationTableTableViewCell.swift */,
-				B9B81CB222AB960300C11CE8 /* DonationTableTableViewCell.xib */,
+				B969165F22EC3CAC00C6BB03 /* Donation */,
+				B969165E22EC3C9B00C6BB03 /* Friend */,
+				B969165D22EC3C8800C6BB03 /* AddFriends */,
+				B969165C22EC3C7A00C6BB03 /* Impact */,
+				B969165B22EC3C6A00C6BB03 /* RankedUser */,
+				B969165A22EC3C5C00C6BB03 /* CharityCategory */,
+				B969165922EC3C4100C6BB03 /* Charity */,
+				B969165822EC3C2D00C6BB03 /* LastActiveDonation */,
+				B969165722EC3C0200C6BB03 /* ActiveDonation */,
+				B969165622EC3BEC00C6BB03 /* Achievement */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -303,8 +297,7 @@
 		B95F9273226481B9007F7755 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B9357A5D22D7B7B00020A07B /* UIView+ext.swift */,
-				B9823FD222D8FBA700BCF617 /* UIApplication+ext.swift */,
+				B9F403E822EB015C004E5B85 /* Settings.storyboard */,
 				B99EA0AF2258CB3700256A89 /* Main.storyboard */,
 				B99EA0B42258CB3800256A89 /* LaunchScreen.storyboard */,
 				B922C5F6226EF403006E0D2C /* Cells */,
@@ -315,38 +308,129 @@
 		B95F9274226481C1007F7755 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B9823FD622D904C400BCF617 /* FriendTableViewProvider.swift */,
-				B9823FD822D906B700BCF617 /* DonationsHistoryTableViewProvider.swift */,
-				B9357A5F22D7BD2F0020A07B /* AchievementCollectionViewProvider.swift */,
-				B9823FD422D9015000BCF617 /* ImpactTableViewProvider.swift */,
+				B969166022EC3D1300C6BB03 /* CharityDonation */,
+				B969165522EC3B6C00C6BB03 /* Login */,
+				B9F403EE22EB3AD8004E5B85 /* Settings */,
 				B90B76A922DB2F34006E0ACB /* ProfileViewController */,
 				B9C4B0F7229D2B840002111A /* SearchFriendsViewController.swift */,
-				B9338FC72282B30D0021943C /* SettingsTableViewController.swift */,
 				B943B669225B621400F8C560 /* GameViewController.swift */,
-				B964F0C72261F16300D55C58 /* CharitySelectionViewController.swift */,
 				B964F0BD2261D85500D55C58 /* ExploreViewController.swift */,
-				B95F927022646DC4007F7755 /* CharityInfoViewController.swift */,
-				B9338FC92282B6AD0021943C /* RootViewController.swift */,
-				B9338FCF2283051B0021943C /* ChangePasswordViewController.swift */,
 				B923087B226764EA00D85B43 /* LeaderBoardViewController.swift */,
-				B920003F22759BB9004F74A6 /* RegisterViewController.swift */,
-				B920004322759BF0004F74A6 /* LogInViewController.swift */,
-				B92000452275ADD6004F74A6 /* SettingsViewController.swift */,
 				B9338FCD2282BAFB0021943C /* RootNavigationController.swift */,
-				B9D32CA0228BF43900F11743 /* UIViewController+alerts.swift */,
-				B9DD99C4228D4F3900A8A189 /* DonationViewController.swift */,
 				B9A159AB2292B66C0074E61F /* MainTabBarViewController.swift */,
-				B9869E1A229EB36A00FE140B /* PublicUserProfileViewController.swift */,
 				B9275CD422D135C800C96DFF /* TaxReportViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		B95F927522648221007F7755 /* Support */ = {
+		B969165522EC3B6C00C6BB03 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				B920004322759BF0004F74A6 /* LogInViewController.swift */,
+				B9338FC92282B6AD0021943C /* RootViewController.swift */,
+				B920003F22759BB9004F74A6 /* RegisterViewController.swift */,
 			);
-			path = Support;
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B969165622EC3BEC00C6BB03 /* Achievement */ = {
+			isa = PBXGroup;
+			children = (
+				B95F927F22649549007F7755 /* AchievementCell.xib */,
+				B95F927E22649549007F7755 /* AchievementCell.swift */,
+			);
+			path = Achievement;
+			sourceTree = "<group>";
+		};
+		B969165722EC3C0200C6BB03 /* ActiveDonation */ = {
+			isa = PBXGroup;
+			children = (
+				B943B66B225B7F3300F8C560 /* ActiveDonationViewCell.swift */,
+				B943B66C225B7F3300F8C560 /* ActiveDonationViewCell.xib */,
+			);
+			path = ActiveDonation;
+			sourceTree = "<group>";
+		};
+		B969165822EC3C2D00C6BB03 /* LastActiveDonation */ = {
+			isa = PBXGroup;
+			children = (
+				B98DBDD6226DC6870007B36F /* LastActiveDonationTableViewCell.swift */,
+				B98DBDD7226DC6870007B36F /* LastActiveDonationTableViewCell.xib */,
+			);
+			path = LastActiveDonation;
+			sourceTree = "<group>";
+		};
+		B969165922EC3C4100C6BB03 /* Charity */ = {
+			isa = PBXGroup;
+			children = (
+				B964F0C92261F23F00D55C58 /* CharityTableViewCell.swift */,
+				B964F0CA2261F23F00D55C58 /* CharityTableViewCell.xib */,
+			);
+			path = Charity;
+			sourceTree = "<group>";
+		};
+		B969165A22EC3C5C00C6BB03 /* CharityCategory */ = {
+			isa = PBXGroup;
+			children = (
+				B964F0BF2261D94E00D55C58 /* CharityCategoryTableViewCell.swift */,
+				B964F0C02261D94E00D55C58 /* CharityCategoryTableViewCell.xib */,
+			);
+			path = CharityCategory;
+			sourceTree = "<group>";
+		};
+		B969165B22EC3C6A00C6BB03 /* RankedUser */ = {
+			isa = PBXGroup;
+			children = (
+				B945E4FE226B0AAC0032EB7A /* RankedUserTableViewCell.swift */,
+				B945E4FF226B0AAC0032EB7A /* RankedUserTableViewCell.xib */,
+			);
+			path = RankedUser;
+			sourceTree = "<group>";
+		};
+		B969165C22EC3C7A00C6BB03 /* Impact */ = {
+			isa = PBXGroup;
+			children = (
+				B922C5F1226EF3DF006E0D2C /* ImpactTableViewCell.swift */,
+				B922C5F2226EF3DF006E0D2C /* ImpactTableViewCell.xib */,
+			);
+			path = Impact;
+			sourceTree = "<group>";
+		};
+		B969165D22EC3C8800C6BB03 /* AddFriends */ = {
+			isa = PBXGroup;
+			children = (
+				B9C4B0F3229D25BE0002111A /* AddFriendsTableViewCell.swift */,
+				B9C4B0F4229D25BE0002111A /* AddFriendsTableViewCell.xib */,
+			);
+			path = AddFriends;
+			sourceTree = "<group>";
+		};
+		B969165E22EC3C9B00C6BB03 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				B9F4926A22A650C500A23C49 /* FriendTableViewCell.swift */,
+				B9F4926B22A650C500A23C49 /* FriendTableViewCell.xib */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
+		B969165F22EC3CAC00C6BB03 /* Donation */ = {
+			isa = PBXGroup;
+			children = (
+				B9B81CB122AB960300C11CE8 /* DonationTableTableViewCell.swift */,
+				B9B81CB222AB960300C11CE8 /* DonationTableTableViewCell.xib */,
+			);
+			path = Donation;
+			sourceTree = "<group>";
+		};
+		B969166022EC3D1300C6BB03 /* CharityDonation */ = {
+			isa = PBXGroup;
+			children = (
+				B9DD99C4228D4F3900A8A189 /* DonationViewController.swift */,
+				B95F927022646DC4007F7755 /* CharityInfoViewController.swift */,
+				B964F0C72261F16300D55C58 /* CharitySelectionViewController.swift */,
+			);
+			path = CharityDonation;
 			sourceTree = "<group>";
 		};
 		B99EA09D2258CB3700256A89 = {
@@ -382,7 +466,6 @@
 				B95F9272226481AA007F7755 /* Model */,
 				B95F9274226481C1007F7755 /* Controller */,
 				B95F9273226481B9007F7755 /* View */,
-				B95F927522648221007F7755 /* Support */,
 			);
 			path = FeedBack;
 			sourceTree = "<group>";
@@ -421,8 +504,8 @@
 				B9F4926E22A676C300A23C49 /* Achievement.swift */,
 				B95F9282226496DC007F7755 /* AchievementModel.swift */,
 				B9275CD022D0C13B00C96DFF /* AchievementManager.swift */,
-				B91A7958229431A900AA554F /* AchievementFirebaseEntry.swift */,
-				B97351D1229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift */,
+				B969166122EC3E3F00C6BB03 /* AchievementsFirebaseHolder.swift */,
+				B91A7958229431A900AA554F /* AchievementFirebase.swift */,
 			);
 			path = Achievements;
 			sourceTree = "<group>";
@@ -448,7 +531,6 @@
 		B9F403E222E9CA8D004E5B85 /* Charity */ = {
 			isa = PBXGroup;
 			children = (
-				B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */,
 				B9D32CA2228C06DE00F11743 /* Charity.swift */,
 			);
 			path = Charity;
@@ -457,7 +539,11 @@
 		B9F403E322E9CB6F004E5B85 /* SuppportExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				B9D32CA0228BF43900F11743 /* UIViewController+alerts.swift */,
+				B9357A5D22D7B7B00020A07B /* UIView+ext.swift */,
+				B97351D322954C3700FFBB3E /* CharityImpacTypeEnum.swift */,
 				B91A795622941E4600AA554F /* Level.swift */,
+				B9823FD222D8FBA700BCF617 /* UIApplication+ext.swift */,
 				B9D32CA4228C221F00F11743 /* UIImage+resizeImage.swift */,
 				B9D32CA6228C227600F11743 /* DatabasePaths.swift */,
 				B92AEFD522D5134F0031BD80 /* UIImageView+ext.swift */,
@@ -469,7 +555,7 @@
 		B9F403E422EAEA79004E5B85 /* Stripe */ = {
 			isa = PBXGroup;
 			children = (
-				B914F78122CCD10E0042F332 /* StripClient.swift */,
+				B914F78122CCD10E0042F332 /* StripeClient.swift */,
 				B927164622CDC00200543394 /* Transaction.swift */,
 			);
 			path = Stripe;
@@ -481,6 +567,16 @@
 				B9275CD222D131FA00C96DFF /* PDFManager.swift */,
 			);
 			path = PDF;
+			sourceTree = "<group>";
+		};
+		B9F403EE22EB3AD8004E5B85 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B9338FCF2283051B0021943C /* ChangePasswordViewController.swift */,
+				B9338FC72282B30D0021943C /* SettingsTableViewController.swift */,
+				B92000452275ADD6004F74A6 /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -606,6 +702,7 @@
 				B945E501226B0AAC0032EB7A /* RankedUserTableViewCell.xib in Resources */,
 				B922C5F4226EF3DF006E0D2C /* ImpactTableViewCell.xib in Resources */,
 				B98DBDD9226DC6870007B36F /* LastActiveDonationTableViewCell.xib in Resources */,
+				B9F403E922EB015C004E5B85 /* Settings.storyboard in Resources */,
 				B943B66E225B7F3300F8C560 /* ActiveDonationViewCell.xib in Resources */,
 				B9B81CB422AB960300C11CE8 /* DonationTableTableViewCell.xib in Resources */,
 				B95F928122649549007F7755 /* AchievementCell.xib in Resources */,
@@ -760,11 +857,10 @@
 				B97351D022952F9800FFBB3E /* FriendsHolder.swift in Sources */,
 				B91A795B2294354000AA554F /* Friend.swift in Sources */,
 				B9A159AC2292B66C0074E61F /* MainTabBarViewController.swift in Sources */,
-				B91A7959229431A900AA554F /* AchievementFirebaseEntry.swift in Sources */,
+				B91A7959229431A900AA554F /* AchievementFirebase.swift in Sources */,
 				B9357A5E22D7B7B00020A07B /* UIView+ext.swift in Sources */,
 				B97351CE22952DF500FFBB3E /* DonationsHolder.swift in Sources */,
-				B97351D2229534DA00FFBB3E /* AchievementsFirebaseEntryHolder.swift in Sources */,
-				B914F78222CCD10E0042F332 /* StripClient.swift in Sources */,
+				B914F78222CCD10E0042F332 /* StripeClient.swift in Sources */,
 				B914F78422CCD1D80042F332 /* Constants.swift in Sources */,
 				B9823FD722D904C400BCF617 /* FriendTableViewProvider.swift in Sources */,
 				B968A99F22E5B8C400351152 /* DynamicPublicProfileViewController.swift in Sources */,
@@ -773,7 +869,6 @@
 				B943B66D225B7F3300F8C560 /* ActiveDonationViewCell.swift in Sources */,
 				B9DD99C5228D4F3900A8A189 /* DonationViewController.swift in Sources */,
 				B964F0BE2261D85500D55C58 /* ExploreViewController.swift in Sources */,
-				B9869E1B229EB36A00FE140B /* PublicUserProfileViewController.swift in Sources */,
 				B9338FCA2282B6AD0021943C /* RootViewController.swift in Sources */,
 				B92000462275ADD6004F74A6 /* SettingsViewController.swift in Sources */,
 				B9275CD122D0C13B00C96DFF /* AchievementManager.swift in Sources */,
@@ -786,6 +881,7 @@
 				B99EA0AA2258CB3700256A89 /* AppDelegate.swift in Sources */,
 				B945E500226B0AAC0032EB7A /* RankedUserTableViewCell.swift in Sources */,
 				B9F9822522CE1A0000592DBE /* UserManager.swift in Sources */,
+				B969166222EC3E3F00C6BB03 /* AchievementsFirebaseHolder.swift in Sources */,
 				B9C4B0F8229D2B840002111A /* SearchFriendsViewController.swift in Sources */,
 				B9A159AE2292CB8D0074E61F /* Donation.swift in Sources */,
 				B92AEFD622D5134F0031BD80 /* UIImageView+ext.swift in Sources */,

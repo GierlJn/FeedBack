@@ -62,10 +62,7 @@ class SettingsViewController: UIViewController, SettingsDelegate {
         }
     }
     
-    private func changeUserNameInDatabase(){
-        //let initialValues = [userNamePath: newUserName,
-                             //levelPath:1] as [String: Any]
-        self.ref.child(usersPath).child(user!.uid).child(userNamePath).setValue(newUserName)
+    private func changeUserNameInDatabase(){ self.ref.child(usersPath).child(user!.uid).child(userNamePath).setValue(newUserName)
     }
     
     private func saveNewEmail(){

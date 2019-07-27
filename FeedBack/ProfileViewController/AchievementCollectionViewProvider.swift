@@ -4,9 +4,9 @@ import Foundation
 class AchievementCollectionViewProvider: NSObject, UICollectionViewDelegate, UICollectionViewDataSource{
 
     private let achievementManager = AchievementManager()
-    private var achievements = [AchievementFirebaseEntry]()
+    private var achievements = [AchievementFirebase]()
 
-    internal func userDataUpdated(achievements: [AchievementFirebaseEntry]) {
+    internal func userDataUpdated(achievements: [AchievementFirebase]) {
         self.achievements = achievements
     }
     

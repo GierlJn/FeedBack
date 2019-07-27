@@ -4,42 +4,41 @@ import Foundation
 
 class PDFManager{
     
-    func createPdf(atFilePath filePath: String){
-        
-        
+    var pdfDocument: PDFDocument?
+    var yOffset = 600
+    var filePath: String?
+    
+    
+    func createPdf(){
+        let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        filePath = (documentsDirectory as NSString).appendingPathComponent("tax.pdf") as String
+        pdfDocument = PDFDocument(url: URL(fileURLWithPath: filePath!))!
         let pdfTitle = "Your tax report for 2019"
         let pdfMetadata = [
-            // The name of the application creating the PDF.
-            kCGPDFContextCreator: "Your iOS App",
-            
-            // The name of the PDF's author.
+            kCGPDFContextCreator: "FeedBack",
             kCGPDFContextAuthor: "FeedBack",
-            
-            // The title of the PDF.
             kCGPDFContextTitle: "Tax Report",
-            
-            // Encrypts the document with the value as the owner password. Used to enable/disable different permissions.
-            kCGPDFContextOwnerPassword: "myPassword123"
+            kCGPDFContextOwnerPassword: ""
         ]
-        
-        // Creates a new PDF file at the specified path.
-        UIGraphicsBeginPDFContextToFile(filePath, CGRect.zero, pdfMetadata)
-        
-        // Creates a new page in the current PDF context.
+        UIGraphicsBeginPDFContextToFile(filePath!, CGRect.zero, pdfMetadata)
         UIGraphicsBeginPDFPage()
-        
-        // Default size of the page is 612x72.
         let pageSize = UIGraphicsGetPDFContextBounds().size
         let font = UIFont.preferredFont(forTextStyle: .largeTitle)
-        
-        // Let's draw the title of the PDF on top of the page.
         let attributedPDFTitle = NSAttributedString(string: pdfTitle, attributes: [NSAttributedString.Key.font: font])
         let stringSize = attributedPDFTitle.size()
         let stringRect = CGRect(x: (pageSize.width / 2 - stringSize.width / 2), y: 20, width: stringSize.width, height: stringSize.height)
         attributedPDFTitle.draw(in: stringRect)
-        
-        // Closes the current PDF context and ends writing to the file.
         UIGraphicsEndPDFContext()
+    }
+    
+    func printDonation(donation: Donation){
+        let squareAnnotation = PDFAnnotation(bounds: CGRect(x: 50, y: yOffset, width: 400, height: 60), forType: .freeText, withProperties: nil)
+        squareAnnotation.color = UIColor.white
+        squareAnnotation.contents = "\(donation.getTimeStampAsString()) - \(Int(Float(donation.amount)))\(currency) - \(donation.name)"
+        squareAnnotation.font = UIFont.systemFont(ofSize: 20)
+        let page = pdfDocument?.page(at: 0)!
+        page?.addAnnotation(squareAnnotation)
+        pdfDocument?.write(toFile: filePath!)
     }
     
 }
