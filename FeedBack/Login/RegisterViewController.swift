@@ -14,14 +14,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ref = Database.database().reference()
     }
-    
+
     @IBAction func registerButtonPressed(_ sender: Any) {
         guard !userNameTextField.text!.isEmpty else{
             self.showMessagePrompt("Name can't be empty")
@@ -36,6 +35,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate{
             return
         }
         
+        createUser()
+    }
+    
+    fileprivate func createUser() {
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
             guard let user = result?.user, error == nil else {
                 self.showMessagePrompt(error!.localizedDescription)

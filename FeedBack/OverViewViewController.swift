@@ -3,8 +3,7 @@ import UIKit
 import Firebase
 import FirebaseUI
 
-class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    //TODO: differnent name
+class OverViewViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var gameTableView: UITableView!
     @IBOutlet weak var userView: UIView!

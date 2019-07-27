@@ -597,7 +597,7 @@
         <!--Donations-->
         <scene sceneID="XfO-Jx-mGD">
             <objects>
-                <viewController storyboardIdentifier="GameViewController" id="km0-8x-AZG" customClass="GameViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameViewController" id="km0-8x-AZG" customClass="OverViewViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U5U-cH-aYs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
