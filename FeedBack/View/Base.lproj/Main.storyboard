@@ -536,6 +536,7 @@
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Achievements" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79e-c1-oGG">
                                         <rect key="frame" x="16" y="10" width="174" height="21.5"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="174" id="vz1-AX-Y5m"/>
                                         </constraints>
@@ -1117,7 +1118,7 @@
         <!--Profile-->
         <scene sceneID="sT0-4e-Faz">
             <objects>
-                <viewController restorationIdentifier="dynamicPublicUserProfie" storyboardIdentifier="dynamicPublicUserProfie" id="9UQ-wE-Kdn" customClass="DynamicPublicProfileViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="dynamicPublicUserProfie" storyboardIdentifier="dynamicPublicUserProfie" id="9UQ-wE-Kdn" customClass="PublicProfileViewController" customModule="FeedBack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5KA-r3-Xzx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1296,7 +1297,7 @@
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gOY-Dl-rZ0"/>
+        <segue reference="Uvl-mW-oHa"/>
         <segue reference="JOi-Mq-qJC"/>
     </inferredMetricsTieBreakers>
 </document>

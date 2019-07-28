@@ -3,7 +3,8 @@ import UIKit
 import Firebase
 
 class DynamicProfileViewController: UIViewController{
-
+    #warning("TODO: Refactor ProfileVC")
+    
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userLevel: UILabel!
@@ -41,7 +42,7 @@ class DynamicProfileViewController: UIViewController{
         guard let user = user else { return }
         self.userNameLabel.text = String(user.userName)
         self.userLevel.text = String(user.level)
-        self.userRankLabel.text = Level.getRankForLevel(level: user.level)
+        self.userRankLabel.text = LevelManager.getRankForLevel(level: user.level)
         self.userAvatar.setUserImage(userId: user.uniqueId)
     }
     
@@ -99,10 +100,9 @@ extension DynamicProfileViewController: UITableViewDataSource{
             let frame = tableView.frame
             let button = UIButton(frame: .zero)
             button.tag = section
-            //button.setImage(UIImage(named: "heart"), for: UIControl.State.normal)
             button.setTitle("Add friend", for: .normal)
             button.addTarget(self,action:#selector(buttonClicked),for:.touchUpInside)
-            button.setTitleColor(UIColor.blue, for: UIControl.State.normal)
+            button.setTitleColor(UIColor(red: 0.749, green: 0.6784, blue: 0.9686, alpha: 1.0), for: UIControl.State.normal)
             let headerView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
             button.translatesAutoresizingMaskIntoConstraints = false
             headerView.addSubview(button)
@@ -118,10 +118,9 @@ extension DynamicProfileViewController: UITableViewDataSource{
             let frame = tableView.frame
             let button = UIButton(frame: .zero)
             button.tag = section
-            //button.setImage(UIImage(named: "heart"), for: UIControl.State.normal)
             button.setTitle("Share your good deeds", for: .normal)
             button.addTarget(self,action:#selector(shareButtonPressed),for:.touchUpInside)
-            button.setTitleColor(UIColor.blue, for: UIControl.State.normal)
+            button.setTitleColor(UIColor(red: 0.749, green: 0.6784, blue: 0.9686, alpha: 1.0), for: UIControl.State.normal)
             let headerView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
             button.translatesAutoresizingMaskIntoConstraints = false
             headerView.addSubview(button)
@@ -224,7 +223,7 @@ extension DynamicProfileViewController: UITableViewDataSource{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "goToPublicUserProfile"){
             guard let indexPath: IndexPath = sender as? IndexPath else { return }
-            guard let publicUserProfileViewController = segue.destination as? DynamicPublicProfileViewController else{
+            guard let publicUserProfileViewController = segue.destination as? PublicProfileViewController else{
                 return
             }
             let selectedCell = tableView.cellForRow(at: indexPath) as! FriendTableViewCell

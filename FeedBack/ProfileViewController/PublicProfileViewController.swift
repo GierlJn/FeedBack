@@ -2,8 +2,8 @@
 import UIKit
 import Firebase
 
-class DynamicPublicProfileViewController: UIViewController{
-    
+class PublicProfileViewController: UIViewController{
+    #warning("TODO: Refactor ProfileVC")
     
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var tableView: UITableView!
@@ -59,7 +59,7 @@ class DynamicPublicProfileViewController: UIViewController{
         guard let user = user else { return }
         self.userNameLabel.text = String(user.userName)
         self.userLevel.text = String(user.level)
-        self.userRankLabel.text = Level.getRankForLevel(level: user.level)
+        self.userRankLabel.text = LevelManager.getRankForLevel(level: user.level)
         self.userAvatar.setUserImage(userId: user.uniqueId)
         
         if(user.uniqueId == currentUser!.uid){
@@ -113,7 +113,7 @@ class DynamicPublicProfileViewController: UIViewController{
     
 }
 
-extension DynamicPublicProfileViewController: UITableViewDataSource{
+extension PublicProfileViewController: UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -195,7 +195,7 @@ extension DynamicPublicProfileViewController: UITableViewDataSource{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "goToPublicUserProfile"){
             guard let indexPath: IndexPath = sender as? IndexPath else { return }
-            guard let publicUserProfileViewController = segue.destination as? DynamicPublicProfileViewController else{
+            guard let publicUserProfileViewController = segue.destination as? PublicProfileViewController else{
                 return
             }
             let selectedCell = tableView.cellForRow(at: indexPath) as! FriendTableViewCell
@@ -204,19 +204,19 @@ extension DynamicPublicProfileViewController: UITableViewDataSource{
     }
 }
 
-extension DynamicPublicProfileViewController: UITableViewDelegate{
+extension PublicProfileViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.section == 2){
             let selectedCell = tableView.cellForRow(at: indexPath) as! FriendTableViewCell
             
-            let vc:DynamicPublicProfileViewController = self.storyboard?.instantiateViewController(withIdentifier: "dynamicPublicUserProfie") as! DynamicPublicProfileViewController
+            let vc:PublicProfileViewController = self.storyboard?.instantiateViewController(withIdentifier: "dynamicPublicUserProfie") as! PublicProfileViewController
             vc.userId = selectedCell.uniqueId
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
 
-extension DynamicPublicProfileViewController: UserManagerDelegate{
+extension PublicProfileViewController: UserManagerDelegate{
     func userDataUpdated(user: User) {
         self.user = user
         configureUserInfo()

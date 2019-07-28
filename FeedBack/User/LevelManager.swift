@@ -1,8 +1,10 @@
 
 import Foundation
 
-class Level{
-    static func getLevelForChildrenTreated(for impactPoints: Int)-> Int{
+class LevelManager{
+    #warning("TODO: Create Level-System")
+    static func getLevelForImpactPoints(for impactPoints: Int)-> Int{
+        
         // TODO: math
         switch impactPoints{
         case 0..<10:

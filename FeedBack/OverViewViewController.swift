@@ -26,7 +26,7 @@ class OverViewViewController: UIViewController, UITableViewDataSource, UITableVi
             guard let user = User(snapshot: snapshot) else { return }
             self.user = user
             self.levelLabel.text = String(user.level)
-            let rank = Level.getRankForLevel(level: user.level)
+            let rank = LevelManager.getRankForLevel(level: user.level)
             self.rankLabel.text = rank
             self.donationSumLabel.text = String(user.donationHolder.getTotalDonationSum()) + " " + currency
             self.mappedDonations = user.donationHolder.getMappedDonations()
@@ -87,7 +87,7 @@ class OverViewViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let level = donationCellContent.getLevelForImpactAmount()
         cell.levelLabel.text = String(level)
-        let progress = Level.getProgressUntilNextLevel(for: Float(donationCellContent.impactAmount)!)
+        let progress = LevelManager.getProgressUntilNextLevel(for: Float(donationCellContent.impactAmount)!)
         cell.monthlyProgress.progress = progress
         
         return cell

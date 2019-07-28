@@ -14,10 +14,12 @@ extension UIImage {
         
         switch contentMode {
         case .scaleAspectFit:
-            if aspectRatio > 1 {                            // Landscape image
+            if aspectRatio > 1 {
+                // Landscape image
                 width = dimension
                 height = dimension / aspectRatio
-            } else {                                        // Portrait image
+            } else {
+                // Portrait image
                 height = dimension
                 width = dimension * aspectRatio
             }

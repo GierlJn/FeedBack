@@ -1,8 +1,8 @@
-
-
 import Foundation
 import UIKit
 import Firebase
+
+#warning("TODO: Achievements to json file")
 
 class AchievementManager{
     

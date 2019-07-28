@@ -1,9 +1,6 @@
 
-
 import Foundation
 import UIKit
-
-
 
 class ProfileSubView: UIView{
     

@@ -70,8 +70,6 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 self.leaderBoardTableView.reloadData()
             })
         
-
-        
         setViewBorders()
         leaderBoardTableView.dataSource = self
         leaderBoardTableView.delegate = self
@@ -91,6 +89,8 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        #warning("TODO: Create Providers leaderBoards")
         
         if(selectedLeaderBoard == .GeoLeaderboard){
             let cell = Bundle.main.loadNibNamed("RankedUserTableViewCell", owner: self, options: nil)?.first as! RankedUserTableViewCell
@@ -173,7 +173,7 @@ class LeaderBoardViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath: IndexPath = sender as? IndexPath else { return }
-        guard let destinationVc: DynamicPublicProfileViewController = segue.destination as? DynamicPublicProfileViewController else{
+        guard let destinationVc: PublicProfileViewController = segue.destination as? PublicProfileViewController else{
             return
         }
         let cell = leaderBoardTableView.cellForRow(at: indexPath) as! RankedUserTableViewCell

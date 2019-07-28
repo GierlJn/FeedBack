@@ -32,6 +32,9 @@ class RootViewController: UIViewController, GIDSignInUIDelegate, LoginButtonDele
     }
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        
+        #warning("TODO: Refactor FB Login in RootVC")
+        
         if let error = error {
             print(error.localizedDescription)
             return

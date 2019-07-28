@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recipient" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zvW-6o-MC7">
-                        <rect key="frame" x="8" y="0.0" width="130" height="43.5"/>
+                        <rect key="frame" x="16" y="0.0" width="130" height="43.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="130" id="ctj-fq-MPt"/>
                         </constraints>
@@ -29,7 +28,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="f0Y-77-Qq0">
-                        <rect key="frame" x="146" y="0.0" width="70" height="43.5"/>
+                        <rect key="frame" x="154" y="0.0" width="70" height="43.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="QjG-np-Usn"/>
                         </constraints>
@@ -38,7 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5MR-jy-WTl">
-                        <rect key="frame" x="224" y="0.0" width="88" height="43.5"/>
+                        <rect key="frame" x="232" y="0.0" width="80" height="43.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -47,7 +46,7 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="5MR-jy-WTl" secondAttribute="bottom" id="BQp-Wi-VpR"/>
                     <constraint firstAttribute="trailing" secondItem="5MR-jy-WTl" secondAttribute="trailing" constant="8" id="JhZ-ji-wYW"/>
-                    <constraint firstItem="zvW-6o-MC7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="RdS-SB-dJV"/>
+                    <constraint firstItem="zvW-6o-MC7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="RdS-SB-dJV"/>
                     <constraint firstItem="zvW-6o-MC7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ePW-ZL-UC1"/>
                     <constraint firstAttribute="bottom" secondItem="zvW-6o-MC7" secondAttribute="bottom" id="hmt-uu-Ogs"/>
                     <constraint firstItem="f0Y-77-Qq0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="krO-fs-Hn7"/>

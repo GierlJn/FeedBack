@@ -144,7 +144,7 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         delegate?.userNameHasChanged(userNameTextField.text!)
     }
     
-    @IBAction func signOutButtonTouched(_ sender: Any) {
+    func signOut() {
         do {
             try Auth.auth().signOut()
             LoginManager().logOut()
@@ -157,7 +157,11 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         }
     }
     
-    @IBAction func setProfilePictureButtonTapped(_ sender: Any) {
+    @IBAction func signOutButtonTouched(_ sender: Any) {
+        signOut()
+    }
+    
+    func setProfilePicture() {
         let alertController = UIAlertController(title: "Change Avatar", message: "", preferredStyle: .actionSheet)
         
         let profileImagePicker = UIImagePickerController()
@@ -190,6 +194,10 @@ class SettingsTableViewController: UITableViewController, UIImagePickerControlle
         }))
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func setProfilePictureButtonTapped(_ sender: Any) {
+        setProfilePicture()
     }
     
 

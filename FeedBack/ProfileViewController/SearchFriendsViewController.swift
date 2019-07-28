@@ -96,7 +96,7 @@ class SearchFriendsViewController: UIViewController, UITableViewDelegate, AddFri
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath: IndexPath = sender as? IndexPath else { return }
-        guard let destinationVc: DynamicPublicProfileViewController = segue.destination as? DynamicPublicProfileViewController else{
+        guard let destinationVc: PublicProfileViewController = segue.destination as? PublicProfileViewController else{
             return
         }
         let cell = tableView.cellForRow(at: indexPath) as! AddFriendsTableViewCell

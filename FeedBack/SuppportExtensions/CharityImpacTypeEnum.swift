@@ -1,5 +1,7 @@
 
 enum CharityImpactType: String{
+    #warning("TODO: Create ImpactDescriptions for all possible impactTypes")
+    
     case childTreated = "treatchild"
     case netFounded = "malarianets"
     case ntdTreated = "treatntd"
