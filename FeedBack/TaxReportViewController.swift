@@ -13,11 +13,13 @@ class TaxReportViewController: UIViewController {
     var filePath: String?
     var pdfDocument: PDFDocument?
     var yOffset = 600
+    var fileName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fileName = "tax.pdf"
         let pdfManager = PDFManager()
-        pdfManager.createPdf()
+        pdfManager.createPdf(with: fileName!)
         pdfView.autoScales = true
         pdfView.document = pdfManager.pdfDocument
         ref = Database.database().reference(withPath: "users").child(currentUser!.uid)
@@ -39,8 +41,8 @@ class TaxReportViewController: UIViewController {
     
     private func exportRecord(){
         let dir = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).first
-        let fileurl =  dir?.appendingPathComponent("tax.pdf")
-        let activityController = UIActivityViewController(activityItems: ["tax.pdf", fileurl!], applicationActivities: nil)
+        let fileurl =  dir?.appendingPathComponent(fileName!)
+        let activityController = UIActivityViewController(activityItems: [fileName!, fileurl!], applicationActivities: nil)
         if let popoverController = activityController.popoverPresentationController {
             popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
             popoverController.sourceView = self.view
@@ -50,9 +52,8 @@ class TaxReportViewController: UIViewController {
         self.present(activityController, animated: true, completion: nil)
     }
     
-    
     @IBAction func returnButtonPressed(_ sender: Any) {
         dismiss(animated: false, completion: nil)
     }
-    
+
 }
