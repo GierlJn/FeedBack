@@ -10,7 +10,7 @@ by implementing gamification elements such as points for donations, achievements
 * [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD) - Animatons
 * [Alamofire](https://github.com/Alamofire/Alamofire)
 
-* [SVProgressHUD](https://app.sogive.org/) - Charity research and impact data
+* [SoGive](https://app.sogive.org/) - Charity research and impact data
 
 
 
